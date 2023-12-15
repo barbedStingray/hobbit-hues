@@ -16,6 +16,7 @@ function LandingPage() {
   return (
     <div id='landing-page' className="container">
       {/* <h2>{heading}</h2> */}
+
       <div id='title-full'>
         <div id='title-hobbit'><h2>Hobbit</h2></div>
         <div id='title-hues'><h2>Hues</h2></div>
