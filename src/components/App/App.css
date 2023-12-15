@@ -1,3 +1,19 @@
+
+/* Hobbition Brushhand Import */
+@font-face {
+  font-family: hobbiton;
+  src: url('../../Fonts/Hobbiton\ Brushhand.ttf');
+}
+
+
+
+
+
+
+
+
+/* CODE BELOW WAS DEFAULT */
+
 html,
 body,
 #react-root {

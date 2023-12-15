@@ -6,7 +6,7 @@ import './LandingPage.css';
 import RegisterForm from '../RegisterForm/RegisterForm';
 
 function LandingPage() {
-  const [heading, setHeading] = useState('Welcome');
+  const [heading, setHeading] = useState('Hobbit Hues');
   const history = useHistory();
 
   const onLogin = (event) => {
@@ -14,11 +14,16 @@ function LandingPage() {
   };
 
   return (
-    <div className="container">
-      <h2>{heading}</h2>
+    <div id='landing-page' className="container">
+      {/* <h2>{heading}</h2> */}
+      <div id='title-full'>
+        <div id='title-hobbit'><h2>Hobbit</h2></div>
+        <div id='title-hues'><h2>Hues</h2></div>
+      </div>
 
       <div className="grid">
-        <div className="grid-col grid-col_8">
+
+        {/* <div className="grid-col grid-col_8">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
             id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra lacus
@@ -50,7 +55,8 @@ function LandingPage() {
             non fermentum mauris. Sed in enim ac turpis faucibus pretium in sit
             amet nisi.
           </p>
-        </div>
+        </div> */}
+
         <div className="grid-col grid-col_4">
           <RegisterForm />
 

@@ -1,3 +1,55 @@
+
+
+#landing-page {
+  background-color: aliceblue;
+  background-image: url('../../Images/HobbitHole.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 700px;
+
+  /* filter: blur(0.5px); */
+  border: 2px solid gold;
+  padding: 0px;
+}
+
+
+#title-full {
+  /* border: 2px solid purple; */
+  position: absolute;
+
+  display: flex;
+  flex-direction: column;
+  margin-left: 50%;
+  
+}
+#title-hobbit {
+  /* border: 2px solid blue; */
+  margin-top: -120px;
+  margin-bottom: -150px;
+  padding: -50px;
+  
+}
+#title-hues {
+  /* border: 2px solid red; */
+  margin-top: -150px;
+  margin-left: 130px;
+
+}
+
+h2 {
+  font-family: hobbiton;
+  color: transparent;
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: 1px;
+  font-size: 108px;
+  background: linear-gradient(green, 30%, yellow, 60%, darkorange);
+  background-clip: text;
+}
+
+
+
+
 /* --------------------------------------------------------------------------------
 Grid
 -------------------------------------------------------------------------------- */
@@ -11,6 +63,9 @@ Grid
   /* defaults to 'flex-start' */
   justify-content: flex-start;
   align-items: flex-start;
+  /* border: 2px solid greenyellow; */
+  margin-top: 15%;
+  margin-left: 5%;
 }
 
 .grid-col {
