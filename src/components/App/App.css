@@ -17,36 +17,100 @@
 }
 
 
-:root {
-
-  /* primary H S L destructured */
-  --primary-color-h: 265;
-  --primary-color-s: 100%;
-  --primary-color-l: 50%;
-
-  /* primary color */
-  --color-primary: hsl(
-                      var(--primary-color-h),
-                      var(--primary-color-S),
-                      var(--primary-color-l)
-                      );
-}
-
-
-
-
-
 /* CODE BELOW WAS DEFAULT */
 
 html,
 body,
 #react-root {
   height: 100%;
+
+    /* primary H S L destructured */
+    /* --primary-color-h: 0;
+    --primary-color-s: 0%;
+    --primary-color-l: 0%; */
+  
+    /* primary color */
+    /* --primary-color: hsl(
+                        var(--primary-color-h),
+                        var(--primary-color-s),
+                        var(--primary-color-l)
+                        ); */
+                        /* --primary-color: green; */
+
+  
+  
 }
+
+/* Add your other styles here */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.testBox {
+  border: 2px solid black;
+  height: 50px;
+  width: 50px;
+  background-color: var(--primary-color);
+}
+
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  
 }
 
 img {

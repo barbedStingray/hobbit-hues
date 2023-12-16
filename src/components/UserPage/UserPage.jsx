@@ -9,8 +9,14 @@ function UserPage() {
   // color variables
   let [primaryColor, setPrimaryColor] = useState('');
 
-  function setHSL(Hex) {
+
+
+
+  // BEGIN BENS CODE ****************
+
+  function setHSL(Hex, colorInput) {
     console.log('color conversion start');
+    console.log('hex', Hex);
 
     // convert to RGB
     let r = 0,
@@ -77,6 +83,21 @@ function UserPage() {
 
         // conversions complete
         // set styles to root css H S L variables
+        // document.documentElement.style.setProperty(`--${colorInput}-color-h`, h);
+        // document.documentElement.style.setProperty(`--${colorInput}-color-s`, s + '%');
+        // document.documentElement.style.setProperty(`--${colorInput}-color-l`, l + '%');
+
+        document.documentElement.style.setProperty(`--${colorInput}-color`, `hsl(${h}, ${s}%, ${l}%)`);
+
+        // END BENS CODE *****************
+
+
+
+
+
+        
+
+
 
   }
 
@@ -96,9 +117,10 @@ function UserPage() {
         <input
           id='primary-color-input'
           type='color'
-          onChange={(e) => setHSL(e.target.value)}
+          onChange={(e) => setHSL(e.target.value, 'primary')}
         >
         </input>
+        <div className='testBox'></div>
       </div>
     </div>
   );
