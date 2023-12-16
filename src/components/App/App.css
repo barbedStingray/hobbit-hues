@@ -17,7 +17,20 @@
 }
 
 
+:root {
 
+  /* primary H S L destructured */
+  --primary-color-h: 265;
+  --primary-color-s: 100%;
+  --primary-color-l: 50%;
+
+  /* primary color */
+  --color-primary: hsl(
+                      var(--primary-color-h),
+                      var(--primary-color-S),
+                      var(--primary-color-l)
+                      );
+}
 
 
 
