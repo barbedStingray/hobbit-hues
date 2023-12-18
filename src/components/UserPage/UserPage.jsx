@@ -7,6 +7,7 @@ import './UserPage.css';
 
 function UserPage() {
   const user = useSelector((store) => store.user);
+  const paints = useSelector((store) => store.setPaintsDropdown);
   const dispatch = useDispatch();
 
   let [palettePrime, setPalettePrime] = useState('#0056d6');
@@ -186,6 +187,8 @@ function UserPage() {
 
   return (
     <div id='user-page'>
+
+      {JSON.stringify(paints)}
 
 
       <div id='left-colors' className='side-colors'>

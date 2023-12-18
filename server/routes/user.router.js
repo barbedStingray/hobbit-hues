@@ -47,4 +47,20 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+
+
+// ** GET /paints dropdown menu
+router.get('/paints', (req, res) => {
+  console.log(`in server route for /paints`);
+
+  const queryText = 'SELECT * FROM "paints";';
+  pool.query(queryText).then((result) => {
+    console.log(`/paints query success!`);
+    res.send(result.rows);
+  }).catch((error) => {
+    console.log(`error completing /paints query`);
+    res.sendStatus(500);
+  });
+});
+
 module.exports = router;

@@ -1,16 +1,27 @@
-import { all, takeLatest, takeEvery } from 'redux-saga/effects';
+import { all, takeLatest, takeEvery, put } from 'redux-saga/effects';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
+import axios from 'axios';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
 
 // ** NEW sagas
+
+// fetching the paints table from database
 function* fetchPaintsDropdown() {
   try {
-    
+    console.log(`making axios.get for /api/user/paints`)
+    const paintResults = yield axios.get('/api/user/paints');
+    console.log(`paintResults:`, paintResults);
+
+    console.log(`axios.get /api/user/paints complete!`)
+    const action = { type: 'SET_PAINTS_DROPDOWN', payload: paintResults.data }
+    yield put(action);
+    console.log(`sending reducer 'SET_PAINTS_DROPDOWN'`);
+
 
   } catch (error) {
     console.log(`error in GET paint dropdown`);
@@ -29,7 +40,7 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
   ]);
-  // new sagas here
+  // ** NEW sagas here
   yield takeLatest('FETCH_PAINTS_DROPDOWN', fetchPaintsDropdown);
   
 }
