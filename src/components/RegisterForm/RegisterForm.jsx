@@ -34,6 +34,7 @@ function RegisterForm() {
             type="text"
             name="username"
             value={username}
+            className='min-width'
             required
             onChange={(event) => setUsername(event.target.value)}
           />
@@ -46,6 +47,7 @@ function RegisterForm() {
             type="password"
             name="password"
             value={password}
+            className='min-width'
             required
             onChange={(event) => setPassword(event.target.value)}
           />

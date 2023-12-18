@@ -1,4 +1,4 @@
-/* Hobbition Brushhand Import */
+/* Hobbition font Imports */
 @font-face {
   font-family: hobbiton;
   src: url('../../Fonts/Hobbiton\ Brushhand.ttf');
@@ -16,6 +16,10 @@
   src: url('../../Fonts/MiddleEarth.ttf');
 }
 
+.ringbearer {
+  font-family: ringbearer;
+}
+
 
 /* CODE BELOW WAS DEFAULT */
 
@@ -24,87 +28,464 @@ body,
 #react-root {
   height: 100%;
 
-    /* primary H S L destructured */
-    /* --primary-color-h: 0;
-    --primary-color-s: 0%;
-    --primary-color-l: 0%; */
+}
+
+
+/* ROOT VARIABLES */
+:root {
+
+  /*  Base Values  */
+  --primary-color-h: 216;
+  --primary-color-s: 100%;
+  --primary-color-l: 42%;
+
+  --secondary-color-h: 93;
+  --secondary-color-s: 48%;
+  --secondary-color-l: 49%;
   
-    /* primary color */
-    /* --primary-color: hsl(
-                        var(--primary-color-h),
-                        var(--primary-color-s),
-                        var(--primary-color-l)
-                        ); */
-                        /* --primary-color: green; */
+  --contrastThreshold: 60%;
+
+
+  /*  Calculations Based on Lightness  */
+  --lightnessTransform: 11%;
+  --lightnessTransformTwo: 22%;
+  --darknessTransform: 11%;
+  --darknessTransformTwo: 22%;
+
+  /* primary */
+  --primary-color-light-l: calc(var(--primary-color-l) + var(--lightnessTransform));
+  --primary-color-twolight-l: calc(var(--primary-color-l) + var(--lightnessTransformTwo));
+  --primary-color-dark-l: calc(var(--primary-color-l) - var(--darknessTransform));
+  --primary-color-twodark-l: calc(var(--primary-color-l) - var(--darknessTransformTwo));
+  /* secondary */
+  --secondary-color-light-l: calc(var(--secondary-color-l) + var(--lightnessTransform));
+  --secondary-color-twolight-l: calc(var(--secondary-color-l) + var(--lightnessTransformTwo));
+  --secondary-color-dark-l: calc(var(--secondary-color-l) - var(--darknessTransform));
+  --secondary-color-twodark-l: calc(var(--secondary-color-l) - var(--darknessTransformTwo));
+  
+
 
   
-  
+  /* primary background colors based on lightness */
+  --color-primary: hsl(var(--primary-color-h),
+                       var(--primary-color-s),
+                       var(--primary-color-l));
+  --color-primary-light:hsl(var(--primary-color-h),
+                       var(--primary-color-s),
+                       var(--primary-color-light-l));
+  --color-primary-twolight:hsl(var(--primary-color-h),
+                       var(--primary-color-s),
+                       var(--primary-color-twolight-l));
+  --color-primary-dark:hsl(var(--primary-color-h),
+                       var(--primary-color-s),
+                       var(--primary-color-dark-l));
+  --color-primary-twodark:hsl(var(--primary-color-h),
+                       var(--primary-color-s),
+                       var(--primary-color-twodark-l));
+
+
+
+  /* secondary background colors based on lightness */
+  --color-secondary: hsl(var(--secondary-color-h),
+                       var(--secondary-color-s),
+                       var(--secondary-color-l));
+  --color-secondary-light:hsl(var(--secondary-color-h),
+                       var(--secondary-color-s),
+                       var(--secondary-color-light-l));
+  --color-secondary-twolight:hsl(var(--secondary-color-h),
+                       var(--secondary-color-s),
+                       var(--secondary-color-twolight-l));
+  --color-secondary-dark:hsl(var(--secondary-color-h),
+                       var(--secondary-color-s),
+                       var(--secondary-color-dark-l));
+  --color-secondary-twodark:hsl(var(--secondary-color-h),
+                       var(--secondary-color-s),
+                       var(--secondary-color-twodark-l));
+
+                       
+
+
+  /*  Calculations Based on Hue  */
+
+  /* color background primary hues */
+  --color-primary-complement: hsl(calc(var(--primary-color-h) + 180),
+                          var(--primary-color-s),
+                          var(--primary-color-l));              
+  --color-primary-triad-1: hsl(calc(var(--primary-color-h) + 120),
+                          var(--primary-color-s),
+                          var(--primary-color-l));
+  --color-primary-triad-2: hsl(calc(var(--primary-color-h) - 120),
+                          var(--primary-color-s),
+                          var(--primary-color-l));
+  --color-primary-analog-1: hsl(calc(var(--primary-color-h) + 30),
+                          var(--primary-color-s),
+                          var(--primary-color-l));
+  --color-primary-analog-2: hsl(calc(var(--primary-color-h) - 30),
+                          var(--primary-color-s),
+                          var(--primary-color-l));
+
+  /* color background secondary hues */
+  --color-secondary-complement: hsl(calc(var(--secondary-color-h) + 180),
+                          var(--secondary-color-s),
+                          var(--secondary-color-l));
+  --color-secondary-triad-1: hsl(calc(var(--secondary-color-h) + 120),
+                          var(--secondary-color-s),
+                          var(--secondary-color-l));
+  --color-secondary-triad-2: hsl(calc(var(--secondary-color-h) - 120),
+                          var(--secondary-color-s),
+                          var(--secondary-color-l));
+  --color-secondary-analog-1: hsl(calc(var(--secondary-color-h) + 30),
+                          var(--secondary-color-s),
+                          var(--secondary-color-l));
+  --color-secondary-analog-2: hsl(calc(var(--secondary-color-h) - 30),
+                          var(--secondary-color-s),
+                          var(--secondary-color-l));
 }
+
+/* ROOT VARIABLES */
+
+
+
+/* BACKGROUND FILLS */
+
+/*  Primary Color Shades */
+
+.primary {
+  background-color: var(--color-primary);
+  --switch: calc((var(--primary-color-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+.primary-light {
+  background: var(--color-primary-light);
+  --switch: calc((var(--primary-color-light-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+.primary-twolight {
+  background: var(--color-primary-twolight);
+  --switch: calc((var(--primary-color-light-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+.primary-dark {
+  background: var(--color-primary-dark);
+  --switch: calc((var(--primary-color-dark-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+.primary-twodark {
+  background: var(--color-primary-twodark);
+  --switch: calc((var(--primary-color-dark-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+
+/* primary color shades */
+
+
+
+/* primary color alternates */
+
+.primary-complement {
+  background: var(--color-primary-complement);
+  --switch: calc((var(--primary-color-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+
+.primary-triad-1 {
+  background: var(--color-primary-triad-1);
+  --switch: calc((var(--primary-color-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+
+.primary-triad-2 {
+  background: var(--color-primary-triad-2);
+  --switch: calc((var(--primary-color-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+.primary-analog-1 {
+  background: var(--color-primary-analog-1);
+  --switch: calc((var(--primary-color-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+.primary-analog-2 {
+  background: var(--color-primary-analog-2);
+  --switch: calc((var(--primary-color-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+
+/* primary color alternatives */
+
+
+/* secondary color shades */
+
+.secondary {
+  background: var(--color-secondary);
+  --switch: calc((var(--secondary-color-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+.secondary-light {
+  background: var(--color-secondary-light);
+  --switch: calc((var(--secondary-color-light-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+.secondary-twolight {
+  background: var(--color-secondary-twolight);
+  --switch: calc((var(--secondary-color-light-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+.secondary-dark {
+  background: var(--color-secondary-dark);
+  --switch: calc((var(--secondary-color-dark-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+.secondary-twodark {
+  background: var(--color-secondary-twodark);
+  --switch: calc((var(--secondary-color-dark-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+
+/* secondary color shades */
+
+
+
+/* secondary color alternatives */
+
+.secondary-complement {
+  background: var(--color-secondary-complement);
+  --switch: calc((var(--secondary-color-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+.secondary-triad-1 {
+  background: var(--color-secondary-triad-1);
+  --switch: calc((var(--secondary-color-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+.secondary-triad-2 {
+  background: var(--color-secondary-triad-2);
+  --switch: calc((var(--secondary-color-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+.secondary-analog-1 {
+  background: var(--color-secondary-analog-1);
+  --switch: calc((var(--secondary-color-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+.secondary-analog-2 {
+  background: var(--color-secondary-analog-2);
+  --switch: calc((var(--secondary-color-l) - var(--contrastThreshold)) * -100);
+  color: hsl(0, 0%, var(--switch));
+}
+
+/* secondary color alternatives */
+
+/* BACKGROUND FILLS */
+
+
+
+
+
+
+
+
+
+
+
+/* THIS CODE IS USED IN THE USER PAGE */
+
+#user-page {
+  /* border: 2px solid blue; */
+  background-image: url('../../Images/StoneBridgeGreyscale.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 800px;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#titleinputs-form {
+  /* border: 2px solid gold; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+#title-inputs {
+  /* border: 2px solid red; */
+  flex-basis: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+#new-project {
+  /* border: 2px solid blue; */
+  margin-bottom: 5%;
+}
+
+#color-input-primary {
+  /* border: 2px solid pink; */
+  margin-bottom: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#color-input-secondary {
+  /* border: 2px solid pink; */
+  margin-bottom: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
+#title-colors {
+  font-family: ringbearer;
+  font-size: 48px;
+  color: transparent;
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: 1px;
+  background: linear-gradient(green, 40%, yellow, 60%, darkorange);
+  background-clip: text;
+  display: flex;
+  text-align: center;
+
+}
+
+.newProject {
+  box-sizing: border-box;
+  width: 300px;
+  max-width: 100%;
+  padding: 20px;
+  margin: 0 auto 20px;
+  background: linear-gradient(#e9e9e9cc, 30%, #767676cc);
+  /* border: 5px solid whitesmoke; */
+  /* box-shadow: 0 5px 10px rgb(0, 0, 0, 1); */
+  /* optional image gradient */
+  /* border-image: linear-gradient(#008000, 30%, #ffff00, 60%, #ff8c00) 30; */
+  /* border-width: 5px; */
+  /* border-style: solid; */
+  border-radius: 8px;
+}
+
+
+/* contains the circles displayed in primary and secondary views */
+.shape-container {
+  /* border: 2px solid greenyellow; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  gap: 5px;
+  margin: 0 2px;
+}
+
+/* color input css */
+.color-input {
+  /* border: 2px solid greenyellow; */
+  display: flex;
+  flex-direction: row;
+  flex-basis: 150px;
+  align-items: flex-end;
+  justify-content: space-between;
+  /* min-height: 120px; */
+  /* padding: 0; */
+
+}
+#color-select {
+  border: 2px solid var(--primary-color);
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  vertical-align: middle;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}
+
+.side-colors {
+  /* border: 2px solid red; */
+  display: flex;
+  /* flex: 1; */
+  width: 270px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.input-color-hex {
+  border: 1px solid black;
+  width: 75px;
+  height: 18px;
+  text-align: center;
+  background-color: white;
+  border-radius: 3px;
+}
+
+
+/* divPrime-tertiary are adjustments for the circles */
+.divPrime {
+  height: 115px;
+  width: 115px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+.divSecondary {
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+.divTertiary {
+  height: 85px;
+  width: 85px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+
+/* THIS CODE IS USED IN THE USER PAGE */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Add your other styles here */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.testBox {
-  border: 2px solid black;
-  height: 50px;
-  width: 50px;
-  background-color: var(--primary-color);
-}
 
 
 body {
@@ -160,8 +541,9 @@ Button
 }
 
 .btn:hover {
-  background-color: #008183;
+  background-color: green;
   text-decoration: none;
+  transition: 0.5s;
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */
@@ -217,6 +599,14 @@ Form Treatment
   
   border-radius: 8px;
 
+}
+
+/* controlling the registration textboxes */
+.min-width {
+  /* border: 2px solid green; */
+  width: 80%;
+  min-width: 100px;
+  max-width: 150px;
 }
 
 input {

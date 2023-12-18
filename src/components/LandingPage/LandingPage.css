@@ -1,12 +1,12 @@
 
 
 #landing-page {
-  background-color: aliceblue;
-  background-image: url('../../Images/HobbitHole.jpg');
+  /* background-color: aliceblue; */
+  background-image: url('../../Images/HobbitHoleSat.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  min-height: 700px;
+  min-height: 760px;
 
   /* filter: blur(0.5px); */
   /* border: 2px solid gold; */
@@ -20,33 +20,42 @@
 
   display: flex;
   flex-direction: column;
-  margin-left: 50%;
-  
+  margin-left: 40%;
+  margin-top: 0%;
 }
 #title-hobbit {
   /* border: 2px solid blue; */
-  margin-top: -80px;
-  margin-bottom: -150px;
+  /* margin-top: -80px;
+  margin-bottom: -150px; */
+  margin: 0px 0px 0px 0px;
   padding: -50px;
-  
+  font-size: 84px;
+  font-family: ringbearer;
+  text-align: center;
+  color: transparent;
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: 1px;
+  background: linear-gradient(green, 40%, yellow, 60%, darkorange);
+  background: linear-gradient(darkgreen, 30%, limegreen, 40%, yellow, 50%, orange, 70%, red);
+  /* background: linear-gradient(darkgreen, 30%, limegreen, 45%, skyblue, 60%, darkblue); */
+  background-clip: text;
+
 }
-#title-hues {
-  /* border: 2px solid red; */
+/* #title-hues {
+  border: 2px solid red;
   margin-top: -65px;
-  margin-left: 130px;
-
-}
-
-h2 {
+  margin-left: 200px;
+  font-size: 96px;
   font-family: ringbearer;
   color: transparent;
   -webkit-text-stroke-color: black;
   -webkit-text-stroke-width: 1px;
-  font-size: 108px;
   background: linear-gradient(green, 30%, yellow, 60%, darkorange);
   background-clip: text;
 
-}
+
+} */
+
 
 
 
@@ -57,16 +66,18 @@ Grid
 
 .grid {
   display: flex;
-  flex: 0 1 auto;
+  /* flex: 0 1 auto; */
   /* defaults to 'row' */
   flex-direction: row;
-  flex-wrap: wrap;
+  /* margin: 10%; */
+  /* flex-wrap: wrap; */
   /* defaults to 'flex-start' */
-  justify-content: flex-start;
-  align-items: flex-start;
+  /* justify-content: flex-start; */
+  /* align-items: flex-start; */
   /* border: 2px solid greenyellow; */
-  margin-left: 5%;
-  padding-top: 15%;
+  margin-left: 8%;
+  padding-top: 20%;
+  justify-content: flex-start;
 }
 
 .grid-col {

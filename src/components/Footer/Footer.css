@@ -2,5 +2,7 @@ footer {
   /* margin-top: 80px; */
   padding: 20px;
   text-align: center;
-  background-color: aliceblue;
+  background-color: #2e2e2e;
+  color: darkred;
+  border-top: 2px solid black;
 }
