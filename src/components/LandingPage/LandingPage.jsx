@@ -4,13 +4,20 @@ import './LandingPage.css';
 
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
+import LoginForm from '../LoginForm/LoginForm.jsx';
 
 function LandingPage() {
-  const [heading, setHeading] = useState('Hobbit Hues');
+
+  // toggle for login display
+  const [login, setLogin] = useState(true);
+
   const history = useHistory();
 
-  const onLogin = (event) => {
-    history.push('/login');
+  const loginOrRegister = (event) => {
+    // history.push('/login');
+    console.log(`setting login or register`);
+    setLogin(!login);
+    console.log(`login:`, login);
   };
 
   return (
@@ -22,9 +29,52 @@ function LandingPage() {
         {/* <div id='title-hues'><h2>Hues</h2></div> */}
       </div>
 
+
       <div className="grid">
 
-        {/* <div className="grid-col grid-col_8">
+
+        <div className="grid-col grid-col_4">
+          <div className={login ? 'visible' : 'invisible'}>
+            <LoginForm />
+          </div>
+          <div className={login ? 'invisible' : 'visible'}>
+            <RegisterForm />
+          </div>
+
+          <center>
+
+          <div className={ login ? 'visible' : 'invisible'}>
+              <h4>Don't have an Account?</h4>
+              <button className="btn btn_sizeSm" onClick={loginOrRegister}>
+                Register
+              </button>
+            </div>
+
+            <div className={ login ? 'invisible' : 'visible'}>
+              <h4>Already a Member?</h4>
+              <button className="btn btn_sizeSm" onClick={loginOrRegister}>
+                Login
+              </button>
+            </div>
+
+          </center>
+
+        </div>
+
+
+
+      </div>
+    </div>
+  );
+}
+
+export default LandingPage;
+
+
+
+
+
+{/* <div className="grid-col grid-col_8">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
             id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra lacus
@@ -58,19 +108,3 @@ function LandingPage() {
           </p>
         </div> */}
 
-        <div className="grid-col grid-col_4">
-          <RegisterForm />
-
-          <center>
-            <h4>Already a Member?</h4>
-            <button className="btn btn_sizeSm" onClick={onLogin}>
-              Login
-            </button>
-          </center>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default LandingPage;

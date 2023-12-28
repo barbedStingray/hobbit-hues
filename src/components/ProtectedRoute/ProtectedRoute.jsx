@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import LoginPage from '../LoginPage/LoginPage';
+import LandingPage from '../LandingPage/LandingPage';
 import {useSelector} from 'react-redux';
 
 // A Custom Wrapper Component -- This will keep our code DRY.
@@ -31,8 +32,8 @@ function ProtectedRoute({ component, children, ...props }) {
         // If the user is logged in, show the protected component
         <ProtectedComponent />
         :
-        // Otherwise, redirect to the Loginpage
-        <LoginPage />
+        // Otherwise, redirect to the Loginpage ** LANDING PAGE UPDATE
+        <LandingPage />
       }
     </Route>
 

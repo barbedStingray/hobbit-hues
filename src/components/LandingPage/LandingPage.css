@@ -56,6 +56,22 @@
 
 } */
 
+/* toggle for visible and invisible login / registration */
+
+/* invisible edit form */
+.invisible {
+  display: none;
+  /* position: fixed; */
+  /* border: 5px solid lightgreen; */
+}
+
+/* visible edit form */
+.visible {
+  /* border: 5px solid lightblue; */
+  display: flex;
+}
+
+
 
 
 
