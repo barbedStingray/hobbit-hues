@@ -21,7 +21,7 @@ app.use(sessionMiddleware);
 app.use(passport.initialize());
 app.use(passport.session());
 
-/* Routes */
+/* EXPRESS Routes */
 app.use('/api/user', userRouter);
 
 // Serve static files

@@ -1,21 +1,3 @@
-
--- USER is a reserved keyword with Postgres
--- You must use double quotes in every query that user is in:
--- ex. SELECT * FROM "user";
--- Otherwise you will have errors!
-CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
-);
-
-
-
-
-
-
-
--- Ben's database
 -- User Table
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
@@ -23,23 +5,14 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL
 );
 
--- Junction: user-projects
-CREATE TABLE "user_projects" (
-	"id" SERIAL PRIMARY KEY,
-	"user_id" integer REFERENCES "user",
-	"project_id" integer REFERENCES "projects"
-);
+DROP TABLE "user";
 
--- Projects table
-CREATE TABLE "projects" (
-	"id" SERIAL PRIMARY KEY,
-	"model" VARCHAR (40),
-	"palette" VARCHAR (20)
-);
 
-DROP TABLE "projects";
 
--- Paints table COMMANDS 
+
+
+
+-- Paints table 
 CREATE TABLE "paints" (
 	"id" SERIAL PRIMARY KEY,
 	"paint" VARCHAR (40),
@@ -50,18 +23,53 @@ DELETE FROM "paints";
 DROP TABLE "paints";
 
 
+
+
+
+-- Techniques table 
+CREATE TABLE "techniques" (
+	"id" SERIAL PRIMARY KEY,
+	"technique" VARCHAR (40)
+);
+
+DELETE FROM "techniques";
+DROP TABLE "techniques";
+
+
+
+
+
+
+
+
+-- Junction: project table
+CREATE TABLE "projects" (
+	"id" SERIAL PRIMARY KEY,
+	"user_id" integer REFERENCES "user",
+	"model" VARCHAR (40),
+	"primary" VARCHAR (15),
+	"description" VARCHAR (500),
+	"picture" VARCHAR (50)
+);
+
+DROP TABLE "projects";
+
+
+
+
+
+
+
 -- junction: projects_paints
 CREATE TABLE "projects_paints" (
 	"id" SERIAL PRIMARY KEY,
 	"project_id" integer REFERENCES "projects",
-	"paint_id" integer REFERENCES "paints"	
+	"paint_id" integer REFERENCES "paints"	,
+	"technique_id" integer REFERENCES "techniques",
+	"photo" VARCHAR (50)
 );
 
 DROP TABLE "projects_paints";
-
-
-
-
 
 
 
@@ -214,5 +222,5 @@ VALUES
 ('Fire Dragon Bright', '#f4864e'),
 ('Deathclaw Brown', '#af634e'),
 ('Ahriman Blue', '#00708a'),
-('paint', 'hexcode'),
+('paint', 'hexcode')
 ;

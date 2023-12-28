@@ -5,7 +5,9 @@ import { useState, useEffect } from 'react';
 
 import './UserPage.css';
 
+
 function UserPage() {
+
   const user = useSelector((store) => store.user);
   const paints = useSelector((store) => store.setPaintsDropdown);
   const dispatch = useDispatch();
@@ -19,6 +21,8 @@ function UserPage() {
     console.log(`getting paint dropdowns`);
 
     dispatch({ type: 'FETCH_PAINTS_DROPDOWN' });
+
+    // console.log(`dispatch sent?`);
   }
 
   useEffect(() => {
