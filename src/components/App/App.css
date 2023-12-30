@@ -295,7 +295,7 @@ body,
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  min-height: 800px;
+  min-height: 775px;
   padding: 0px;
   display: flex;
   flex-direction: row;
@@ -318,10 +318,6 @@ body,
 }
 
 
-#new-project {
-  /* border: 2px solid blue; */
-  margin-bottom: 5%;
-}
 
 #color-input-primary {
   /* border: 2px solid pink; */
@@ -468,8 +464,132 @@ input[type="color"]::-webkit-color-swatch {
   border: 2px solid black;
 }
 
+#newProject-button {
+  /* border: 2px solid blue; */
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25%;
+}
+
 
 /* THIS CODE IS USED IN THE USER PAGE */
+
+
+
+
+
+/* CODE FOR CREATE PROJECT PAGE */
+
+#create-page {
+  /* border: 2px solid red; */
+    /* border: 2px solid blue; */
+    background-image: url('../../Images/SouthFarthing.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 775px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+}
+
+    #create-heading {
+      /* border: 2px solid blue; */
+      font-family: ringbearer;
+      font-size: 48px;
+      color: transparent;
+      -webkit-text-stroke-color: black;
+      -webkit-text-stroke-width: 1px;
+      background: linear-gradient(green, 40%, yellow, 60%, darkorange);
+      background-clip: text;
+      text-align: center;
+      margin-left: 45%;
+
+    }
+
+    #create-form {
+      /* border: 2px solid pink; */
+      margin: 0% 1% 0 45%;
+    }
+        #model-input {
+          /* border: 2px solid lightgrey; */
+          display: flex;
+          flex-direction: column;
+          /* justify-content: center; */
+          align-items: center;
+        }
+            #model-box {
+              width: 45%;
+              min-width: 200px;
+              height: 20px;
+              text-align: center;
+              font-size: 14px;
+              border: 3px solid grey;
+              border-radius: 5px;
+              background-color: #e7e7e7;
+            }
+
+        #palette-variable {
+          /* border: 2px solid green; */
+          display: flex;
+          justify-content: center;
+          background-color: #e7e7e7;
+          border: 3px solid grey;
+          border-radius: 5px;
+          min-width: 210px;
+          margin: 2% 25%
+        }
+        #description-input {
+          /* border: 2px solid yellow; */
+          display: flex;
+          justify-content: center;
+          margin: 3%;
+        }
+            #createDescription-input {
+              width: 60%;
+              height: 80px;
+              /* text-align: left; */
+              /* background-color: #5f2323aa; */
+              border: 3px solid grey;
+              border-radius: 5px;
+              font-size: 14px;
+              background-color: #e7e7e7;
+              min-width: 250px;
+
+              /* color: black; */
+            }
+            ::placeholder {
+              color: black;
+            }
+        #picture-input {
+          /* border: 2px solid orange; */
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: center;
+          padding: 1%;
+        }
+            .mainUpload {
+              border: 2px solid black;
+              max-width: 225px;
+            }
+
+        /* style={{ maxWidth: '250px' }} */
+        #create-submit {
+          /* border: 2px solid limegreen; */
+          margin: 3% 0;
+          display: flex;
+          justify-content: center;
+        }
+
+    /* #toColors-button {
+      margin-left: 60%;
+      margin-top: 5%;
+    } */
+
+
+
+
+/* CODE FOR CREATE PROJECT PAGE */
 
 
 

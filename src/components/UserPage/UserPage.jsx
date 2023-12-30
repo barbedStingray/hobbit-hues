@@ -2,6 +2,7 @@ import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import './UserPage.css';
 
@@ -11,6 +12,7 @@ function UserPage() {
   const user = useSelector((store) => store.user);
   const paints = useSelector((store) => store.setPaintsDropdown);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   let [palettePrime, setPalettePrime] = useState('#0056d6');
   let [paletteSecond, setPaletteSecond] = useState('#77bb41');
@@ -99,7 +101,9 @@ function UserPage() {
   function createNewProject() {
     console.log(`creating new project`);
     // path to form page
-    // pass variable of palettePrime
+    history.push('/create');
+    
+    // todo pass variable of palettePrime by redux? 
 
   }
 
@@ -210,7 +214,7 @@ function UserPage() {
           </div>
         </div>
 
-        <div id='new-project'>
+        <div id='newProject-button'>
           {/* new project button */}
           <button onClick={createNewProject} className="btn">Create New Project</button>
         </div>
