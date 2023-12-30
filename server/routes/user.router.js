@@ -53,7 +53,7 @@ router.post('/logout', (req, res) => {
 router.get('/paints', (req, res) => {
   console.log(`in server route for /paints`);
 
-  const queryText = 'SELECT * FROM "paints";';
+  const queryText = 'SELECT * FROM "paints" ORDER BY "paint" ASC;';
   pool.query(queryText).then((result) => {
     console.log(`/paints query success!`);
     res.send(result.rows);

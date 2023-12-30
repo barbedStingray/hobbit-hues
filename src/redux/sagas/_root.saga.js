@@ -2,8 +2,9 @@ import { all, takeLatest, takeEvery, put } from 'redux-saga/effects';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
+import paintSaga from './paint.saga';
 import axios from 'axios';
-import fetchPaintsDropdown from './paint.saga';
+// import fetchPaintsDropdown from './paint.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -18,8 +19,9 @@ export default function* rootSaga() {
     loginSaga(), // login saga is now registered
     registrationSaga(),
     userSaga(),
+    paintSaga()
   ]);
   // ** NEW sagas here
-  yield takeLatest('FETCH_PAINTS_DROPDOWN', fetchPaintsDropdown);
+  // yield takeLatest('FETCH_PAINTS_DROPDOWN', fetchPaintsDropdown);
   
 }

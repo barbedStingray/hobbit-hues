@@ -21,5 +21,10 @@ function* fetchPaintsDropdown() {
       alert(`something went wrong with the paints!`);
     }
   }
+
+  function* paintSaga() {
+    yield takeLatest('FETCH_PAINTS_DROPDOWN', fetchPaintsDropdown);
+  }
+
   
-  export default fetchPaintsDropdown;
+  export default paintSaga;

@@ -363,6 +363,9 @@ body,
   padding: 20px;
   margin: 0 auto 20px;
   background: linear-gradient(#e9e9e9cc, 30%, #767676cc);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   /* border: 5px solid whitesmoke; */
   /* box-shadow: 0 5px 10px rgb(0, 0, 0, 1); */
   /* optional image gradient */

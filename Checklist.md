@@ -4,44 +4,39 @@
 [] Create Log in/registration page
     [x] User able to log in
         [x] functionality to log into an account
-        [] CSS formatting
+        [x] CSS formatting
     [x] User able to register new account
         [x] functionality to register a new account
-        [] CSS formatting
+        [x] CSS formatting
+    [] Double check that pathways work
+    [] delete the extra sign in and registration pages
 
 [] Create home page (color wheel)
-    [] Home page title
-        [] css styling
-        [] display name
-    [] Add New Project Form
-        [] <input> model name
-        [] captured variables primary (& secondary?)
-        [] <button> submit form
-            [] AXIOS.post request to create new user project
-        [] direct to (new) details project page
-            [] request? (reducer, saga, axios?) to fill in details of new project
-                [] display even after page refresh
-    [] Viewable, interactive color wheel
-        [] Three <input> Types (textbox, color input, select menu)
-            [] <input> type='color' of primary and secondary color
-                [] assign to variables
-                [] interactive color selection
-            [] <input> type='text' hex code of primary and secondary color
-                [] assign to variables
-                [] selectable based on hexcode
-            [] Input <select> <options> Citadel paint lists of primary and secondary color
-                [] assign to variables
-                [] selectable based on citadel paints
-                [] AXIOS.get request to table "paints"
-        [] Function hexCode => HSL
-            [] conversion successful hexcode => HSL
-            [] ability to assign variables based on inputs
-        [] Two <div>'s to contain color displays
-            [] primary and secondary <div>
-                [] display colors based on input selection
-                [] shades sample (css variables)
-                [] complimentary, triad, and analagous color sample (css variables)
-        [] CSS Styling 
+    [] Button to go to the Form page
+    [x] Home page title
+        [x] css styling
+        [x] display name
+    [x] Viewable, interactive color wheel
+        [x] Three <input> Types (textbox, color input, select menu)
+            [x] <input> type='color' of primary and secondary color
+                [x] assign to variables
+                [x] interactive color selection
+            [x] <input> type='text' hex code of primary and secondary color
+                [x] assign to variables
+                [x] selectable based on hexcode
+            [x] Input <select> <options> Citadel paint lists of primary and secondary color
+                [x] assign to variables
+                [x] selectable based on citadel paints
+                [x] AXIOS.get request to table "paints"
+        [x] Function hexCode => HSL
+            [x] conversion successful hexcode => HSL
+            [x] ability to assign variables based on inputs
+        [x] Two <div>'s to contain color displays
+            [x] primary and secondary <div>
+                [x] display colors based on input selection
+                [x] shades sample (css variables)
+                [x] complimentary, triad, and analagous color sample (css variables)
+        [x] CSS Styling 
 
 [] Create Project Page
     [] Project page title
@@ -56,6 +51,16 @@
                 [] palette code
                 [] image?
                 [] ??? other options ???
+
+[] Project Form Page
+    [] <input> model name
+    [] captured variables primary (& secondary?)
+    [] <button> submit form
+        [] AXIOS.post request to create new user project
+    [] direct to (new) details project page
+        [] request? (reducer, saga, axios?) to fill in details of new project
+            [] display even after page refresh
+
 
 [] Create Project Details Page
     [] page abilities
@@ -78,30 +83,6 @@
             [] new paint color and technique can be added AXIOS.post
 
                 
-## Database Structure
-[] Data Structure tables
-    [] user table
-        [] id
-        [] username
-        [] password
-    [] projects table
-        [] id
-        [] model
-        [] palette
-    [] paints table
-        [] id
-        [] paint
-        [] hexcode
-    [] JUNCTION: user_projects
-        [] id
-        [] user_id
-        [] project_id
-    [] JUNCTION: projects_paints
-        [] id
-        [] project_id
-        [] paint_id
-        [] technique
-
 
 ## About Page
 [] about the app, why it was created, what it's useful for

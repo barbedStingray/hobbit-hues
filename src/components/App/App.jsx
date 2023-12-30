@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import CreateProject from '../CreateProject/CreateProject.jsx';
 
 import './App.css';
 
@@ -59,6 +60,17 @@ function App() {
           >
             <UserPage />
           </ProtectedRoute>
+
+
+          // ! This is the new FORM component
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/create"
+          >
+            <CreateProject />
+          </ProtectedRoute>
+          // ! new form Component
 
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
