@@ -46,6 +46,9 @@ function CreateProject(props) {
 
         // dispatch newProject
         dispatch({ type: 'CREATE_NEW_PROJECT', payload: newProject });
+
+        // navigate to project page
+        history.push('/projects');
     }
 
     // back to color wheel

@@ -15,16 +15,16 @@ function ProjectsPage(props) {
     const [heading, setHeading] = useState('This is the Projects Page');
 
     // load projects upon page refresh
-
     function setProjectList() {
         console.log(`setting projects`);
         // todo dispatch action
         dispatch({ type: 'FETCH_PROJECTS' });
     }
-
     useEffect(() => {
         setProjectList();
     }, []);
+
+    
 
     return (
         <div id='projects-page'>
