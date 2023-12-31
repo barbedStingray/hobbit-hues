@@ -49,19 +49,43 @@ router.post('/logout', (req, res) => {
 
 
 
+
+
 // ** GET /paints dropdown menu
 router.get('/paints', (req, res) => {
-  console.log(`in server route for /paints`);
+  // console.log(`in server route for /paints`);
 
   const queryText = 'SELECT * FROM "paints" ORDER BY "paint" ASC;';
   pool.query(queryText).then((result) => {
-    console.log(`/paints query success!`);
+    // console.log(`/paints query success!`);
     res.send(result.rows);
   }).catch((error) => {
-    console.log(`error completing /paints query`);
+    // console.log(`error completing /paints query`);
     res.sendStatus(500);
   });
 });
+
+
+// ** GET /projects request
+router.get('/projects', (req, res) => {
+  console.log(`in server route for /projects`);
+  // console.log(`user_id`, req.params.id);
+  console.log(`user_id`, req.user.id);
+
+
+  const queryText = `SELECT * FROM "projects" WHERE "user_id" = $1;`;
+
+  pool.query(queryText, [req.user.id]).then((result) => {
+    console.log(`success in GET /projects`);
+    res.send(result.rows);
+  }).catch((error) => {
+    console.log(`error in generating your projects list`);
+    res.sendStatus(500);
+  })
+
+});
+
+
 
 
 // ** POST /newProject request (/api/user/newProject)

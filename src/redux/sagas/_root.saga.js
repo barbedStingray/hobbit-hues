@@ -4,6 +4,7 @@ import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import paintSaga from './paint.saga';
 import createSaga from './create.saga';
+import fetchProjects from './projects.saga';
 import axios from 'axios';
 // import fetchPaintsDropdown from './paint.saga';
 
@@ -20,8 +21,9 @@ export default function* rootSaga() {
     loginSaga(), // login saga is now registered
     registrationSaga(),
     userSaga(),
-    paintSaga(),
-    createSaga()
+    paintSaga(), // fills in paint dropdowns
+    createSaga(), // POST route for new projects
+    fetchProjects() // sets user project reducer
   ]);
   // ! NEW sagas in the yield all
   

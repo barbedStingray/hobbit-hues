@@ -8,12 +8,17 @@ import { all, takeLatest, put } from 'redux-saga/effects';
 function* createNewProject(action) {
     try {
         console.log(`createNewProject Saga`);
-        console.log(`action.payload`, action.payload);
+        // console.log(`action.payload`, action.payload);
+        // console.log(`action.payload.user_id`, action.payload.user_id);
 
         // post request
         yield axios.post('/api/user/newProject', action.payload);
 
-        // fetch request to update the project lists
+        // todo action to fetch projects saga
+        yield put({ type: 'FETCH_PROJECTS', payload: action.payload.user_id });
+
+        // todo direct user to the project page
+
 
     } catch (error) {
       console.log(`error in POST createNewProject`);

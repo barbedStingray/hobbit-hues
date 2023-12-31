@@ -28,9 +28,9 @@ function Nav() {
               Colors
             </Link>
 
-            {/* <Link className="navLink" to="">
+            <Link className="navLink" to="/projects">
               Projects
-            </Link> */}
+            </Link>
 
             <Link className="navLink" to="/info">
               Info Page

@@ -92,9 +92,7 @@ function CreateProject(props) {
                 {/* <p>User ID: {user.id}</p> */}
             </div>
 
-            {JSON.stringify(newProject)}
-            <br />
-            {JSON.stringify(imagePath)}
+            {/* {JSON.stringify(newProject)} */}
 
 
             <form id='create-form'>

@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import CreateProject from '../CreateProject/CreateProject.jsx';
+import ProjectsPage from '../ProjectsPage/ProjectsPage.jsx';
 
 import './App.css';
 
@@ -63,7 +64,7 @@ function App() {
           </ProtectedRoute>
 
 
-          // ! This is the new FORM component
+          // ! these are the new components
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
@@ -71,6 +72,16 @@ function App() {
           >
             <CreateProject />
           </ProtectedRoute>
+
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/projects"
+          >
+            <ProjectsPage />
+          </ProtectedRoute>
+
           // ! new form Component
 
           <ProtectedRoute
@@ -80,6 +91,7 @@ function App() {
           >
             <InfoPage />
           </ProtectedRoute>
+
 
           <Route
             exact
