@@ -15,8 +15,6 @@ function CreateProject(props) {
     const hexcode = useSelector((store) => store.hexcode);
     const [heading, setHeading] = useState('Create a Project!');
 
-    // console.log(`hexcode`, hexcode);
-
 
     // image upload variable
     let [imagePath, setImagePath] = useState('');
@@ -68,8 +66,25 @@ function CreateProject(props) {
         // Check if the file is one of the allowed types.
         if (acceptedImageTypes.includes(fileToUpload.type)) {
             const formData = new FormData();
+
+            // todo convert heic files
+            // Convert HEIC to JPEG
+                // if (fileToUpload.type === 'image/heic') {
+                //     const { buffer } = await heicConvert({
+                //         buffer: await fileToUpload.arrayBuffer(),
+                //         format: 'JPEG',
+                //         quality: 1,
+                //     });
+                //     const convertedFile = new File([buffer], 'image.jpg', { type: 'image/jpeg' });
+                //     formData.append('file', convertedFile);
+                // } else {
+                //     formData.append('file', fileToUpload);
+                // }
+
             formData.append('file', fileToUpload);
             // console.log(`process.env.REACT_APP_PRESET`, process.env.REACT_APP_PRESET);
+
+
             formData.append('upload_preset', process.env.REACT_APP_PRESET);
             let postUrl = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME}/image/upload`;
             console.log(`postURL`, postUrl);

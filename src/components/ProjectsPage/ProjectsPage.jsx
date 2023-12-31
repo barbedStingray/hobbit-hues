@@ -1,6 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import ProjectItem from '../ProjectItem/ProjectItem.jsx';
+// project item import
+
 
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
@@ -12,7 +15,7 @@ function ProjectsPage(props) {
     const userProjects = useSelector((store) => store.userProjects);
     const dispatch = useDispatch();
 
-    const [heading, setHeading] = useState('This is the Projects Page');
+    const [heading, setHeading] = useState('Projects');
 
     // load projects upon page refresh
     function setProjectList() {
@@ -24,18 +27,27 @@ function ProjectsPage(props) {
         setProjectList();
     }, []);
 
-    
+
 
     return (
         <div id='projects-page'>
-            <div>
+            <div id='project-heading'>
                 <h2>{heading}</h2>
             </div>
 
             <div id='projects-display'>
-                <p>projects will be displayed here</p>
-                {JSON.stringify(userProjects)}
+                {
+                    userProjects.map((project) => 
+                    (<ProjectItem
+                        key={project.id}
+                        project={project}
+                    />))
+                }
             </div>
+
+            {/* <div>
+                {JSON.stringify(userProjects)}
+            </div> */}
         </div>
     );
 }
