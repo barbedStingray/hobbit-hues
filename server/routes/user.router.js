@@ -63,4 +63,34 @@ router.get('/paints', (req, res) => {
   });
 });
 
+
+// ** POST /newProject request (/api/user/newProject)
+router.post('/newProject', (req, res) => {
+  console.log(`in userRouter req.body`, req.body);
+  // console.log(`in userRouter req.body`, req.body.model);
+  // console.log(`in userRouter req.body`, req.body.primary);
+  // console.log(`in userRouter req.body`, req.body.description);
+  // console.log(`in userRouter req.body`, req.body.picture);
+
+  let queryText = `INSERT INTO "projects" 
+                  ("user_id", 
+                  "model", 
+                  "primary", 
+                  "description", 
+                  "picture")
+  VALUES
+  ($1, $2, $3, $4, $5);`;
+
+
+  pool.query(queryText, 
+    [req.body.user_id, req.body.model, req.body.primary, req.body.description, req.body.picture
+  ]).then(result => {
+    console.log(`success in POST /newProject`);
+    res.sendStatus(201);
+  }).catch((error) => {
+    console.log(`error in POST /newProject`);
+    res.sendStatus(500);
+  });
+});
+
 module.exports = router;

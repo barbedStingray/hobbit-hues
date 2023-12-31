@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
@@ -8,17 +8,35 @@ import axios from 'axios';
 function CreateProject(props) {
 
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const store = useSelector((store) => store);
     const user = useSelector((store) => store.user);
-    const [heading, setHeading] = useState('Create your Project!');
+    const hexcode = useSelector((store) => store.hexcode);
+    const [heading, setHeading] = useState('Create a Project!');
 
-    // image upload work
+    // console.log(`hexcode`, hexcode);
+
+
+    // image upload variable
     let [imagePath, setImagePath] = useState('');
 
 
     // axios.post to projects table
     // variables include... user_id, model, primary, description, picture
+    let [newProject, setNewProject] = useState({
+        user_id: user.id,
+        model: '',
+        primary: hexcode,
+        description: '',
+        picture: ''
+    });
+
+    // function to change newProject variable
+    const projectChange = (key) => (event) => {
+        console.log('changed newProject');
+        setNewProject({ ...newProject, [key]: event.target.value })
+    }
 
 
     // submit your form!
@@ -26,6 +44,8 @@ function CreateProject(props) {
         e.preventDefault();
         console.log(`creating your new project`);
 
+        // dispatch newProject
+        dispatch({ type: 'CREATE_NEW_PROJECT', payload: newProject });
     }
 
     // back to color wheel
@@ -53,7 +73,7 @@ function CreateProject(props) {
             // console.log(`TARGET MARK`);
             axios.post(postUrl, formData).then(response => {
                 console.log('Success!', response);
-                setImagePath(response.data.url);
+                setNewProject({ ...newProject, picture: response.data.url });
             }).catch(error => {
                 console.log('error', error);
                 alert('Something went wrong');
@@ -72,6 +92,9 @@ function CreateProject(props) {
                 {/* <p>User ID: {user.id}</p> */}
             </div>
 
+            {JSON.stringify(newProject)}
+            <br />
+            {JSON.stringify(imagePath)}
 
 
             <form id='create-form'>
@@ -79,15 +102,24 @@ function CreateProject(props) {
                 <div id='model-input'>
                     {/* <h3>Name your Project!</h3>
                     <br /> */}
-                    <input id='model-box' type='text' placeholder='model name...'></input>
+                    <input 
+                        id='model-box' 
+                        onChange={projectChange('model')} 
+                        type='text' 
+                        placeholder='model name...'>
+                    </input>
                 </div>
 
                 <div id='palette-variable'>
-                    <p>palette code: #hexCode</p>
+                    <p>Palette Code: {hexcode}</p>
                 </div>
 
                 <div id='description-input'>
-                    <textarea id='createDescription-input' placeholder='Description of the project...'></textarea>
+                    <textarea 
+                        onChange={projectChange('description')}
+                        id='createDescription-input' 
+                        placeholder='Description of the project...'>
+                    </textarea>
                 </div>
 
 

@@ -3,6 +3,7 @@ import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import paintSaga from './paint.saga';
+import createSaga from './create.saga';
 import axios from 'axios';
 // import fetchPaintsDropdown from './paint.saga';
 
@@ -19,9 +20,9 @@ export default function* rootSaga() {
     loginSaga(), // login saga is now registered
     registrationSaga(),
     userSaga(),
-    paintSaga()
+    paintSaga(),
+    createSaga()
   ]);
-  // ** NEW sagas here
-  // yield takeLatest('FETCH_PAINTS_DROPDOWN', fetchPaintsDropdown);
+  // ! NEW sagas in the yield all
   
 }

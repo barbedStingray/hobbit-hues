@@ -100,11 +100,12 @@ function UserPage() {
   // button for a new project
   function createNewProject() {
     console.log(`creating new project`);
+
+    dispatch({ type: 'SET_PRIMARY_HEXCODE', payload: palettePrime});
+
     // path to form page
     history.push('/create');
     
-    // todo pass variable of palettePrime by redux? 
-
   }
 
 
