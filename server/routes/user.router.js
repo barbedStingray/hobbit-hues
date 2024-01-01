@@ -65,6 +65,20 @@ router.get('/paints', (req, res) => {
   });
 });
 
+// ** GET /techniques dropdown menu
+router.get('/techniques', (req, res) => {
+  // console.log(`in server route for /paints`);
+
+  const queryText = 'SELECT * FROM "techniques";';
+  pool.query(queryText).then((result) => {
+    // console.log(`/paints query success!`);
+    res.send(result.rows);
+  }).catch((error) => {
+    // console.log(`error completing /paints query`);
+    res.sendStatus(500);
+  });
+});
+
 
 // ** GET /projects request
 router.get('/projects', (req, res) => {

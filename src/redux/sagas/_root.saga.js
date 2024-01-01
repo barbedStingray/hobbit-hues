@@ -8,6 +8,7 @@ import fetchProjects from './projects.saga';
 import detailsSaga from './details.saga';
 
 import axios from 'axios';
+import techniqueSaga from './technique.saga';
 // import fetchPaintsDropdown from './paint.saga';
 
 // rootSaga is the primary saga.
@@ -27,7 +28,7 @@ export default function* rootSaga() {
     createSaga(), // POST route for new projects
     fetchProjects(), // sets user project reducer
     detailsSaga(), // sets details of individual project
-  
+    techniqueSaga(), // fetches techniques from the server
   
   ]);
   // ! NEW sagas in the yield all

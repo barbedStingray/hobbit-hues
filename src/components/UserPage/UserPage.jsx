@@ -33,7 +33,7 @@ function UserPage() {
 
 
 
-// function to assign H S L to css variable
+  // function to assign H S L to css variable
   function setColors(H, inputType) {
 
     // set your variable
@@ -85,7 +85,7 @@ function UserPage() {
     if (h < 0)
       h += 360;
 
-      // s + l
+    // s + l
     l = (cmax + cmin) / 2;
     s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
     s = +(s * 100).toFixed(1);
@@ -101,11 +101,11 @@ function UserPage() {
   function createNewProject() {
     console.log(`creating new project`);
 
-    dispatch({ type: 'SET_PRIMARY_HEXCODE', payload: palettePrime});
+    dispatch({ type: 'SET_PRIMARY_HEXCODE', payload: palettePrime });
 
     // path to form page
     history.push('/create');
-    
+
   }
 
 
@@ -256,83 +256,83 @@ function UserPage() {
 export default UserPage;
 
 
-  // BEGIN BENS CODE ****************
+// BEGIN BENS CODE ****************
 
-  // function setColors(Hex, colorInput) {
-  //   console.log('color conversion start');
-  //   console.log('hex', Hex);
+// function setColors(Hex, colorInput) {
+//   console.log('color conversion start');
+//   console.log('hex', Hex);
 
-  //   // convert to RGB
-  //   let r = 0,
-  //       g = 0,
-  //       b = 0;
-  //   console.log(`R G B:`, r, g, b);
-  //   if (Hex.length == 4) {
-  //     r = "0x" + Hex[1] + Hex[1];
-  //     g = "0x" + Hex[2] + Hex[2];
-  //     b = "0x" + Hex[3] + Hex[3];
-  //   } else if (Hex.length == 7) {
-  //     r = "0x" + Hex[1] + Hex[2];
-  //     g = "0x" + Hex[3] + Hex[4];
-  //     b = "0x" + Hex[5] + Hex[6];
-  //   }
-  //   console.log(`R G B:`, r, g, b);
+//   // convert to RGB
+//   let r = 0,
+//       g = 0,
+//       b = 0;
+//   console.log(`R G B:`, r, g, b);
+//   if (Hex.length == 4) {
+//     r = "0x" + Hex[1] + Hex[1];
+//     g = "0x" + Hex[2] + Hex[2];
+//     b = "0x" + Hex[3] + Hex[3];
+//   } else if (Hex.length == 7) {
+//     r = "0x" + Hex[1] + Hex[2];
+//     g = "0x" + Hex[3] + Hex[4];
+//     b = "0x" + Hex[5] + Hex[6];
+//   }
+//   console.log(`R G B:`, r, g, b);
 
-  //   // convert to HSL
-  //   r /= 255;
-  //   g /= 255;
-  //   b /= 255;
-  //   console.log(`R G B:`, r, g, b);
+//   // convert to HSL
+//   r /= 255;
+//   g /= 255;
+//   b /= 255;
+//   console.log(`R G B:`, r, g, b);
 
-  //   let cmin = Math.min(r,g,b),
-  //       cmax = Math.max(r,g,b),
-  //       delta = cmax - cmin,
-  //       h = 0,
-  //       s = 0,
-  //       l = 0;
+//   let cmin = Math.min(r,g,b),
+//       cmax = Math.max(r,g,b),
+//       delta = cmax - cmin,
+//       h = 0,
+//       s = 0,
+//       l = 0;
 
-  //       console.log(`cmin`, cmin);
-  //       console.log(`cmax`, cmax);
-  //       console.log(`delta`, delta);
-  //       console.log(`H S L`, h, s, l);
+//       console.log(`cmin`, cmin);
+//       console.log(`cmax`, cmax);
+//       console.log(`delta`, delta);
+//       console.log(`H S L`, h, s, l);
 
-  //       // defining H 
-  //       if (delta == 0) {
-  //         h = 0;
-  //       } else if (cmax == r) {
-  //         h = ((g - b) / delta) % 6;
-  //       } else if (cmax == g) {
-  //         h = ((g - b) / delta) + 2;
-  //       } else {
-  //         h = ((r - g) / delta) + 4;
-  //       }
-  //       console.log(`H S L`, h, s, l);
+//       // defining H
+//       if (delta == 0) {
+//         h = 0;
+//       } else if (cmax == r) {
+//         h = ((g - b) / delta) % 6;
+//       } else if (cmax == g) {
+//         h = ((g - b) / delta) + 2;
+//       } else {
+//         h = ((r - g) / delta) + 4;
+//       }
+//       console.log(`H S L`, h, s, l);
 
-  //       h = Math.round(h * 60);
+//       h = Math.round(h * 60);
 
-  //       if (h < 0) {
-  //         h += 360;
-  //       }
+//       if (h < 0) {
+//         h += 360;
+//       }
 
-  //       console.log(`H S L`, h, s, l);
+//       console.log(`H S L`, h, s, l);
 
-  //       // defining S L 
-  //       l = (cmax + cmin) / 2;
-  //       s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+//       // defining S L
+//       l = (cmax + cmin) / 2;
+//       s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
 
-  //       s = +(s * 100).toFixed(1);
-  //       l = +(l * 100).toFixed(1);
+//       s = +(s * 100).toFixed(1);
+//       l = +(l * 100).toFixed(1);
 
-  //       console.log(`H S L`, h, s, l);
+//       console.log(`H S L`, h, s, l);
 
-  //       // conversions complete
-  //       // set styles to root css H S L variables
-  //       document.documentElement.style.setProperty(`--${colorInput}-color-h`, h);
-  //       document.documentElement.style.setProperty(`--${colorInput}-color-s`, s + '%');
-  //       document.documentElement.style.setProperty(`--${colorInput}-color-l`, l + '%');
+//       // conversions complete
+//       // set styles to root css H S L variables
+//       document.documentElement.style.setProperty(`--${colorInput}-color-h`, h);
+//       document.documentElement.style.setProperty(`--${colorInput}-color-s`, s + '%');
+//       document.documentElement.style.setProperty(`--${colorInput}-color-l`, l + '%');
 
-  //       // document.documentElement.style.setProperty(`--${colorInput}-color`, `hsl(${h}, ${s}%, ${l}%)`);
+//       // document.documentElement.style.setProperty(`--${colorInput}-color`, `hsl(${h}, ${s}%, ${l}%)`);
 
-  // }
-  // END BENS CODE *****************
+// }
+// END BENS CODE *****************
 
