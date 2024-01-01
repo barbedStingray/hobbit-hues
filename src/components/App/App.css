@@ -727,6 +727,33 @@ input[type="color"]::-webkit-color-swatch {
       height: auto;
     }
 
+    .detail-palette {
+      /* border: 2px solid red; */
+      display: flex;
+      /* flex: 1; */
+      width: 270px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    
+    }
+    .palette-container {
+      /* border: 2px solid greenyellow; */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      gap: 5px;
+      margin: 0 2px;
+    }
+
+
+
+
+
+    
+    
+
 
 
 /* CODE FOR DETAILS PAGE */

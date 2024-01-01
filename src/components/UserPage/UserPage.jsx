@@ -117,7 +117,7 @@ function UserPage() {
       {/* {JSON.stringify(paints)} */}
 
 
-      <div id='left-colors' className='side-colors'>
+      <div className='side-colors'>
         {/* Primary Color Display */}
         <div className="shape-container">
           <div className="divTertiary primary-triad-2"><p>Triad 2</p></div>
@@ -223,7 +223,7 @@ function UserPage() {
 
       </div>
 
-      <div id='right-colors' className='side-colors'>
+      <div className='side-colors'>
         {/* Secondary Color Display */}
         <div className="shape-container">
           <div className="divTertiary secondary-twolight"><p>Light +15</p></div>
