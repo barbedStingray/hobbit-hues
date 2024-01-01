@@ -6,6 +6,7 @@ import paintSaga from './paint.saga';
 import createSaga from './create.saga';
 import fetchProjects from './projects.saga';
 import detailsSaga from './details.saga';
+import projectPaintSaga from './newPaint.saga';
 
 import axios from 'axios';
 import techniqueSaga from './technique.saga';
@@ -29,7 +30,8 @@ export default function* rootSaga() {
     fetchProjects(), // sets user project reducer
     detailsSaga(), // sets details of individual project
     techniqueSaga(), // fetches techniques from the server
-  
+    projectPaintSaga(), // POSt route for new paints
+
   ]);
   // ! NEW sagas in the yield all
   
