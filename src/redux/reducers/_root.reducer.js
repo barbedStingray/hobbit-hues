@@ -4,6 +4,7 @@ import user from './user.reducer';
 import setPaintsDropdown from './paint.reducer';
 import hexcode from './hexcode.reducer';
 import userProjects from './projects.reducer';
+import projectDetails from './details.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   setPaintsDropdown, // sets the list of server side paints
   hexcode, // passes the hexcode from user page to create project page
   userProjects, // container for user projects
+  projectDetails, // contains data for project details page
 
 });
 

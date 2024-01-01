@@ -5,6 +5,8 @@ import userSaga from './user.saga';
 import paintSaga from './paint.saga';
 import createSaga from './create.saga';
 import fetchProjects from './projects.saga';
+import detailsSaga from './details.saga';
+
 import axios from 'axios';
 // import fetchPaintsDropdown from './paint.saga';
 
@@ -23,7 +25,10 @@ export default function* rootSaga() {
     userSaga(),
     paintSaga(), // fills in paint dropdowns
     createSaga(), // POST route for new projects
-    fetchProjects() // sets user project reducer
+    fetchProjects(), // sets user project reducer
+    detailsSaga(), // sets details of individual project
+  
+  
   ]);
   // ! NEW sagas in the yield all
   

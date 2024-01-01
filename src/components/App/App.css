@@ -636,7 +636,7 @@ input[type="color"]::-webkit-color-swatch {
       justify-content: center;
       border-radius: 10px;
       min-width: 600px;
-      width: 65%;
+      width: 70%;
       height: 450px;
       margin-top: -20px;
       padding: 15px 0;
@@ -649,9 +649,11 @@ input[type="color"]::-webkit-color-swatch {
           margin: 1% 1%;
           width: 45%;
           display: flex;
+          box-shadow: 0 0 10px black;
+
         }
         #single-project:hover {
-          box-shadow: 0 0 15px black;
+          box-shadow: 0 0 15px gold;
           cursor: pointer;
           transition: 0.4s;
         }
@@ -682,14 +684,52 @@ input[type="color"]::-webkit-color-swatch {
 
             }
 
-    
-
-
-
-
-
 
 /* CODE FOR PROJECT PAGE */
+
+
+
+
+
+
+
+
+
+
+
+
+/* CODE FOR DETAILS PAGE */
+
+#details-page {
+  border: 2px solid green;
+  /* background-image: url('../../Images/BagEnd5.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; */
+  min-height: 770px;
+
+}
+    #details-header {
+      border: 2px solid orange;
+      font-family: ringbearer;
+      font-size: 48px;
+      color: transparent;
+      -webkit-text-stroke-color: black;
+      -webkit-text-stroke-width: 1px;
+      background: linear-gradient(green, 40%, yellow, 60%, darkorange);
+      background-clip: text;
+      text-align: center;
+
+    }
+    #details-photo {
+      border: 2px solid red;
+      width: 450px;
+      height: auto;
+    }
+
+
+
+/* CODE FOR DETAILS PAGE */
 
 
 

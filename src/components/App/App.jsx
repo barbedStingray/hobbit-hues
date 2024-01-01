@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import CreateProject from '../CreateProject/CreateProject.jsx';
 import ProjectsPage from '../ProjectsPage/ProjectsPage.jsx';
+import ProjectDetails from '../ProjectDetails/ProjectDetails.jsx';
 
 import './App.css';
 
@@ -80,6 +81,15 @@ function App() {
             path="/projects"
           >
             <ProjectsPage />
+          </ProtectedRoute>
+
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/details/:id"
+          >
+            <ProjectDetails />
           </ProtectedRoute>
 
           // ! new form Component

@@ -82,7 +82,25 @@ router.get('/projects', (req, res) => {
     console.log(`error in generating your projects list`);
     res.sendStatus(500);
   })
+});
 
+
+
+// ** GET /details/:id request
+router.get('/details/:id', (req, res) => {
+  console.log(`in server route for /details/:id`);
+  console.log(`req.params.id:`, req.params.id);
+  console.log(`req.user.id:`, req.user.id);
+
+  const queryText = `SELECT * FROM "projects" where "id" = $1;`;
+
+  pool.query(queryText, [req.params.id]).then((result) => {
+    console.log(`success in getting details!`);
+    res.send(result.rows);
+  }).catch((error) => {
+    console.log(`error in /details/:id`);
+    res.sendStatus(500);
+  });
 });
 
 
