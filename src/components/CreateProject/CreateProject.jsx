@@ -36,6 +36,16 @@ function CreateProject(props) {
         setNewProject({ ...newProject, [key]: event.target.value })
     }
 
+    function setMultiple(properties) {
+        console.log(`setting multiple`);
+        console.log(`properties:`, properties);
+        // set image for object
+        setNewProject({ ...newProject, picture: properties });
+        // set image for display
+        setImagePath(properties);
+
+    }
+
 
     // submit your form!
     function createProject(e) {
@@ -91,7 +101,8 @@ function CreateProject(props) {
             // console.log(`TARGET MARK`);
             axios.post(postUrl, formData).then(response => {
                 console.log('Success!', response);
-                setNewProject({ ...newProject, picture: response.data.url });
+                // setNewProject({ ...newProject, picture: response.data.url });
+                setMultiple(response.data.url);
             }).catch(error => {
                 console.log('error', error);
                 alert('Something went wrong');

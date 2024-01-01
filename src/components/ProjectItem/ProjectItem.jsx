@@ -26,6 +26,8 @@ function ProjectItem(props) {
         // irrelevant with useParams
         // dispatch({ type: 'FETCH_PROJECT_DETAILS', payload: props.project.id });
 
+        // ! I think you can dispatch to your reducer here to set the hexcode of your project details.
+
         history.push(`/details/${props.project.id}`);
 
     }
