@@ -806,10 +806,10 @@ input[type="color"]::-webkit-color-swatch {
 
         #paint-inputs {
           border: 2px solid pink;
-          margin: 2%;
+          margin: 1.5%;
           /* width: 100%; */
           display: flex;
-          flex-direction: row;
+          flex-direction: row-reverse;
           justify-content: space-evenly;
           align-items: center;
           /* align-items: center; */
@@ -819,7 +819,6 @@ input[type="color"]::-webkit-color-swatch {
               border: 2px solid blue;
               display: flex;
               flex-direction: column;
-              justify-content: space-evenly;
               text-align: center;
             }
             #add-paint {
@@ -828,7 +827,34 @@ input[type="color"]::-webkit-color-swatch {
 
         #project-paints {
           border: 2px solid red;
+          margin: 0 1.5%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
         }
+            #paint-step {
+              border: 2px solid green;
+              width: 200px;
+              height: 200px;
+            }
+
+            #paint-description {
+              border: 2px solid blue;
+              text-align: center;
+            }
+                #paint-box {
+                  border: 2px solid orangered;
+                  width: 50px;
+                  height: 50px;
+                  margin: auto;
+                }
+
+            #paint-buttons {
+              border: 2px solid green;
+              display: flex;
+              flex-direction: column-reverse;
+              justify-content: space-around;
+            }
         
 
 

@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
 // component name TemplateFunction with the name for the new component.
-function ProjectDetails(props) {
+function ProjectDetails() {
     // Using hooks we're creating local state for a "heading" variable with
     // a default value of 'Functional Component'
     const store = useSelector((store) => store);
@@ -16,8 +16,11 @@ function ProjectDetails(props) {
 
     const dispatch = useDispatch();
 
-    let [paintProject, setPaintProject] = useState('#000000');
-    let [technique, setTechnique] = useState('1');
+    const [paintProject, setPaintProject] = useState('#000000');
+    const [technique, setTechnique] = useState('1');
+    const [detailPalette, setDetailPalette] = useState('#hexcode');
+    // ! how do I return projectDetails[0].primary after page refresh?
+
 
     // hook for refresh
     const { id } = useParams();
@@ -58,6 +61,7 @@ function ProjectDetails(props) {
 
             {JSON.stringify(paintProject)}
             {JSON.stringify(technique)}
+            {JSON.stringify(detailPalette)}
 
             <div id='details-body'>
 
@@ -121,7 +125,7 @@ function ProjectDetails(props) {
 
                         <div id='paint-dropdowns'>
 
-                            <p>Select New Paint</p>
+                            <p>Paint and Technique</p>
                             <select
                                 name='paints'
                                 id='paint-dropdown'
@@ -142,6 +146,10 @@ function ProjectDetails(props) {
                                 )}
                             </select>
                         </div>
+                        <div id='upload-detail'>
+                            <button>Add Image</button>
+                        </div>
+
                         <div id='add-paint'>
                             <button>Add Paint</button>
                         </div>
@@ -149,10 +157,30 @@ function ProjectDetails(props) {
                     </div>
 
                     <div id='project-paints'>
-                        <p>This is the Paint List</p>
-                        {/* color box */}
-                        {/* color name */}
-                        {/* technique name */}
+                        <div id='paint-step'>
+                            {/* <p>image</p> */}
+                        </div>
+
+                        <div id='paint-description'>
+                            <div>
+                                <p>color name</p>
+                            </div>
+                            <div id='paint-box'>
+                                {/* <p>color box</p> */}
+                            </div>
+                            <div>
+                                <p>technique name</p>
+                            </div>
+                        </div>
+
+                        <div id='paint-buttons'>
+                            <div>
+                                <p>X</p>
+                            </div>
+                            <div>
+                                <p>Edit</p>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
