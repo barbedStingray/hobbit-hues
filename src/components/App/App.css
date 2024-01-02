@@ -702,15 +702,15 @@ input[type="color"]::-webkit-color-swatch {
 
 #details-page {
   border: 2px solid green;
-  /* background-image: url('../../Images/BagEnd5.jpg');
+  background-image: url('../../Images/HobbitHole.jpg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover; */
+  background-size: cover;
   height: 750px;
 
 }
     #details-header {
-      border: 2px solid orange;
+      /* border: 2px solid orange; */
       font-family: ringbearer;
       font-size: 48px;
       color: transparent;
@@ -722,18 +722,26 @@ input[type="color"]::-webkit-color-swatch {
 
     }
     #details-body {
-      border: 2px solid gold;
+      /* border: 2px solid gold; */
       display: flex;
       flex-direction: row;
       justify-content: space-around;
+      /* ! top margin altered */
+      margin-top: -10px;
+      height: 530px;
       /* gap: -10px; */
       /* justify-content: center; */
     }
         #color-view{
-          border: 2px solid blue;
+          /* border: 2px solid blue; */
+          border: 3px solid #4d4848;
+          border-radius: 10px;
+          background-color: #f5f5f5aa;
+    
           display: flex;
           flex-direction: row-reverse;
           margin: 0 0 0 2.5%;
+          padding: 10px;
           /* flex-basis: 650px; */
         }
             .detail-palette {
@@ -745,7 +753,7 @@ input[type="color"]::-webkit-color-swatch {
               align-items: center; 
             }
             .palette-container {
-              border: 2px solid greenyellow;
+              /* border: 2px solid greenyellow; */
               display: flex;
               flex-direction: column;
               /* flex-wrap: wrap; */
@@ -784,29 +792,36 @@ input[type="color"]::-webkit-color-swatch {
                 }
 
         #projectImage-div {
-          border: 2px solid greenyellow;
+          /* border: 1.5px solid black; */
           max-width: 450px;
           min-width: 300px;
           text-align: center;
-          padding: 2px;
+          margin: 3px;
         }
             #details-photo {
+              border: 1.5px solid black;
+
               /* border: 2px solid red; */
               width: 450px;
               height: auto;
             }
         #paint-labels {
-          border: 2px solid purple;
+          /* border: 2px solid purple; */
           display: flex;
           flex-direction: column;
-          flex-basis: 650px;
-          height: 450px;
+          /* flex-basis: 650px; */
           margin: 0 2.5% 0 0;
+          padding: 10px;
+          width: 665px;
+          border: 3px solid #4d4848;
+          border-radius: 10px;
+          background-color: #f5f5f5aa;
+    
         }
         
 
         #paint-inputs {
-          border: 2px solid pink;
+          /* border: 2px solid pink; */
           margin: 1.5%;
           /* width: 100%; */
           display: flex;
@@ -817,13 +832,14 @@ input[type="color"]::-webkit-color-swatch {
           /* text-align: center; */
         }
             #paint-dropdowns {
-              border: 2px solid blue;
+              /* border: 2px solid blue; */
               display: flex;
               flex-direction: column;
               text-align: center;
+              gap: 10px;
             }
             #upload-add {
-              border: 2px solid skyblue;
+              /* border: 2px solid skyblue; */
               display: flex;
               flex-direction: column;
               justify-content: center;
@@ -832,43 +848,69 @@ input[type="color"]::-webkit-color-swatch {
               height: 80px;
             }
                 #add-paint {
-                  border: 2px solid green;
+                  /* border: 2px solid green; */
                 }
                 #upload-detail {
-                  border: 2px solid orange;
+                  /* border: 2px solid orange; */
                 }
-
+        #painted-models {
+          /* border: 2px solid grey; */
+          border-left: 2px solid grey;
+          border-right: 2px solid grey;
+          width: 650px;
+          overflow-x: scroll;
+          /* ! code here to adjust the list of paints used */
+          display: flex;
+          flex-direction: row;
+          margin: 0 0.5%;
+          height: 390px;
+        }
 
         #project-paints {
           border: 2px solid red;
-          margin: 0 1.5%;
+          margin: 1% 1%;
           display: flex;
-          flex-direction: row;
-          justify-content: space-evenly;
+          flex-direction: column;
+          box-shadow: 0 0 10px black;
+          /* justify-content: space-evenly; */
         }
             #paint-step {
-              border: 2px solid green;
-              width: 200px;
-              height: 200px;
+              /* border: 2px solid green; */
+              width: 260px;
+              height: auto;
             }
+                #painted-image {
+                  border: 1.5px solid black; 
+                  width: 250px;
+                  /* ! center your photo */
+                  margin: 3.5px;
+                }
 
             #paint-description {
-              border: 2px solid blue;
+              /* border: 2px solid blue; */
               text-align: center;
             }
                 #paint-box {
                   border: 2px solid orangered;
-                  width: 50px;
-                  height: 50px;
+                  width: 100px;
+                  height: 35px;
                   margin: auto;
+                  margin-bottom: 4px;
                 }
 
-            #paint-buttons {
-              border: 2px solid green;
+            #paint-delete {
+              /* border: 2px solid green; */
               display: flex;
-              flex-direction: column-reverse;
-              justify-content: space-around;
+              justify-content: center;
+              /* padding: 3px; */
             }
+                #delete-paint {
+                  background-color: red;
+                  border: red 1px solid;
+                  width: 30%;
+                  height: 20px;
+                  margin: 10px;
+                }
         
 
 

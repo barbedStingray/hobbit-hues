@@ -140,6 +140,7 @@ JOIN "paints" ON "paints"."id" = "projects_paints"."paint_id"
 JOIN "techniques" ON "techniques"."id" = "projects_paints"."technique_id"
 
 WHERE "projects_paints"."project_id" = $1
+ORDER BY "projects_paints"."id" DESC
 ;`;
 
   pool.query(queryText, [req.params.id]).then((result) => {

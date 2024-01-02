@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
+import PaintDetails from '../PaintDetails/PaintDetails';
+
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
 // component name TemplateFunction with the name for the new component.
@@ -17,20 +19,15 @@ function ProjectDetails() {
     const paintDetails = useSelector((store) => store.paintDetails);
 
 
-    const hexcode = useSelector((store) => store.hexcode);
-
-
     const dispatch = useDispatch();
 
     // variables to post a new paint
     // const [paintProject, setPaintProject] = useState({ hexcode: '#000000', id: '0' });
     const [paintProject, setPaintProject] = useState('#hexcode');
     // const [technique, setTechnique] = useState('1');
-    const [photo, setPhoto] = useState('');
 
     // This is going to be used to display the selected color palette
     const [detailPalette, setDetailPalette] = useState('projectDetails.primary');
-    // ! how do I return projectDetails[0].primary after page refresh? -- returns undefined on page refresh
 
     // hook for refresh
     const { id } = useParams();
@@ -41,7 +38,7 @@ function ProjectDetails() {
     let [newPaint, setNewPaint] = useState({
         project_id: id,
         paint_id: '',
-        technique_id: '',
+        technique_id: '1',
         photo: ''
     });
     // function to set newPaint
@@ -57,6 +54,8 @@ function ProjectDetails() {
 
         // dispatch to POST Saga
         dispatch({ type: 'POST_PROJECT_PAINT', payload: newPaint });
+        refreshDetails();
+        // setTimeout(refreshDetails(), 2000);
     }
 
     function setMultiple(benThought) {
@@ -76,10 +75,6 @@ function ProjectDetails() {
         console.log(`refreshing details id:`, id);
         // fetch the project details
         dispatch({ type: 'FETCH_PROJECT_DETAILS', payload: id });
-
-        // ?? dispatch action to reload paints for page // or do this in the GET details saga?
-
-        // dispatch({ type: 'SET_PRIMARY_HEXCODE' payload: });
     }
     // fetches paint dropdowns
     function fetchPaintsDropdown() {
@@ -111,7 +106,7 @@ function ProjectDetails() {
 
     // HSL CONVERSION FOR DETAILS
 
-
+// ! not complete
     function setCssColorPrime() {
         console.log(`updating detail palette`);
         // console.log(`Primary success!!!:`, projectDetails[0].primary);
@@ -191,35 +186,22 @@ function ProjectDetails() {
         <div id='details-page'>
 
             <div id='details-header'>
-                    <h2>{projectDetails.model}</h2>
+                <h2>{projectDetails.model}</h2>
             </div>
 
-            Project Details: <br /> {JSON.stringify(projectDetails)}
-            <br />
-            <br />
-            Paint POST SUBMIT: {JSON.stringify(paintProject)}
-            <br />
-            <br />
-            {/* PaintProject.id: {JSON.stringify(paintProject.id)} */}
-            {/* {JSON.stringify(technique)} */}
-            DETAIL Palette: {JSON.stringify(detailPalette)}
-            <br />
-            New Paint: {JSON.stringify(newPaint)}
-            <br />
-            REDUX HEXCODE: {JSON.stringify(hexcode)}
-            <br />
-            <br />
-            PAINT DETAILS: {JSON.stringify(paintDetails)}
+            {/* Project Details: <br /> {JSON.stringify(projectDetails)} */}
+            {/* New Paint: {JSON.stringify(newPaint)} */}
+            {/* PAINT DETAILS: {JSON.stringify(paintDetails)} */}
 
             <div id='details-body'>
 
                 <div id='color-view'>
 
                     <div id='projectImage-div'>
-                            <img key={projectDetails.id} src={projectDetails.picture} alt="No Photo Uploaded" id='details-photo' />
+                        <img key={projectDetails.id} src={projectDetails.picture} alt="No Photo Uploaded" id='details-photo' />
 
                         <div>
-                                <p key={projectDetails.id}>{projectDetails.description}</p>
+                            <p key={projectDetails.id}>{projectDetails.description}</p>
                         </div>
 
                     </div>
@@ -271,8 +253,7 @@ function ProjectDetails() {
 
                         <div id='paint-dropdowns'>
 
-                            <p>Paint and Technique</p>
-                            <select
+                            <label>Paint <br /><select
                                 name='paints'
                                 id='paint-dropdown'
                                 // onChange={(e) => setPaintProject(JSON.parse(e.target.value))}
@@ -284,9 +265,9 @@ function ProjectDetails() {
                                     // <option value={paint.hexcode} key={paint.id}>{paint.paint}</option>
                                     <option value={JSON.stringify({ hexcode: paint.hexcode, id: paint.id })} key={paint.id}>{paint.paint}</option>
                                 )}
-                            </select>
+                            </select></label>
 
-                            <select
+                            <label>Technique <br /><select
                                 name='techniques'
                                 id='technique-dropdown'
                                 onChange={newPaintChange('technique_id')}
@@ -294,13 +275,14 @@ function ProjectDetails() {
                                 {techniqueList.map((technique) =>
                                     <option value={technique.id} key={technique.id}>{technique.technique}</option>
                                 )}
-                            </select>
+                            </select></label>
                         </div>
 
                         <div id='upload-add'>
                             <div id='add-paint'>
                                 <button
                                     onClick={addNewPaint}
+                                    className='btn'
                                 >Add Paint</button>
                             </div>
 
@@ -318,33 +300,12 @@ function ProjectDetails() {
                     </div>
 
                     {/* begin the details item list  */}
-
-                    <div id='project-paints'>
-                        <div id='paint-step'>
-                            {/* <p>image</p> */}
-                        </div>
-
-                        <div id='paint-description'>
-                            <div>
-                                <p>color name</p>
-                            </div>
-                            <div id='paint-box'>
-                                {/* <p>color box</p> */}
-                            </div>
-                            <div>
-                                <p>technique name</p>
-                            </div>
-                        </div>
-
-                        <div id='paint-buttons'>
-                            <div>
-                                <p>X</p>
-                            </div>
-                            <div>
-                                <p>Edit</p>
-                            </div>
-                        </div>
+                    <div id='painted-models'>
+                        {paintDetails.map((paint) =>
+                            <PaintDetails paint={paint} />
+                        )}
                     </div>
+                    {/* ! map for the paint details component */}
 
                 </div>
 
