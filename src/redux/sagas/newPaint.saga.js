@@ -9,7 +9,9 @@ function* newProjectPaint(action) {
     try {
         console.log(`you are in the project paint saga!`);
         console.log(`your new paint post:`, action.payload);
+        yield axios.post('/api/user/newPaint', action.payload);
 
+        // todo action to fetch or reload details page
 
     } catch (error) {
       console.log(`error in POST new paint`);

@@ -21,12 +21,17 @@ function ProjectItem(props) {
         console.log(`go to project details`);
         console.log(`project:`, project);
         console.log(`URL id:`, props.project.id);
+        console.log(`TARGET HEXCODE FOR REDUCER:`, props.project.primary);
+
 
         // dispatch action to set details reducer
         // irrelevant with useParams
         // dispatch({ type: 'FETCH_PROJECT_DETAILS', payload: props.project.id });
 
         // ! I think you can dispatch to your reducer here to set the hexcode of your project details.
+                // set a Reducer to enable the color palette,
+                dispatch({ type: 'SET_PRIMARY_HEXCODE', payload: props.project.primary });
+
 
         history.push(`/details/${props.project.id}`);
 

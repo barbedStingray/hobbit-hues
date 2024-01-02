@@ -1,8 +1,9 @@
 
 
-const projectDetails = (state = {}, action) => {
+
+const paintDetails = (state = [], action) => {
     switch (action.type) {
-      case 'SET_PROJECT_DETAILS':
+      case 'SET_PAINT_DETAILS':
         return action.payload;
       default:
         return state;
@@ -10,4 +11,4 @@ const projectDetails = (state = {}, action) => {
   };
   
   
-export default projectDetails;
+export default paintDetails;

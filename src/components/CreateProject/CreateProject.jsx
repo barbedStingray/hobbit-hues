@@ -18,6 +18,7 @@ function CreateProject(props) {
 
     // image upload variable
     let [imagePath, setImagePath] = useState('');
+    console.log(`hexcode passed:`, hexcode);
 
 
     // axios.post to projects table

@@ -14,6 +14,11 @@ function ProjectDetails() {
     const paints = useSelector((store) => store.setPaintsDropdown);
     const projectDetails = useSelector((store) => store.projectDetails);
     const techniqueList = useSelector((store) => store.techniqueList);
+    const paintDetails = useSelector((store) => store.paintDetails);
+
+
+    const hexcode = useSelector((store) => store.hexcode);
+
 
     const dispatch = useDispatch();
 
@@ -24,8 +29,8 @@ function ProjectDetails() {
     const [photo, setPhoto] = useState('');
 
     // This is going to be used to display the selected color palette
-    const [detailPalette, setDetailPalette] = useState('#hexcode');
-    // ! how do I return projectDetails[0].primary after page refresh?
+    const [detailPalette, setDetailPalette] = useState('projectDetails.primary');
+    // ! how do I return projectDetails[0].primary after page refresh? -- returns undefined on page refresh
 
     // hook for refresh
     const { id } = useParams();
@@ -71,6 +76,10 @@ function ProjectDetails() {
         console.log(`refreshing details id:`, id);
         // fetch the project details
         dispatch({ type: 'FETCH_PROJECT_DETAILS', payload: id });
+
+        // ?? dispatch action to reload paints for page // or do this in the GET details saga?
+
+        // dispatch({ type: 'SET_PRIMARY_HEXCODE' payload: });
     }
     // fetches paint dropdowns
     function fetchPaintsDropdown() {
@@ -87,11 +96,34 @@ function ProjectDetails() {
         refreshDetails()
         fetchPaintsDropdown()
         fetchTechniqueDropdown()
+        // setTimeout(setCssColorPrime(projectDetails[0].primary), 2000)
     }, [id]);
 
 
 
     // POST paint update
+
+
+
+
+
+
+
+    // HSL CONVERSION FOR DETAILS
+
+
+    function setCssColorPrime() {
+        console.log(`updating detail palette`);
+        // console.log(`Primary success!!!:`, projectDetails[0].primary);
+
+    }
+
+    // HSL CONVERSION FOR DETAILS
+
+
+
+
+
 
 
 
@@ -159,32 +191,35 @@ function ProjectDetails() {
         <div id='details-page'>
 
             <div id='details-header'>
-                {projectDetails.map((project) =>
-                    <h2>{project.model}</h2>
-                )}
+                    <h2>{projectDetails.model}</h2>
             </div>
 
-            {/* {JSON.stringify(projectDetails)} */}
-            {JSON.stringify(paintProject)}
-            PaintProject.id: {JSON.stringify(paintProject.id)}
+            Project Details: <br /> {JSON.stringify(projectDetails)}
+            <br />
+            <br />
+            Paint POST SUBMIT: {JSON.stringify(paintProject)}
+            <br />
+            <br />
+            {/* PaintProject.id: {JSON.stringify(paintProject.id)} */}
             {/* {JSON.stringify(technique)} */}
-            {JSON.stringify(detailPalette)}
+            DETAIL Palette: {JSON.stringify(detailPalette)}
             <br />
             New Paint: {JSON.stringify(newPaint)}
+            <br />
+            REDUX HEXCODE: {JSON.stringify(hexcode)}
+            <br />
+            <br />
+            PAINT DETAILS: {JSON.stringify(paintDetails)}
 
             <div id='details-body'>
 
                 <div id='color-view'>
 
                     <div id='projectImage-div'>
-                        {projectDetails.map((project) =>
-                            <img key={project.id} src={project.picture} alt="No Photo Uploaded" id='details-photo' />
-                        )}
+                            <img key={projectDetails.id} src={projectDetails.picture} alt="No Photo Uploaded" id='details-photo' />
 
                         <div>
-                            {projectDetails.map((project) =>
-                                <p key={project.id}>{project.description}</p>
-                            )}
+                                <p key={projectDetails.id}>{projectDetails.description}</p>
                         </div>
 
                     </div>
@@ -229,7 +264,7 @@ function ProjectDetails() {
                                 disabled
                                 // value={paintProject}
                                 value={paintProject}
-                                // onChange={(e) => setPaintProject(e.target.value)}
+                            // onChange={(e) => setPaintProject(e.target.value)}
                             >
                             </input></label>
                         </div>
@@ -242,7 +277,7 @@ function ProjectDetails() {
                                 id='paint-dropdown'
                                 // onChange={(e) => setPaintProject(JSON.parse(e.target.value))}
                                 // onChange={(e) => setNewPaint({ ...newPaint, paint_id: (JSON.parse(e.target.value))})}
-                                onChange={(e) => setMultiple({ ...newPaint, paint_id: (JSON.parse(e.target.value))})}
+                                onChange={(e) => setMultiple({ ...newPaint, paint_id: (JSON.parse(e.target.value)) })}
 
                             >
                                 {paints.map((paint) =>
@@ -265,7 +300,7 @@ function ProjectDetails() {
                         <div id='upload-add'>
                             <div id='add-paint'>
                                 <button
-                                onClick={addNewPaint}
+                                    onClick={addNewPaint}
                                 >Add Paint</button>
                             </div>
 
@@ -281,6 +316,8 @@ function ProjectDetails() {
                         </div>
 
                     </div>
+
+                    {/* begin the details item list  */}
 
                     <div id='project-paints'>
                         <div id='paint-step'>
@@ -312,12 +349,6 @@ function ProjectDetails() {
                 </div>
 
             </div>
-
-
-
-
-            {/* {JSON.stringify(projectDetails)} */}
-
 
         </div>
     );

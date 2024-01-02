@@ -51,6 +51,12 @@ router.post('/logout', (req, res) => {
 
 
 
+
+
+
+
+
+
 // ** GET /paints dropdown menu
 router.get('/paints', (req, res) => {
   // console.log(`in server route for /paints`);
@@ -99,17 +105,45 @@ router.get('/projects', (req, res) => {
 });
 
 
-
 // ** GET /details/:id request
 router.get('/details/:id', (req, res) => {
   console.log(`in server route for /details/:id`);
-  console.log(`req.params.id:`, req.params.id);
-  console.log(`req.user.id:`, req.user.id);
+  console.log(`general details req.params.id:`, req.params.id);
+  console.log(`general details req.user.id:`, req.user.id);
 
   const queryText = `SELECT * FROM "projects" where "id" = $1;`;
 
   pool.query(queryText, [req.params.id]).then((result) => {
     console.log(`success in getting details!`);
+    res.send(result.rows.length > 0 ? result.rows[0] : {});
+  }).catch((error) => {
+    console.log(`error in /details/:id`);
+    res.sendStatus(500);
+  });
+});
+
+// ** GET /detailPaints/:id request
+router.get('/detailPaints/:id', (req, res) => {
+  console.log(`in server route for /detailPaints/:id`);
+  console.log(`detail paints req.params.id:`, req.params.id);
+  console.log(`detail paints req.user.id:`, req.user.id);
+
+  const queryText = `SELECT 
+	"projects_paints"."id",
+	"projects_paints"."photo",
+	"paints"."paint",
+	"paints"."hexcode",
+	"techniques"."technique"
+
+FROM "projects_paints" 
+JOIN "paints" ON "paints"."id" = "projects_paints"."paint_id"
+JOIN "techniques" ON "techniques"."id" = "projects_paints"."technique_id"
+
+WHERE "projects_paints"."project_id" = $1
+;`;
+
+  pool.query(queryText, [req.params.id]).then((result) => {
+    console.log(`success in getting paint details!`);
     res.send(result.rows);
   }).catch((error) => {
     console.log(`error in /details/:id`);
@@ -120,9 +154,18 @@ router.get('/details/:id', (req, res) => {
 
 
 
+
+
+
+
+
+
+
+
+
 // ** POST /newProject request (/api/user/newProject)
 router.post('/newProject', (req, res) => {
-  console.log(`in userRouter req.body`, req.body);
+  console.log(`in userRouter post /newProject req.body`, req.body);
   // console.log(`in userRouter req.body`, req.body.model);
   // console.log(`in userRouter req.body`, req.body.primary);
   // console.log(`in userRouter req.body`, req.body.description);
@@ -138,15 +181,49 @@ router.post('/newProject', (req, res) => {
   ($1, $2, $3, $4, $5);`;
 
 
-  pool.query(queryText, 
+  pool.query(queryText,
     [req.body.user_id, req.body.model, req.body.primary, req.body.description, req.body.picture
-  ]).then(result => {
-    console.log(`success in POST /newProject`);
-    res.sendStatus(201);
-  }).catch((error) => {
-    console.log(`error in POST /newProject`);
-    res.sendStatus(500);
-  });
+    ]).then(result => {
+      console.log(`success in POST /newProject`);
+      res.sendStatus(201);
+    }).catch((error) => {
+      console.log(`error in POST /newProject`);
+      res.sendStatus(500);
+    });
 });
+
+// ** POST request for (/api/user/newPaint)
+router.post('/newPaint', (req, res) => {
+  console.log(`in userRouter POST /newPaint req.body`, req.body);
+  console.log(`project_id`, req.body.project_id);
+  console.log(`paint_id`, req.body.paint_id);
+  console.log(`technique_id`, req.body.technique_id);
+  console.log(`photo`, req.body.photo);
+
+  let queryText = `INSERT INTO "projects_paints" 
+                  ("project_id", 
+                  "paint_id", 
+                  "technique_id", 
+                  "photo")
+  VALUES
+  ($1, $2, $3, $4);`;
+
+
+  pool.query(queryText,
+    [req.body.project_id, req.body.paint_id, req.body.technique_id, req.body.photo
+    ]).then(result => {
+      console.log(`success in POST /newPaint`);
+      res.sendStatus(201);
+    }).catch((error) => {
+      console.log(`error in POST /newPaint`);
+      res.sendStatus(500);
+    });
+});
+
+
+
+
+
+
 
 module.exports = router;

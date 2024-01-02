@@ -6,6 +6,7 @@ import hexcode from './hexcode.reducer';
 import userProjects from './projects.reducer';
 import projectDetails from './details.reducer';
 import techniqueList from './technique.reducer';
+import paintDetails from './paintList.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -24,7 +25,7 @@ const rootReducer = combineReducers({
   userProjects, // container for user projects
   projectDetails, // contains data for project details page
   techniqueList, // contains server technique list
-
+  paintDetails, // contains paint details of individual projects
 });
 
 export default rootReducer;
