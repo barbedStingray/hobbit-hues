@@ -95,7 +95,6 @@ function CreateProject(props) {
             formData.append('file', fileToUpload);
             // console.log(`process.env.REACT_APP_PRESET`, process.env.REACT_APP_PRESET);
 
-
             formData.append('upload_preset', process.env.REACT_APP_PRESET);
             let postUrl = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME}/image/upload`;
             console.log(`postURL`, postUrl);

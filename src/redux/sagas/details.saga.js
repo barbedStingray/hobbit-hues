@@ -11,7 +11,7 @@ function* fetchProjectDetails(action) {
         const detailResults = yield axios.get(`/api/user/details/${action.payload}`);
         console.log(`detailResults`, detailResults.data);
 
-      // ! project paints data
+      // project paints data
         const detailPaintResults = yield axios.get(`/api/user/detailPaints/${action.payload}`);
         console.log(`detailPaintResults.data`, detailPaintResults.data);
 

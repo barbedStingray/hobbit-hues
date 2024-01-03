@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import PaintDetails from '../PaintDetails/PaintDetails';
@@ -20,6 +20,7 @@ function ProjectDetails() {
 
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     // variables to post a new paint
     // const [paintProject, setPaintProject] = useState({ hexcode: '#000000', id: '0' });
@@ -37,7 +38,7 @@ function ProjectDetails() {
     // variable to post a new paint
     let [newPaint, setNewPaint] = useState({
         project_id: id,
-        paint_id: '',
+        paint_id: '38',
         technique_id: '1',
         photo: ''
     });
@@ -106,7 +107,7 @@ function ProjectDetails() {
 
     // HSL CONVERSION FOR DETAILS
 
-// ! not complete
+    // ! not complete
     function setCssColorPrime() {
         console.log(`updating detail palette`);
         // console.log(`Primary success!!!:`, projectDetails[0].primary);
@@ -173,6 +174,15 @@ function ProjectDetails() {
     }
 
 
+    // delete entire project function
+    function deleteProject(project) {
+        console.log(`deleting the entire project - id:`, project);
+        // dispatch the delete 
+        dispatch({ type: 'DELETE_ENTIRE_PROJECT', payload: project});
+        // navigate to /projects
+        history.push('/projects');
+
+    }
 
 
 
@@ -188,6 +198,8 @@ function ProjectDetails() {
             <div id='details-header'>
                 <h2>{projectDetails.model}</h2>
             </div>
+            <button onClick={() => deleteProject(projectDetails.id)} id='delete-project'>Delete Project</button>
+
 
             {/* Project Details: <br /> {JSON.stringify(projectDetails)} */}
             {/* New Paint: {JSON.stringify(newPaint)} */}
@@ -216,18 +228,18 @@ function ProjectDetails() {
                     <div className='detail-palette'>
                         {/* Project Color Display */}
                         <div className="palette-container">
-                            <div className="detailThird primary-twolight"><p>Light</p></div>
-                            <div className="detailSecond primary-light"><p>Light</p></div>
-                            <div className="detailPrime primary"><p>Primary</p></div>
-                            <div className="detailSecond primary-dark"><p>Dark</p></div>
-                            <div className="detailThird primary-twodark"><p>Dark</p></div>
-                        </div>
-                        <div className="palette-container">
                             <div className="detailThird primary-triad-2"><p>Triad 2</p></div>
                             <div className="detailSecond primary-triad-1"><p>Triad 1</p></div>
                             <div className="detailPrime primary-complement"><p>Comp.</p></div>
                             <div className="detailSecond primary-analog-1"><p>Analog 1</p></div>
                             <div className="detailThird primary-analog-2"><p>Analog 2</p></div>
+                        </div>
+                        <div className="palette-container">
+                            <div className="detailThird primary-twolight"><p>Light</p></div>
+                            <div className="detailSecond primary-light"><p>Light</p></div>
+                            <div className="detailPrime primary"><p>Primary</p></div>
+                            <div className="detailSecond primary-dark"><p>Dark</p></div>
+                            <div className="detailThird primary-twodark"><p>Dark</p></div>
                         </div>
                     </div>
 
@@ -302,7 +314,7 @@ function ProjectDetails() {
                     {/* begin the details item list  */}
                     <div id='painted-models'>
                         {paintDetails.map((paint) =>
-                            <PaintDetails paint={paint} />
+                            <PaintDetails paint={paint} refreshDetails={refreshDetails} />
                         )}
                     </div>
                     {/* ! map for the paint details component */}

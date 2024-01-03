@@ -7,9 +7,11 @@ import createSaga from './create.saga';
 import fetchProjects from './projects.saga';
 import detailsSaga from './details.saga';
 import projectPaintSaga from './newPaint.saga';
+import deleteProjectSaga from './deleteProject.saga';
 
 import axios from 'axios';
 import techniqueSaga from './technique.saga';
+import deletePaintSaga from './deletePaint.saga';
 // import fetchPaintsDropdown from './paint.saga';
 
 // rootSaga is the primary saga.
@@ -25,13 +27,15 @@ export default function* rootSaga() {
     loginSaga(), // login saga is now registered
     registrationSaga(),
     userSaga(),
+    
     paintSaga(), // fills in paint dropdowns
     createSaga(), // POST route for new projects
     fetchProjects(), // sets user project reducer
     detailsSaga(), // sets details of individual project
     techniqueSaga(), // fetches techniques from the server
     projectPaintSaga(), // POSt route for new paints
-
+    deleteProjectSaga(), // deletes the entire project
+    deletePaintSaga(), // deletes a single paint from project
   ]);
   // ! NEW sagas in the yield all
   

@@ -57,6 +57,9 @@ router.post('/logout', (req, res) => {
 
 
 
+
+
+
 // ** GET /paints dropdown menu
 router.get('/paints', (req, res) => {
   // console.log(`in server route for /paints`);
@@ -164,6 +167,8 @@ ORDER BY "projects_paints"."id" DESC
 
 
 
+
+
 // ** POST /newProject request (/api/user/newProject)
 router.post('/newProject', (req, res) => {
   console.log(`in userRouter post /newProject req.body`, req.body);
@@ -220,6 +225,64 @@ router.post('/newPaint', (req, res) => {
       res.sendStatus(500);
     });
 });
+
+
+
+
+
+
+
+
+
+// ** DELETE request /api/user/projectDelete/:id
+router.delete(`/projectDelete/:id`, (req, res) => {
+  console.log(`in server route for /projectDelete/:id`);
+  console.log(`req.params`, req.params.id);
+  // console.log(`user_id`, req.user.id);
+
+
+  const queryText = `DELETE FROM "projects_paints"
+                    WHERE "project_id" = $1
+                    ;`;
+
+  pool.query(queryText, [req.params.id]).then((result) => {
+    console.log(`success in paint DELETE /projectDelete/:id`);
+
+    const qText = `DELETE FROM "projects"
+    WHERE "id" = $1
+    ;`;
+
+    pool.query(qText, [req.params.id]).then((result) => {
+      console.log(`success in project DELETE /projectDelete/:id`);
+
+      res.sendStatus(201);
+    }).catch((error) => {
+      console.log(`error in deleting your project after paints`);
+      res.sendStatus(500);
+    });
+  }).catch((error) => {
+    console.log(`error in deleting your paints before project`);
+    res.sendStatus(500);
+  })
+});
+
+// ** DELETE request /api/user/paintDelete/:id
+router.delete(`/paintDelete/:id`, (req, res) => {
+  console.log(`in server side for /paintDelete/:id`);
+  console.log(`req.params.id`, req.params.id);
+
+  const queryText = `DELETE FROM "projects_paints"
+                    WHERE "id" = $1;`;
+
+  pool.query(queryText, [req.params.id]).then((result) => {
+    console.log(`success in single paint delete /paintDelete/:id`);
+    res.sendStatus(201);
+  }).catch((error) => {
+    console.log(`error in deleting your single paint`);
+    res.sendStatus(500);
+  });
+});
+
 
 
 

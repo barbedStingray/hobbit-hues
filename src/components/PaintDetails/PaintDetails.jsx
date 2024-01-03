@@ -1,5 +1,5 @@
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
@@ -8,6 +8,19 @@ function PaintDetails(props) {
     // Using hooks we're creating local state for a "heading" variable with
     // a default value of 'Functional Component'
     const store = useSelector((store) => store);
+
+    const dispatch = useDispatch();
+
+
+        // delete single paint
+        function deletePaint(paint) {
+            console.log(`deleting a single paint ID`, paint);
+            // delete single paint
+            dispatch({ type: 'DELETE_SINGLE_PAINT', payload: paint});
+            // todo refresh page / passed from props
+            props.refreshDetails();
+        }
+    
 
     return (
         <div id='project-paints'>
@@ -29,7 +42,7 @@ function PaintDetails(props) {
             </div>
 
             <div id='paint-delete'>
-                    <button id='delete-paint'>X</button>
+                    <button onClick={() => deletePaint(props.paint.id)} id='delete-paint'>X</button>
             </div>
         </div>
     );
