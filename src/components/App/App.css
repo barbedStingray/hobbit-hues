@@ -27,12 +27,17 @@ html,
 body,
 #react-root {
   height: 100%;
+  /* margin: 0;
+  padding: 0; */
 
 }
 
 
+
 /* ROOT VARIABLES */
 :root {
+
+  
 
   /*  Base Values  */
   --primary-color-h: 216;
@@ -300,6 +305,7 @@ body,
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  
 }
 
 #titleinputs-form {
@@ -702,12 +708,17 @@ input[type="color"]::-webkit-color-swatch {
 
 #details-page {
   /* ! removing this border shifts your css for some reason */
-  border: 0.1px solid black;
+  border: 0.1px solid limegreen;
   background-image: url('../../Images/HobbitHole.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   height: 750px;
+  /* position:fixed;
+  top:0px;
+  bottom:0px;
+  left:0px;
+  right:0px; */
 
 }
     #details-header {
@@ -893,6 +904,12 @@ input[type="color"]::-webkit-color-swatch {
                   /* ! center your photo */
                   margin: 3.5px;
                 }
+                #painted-image:hover {
+                  transform: scale(2.0);
+                  transition: 0.3s;
+                  z-index: 10;
+                }
+
 
             #paint-description {
               /* border: 2px solid blue; */
@@ -1083,3 +1100,13 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
+
+
+
+
+
+/* ! screen size manipulation */
+/* #app-mainDiv {
+  border: green 2px solid;
+  height: 100vh;
+} */

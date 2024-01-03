@@ -25,7 +25,7 @@ function PaintDetails(props) {
     return (
         <div id='project-paints'>
             <div id='paint-step'>
-                <img key={props.paint.id} src={props.paint.photo} alt="No Photo Uploaded" id='painted-image' />
+                <img key={props.paint.id} src={props.paint.photo} alt="No Photo Uploaded" id='painted-image' className='photo-zoom' />
             </div>
 
             <div id='paint-description'>

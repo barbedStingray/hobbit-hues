@@ -245,6 +245,10 @@ function ProjectDetails() {
 
                 </div>
 
+                <div id='paint-labels'>
+                    
+                </div>
+
 
                 <div id='paint-labels'>
 
