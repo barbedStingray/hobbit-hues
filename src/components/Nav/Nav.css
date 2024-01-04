@@ -8,6 +8,9 @@
   background-color: #2e2e2e;
   overflow: hidden;
   border-bottom: 2px solid black;
+
+    /* ! fixed height for navbar heaader ! this allows your app to have flex: 1 to fill window */ 
+    height: 70px;
 }
 
 .nav a {

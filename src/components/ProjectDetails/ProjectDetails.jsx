@@ -126,7 +126,7 @@ function ProjectDetails() {
 
 
 
-    // IMAGE UPLOAD
+    // !! IMAGE UPLOAD for individual detials  NEEDS TO BE COMPONENT
     const onFileChange = async (event) => {
         // Access the selected file
         const fileToUpload = event.target.files[0];
@@ -186,6 +186,24 @@ function ProjectDetails() {
 
 
 
+    // PUT request start for description and main photo
+    function editProject() {
+        console.log(`editing your project`);
+
+        // pass the object to saga
+
+        // refresh the page
+
+    }
+
+    // PUT request Object keys: description, picture
+    // todo need image
+
+
+    // ! IMAGE CAPTURE NEEDS TO BE A COMPONENT
+    // captures new image for main photo display
+
+
 
 
 
@@ -200,7 +218,7 @@ function ProjectDetails() {
             </div>
 
             {/* Project Details: <br /> {JSON.stringify(projectDetails)} */}
-            {/* New Paint: {JSON.stringify(newPaint)} */}
+            New Paint: {JSON.stringify(newPaint)}
             {/* PAINT DETAILS: {JSON.stringify(paintDetails)} */}
 
             <div id='details-body'>
@@ -228,16 +246,16 @@ function ProjectDetails() {
                     <div className='detail-palette'>
                         {/* Project Color Display */}
                         <div className="palette-container">
-                            <div className="detailThird primary-triad-2"><p>Triad 2</p></div>
-                            <div className="detailSecond primary-triad-1"><p>Triad 1</p></div>
+                            <div className="detailThird primary-triad-2"><p>T2</p></div>
+                            <div className="detailSecond primary-triad-1"><p>T1</p></div>
                             <div className="detailPrime primary-complement"><p>Comp.</p></div>
-                            <div className="detailSecond primary-analog-1"><p>Analog 1</p></div>
-                            <div className="detailThird primary-analog-2"><p>Analog 2</p></div>
+                            <div className="detailSecond primary-analog-1"><p>A1</p></div>
+                            <div className="detailThird primary-analog-2"><p>A2</p></div>
                         </div>
                         <div className="palette-container">
                             <div className="detailThird primary-twolight"><p>Light</p></div>
                             <div className="detailSecond primary-light"><p>Light</p></div>
-                            <div className="detailPrime primary"><p>Primary</p></div>
+                            <div className="detailPrime primary"><p>Prime</p></div>
                             <div className="detailSecond primary-dark"><p>Dark</p></div>
                             <div className="detailThird primary-twodark"><p>Dark</p></div>
                         </div>
@@ -304,10 +322,17 @@ function ProjectDetails() {
                         >Add Paint</button>
 
                         <button
+                            onClick={() => editProject(projectDetails.id)}
+                            id='edit-project'
+                            className='btn'
+                        >Edit <br /> Project</button>
+
+                        <button
                             onClick={() => deleteProject(projectDetails.id)}
                             id='delete-project'
                             className='btn'
                         >Delete <br /> Project</button>
+
 
 
 

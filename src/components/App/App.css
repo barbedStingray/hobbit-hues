@@ -26,9 +26,10 @@
 html,
 body,
 #react-root {
-  height: 100%;
+  min-height: 100vh;
   /* margin: 0;
   padding: 0; */
+  height: 100%;
 
 }
 
@@ -36,8 +37,6 @@ body,
 
 /* ROOT VARIABLES */
 :root {
-
-  
 
   /*  Base Values  */
   --primary-color-h: 216;
@@ -300,10 +299,11 @@ body,
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  min-height: 775px;
+  /* min-height: 775px; */
   padding: 0px;
   display: flex;
   flex-direction: row;
+  flex: 1;  
   justify-content: space-evenly;
   
 }
@@ -496,6 +496,8 @@ input[type="color"]::-webkit-color-swatch {
     min-height: 775px;
     display: flex;
     flex-direction: column;
+    flex: 1;  
+
     /* justify-content: space-evenly; */
 }
 
@@ -609,16 +611,13 @@ input[type="color"]::-webkit-color-swatch {
 
 #projects-page {
   /* border: 2px solid red; */
-    /* border: 2px solid blue; */
     background-image: url('../../Images/HobbitHole11.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    min-height: 770px;
     display: flex;
     flex-direction: column;
-    /* justify-content: flex-start; */
-    /* gap: 10px; */
+    flex: 1;  
     align-items: center;
 }
     #project-heading {
@@ -708,19 +707,16 @@ input[type="color"]::-webkit-color-swatch {
 
 #details-page {
   /* ! removing this border shifts your css for some reason */
-  border: 0.1px solid limegreen;
+  border: 0.1px solid red;
   background-image: url('../../Images/HobbitHole.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 750px;
-  /* position:fixed;
-  top:0px;
-  bottom:0px;
-  left:0px;
-  right:0px; */
-
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
+
     #details-header {
       /* border: 2px solid orange; */
       font-family: ringbearer;
@@ -733,13 +729,13 @@ input[type="color"]::-webkit-color-swatch {
       text-align: center;
     }
     #details-body {
-      border: 2px solid gold;
+      /* border: 2px solid gold; */
       display: flex;
       flex-direction: row;
       justify-content: center;
       /* ! top margin altered */
       margin-top: -30px;
-      height: 530px;
+      height: 550px;
       gap: 1%;
       /* gap: -10px; */
       /* justify-content: center; */
@@ -755,15 +751,16 @@ input[type="color"]::-webkit-color-swatch {
           padding: 10px;
         }
             .detail-palette {
-              border: 2px solid red;
+              /* border: 2px solid red; */
               /* flex: 1; */
               /* width: 250px; */
               display: flex;
-              flex-direction: column;
+              flex-direction: column-reverse;
               align-items: center; 
+              margin-top: 2%;
             }
             .palette-container {
-              border: 2px solid greenyellow;
+              /* border: 2px solid greenyellow; */
               display: flex;
               flex-direction: row;
               /* flex-wrap: wrap; */
@@ -771,11 +768,12 @@ input[type="color"]::-webkit-color-swatch {
               align-items: center;
               flex: 1;
               gap: 5px;
-              margin: 0 2px;
+              margin: -13px;
+              
             }
                 .detailPrime {
-                  height: 85px;
-                  width: 85px;
+                  height: 65px;
+                  width: 65px;
                   display: flex;
                   justify-content: center;
                   align-items: center;
@@ -783,8 +781,8 @@ input[type="color"]::-webkit-color-swatch {
                   border: 2px solid black;
                 }
                 .detailSecond {
-                  height: 75px;
-                  width: 75px;
+                  height: 55px;
+                  width: 55px;
                   display: flex;
                   justify-content: center;
                   align-items: center;
@@ -792,8 +790,8 @@ input[type="color"]::-webkit-color-swatch {
                   border: 2px solid black;
                 }
                 .detailThird {
-                  height: 65px;
-                  width: 65px;
+                  height: 45px;
+                  width: 45px;
                   display: flex;
                   justify-content: center;
                   align-items: center;
@@ -1104,7 +1102,10 @@ input {
 
 
 /* ! screen size manipulation */
-/* #app-mainDiv {
+#app-mainDiv {
   border: green 2px solid;
-  height: 100vh;
-} */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+}

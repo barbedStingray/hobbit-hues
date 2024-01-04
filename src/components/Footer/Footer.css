@@ -5,4 +5,8 @@ footer {
   background-color: #2e2e2e;
   color: darkred;
   border-top: 2px solid black;
+
+    /* ! fixed height for navbar footer ! this allows your app to have flex: 1 to fill window */ 
+    height: 30px;
+
 }

@@ -6,10 +6,9 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  min-height: 760px;
-
-  /* filter: blur(0.5px); */
-  /* border: 2px solid gold; */
+  display: flex;
+  flex-direction: column;
+  flex: 1;  
   padding: 0px;
 }
 
