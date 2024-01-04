@@ -178,7 +178,7 @@ function ProjectDetails() {
     function deleteProject(project) {
         console.log(`deleting the entire project - id:`, project);
         // dispatch the delete 
-        dispatch({ type: 'DELETE_ENTIRE_PROJECT', payload: project});
+        dispatch({ type: 'DELETE_ENTIRE_PROJECT', payload: project });
         // navigate to /projects
         history.push('/projects');
 
@@ -198,8 +198,6 @@ function ProjectDetails() {
             <div id='details-header'>
                 <h2>{projectDetails.model}</h2>
             </div>
-            <button onClick={() => deleteProject(projectDetails.id)} id='delete-project'>Delete Project</button>
-
 
             {/* Project Details: <br /> {JSON.stringify(projectDetails)} */}
             {/* New Paint: {JSON.stringify(newPaint)} */}
@@ -210,11 +208,13 @@ function ProjectDetails() {
                 <div id='color-view'>
 
                     <div id='projectImage-div'>
-                        <img key={projectDetails.id} src={projectDetails.picture} alt="No Photo Uploaded" id='details-photo' />
 
                         <div>
                             <p key={projectDetails.id}>{projectDetails.description}</p>
                         </div>
+
+                        <img key={projectDetails.id} src={projectDetails.picture} alt="No Photo Uploaded" id='details-photo' />
+
 
                     </div>
 
@@ -245,85 +245,90 @@ function ProjectDetails() {
 
                 </div>
 
-                <div id='paint-labels'>
-                    
-                </div>
+                <div id='paint-inputs'>
+
+                    <div id='paint-show'>
+                        <label><input
+                            id='color-select'
+                            type='color'
+                            disabled
+                            // value={paintProject}
+                            value={paintProject}
+                        // onChange={(e) => setPaintProject(e.target.value)}
+                        >
+                        </input></label>
+                    </div>
+
+                    <div id='paint-dropdowns'>
+
+                        <label>Paint <br /><select
+                            name='paints'
+                            id='paint-dropdown'
+                            // onChange={(e) => setPaintProject(JSON.parse(e.target.value))}
+                            // onChange={(e) => setNewPaint({ ...newPaint, paint_id: (JSON.parse(e.target.value))})}
+                            onChange={(e) => setMultiple({ ...newPaint, paint_id: (JSON.parse(e.target.value)) })}
+
+                        >
+                            {paints.map((paint) =>
+                                // <option value={paint.hexcode} key={paint.id}>{paint.paint}</option>
+                                <option value={JSON.stringify({ hexcode: paint.hexcode, id: paint.id })} key={paint.id}>{paint.paint}</option>
+                            )}
+                        </select></label>
+
+                        <label>Technique <br /><select
+                            name='techniques'
+                            id='technique-dropdown'
+                            onChange={newPaintChange('technique_id')}
+                        >
+                            {techniqueList.map((technique) =>
+                                <option value={technique.id} key={technique.id}>{technique.technique}</option>
+                            )}
+                        </select></label>
+                    </div>
 
 
-                <div id='paint-labels'>
+                    <div id='upload-detail'>
+                        {/* <div id='picture-input'> */}
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={onFileChange}
+                        />
+                        {/* </div> */}
+                    </div>
 
-                    {/* add a new paint/technique */}
-                    <div id='paint-inputs'>
+                    <div id='add-paint'>
+                        <button
+                            onClick={addNewPaint}
+                            className='btn'
+                        >Add Paint</button>
 
-                        <div>
-                            <label><input
-                                id='color-select'
-                                type='color'
-                                disabled
-                                // value={paintProject}
-                                value={paintProject}
-                            // onChange={(e) => setPaintProject(e.target.value)}
-                            >
-                            </input></label>
-                        </div>
+                        <button
+                            onClick={() => deleteProject(projectDetails.id)}
+                            id='delete-project'
+                            className='btn'
+                        >Delete <br /> Project</button>
 
-                        <div id='paint-dropdowns'>
 
-                            <label>Paint <br /><select
-                                name='paints'
-                                id='paint-dropdown'
-                                // onChange={(e) => setPaintProject(JSON.parse(e.target.value))}
-                                // onChange={(e) => setNewPaint({ ...newPaint, paint_id: (JSON.parse(e.target.value))})}
-                                onChange={(e) => setMultiple({ ...newPaint, paint_id: (JSON.parse(e.target.value)) })}
-
-                            >
-                                {paints.map((paint) =>
-                                    // <option value={paint.hexcode} key={paint.id}>{paint.paint}</option>
-                                    <option value={JSON.stringify({ hexcode: paint.hexcode, id: paint.id })} key={paint.id}>{paint.paint}</option>
-                                )}
-                            </select></label>
-
-                            <label>Technique <br /><select
-                                name='techniques'
-                                id='technique-dropdown'
-                                onChange={newPaintChange('technique_id')}
-                            >
-                                {techniqueList.map((technique) =>
-                                    <option value={technique.id} key={technique.id}>{technique.technique}</option>
-                                )}
-                            </select></label>
-                        </div>
-
-                        <div id='upload-add'>
-                            <div id='add-paint'>
-                                <button
-                                    onClick={addNewPaint}
-                                    className='btn'
-                                >Add Paint</button>
-                            </div>
-
-                            <div id='upload-detail'>
-                                {/* <div id='picture-input'> */}
-                                <input
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={onFileChange}
-                                />
-                                {/* </div> */}
-                            </div>
-                        </div>
 
                     </div>
 
-                    {/* begin the details item list  */}
-                    <div id='painted-models'>
-                        {paintDetails.map((paint) =>
-                            <PaintDetails paint={paint} refreshDetails={refreshDetails} />
-                        )}
-                    </div>
-                    {/* ! map for the paint details component */}
 
                 </div>
+
+
+
+                {/* <div id='paint-modelSteps'> */}
+
+                {/* begin the details item list  */}
+                <div id='painted-models'>
+                    {paintDetails.map((paint) =>
+                        <PaintDetails paint={paint} refreshDetails={refreshDetails} />
+                    )}
+                </div>
+                {/* ! map for the paint details component */}
+
+                {/* </div> */}
 
             </div>
 

@@ -8,11 +8,11 @@
     [x] User able to register new account
         [x] functionality to register a new account
         [x] CSS formatting
-    [] Double check that pathways work
+    [x] Double check that pathways work
     [] delete the extra sign in and registration pages
 
 [] Create home page (color wheel)
-    [] Button to go to the Form page
+    [x] Button to go to the Form page
     [x] Home page title
         [x] css styling
         [x] display name
@@ -41,54 +41,54 @@
 [] Create Project Page
     [] Project page title
         [] css styling
-        [] display name
+        [x] display name
     [] <div> list of all created user projects
         [] css styling
             [] how would you like this to look?
-        [] display view of all individual <div> user projects
-            [] Individual Project attributes
-                [] title/model name
+        [x] display view of all individual <div> user projects
+            [x] Individual Project attributes
+                [x] title/model name
                 [] palette code
-                [] image?
+                [x] image?
                 [] ??? other options ???
 
 [] Project Form Page
-    [] <input> model name
-    [] captured variables primary (& secondary?)
-    [] <button> submit form
-        [] AXIOS.post request to create new user project
-    [] direct to (new) details project page
-        [] request? (reducer, saga, axios?) to fill in details of new project
-            [] display even after page refresh
+    [x] <input> model name
+    [x] <textarea> model description
+    [x] captured variables primary (& secondary?)
+    [x] <button> submit form
+        [x] AXIOS.post request to create new user project
+    [x] direct to project page
+        [x] display even after page refresh
 
 
 [] Create Project Details Page
     [] page abilities
-        [] contents stay after page refresh
+        [x] contents stay after page refresh
     [] Project details title
         [] css styling
-        [] display name of model
+        [x] display name of model
     [] Color wheel display (Display optional)
-        [] Display your color wheel again
-        [] <button> to display/hide the wheel when necessary
+        [x] Display your color wheel again
+        <!-- [] <button> to display/hide the wheel when necessary -->
     [] Project details
-        [] Image display??
-            [] image upload?
+        [x] Image display??
+            [x] image upload?
         [] display palette code
             [] editable AXIOS.put route
         [] paints used display list
-            [] list out paints used
-            [] techniques describe how the paint was used
+            [x] list out paints used
+            [x] techniques describe how the paint was used
             [] paints are editable AXIOS.put
-            [] new paint color and technique can be added AXIOS.post
+            [x] new paint color and technique can be added AXIOS.post
 
                 
 
 ## About Page
 [] about the app, why it was created, what it's useful for
-[] fluff it up and advertise it
-[] lotr puns
+[] describe your personal connection to it
 
 ## Info Page
-[] what the app contains
+[] desctiptions of the techniques
 [] how to use it
+[] clarify parts that may be less specific

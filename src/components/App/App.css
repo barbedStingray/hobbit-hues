@@ -732,22 +732,15 @@ input[type="color"]::-webkit-color-swatch {
       background-clip: text;
       text-align: center;
     }
-    #delete-project {
-      border: 2px solid plum;
-      position: relative;
-      left: 80px;
-      bottom: 50px;
-      width: 10%;
-      height: 30px;
-    }
     #details-body {
-      /* border: 2px solid gold; */
+      border: 2px solid gold;
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: center;
       /* ! top margin altered */
-      margin-top: -20px;
+      margin-top: -30px;
       height: 530px;
+      gap: 1%;
       /* gap: -10px; */
       /* justify-content: center; */
     }
@@ -756,25 +749,23 @@ input[type="color"]::-webkit-color-swatch {
           border: 3px solid #4d4848;
           border-radius: 10px;
           background-color: #f5f5f5aa;
-    
+  
           display: flex;
-          flex-direction: row-reverse;
-          margin: 0 0 0 2.5%;
+          flex-direction: column;
           padding: 10px;
-          /* flex-basis: 650px; */
         }
             .detail-palette {
-              /* border: 2px solid red; */
+              border: 2px solid red;
               /* flex: 1; */
               /* width: 250px; */
               display: flex;
-              flex-direction: row;
+              flex-direction: column;
               align-items: center; 
             }
             .palette-container {
-              /* border: 2px solid greenyellow; */
+              border: 2px solid greenyellow;
               display: flex;
-              flex-direction: column;
+              flex-direction: row;
               /* flex-wrap: wrap; */
               /* min-width: 450px; */
               align-items: center;
@@ -824,69 +815,65 @@ input[type="color"]::-webkit-color-swatch {
               width: 450px;
               height: auto;
             }
-        #paint-labels {
-          /* border: 2px solid purple; */
-          display: flex;
-          flex-direction: column;
-          /* flex-basis: 650px; */
-          margin: 0 2.5% 0 0;
-          padding: 10px;
-          width: 665px;
+        #paint-inputs {
           border: 3px solid #4d4848;
           border-radius: 10px;
           background-color: #f5f5f5aa;
-    
-        }
-        
-
-        #paint-inputs {
-          /* border: 2px solid pink; */
-          margin: 1.5%;
-          /* width: 100%; */
           display: flex;
-          flex-direction: row-reverse;
+          flex-direction: column;
           justify-content: space-evenly;
           align-items: center;
+          border-radius: 10px;
+          width: 180px;
+          /* padding: 10px; */
+          background-color: #f5f5f5aa;
+
           /* align-items: center; */
           /* text-align: center; */
         }
+            #paint-show {
+              margin: -50px;
+            }
             #paint-dropdowns {
-              /* border: 2px solid blue; */
+              border: 2px solid blue;
               display: flex;
               flex-direction: column;
               text-align: center;
-              gap: 10px;
+              /* gap: 10px; */
             }
-            #upload-add {
-              /* border: 2px solid skyblue; */
+            #upload-detail {
+              border: 2px solid skyblue;
               display: flex;
               flex-direction: column;
               justify-content: center;
               align-items: center;
-              gap: 10px;
-              height: 80px;
+              min-width: none;
+              /* gap: 10px; */
+              /* height: 80px; */
             }
                 #add-paint {
-                  /* border: 2px solid green; */
+                  border: 2px solid green;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 40px;
                 }
-                #upload-detail {
-                  /* border: 2px solid orange; */
-                }
+
         #painted-models {
-          /* border: 2px solid grey; */
-          border-left: 2px solid grey;
-          border-right: 2px solid grey;
-          width: 650px;
           overflow-x: scroll;
           /* ! code here to adjust the list of paints used */
           display: flex;
           flex-direction: row;
-          margin: 0 0.5%;
-          height: 390px;
+          border: 3px solid #4d4848;
+          border-radius: 10px;
+          background-color: #f5f5f5aa;
+          padding: 10px;
+          width: 40%;
+          max-width: 900px;
+
         }
 
         #project-paints {
-          border: 2px solid red;
+          /* border: 2px solid red; */
           margin: 1% 1%;
           display: flex;
           flex-direction: column;
@@ -930,12 +917,23 @@ input[type="color"]::-webkit-color-swatch {
               /* padding: 3px; */
             }
                 #delete-paint {
-                  background-color: red;
+                  /* background-color: red;
                   border: red 1px solid;
                   width: 30%;
                   height: 20px;
-                  margin: 10px;
+                  margin: 10px; */
                 }
+
+                #delete-project {
+                  border: 2px solid plum;
+                }
+
+                /* ! decreases input file size */
+                input[type="file"] {
+                  min-width: 50px;
+                  max-width: 170px;
+                }
+            
         
 
 

@@ -30,11 +30,12 @@ function PaintDetails(props) {
 
             <div id='paint-description'>
                 <div>
-                    <p>{props.paint.paint}</p>
-                </div>
-                <div>
                     <p>{props.paint.technique}</p>
                 </div>
+                <div>
+                    <p>{props.paint.paint}</p>
+                </div>
+
                 <div id='paint-box'>
                     {/* <p>color box</p> */}
                 </div>
@@ -42,7 +43,11 @@ function PaintDetails(props) {
             </div>
 
             <div id='paint-delete'>
-                    <button onClick={() => deletePaint(props.paint.id)} id='delete-paint'>X</button>
+                    <button 
+                        onClick={() => deletePaint(props.paint.id)} 
+                        id='delete-paint'
+                        className='btn'
+                    >X</button>
             </div>
         </div>
     );
