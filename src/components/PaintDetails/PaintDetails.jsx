@@ -26,6 +26,7 @@ function PaintDetails(props) {
         <div id='project-paints'>
             <div id='paint-step'>
                 <img key={props.paint.id} src={props.paint.photo} alt="No Photo Uploaded" id='painted-image' className='photo-zoom' />
+                {/* {JSON.stringify(props.paint)} */}
             </div>
 
             <div id='paint-description'>
@@ -38,6 +39,18 @@ function PaintDetails(props) {
                 <div>
                     <p>{props.paint.notes}</p>
                 </div>
+
+                {/* Displaying the color of the paint! */}
+                <div id='paint-show'>
+                        <label><input
+                            id='color-select'
+                            type='color'
+                            disabled
+                            value={props.paint.hexcode}
+                        >
+                        </input></label>
+                    </div>
+
 
                 <div id='paint-box'>
                     {/* <p>color box</p> */}

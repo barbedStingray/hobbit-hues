@@ -78,7 +78,6 @@ function* fetchProjectDetails(action) {
         setColors(detailResults.data.primary);
 
   
-
     } catch (error) {
       console.log(`error in GET /details/:id`);
       alert(`something went wrong with the details!`);
