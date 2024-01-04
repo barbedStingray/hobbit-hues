@@ -36,7 +36,8 @@ function ProjectDetails() {
         project_id: id,
         paint_id: '38',
         technique_id: '1',
-        photo: ''
+        photo: '',
+        notes: ''
     });
 
 
@@ -47,7 +48,7 @@ function ProjectDetails() {
     const [detailPalette, setDetailPalette] = useState('projectDetails.primary');
     // toggle for editing the details of the project
 
-    // todo toggle for editing individual paint details
+    // ?? toggle for editing individual paint details
 
 
 
@@ -69,6 +70,16 @@ function ProjectDetails() {
 
         // dispatch to POST Saga
         dispatch({ type: 'POST_PROJECT_PAINT', payload: newPaint });
+
+        // clear your inputs
+        // setNewPaint({
+        //     project_id: id,
+        //     paint_id: '38',
+        //     technique_id: '1',
+        //     photo: '',
+        //     notes: ''
+
+        // });    
         refreshDetails();
         // setTimeout(refreshDetails(), 2000);
     }
@@ -111,36 +122,12 @@ function ProjectDetails() {
 
 
 
-    // POST paint update
 
 
 
 
 
-
-
-    // HSL CONVERSION FOR DETAILS
-
-    // ! not complete
-    function setCssColorPrime() {
-        console.log(`updating detail palette`);
-        // console.log(`Primary success!!!:`, projectDetails[0].primary);
-
-    }
-
-    // HSL CONVERSION FOR DETAILS
-
-
-
-
-
-
-
-
-
-
-
-
+    // ! delete project code 
     // delete entire project function
     function deleteProject(project) {
         console.log(`deleting the entire project - id:`, project);
@@ -152,6 +139,9 @@ function ProjectDetails() {
     }
 
 
+
+
+    // ! edit project code
     // toggles the Edit boxes appearances and propagates two buttons 'save' and 'cancel'
     function editProject() {
         console.log(`editing your project`);
@@ -163,13 +153,12 @@ function ProjectDetails() {
         setEditProjectPackage({
             id: id,
             description: `${projectDetails.description}`,
-            picture: ''
+            picture: `${projectDetails.picture}`
         });
     }
     function cancelEdit() {
         setToggleProject(!toggleProject);
     }
-
 
     // variable to update project image and description
     const [editProjectPackage, setEditProjectPackage] = useState({
@@ -181,7 +170,7 @@ function ProjectDetails() {
     function saveEdits() {
         console.log(`saving your new edits payload:`, editProjectPackage);
         // dispatch your new information
-        dispatch({ type: 'UPDATE_PROJECT_DETAILS', payload: editProjectPackage});
+        dispatch({ type: 'UPDATE_PROJECT_DETAILS', payload: editProjectPackage });
         // refresh the page
         setTimeout(() => refreshDetails(), 250);
         setTimeout(() => setToggleProject(!toggleProject), 250);
@@ -194,7 +183,10 @@ function ProjectDetails() {
     // prepares new picture for PUT request, props of ImageUpdate component
     function editProjectPicture(properties) {
         setEditProjectPackage({ ...editProjectPackage, picture: properties });
-    } 
+    }
+
+
+
 
 
 
@@ -214,7 +206,6 @@ function ProjectDetails() {
             </div>
 
             {/* Project Details: <br /> {JSON.stringify(projectDetails)} */}
-            New Paint: {JSON.stringify(newPaint)}
             {/* PAINT DETAILS: {JSON.stringify(paintDetails)} */}
 
             <div id='details-body'>
@@ -242,7 +233,7 @@ function ProjectDetails() {
                         {toggleProject === true ?
                             <img key={projectDetails.id} src={projectDetails.picture} alt="No Photo Uploaded" id='details-photo' />
                             :
-                            <ImageUpload photoFunction={editProjectPicture}/>
+                            <ImageUpload photoFunction={editProjectPicture} />
                         }
 
 
@@ -305,7 +296,25 @@ function ProjectDetails() {
                             {techniqueList.map((technique) =>
                                 <option value={technique.id} key={technique.id}>{technique.technique}</option>
                             )}
+
+
+                            {/* !! Adding new TEXT AREA for NOTES */}
                         </select></label>
+
+                        <label><textarea
+                            name='notes'
+                            onChange={newPaintChange('notes')}
+                            placeholder='paint notes here...'
+                        ></textarea></label>
+
+
+
+
+                        {/* New Paint: {JSON.stringify(newPaint)} */}
+
+
+
+
                     </div>
 
                     {/* image upload for new paint addition */}

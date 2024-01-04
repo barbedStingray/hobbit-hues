@@ -35,6 +35,9 @@ function PaintDetails(props) {
                 <div>
                     <p>{props.paint.paint}</p>
                 </div>
+                <div>
+                    <p>{props.paint.notes}</p>
+                </div>
 
                 <div id='paint-box'>
                     {/* <p>color box</p> */}
@@ -48,6 +51,14 @@ function PaintDetails(props) {
                         id='delete-paint'
                         className='btn'
                     >X</button>
+
+                    
+                    {/* <button 
+                        onClick={() => editPaint(props.paint.id)} 
+                        id='edit-paint'
+                        className='btn'
+                    >Edit</button> */}
+                    
             </div>
         </div>
     );

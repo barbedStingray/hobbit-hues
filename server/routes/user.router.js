@@ -134,6 +134,7 @@ router.get('/detailPaints/:id', (req, res) => {
   const queryText = `SELECT 
 	"projects_paints"."id",
 	"projects_paints"."photo",
+  "projects_paints"."notes",
 	"paints"."paint",
 	"paints"."hexcode",
 	"techniques"."technique"
@@ -210,13 +211,14 @@ router.post('/newPaint', (req, res) => {
                   ("project_id", 
                   "paint_id", 
                   "technique_id", 
-                  "photo")
+                  "photo",
+                  "notes")
   VALUES
-  ($1, $2, $3, $4);`;
+  ($1, $2, $3, $4, $5);`;
 
 
   pool.query(queryText,
-    [req.body.project_id, req.body.paint_id, req.body.technique_id, req.body.photo
+    [req.body.project_id, req.body.paint_id, req.body.technique_id, req.body.photo, req.body.notes
     ]).then(result => {
       console.log(`success in POST /newPaint`);
       res.sendStatus(201);
