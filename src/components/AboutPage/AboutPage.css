@@ -2,7 +2,7 @@
 
 #about-pageDiv {
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
     flex: 1;  
   
 }

@@ -61,10 +61,10 @@ function CreateProject(props) {
     }
 
     // back to color wheel
-    function goToColorWheel() {
-        console.log(`going back to color wheel`);
-        history.push('/user');
-    }
+    // function goToColorWheel() {
+    //     console.log(`going back to color wheel`);
+    //     history.push('/user');
+    // }
 
 
     const onFileChange = async (event) => {
