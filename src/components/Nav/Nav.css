@@ -6,7 +6,7 @@
 
   /* margin: 0 0 30px; */
   background-color: #2e2e2e;
-  overflow: hidden;
+  /* overflow: hidden; */
   border-bottom: 2px solid black;
 
     /* ! fixed height for navbar heaader ! this allows your app to have flex: 1 to fill window */ 
