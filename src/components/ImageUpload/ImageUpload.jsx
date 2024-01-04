@@ -1,15 +1,10 @@
 
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+// IMPORTS
 import axios from 'axios';
 
-// Basic functional component structure for React with default state
-// value setup. When making a new component be sure to replace the
-// component name TemplateFunction with the name for the new component.
+
+
 function ImageUpload(props) {
-    // Using hooks we're creating local state for a "heading" variable with
-    // a default value of 'Functional Component'
-    const store = useSelector((store) => store);
 
     const onFileChange = async (event) => {
         // Access the selected file
@@ -45,8 +40,7 @@ function ImageUpload(props) {
             // console.log(`TARGET MARK`);
             axios.post(postUrl, formData).then(response => {
                 console.log('Success!', response);
-                // ! optional form of setting data:         setNewProject({ ...newProject, picture: response.data.url });
-                // ! this is the line:                      setMultiple(response.data.url);
+                props.photoFunction(response.data.url);
             }).catch(error => {
                 console.log('error', error);
                 alert('Something went wrong');
@@ -67,14 +61,6 @@ function ImageUpload(props) {
                     onChange={onFileChange}
                 />
                 <br />
-                {/* {
-                    imagePath === '' ? (
-                        <h3>Upload a Photo!</h3>
-                    ) : (
-                        <img className='mainUpload' src={imagePath} />
-                    )
-                } */}
-
             </div>
     );
 }

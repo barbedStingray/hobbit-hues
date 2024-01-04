@@ -290,4 +290,36 @@ router.delete(`/paintDelete/:id`, (req, res) => {
 
 
 
+
+
+// ** PUT request /api/user/editProject/:id
+router.put(`/editProject/:id`, (req, res) => {
+  console.log(`in server side for /editProject/:id`);
+  console.log(`req.params.id`, req.params.id);
+  console.log(`req.body`, req.body);
+
+  const queryText = `UPDATE "projects" 
+                    SET "description" = $1, "picture" = $2
+                    WHERE "id" = $3
+                    ;`;
+
+  pool.query(queryText,
+    [req.body.description,
+    req.body.picture,
+    req.params.id]).then((result) => {
+      console.log(`success! in PUT project details!`);
+      res.sendStatus(201);
+    }).catch((error) => {
+      console.log(`error in PUT project details`);
+      res.sendStatus(500);
+    });
+});
+
+
+
+
+
+
+
+
 module.exports = router;

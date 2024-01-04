@@ -8,6 +8,7 @@ import fetchProjects from './projects.saga';
 import detailsSaga from './details.saga';
 import projectPaintSaga from './newPaint.saga';
 import deleteProjectSaga from './deleteProject.saga';
+import updateProjectSaga from './updateProject.saga';
 
 import axios from 'axios';
 import techniqueSaga from './technique.saga';
@@ -36,6 +37,8 @@ export default function* rootSaga() {
     projectPaintSaga(), // POSt route for new paints
     deleteProjectSaga(), // deletes the entire project
     deletePaintSaga(), // deletes a single paint from project
+    updateProjectSaga(), // updates project data
+  
   ]);
   // ! NEW sagas in the yield all
   

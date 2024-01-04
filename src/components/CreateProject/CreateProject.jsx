@@ -1,11 +1,18 @@
 
+
+// IMPORTS
+// middleware
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
+// components
+import ImageUpload from '../ImageUpload/ImageUpload.jsx';
 
-function CreateProject(props) {
+
+
+function CreateProject() {
 
     const history = useHistory();
     const dispatch = useDispatch();
@@ -60,57 +67,6 @@ function CreateProject(props) {
         history.push('/projects');
     }
 
-    // back to color wheel
-    // function goToColorWheel() {
-    //     console.log(`going back to color wheel`);
-    //     history.push('/user');
-    // }
-
-
-    const onFileChange = async (event) => {
-        // Access the selected file
-        const fileToUpload = event.target.files[0];
-
-        // Limit to specific file types.
-        const acceptedImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
-
-        // Check if the file is one of the allowed types.
-        if (acceptedImageTypes.includes(fileToUpload.type)) {
-            const formData = new FormData();
-
-            // todo convert heic files
-            // Convert HEIC to JPEG
-                // if (fileToUpload.type === 'image/heic') {
-                //     const { buffer } = await heicConvert({
-                //         buffer: await fileToUpload.arrayBuffer(),
-                //         format: 'JPEG',
-                //         quality: 1,
-                //     });
-                //     const convertedFile = new File([buffer], 'image.jpg', { type: 'image/jpeg' });
-                //     formData.append('file', convertedFile);
-                // } else {
-                //     formData.append('file', fileToUpload);
-                // }
-
-            formData.append('file', fileToUpload);
-            // console.log(`process.env.REACT_APP_PRESET`, process.env.REACT_APP_PRESET);
-
-            formData.append('upload_preset', process.env.REACT_APP_PRESET);
-            let postUrl = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME}/image/upload`;
-            console.log(`postURL`, postUrl);
-            // console.log(`TARGET MARK`);
-            axios.post(postUrl, formData).then(response => {
-                console.log('Success!', response);
-                // setNewProject({ ...newProject, picture: response.data.url });
-                setMultiple(response.data.url);
-            }).catch(error => {
-                console.log('error', error);
-                alert('Something went wrong');
-            })
-        } else {
-            alert('Please select an image');
-        }
-    }
 
 
     return (
@@ -121,7 +77,7 @@ function CreateProject(props) {
                 {/* <p>User ID: {user.id}</p> */}
             </div>
 
-            {/* {JSON.stringify(newProject)} */}
+            {JSON.stringify(newProject)}
 
 
             <form id='create-form'>
@@ -129,10 +85,10 @@ function CreateProject(props) {
                 <div id='model-input'>
                     {/* <h3>Name your Project!</h3>
                     <br /> */}
-                    <input 
-                        id='model-box' 
-                        onChange={projectChange('model')} 
-                        type='text' 
+                    <input
+                        id='model-box'
+                        onChange={projectChange('model')}
+                        type='text'
                         placeholder='model name...'>
                     </input>
                 </div>
@@ -142,30 +98,22 @@ function CreateProject(props) {
                 </div>
 
                 <div id='description-input'>
-                    <textarea 
+                    <textarea
                         onChange={projectChange('description')}
-                        id='createDescription-input' 
+                        id='createDescription-input'
                         placeholder='Description of the project...'>
                     </textarea>
                 </div>
 
 
-                <div id='picture-input'>
-                    <input
-                        type="file"
-                        accept="image/*"
-                        onChange={onFileChange}
-                    />
-                    <br />
-                    {
-                        imagePath === '' ? (
-                            <h3>Upload a Photo!</h3>
-                        ) : (
-                            <img className='mainUpload' src={imagePath} />
-                        )
-                    }
-
-                </div>
+                <ImageUpload photoFunction={setMultiple} />
+                {
+                    imagePath === '' ? (
+                        <h3>Upload a Photo!</h3>
+                    ) : (
+                        <img className='mainUpload' src={imagePath} />
+                    )
+                }
 
                 <div id='create-submit'>
                     <button onClick={createProject} className="btn">Create!</button>

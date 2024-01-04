@@ -1,39 +1,35 @@
 
+// IMPORTS
+// middleware
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
+// components
+import ImageUpload from '../ImageUpload/ImageUpload.jsx';
 import PaintDetails from '../PaintDetails/PaintDetails';
 
-// Basic functional component structure for React with default state
-// value setup. When making a new component be sure to replace the
-// component name TemplateFunction with the name for the new component.
+
+
 function ProjectDetails() {
-    // Using hooks we're creating local state for a "heading" variable with
-    // a default value of 'Functional Component'
+
+    // reducer information
     const store = useSelector((store) => store);
     const paints = useSelector((store) => store.setPaintsDropdown);
     const projectDetails = useSelector((store) => store.projectDetails);
     const techniqueList = useSelector((store) => store.techniqueList);
     const paintDetails = useSelector((store) => store.paintDetails);
 
-
+    // middleware functions
     const dispatch = useDispatch();
     const history = useHistory();
 
-    // variables to post a new paint
-    // const [paintProject, setPaintProject] = useState({ hexcode: '#000000', id: '0' });
-    const [paintProject, setPaintProject] = useState('#hexcode');
-    // const [technique, setTechnique] = useState('1');
-
-    // This is going to be used to display the selected color palette
-    const [detailPalette, setDetailPalette] = useState('projectDetails.primary');
-
-    // hook for refresh
-    const { id } = useParams();
-    console.log(`useParams ID`, id);
-
+    // VARIABLES FOR PROJECT DETAILS
+    const [paintProject, setPaintProject] = useState('#hexcode'); // POST new paint variable
+    const [toggleProject, setToggleProject] = useState(true); // toggle for editing project details
+    const { id } = useParams(); // hook for refresh
+    // console.log(`useParams ID`, id);
 
     // variable to post a new paint
     let [newPaint, setNewPaint] = useState({
@@ -42,12 +38,30 @@ function ProjectDetails() {
         technique_id: '1',
         photo: ''
     });
+
+
+
+
+
+    // todo This is going to be used to display the selected color palette
+    const [detailPalette, setDetailPalette] = useState('projectDetails.primary');
+    // toggle for editing the details of the project
+
+    // todo toggle for editing individual paint details
+
+
+
     // function to set newPaint
     const newPaintChange = (key) => (event) => {
         console.log('changed newProject');
         setNewPaint({ ...newPaint, [key]: event.target.value });
-
     }
+    // set new paint IMAGE FUNCTION
+    function newPaintImage(newImage) {
+        console.log(`adding the new paint image to the new paint variable`);
+        setNewPaint({ ...newPaint, photo: newImage });
+    }
+
     // function to submit new paint post
     function addNewPaint() {
         console.log(`adding new paint`);
@@ -126,53 +140,6 @@ function ProjectDetails() {
 
 
 
-    // !! IMAGE UPLOAD for individual detials  NEEDS TO BE COMPONENT
-    const onFileChange = async (event) => {
-        // Access the selected file
-        const fileToUpload = event.target.files[0];
-
-        // Limit to specific file types.
-        const acceptedImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
-
-        // Check if the file is one of the allowed types.
-        if (acceptedImageTypes.includes(fileToUpload.type)) {
-            const formData = new FormData();
-
-            // todo convert heic files
-            // Convert HEIC to JPEG
-            // if (fileToUpload.type === 'image/heic') {
-            //     const { buffer } = await heicConvert({
-            //         buffer: await fileToUpload.arrayBuffer(),
-            //         format: 'JPEG',
-            //         quality: 1,
-            //     });
-            //     const convertedFile = new File([buffer], 'image.jpg', { type: 'image/jpeg' });
-            //     formData.append('file', convertedFile);
-            // } else {
-            //     formData.append('file', fileToUpload);
-            // }
-
-            formData.append('file', fileToUpload);
-            // console.log(`process.env.REACT_APP_PRESET`, process.env.REACT_APP_PRESET);
-
-
-            formData.append('upload_preset', process.env.REACT_APP_PRESET);
-            let postUrl = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME}/image/upload`;
-            console.log(`postURL`, postUrl);
-            // console.log(`TARGET MARK`);
-            axios.post(postUrl, formData).then(response => {
-                console.log('Success!', response);
-                alert(`Photo Upload Success!`);
-                setNewPaint({ ...newPaint, photo: response.data.url });
-            }).catch(error => {
-                console.log('error', error);
-                alert('Something went wrong');
-            })
-        } else {
-            alert('Please select an image');
-        }
-    }
-
 
     // delete entire project function
     function deleteProject(project) {
@@ -185,23 +152,52 @@ function ProjectDetails() {
     }
 
 
-
-    // PUT request start for description and main photo
+    // toggles the Edit boxes appearances and propagates two buttons 'save' and 'cancel'
     function editProject() {
         console.log(`editing your project`);
+        // toggle your edit boxes
+        setToggleProject(!toggleProject);
+        console.log(`toggle project:`, toggleProject);
 
-        // pass the object to saga
-
-        // refresh the page
-
+        // set your delivery package
+        setEditProjectPackage({
+            id: id,
+            description: `${projectDetails.description}`,
+            picture: ''
+        });
+    }
+    function cancelEdit() {
+        setToggleProject(!toggleProject);
     }
 
-    // PUT request Object keys: description, picture
-    // todo need image
+
+    // variable to update project image and description
+    const [editProjectPackage, setEditProjectPackage] = useState({
+        id: id,
+        description: ``,
+        picture: ''
+    });
+    // PUT request start for id, description, and picture
+    function saveEdits() {
+        console.log(`saving your new edits payload:`, editProjectPackage);
+        // dispatch your new information
+        dispatch({ type: 'UPDATE_PROJECT_DETAILS', payload: editProjectPackage});
+        // refresh the page
+        setTimeout(() => refreshDetails(), 250);
+        setTimeout(() => setToggleProject(!toggleProject), 250);
+    }
+    // handles the description change
+    const editProjectChange = (key) => (event) => {
+        console.log('changed newProject');
+        setEditProjectPackage({ ...editProjectPackage, [key]: event.target.value });
+    }
+    // prepares new picture for PUT request, props of ImageUpdate component
+    function editProjectPicture(properties) {
+        setEditProjectPackage({ ...editProjectPackage, picture: properties });
+    } 
 
 
-    // ! IMAGE CAPTURE NEEDS TO BE A COMPONENT
-    // captures new image for main photo display
+
 
 
 
@@ -227,21 +223,31 @@ function ProjectDetails() {
 
                     <div id='projectImage-div'>
 
-                        <div>
-                            <p key={projectDetails.id}>{projectDetails.description}</p>
-                        </div>
+                        {toggleProject === true ?
+                            <div>
+                                <p key={projectDetails.id}>{projectDetails.description}</p>
+                            </div>
+                            :
+                            <div>
+                                <textarea
+                                    onChange={editProjectChange('description')}
+                                    id='createDescription-input'
+                                    value={editProjectPackage.description}
+                                >
+                                </textarea>
+                                {JSON.stringify(editProjectPackage)}
+                            </div>
+                        }
 
-                        <img key={projectDetails.id} src={projectDetails.picture} alt="No Photo Uploaded" id='details-photo' />
+                        {toggleProject === true ?
+                            <img key={projectDetails.id} src={projectDetails.picture} alt="No Photo Uploaded" id='details-photo' />
+                            :
+                            <ImageUpload photoFunction={editProjectPicture}/>
+                        }
 
 
                     </div>
 
-
-                    {/* <div>
-                        {projectDetails.map((project) =>
-                            <h2>{project.primary}</h2>
-                        )}
-                    </div> */}
 
                     <div className='detail-palette'>
                         {/* Project Color Display */}
@@ -270,9 +276,7 @@ function ProjectDetails() {
                             id='color-select'
                             type='color'
                             disabled
-                            // value={paintProject}
                             value={paintProject}
-                        // onChange={(e) => setPaintProject(e.target.value)}
                         >
                         </input></label>
                     </div>
@@ -304,16 +308,8 @@ function ProjectDetails() {
                         </select></label>
                     </div>
 
-
-                    <div id='upload-detail'>
-                        {/* <div id='picture-input'> */}
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={onFileChange}
-                        />
-                        {/* </div> */}
-                    </div>
+                    {/* image upload for new paint addition */}
+                    <ImageUpload photoFunction={newPaintImage} />
 
                     <div id='add-paint'>
                         <button
@@ -321,11 +317,19 @@ function ProjectDetails() {
                             className='btn'
                         >Add Paint</button>
 
-                        <button
-                            onClick={() => editProject(projectDetails.id)}
-                            id='edit-project'
-                            className='btn'
-                        >Edit <br /> Project</button>
+                        {/* Toggle Buttons to Edit Project */}
+                        {toggleProject === true ?
+                            <button
+                                onClick={() => editProject(projectDetails.id)}
+                                id='edit-project'
+                                className='btn'
+                            >Edit <br /> Project</button>
+                            :
+                            <>
+                                <button onClick={cancelEdit}>Cancel</button>
+                                <button onClick={saveEdits}>Save</button>
+                            </>
+                        }
 
                         <button
                             onClick={() => deleteProject(projectDetails.id)}
@@ -341,9 +345,6 @@ function ProjectDetails() {
 
                 </div>
 
-
-
-                {/* <div id='paint-modelSteps'> */}
 
                 {/* begin the details item list  */}
                 <div id='painted-models'>
