@@ -80,8 +80,9 @@ body,
   
 
 
-  
-  /* primary background colors based on lightness */
+  /* Calculations based on Lightness */
+
+  /* primary lightness */
   --color-primary: hsl(var(--primary-color-h),
                        var(--primary-color-s),
                        var(--primary-color-l));
@@ -100,7 +101,7 @@ body,
 
 
 
-  /* secondary background colors based on lightness */
+  /* secondary lightness */
   --color-secondary: hsl(var(--secondary-color-h),
                        var(--secondary-color-s),
                        var(--secondary-color-l));
@@ -122,7 +123,7 @@ body,
 
   /*  Calculations Based on Hue  */
 
-  /* color background primary hues */
+  /* primary hues */
   --color-primary-complement: hsl(calc(var(--primary-color-h) + 180),
                           var(--primary-color-s),
                           var(--primary-color-l));              
@@ -139,7 +140,7 @@ body,
                           var(--primary-color-s),
                           var(--primary-color-l));
 
-  /* color background secondary hues */
+  /* secondary hues */
   --color-secondary-complement: hsl(calc(var(--secondary-color-h) + 180),
                           var(--secondary-color-s),
                           var(--secondary-color-l));
@@ -304,8 +305,7 @@ body,
 /* CODE FOR CREATE PROJECT PAGE */
 
 #create-page {
-  /* border: 2px solid red; */
-    /* border: 2px solid blue; */
+  border: 2px solid red;
     background-image: url('../../Images/SouthFarthing.jpg');
     background-repeat: no-repeat;
     background-position: center;
@@ -333,77 +333,104 @@ body,
     }
 
     #create-form {
-      /* border: 2px solid pink; */
+      border: 2px solid gold;
       margin: 0% 1% 0 45%;
+      display: flex;
+      flex-direction: column;
     }
         #model-input {
-          /* border: 2px solid lightgrey; */
+          border: 2px solid lightgrey;
           display: flex;
           flex-direction: column;
           /* justify-content: center; */
           align-items: center;
+          /* padding: 1%; */
         }
             #model-box {
-              width: 45%;
-              min-width: 200px;
-              height: 20px;
+              border: 2px solid red;
+              /* width: 45%; */
+              /* min-width: 200px; */
+
+              border: 2px solid black;
+              background: linear-gradient(#ffffff, 80%, #c8c8c8);
+              font-size: 18px;
+              width: 100%;
+              height: 40px;
+              max-width: 200px;
+              min-width: 100px;
               text-align: center;
-              font-size: 14px;
-              border: 3px solid grey;
+            
               border-radius: 5px;
-              background-color: #e7e7e7;
+              /* background-color: #e7e7e7; */
             }
 
-        #palette-variable {
-          /* border: 2px solid green; */
-          display: flex;
-          justify-content: center;
-          background-color: #e7e7e7;
-          border: 3px solid grey;
-          border-radius: 5px;
-          min-width: 210px;
-          margin: 2% 25%
-        }
+            /* PALETTE CSS
+              border: 2px solid black;
+  background: linear-gradient(#ffffff, 90%, #c8c8c8);
+  width: 45%;
+  height: 30px;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 18px;
+
+            */
+
+
+        /* #palette-variable {
+          border: 2px solid green; */
+          
+          /* display: flex; */
+          /* justify-content: center; */
+          /* background-color: #e7e7e7; */
+          /* border: 3px solid grey; */
+          /* border-radius: 5px; */
+          /* min-width: 210px; */
+          /* margin: 2% 25% */
+        /* } */
+
+
         #description-input {
-          /* border: 2px solid yellow; */
+          border: 2px solid purple;
           display: flex;
           justify-content: center;
-          margin: 3%;
+          /* margin: 3%; */
         }
             #createDescription-input {
+              border: 2px solid black;
               width: 60%;
-              height: 80px;
-              /* text-align: left; */
-              /* background-color: #5f2323aa; */
-              border: 3px solid grey;
-              border-radius: 5px;
-              font-size: 14px;
-              background-color: #e7e7e7;
+              max-width: 425px;
+              height: 100px;
+              background: linear-gradient(#ffffff, 80%, #c8c8c8);
+              border-radius: 10px;
+              padding: 1%;
+              font-size: 16px;
               min-width: 250px;
 
               /* color: black; */
             }
-            ::placeholder {
-              color: black;
-            }
         #picture-input {
-          /* border: 2px solid orange; */
+          border: 2px solid orange;
           display: flex;
-          flex-direction: row-reverse;
+          flex-direction: row;
           justify-content: center;
-          padding: 1%;
+          /* padding: 1%; */
         }
-            .mainUpload {
+            /* .mainUpload {
               border: 2px solid black;
               max-width: 225px;
-            }
+            } */
+        #image-preview {
+          border: 2px solid red;
+
+        }
+
 
         /* style={{ maxWidth: '250px' }} */
         #create-submit {
-          /* border: 2px solid limegreen; */
-          margin: 3% 0;
-          display: flex;
-          justify-content: center;
+          border: 2px solid limegreen;
+          /* margin: 3% 0; */
+          /* display: flex; */
+          /* justify-content: center; */
         }
 
     /* #toColors-button {
@@ -776,9 +803,12 @@ input[type="color"]::-webkit-color-swatch {
   border: none;
 }
 
+/* todo input type image?? */
+
+
 
 /* --------------------------------------------------------------------------------
-SELECT & HEXCODE
+INPUTS & SELECT & HEXCODE
 -------------------------------------------------------------------------------- */
 .selectBox {
   border: 2px solid black;
@@ -798,7 +828,10 @@ SELECT & HEXCODE
   text-align: center;
   border-radius: 3px;
   font-size: 18px;
-  
+}
+
+::placeholder {
+  color: black;
 }
 
 

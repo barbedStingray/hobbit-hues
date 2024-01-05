@@ -77,7 +77,7 @@ function CreateProject() {
                 {/* <p>User ID: {user.id}</p> */}
             </div>
 
-            {JSON.stringify(newProject)}
+            {/* {JSON.stringify(newProject)} */}
 
 
             <form id='create-form'>
@@ -93,9 +93,9 @@ function CreateProject() {
                     </input>
                 </div>
 
-                <div id='palette-variable'>
+                {/* <div id='palette-variable'>
                     <p>Palette Code: {hexcode}</p>
-                </div>
+                </div> */}
 
                 <div id='description-input'>
                     <textarea
@@ -107,25 +107,23 @@ function CreateProject() {
 
 
                 <ImageUpload photoFunction={setMultiple} />
-                {
-                    imagePath === '' ? (
-                        <h3>Upload a Photo!</h3>
-                    ) : (
-                        <img className='mainUpload' src={imagePath} />
-                    )
-                }
+
+                <div id='image-preview'>
+                    {
+                        imagePath === '' ? (
+                            <h3>Upload a Photo!</h3>
+                        ) : (
+                            <img className='mainUpload' src={imagePath} />
+                        )
+
+                    }
+                </div>
 
                 <div id='create-submit'>
                     <button onClick={createProject} className="btn">Create!</button>
                 </div>
 
             </form>
-
-
-
-            {/* <div id='toColors-button'>
-                <button onClick={goToColorWheel} className="btn">Return to Color Selection</button>
-            </div> */}
 
         </div>
     );
