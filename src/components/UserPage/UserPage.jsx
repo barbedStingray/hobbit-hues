@@ -155,10 +155,10 @@ function UserPage() {
           {/* primary/secondary inputs */}
           <div className='color-input'>
 
-            <div id='color-input-primary'>
+            <div id='color-input-buttons'>
 
               <label>Primary<br /><input
-                id='color-select'
+                className='color-select'
                 type='color'
                 value={palettePrime}
                 onChange={(e) => setColors(e.target.value, 'primary')}
@@ -167,7 +167,7 @@ function UserPage() {
 
               <select
                 name='paints'
-                id='paint-dropdown'
+                className='selectBox'
                 onChange={((e) => setColors(e.target.value, 'primary'))}
               >
                 {paints.map((paint) =>
@@ -176,7 +176,7 @@ function UserPage() {
               </select>
 
               <input
-                className='input-color-hex'
+                className='selectHex'
                 type='text'
                 value={palettePrime}
                 onChange={(e) => setColors(e.target.value, 'primary')}
@@ -185,10 +185,10 @@ function UserPage() {
 
             </div>
 
-            <div id='color-input-secondary'>
+            <div id='color-input-buttons'>
 
               <label>Secondary<br /><input
-                id='color-select'
+                className='color-select'
                 type='color'
                 value={paletteSecond}
                 onChange={(e) => setColors(e.target.value, 'secondary')}
@@ -197,7 +197,7 @@ function UserPage() {
 
               <select
                 name='paints'
-                id='paint-dropdown'
+                className='selectBox'
                 onChange={((e) => setColors(e.target.value, 'secondary'))}
               >
                 {paints.map((paint) =>
@@ -206,7 +206,7 @@ function UserPage() {
               </select>
 
               <input
-                className='input-color-hex'
+                className='selectHex'
                 type='text'
                 value={paletteSecond}
                 onChange={(e) => setColors(e.target.value, 'secondary')}

@@ -41,9 +41,10 @@ function ImageUpload(props) {
             axios.post(postUrl, formData).then(response => {
                 console.log('Success!', response);
                 props.photoFunction(response.data.url);
+                alert(`Upload Success!`);
             }).catch(error => {
                 console.log('error', error);
-                alert('Something went wrong');
+                alert('There was an issue uploading your photo, refresh and try again');
             })
         } else {
             alert('Please select an image');

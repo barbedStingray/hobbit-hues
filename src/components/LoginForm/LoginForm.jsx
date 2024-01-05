@@ -46,7 +46,7 @@ function LoginForm() {
           />
         </label>
       </div>
-      <div>
+      <div >
         <label htmlFor="password">
           Password:
           <input

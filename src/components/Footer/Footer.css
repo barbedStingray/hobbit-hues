@@ -1,10 +1,14 @@
 footer {
-  text-align: center;
+  /* text-align: center; */
   background-color: #2e2e2e;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1%;
   color: darkred;
   border-top: 2px solid black;
 
     /* ! fixed height for navbar footer ! this allows your app to have flex: 1 to fill window */ 
     height: 50px;
-
 }

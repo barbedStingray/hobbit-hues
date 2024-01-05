@@ -1,3 +1,121 @@
 
   
+/* THIS CODE IS USED IN THE USER PAGE */
 
+#user-page {
+    /* border: 2px solid blue; */
+    background-image: url('../../Images/StoneBridgeGreyscale.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* min-height: 775px; */
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    flex: 1;  
+    justify-content: space-evenly;
+  }
+      #titleinputs-form {
+        /* border: 2px solid gold; */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      #title-inputs {
+        /* border: 2px solid red; */
+        flex-basis: 350px;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: space-evenly; */
+        /* align-items: center; */
+      }
+          #title-colors {
+            /* border: 2px solid purple; */
+            font-family: ringbearer;
+            font-size: 48px;
+            color: transparent;
+            -webkit-text-stroke-color: black;
+            -webkit-text-stroke-width: 1px;
+            background: linear-gradient(green, 40%, yellow, 60%, darkorange);
+            background-clip: text;
+            /* display: flex; */
+            text-align: center;
+          }
+          /* color input css */
+          .color-input {
+            /* border: 2px solid greenyellow; */
+            display: flex;
+            flex-direction: row;
+            /* align-items: flex-end; */
+            justify-content: space-between;
+            padding: 2% 4%;
+          }
+              #color-input-buttons {
+                /* border: 2px solid pink; */
+                /* margin-bottom: 5%; */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                gap: 10px;
+                font-size: 20px;
+              }
+  
+  .side-colors {
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+  }
+      .shape-container {
+        /* border: 2px solid greenyellow; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        margin: 0 2px;
+      }
+  
+  /* divPrime-tertiary are adjustments for the circles - specific to userPage*/
+  .divPrime {
+    height: 125px;
+    width: 125px;
+    flex-basis: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 2px solid black;
+  }
+  .divSecondary {
+    height: 110px;
+    width: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 2px solid black;
+  }
+  .divTertiary {
+    height: 95px;
+    width: 95px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 2px solid black;
+  }
+  
+  #newProject-button {
+    /* border: 2px solid blue; */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25%;
+  }
+  
+  
+  /* THIS CODE IS USED IN THE USER PAGE */
+  

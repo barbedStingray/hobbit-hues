@@ -301,200 +301,6 @@ body,
 
 
 
-
-/* THIS CODE IS USED IN THE USER PAGE */
-
-#user-page {
-  /* border: 2px solid blue; */
-  background-image: url('../../Images/StoneBridgeGreyscale.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  /* min-height: 775px; */
-  padding: 0px;
-  display: flex;
-  flex-direction: row;
-  flex: 1;  
-  justify-content: space-evenly;
-  
-}
-
-#titleinputs-form {
-  /* border: 2px solid gold; */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-}
-#title-inputs {
-  /* border: 2px solid red; */
-  flex-basis: 350px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-
-
-#color-input-primary {
-  /* border: 2px solid pink; */
-  margin-bottom: 5%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-#color-input-secondary {
-  /* border: 2px solid pink; */
-  margin-bottom: 5%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-
-#title-colors {
-  font-family: ringbearer;
-  font-size: 48px;
-  color: transparent;
-  -webkit-text-stroke-color: black;
-  -webkit-text-stroke-width: 1px;
-  background: linear-gradient(green, 40%, yellow, 60%, darkorange);
-  background-clip: text;
-  display: flex;
-  text-align: center;
-
-}
-
-.newProject {
-  box-sizing: border-box;
-  width: 300px;
-  max-width: 100%;
-  padding: 20px;
-  margin: 0 auto 20px;
-  background: linear-gradient(#e9e9e9cc, 30%, #767676cc);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* border: 5px solid whitesmoke; */
-  /* box-shadow: 0 5px 10px rgb(0, 0, 0, 1); */
-  /* optional image gradient */
-  /* border-image: linear-gradient(#008000, 30%, #ffff00, 60%, #ff8c00) 30; */
-  /* border-width: 5px; */
-  /* border-style: solid; */
-  border-radius: 8px;
-}
-
-
-/* contains the circles displayed in primary and secondary views */
-.shape-container {
-  /* border: 2px solid greenyellow; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
-  gap: 5px;
-  margin: 0 2px;
-}
-
-/* color input css */
-.color-input {
-  /* border: 2px solid greenyellow; */
-  display: flex;
-  flex-direction: row;
-  flex-basis: 150px;
-  align-items: flex-end;
-  justify-content: space-between;
-  /* min-height: 120px; */
-  /* padding: 0; */
-
-}
-#color-select {
-  border: 2px solid var(--primary-color);
-  border: 2px solid black;
-  border-radius: 10px;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  overflow: hidden;
-  cursor: pointer;
-  padding: 0;
-  vertical-align: middle;
-}
-input[type="color"]::-webkit-color-swatch-wrapper {
-  padding: 0;
-}
-input[type="color"]::-webkit-color-swatch {
-  border: none;
-}
-
-.side-colors {
-  /* border: 2px solid red; */
-  display: flex;
-  /* flex: 1; */
-  width: 270px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-}
-
-.input-color-hex {
-  border: 1px solid black;
-  width: 75px;
-  height: 18px;
-  text-align: center;
-  background-color: white;
-  border-radius: 3px;
-}
-
-
-/* divPrime-tertiary are adjustments for the circles */
-.divPrime {
-  height: 115px;
-  width: 115px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  border: 2px solid black;
-}
-.divSecondary {
-  height: 100px;
-  width: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  border: 2px solid black;
-}
-.divTertiary {
-  height: 85px;
-  width: 85px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  border: 2px solid black;
-}
-
-#newProject-button {
-  /* border: 2px solid blue; */
-  display: flex;
-  justify-content: center;
-  margin-bottom: 25%;
-}
-
-
-/* THIS CODE IS USED IN THE USER PAGE */
-
-
-
-
-
 /* CODE FOR CREATE PROJECT PAGE */
 
 #create-page {
@@ -947,6 +753,53 @@ input[type="color"]::-webkit-color-swatch {
 
 
 
+/* --------------------------------------------------------------------------------
+INPUT - Color
+-------------------------------------------------------------------------------- */
+
+.color-select {
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  vertical-align: middle;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}
+
+
+/* --------------------------------------------------------------------------------
+SELECT & HEXCODE
+-------------------------------------------------------------------------------- */
+.selectBox {
+  border: 2px solid black;
+  background: linear-gradient(#ffffff, 90%, #c8c8c8);
+  font-size: 18px;
+  width: 100%;
+  height: 40px;
+  max-width: 200px;
+  min-width: 100px;
+}
+
+.selectHex {
+  border: 2px solid black;
+  background: linear-gradient(#ffffff, 90%, #c8c8c8);
+  width: 45%;
+  height: 30px;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 18px;
+  
+}
 
 
 /* --------------------------------------------------------------------------------
@@ -955,19 +808,22 @@ Button
 
 .btn {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border-width: 5px;
   border-style: solid;
-  /* border-image: linear-gradient(to right, rgb(126, 196, 47), rgb(32, 110, 18)) 1; */
   background-color: goldenrod;
   border: none;
   color: black;
   font-size: 1.1rem;
-  outline: 0;
+  outline: outset;
+  outline-color: goldenrod;
   cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px black;
 }
 .btn:hover {
   background-color: green;
+  outline-color: green;
   text-decoration: none;
   transition: 0.5s;
 }

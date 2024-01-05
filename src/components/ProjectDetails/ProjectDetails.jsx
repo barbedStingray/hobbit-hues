@@ -255,8 +255,8 @@ function ProjectDetails() {
 
                     <div id='paint-show'>
                         <label><input
-                            id='color-select'
-                            type='color'
+                className='color-select'
+                type='color'
                             disabled
                             value={paintProject}
                         >

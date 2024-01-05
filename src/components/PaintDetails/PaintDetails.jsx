@@ -12,15 +12,15 @@ function PaintDetails(props) {
     const dispatch = useDispatch();
 
 
+    // delete single paint
+    function deletePaint(paint) {
+        console.log(`deleting a single paint ID`, paint);
         // delete single paint
-        function deletePaint(paint) {
-            console.log(`deleting a single paint ID`, paint);
-            // delete single paint
-            dispatch({ type: 'DELETE_SINGLE_PAINT', payload: paint});
-            // todo refresh page / passed from props
-            props.refreshDetails();
-        }
-    
+        dispatch({ type: 'DELETE_SINGLE_PAINT', payload: paint });
+        // todo refresh page / passed from props
+        props.refreshDetails();
+    }
+
 
     return (
         <div id='project-paints'>
@@ -42,14 +42,14 @@ function PaintDetails(props) {
 
                 {/* Displaying the color of the paint! */}
                 <div id='paint-show'>
-                        <label><input
-                            id='color-select'
-                            type='color'
-                            disabled
-                            value={props.paint.hexcode}
-                        >
-                        </input></label>
-                    </div>
+                    <label><input
+                        className='color-select'
+                        type='color'
+                        disabled
+                        value={props.paint.hexcode}
+                    >
+                    </input></label>
+                </div>
 
 
                 <div id='paint-box'>
@@ -59,19 +59,19 @@ function PaintDetails(props) {
             </div>
 
             <div id='paint-delete'>
-                    <button 
-                        onClick={() => deletePaint(props.paint.id)} 
-                        id='delete-paint'
-                        className='btn'
-                    >X</button>
+                <button
+                    onClick={() => deletePaint(props.paint.id)}
+                    id='delete-paint'
+                    className='btn'
+                >X</button>
 
-                    
-                    {/* <button 
+
+                {/* <button 
                         onClick={() => editPaint(props.paint.id)} 
                         id='edit-paint'
                         className='btn'
                     >Edit</button> */}
-                    
+
             </div>
         </div>
     );
