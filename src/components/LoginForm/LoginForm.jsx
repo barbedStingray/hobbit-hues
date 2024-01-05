@@ -24,6 +24,7 @@ function LoginForm() {
     }
   }; // end login
 
+
   return (
     <form className="formPanel" onSubmit={login}>
       <h2>Login</h2>
@@ -40,6 +41,7 @@ function LoginForm() {
             name="username"
             required
             value={username}
+            className='min-width'
             onChange={(event) => setUsername(event.target.value)}
           />
         </label>
@@ -52,6 +54,7 @@ function LoginForm() {
             name="password"
             required
             value={password}
+            className='min-width'
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
