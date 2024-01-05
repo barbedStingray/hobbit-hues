@@ -1,2 +1,68 @@
 
 
+#landing-page {
+    /* border: 2px solid red; */
+    background-image: url('../../Images/HobbitHole.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: row-reverse;
+    flex: 1;  
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+    min-height: 600px;
+    gap: 10%;
+  }
+      #title-hobbit {
+        /* border: 2px solid blue; */
+        position: relative;
+        bottom: 10%;
+        width: 500px;
+        font-size: 84px;
+        font-family: ringbearer;
+        text-align: center;
+        color: transparent;
+        -webkit-text-stroke-color: black;
+        -webkit-text-stroke-width: 1px;
+        background: linear-gradient(darkgreen, 30%, limegreen, 40%, yellow, 50%, orange, 70%, red);
+        background-clip: text;
+      }
+      #login-boxes {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+      /* toggle for visible and invisible login / registration */
+      /* invisible edit form */
+      .invisible {
+        display: none;
+      }
+      /* visible edit form */
+      .visible {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+      /* login/registration form css */
+      .formPanel {
+        box-sizing: border-box;
+        padding: 20px 45px;
+        margin: 0 auto 20px;
+        background: linear-gradient(#e9e9e9cc, 30%, #767676cc);
+        border: 5px solid goldenrod;  
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+      }
+      /* controlling the login/registration textboxes */
+      .min-width {
+        width: 100%;
+        min-width: 100px;
+      }
+  
+  

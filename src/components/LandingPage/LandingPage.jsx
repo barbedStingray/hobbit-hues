@@ -1,10 +1,18 @@
+
+// IMPORTS
+// middleware
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+
+// css
 import './LandingPage.css';
 
-// CUSTOM COMPONENTS
+// components
 import RegisterForm from '../RegisterForm/RegisterForm';
 import LoginForm from '../LoginForm/LoginForm.jsx';
+
+
+
 
 function LandingPage() {
 

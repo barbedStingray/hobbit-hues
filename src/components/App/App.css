@@ -949,80 +949,6 @@ input[type="color"]::-webkit-color-swatch {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-/* ** LANDING PAGE CSS */
-
-
-#landing-page {
-  border: 2px solid red;
-  background-image: url('../../Images/HobbitHole1.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  display: flex;
-  flex-direction: row-reverse;
-  flex: 1;  
-  justify-content: center;
-  align-items: center;
-}
-
-/* ! Div deleted */
-/* #title-full {
-  border: 2px solid purple;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  margin-left: 40%;
-  margin-top: 0%;
-} */
-
-    #title-hobbit {
-      border: 2px solid blue;
-      margin: 0px 0px 0px 0px;
-      font-size: 84px;
-      font-family: ringbearer;
-      text-align: center;
-      color: transparent;
-      -webkit-text-stroke-color: black;
-      -webkit-text-stroke-width: 1px;
-      background: linear-gradient(green, 40%, yellow, 60%, darkorange);
-      background: linear-gradient(darkgreen, 30%, limegreen, 40%, yellow, 50%, orange, 70%, red);
-      background-clip: text;
-      margin: -5% 0 0 0;
-    }
-
-    #login-boxes {
-      border: 2px solid greenyellow;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-    }
-    /* toggle for visible and invisible login / registration */
-    /* invisible edit form */
-    .invisible {
-      display: none;
-      /* position: fixed; */
-      /* border: 5px solid lightgreen; */
-    }
-    /* visible edit form */
-    .visible {
-      /* border: 5px solid lightblue; */
-      display: flex;
-    }
-
-
-
 /* --------------------------------------------------------------------------------
 Button
 -------------------------------------------------------------------------------- */
@@ -1045,37 +971,6 @@ Button
   text-decoration: none;
   transition: 0.5s;
 }
-
-/* --------------------------------------------------------------------------------
-Form Treatment
--------------------------------------------------------------------------------- */
-
-/* login/registration form css */
-.formPanel {
-  box-sizing: border-box;
-  width: 400px;
-  max-width: 100%;
-  padding: 20px;
-  margin: 0 auto 20px;
-  background: linear-gradient(#e9e9e9cc, 30%, #767676cc);
-  border: 5px solid goldenrod;  
-  border-radius: 8px;
-
-}
-/* controlling the login/registration textboxes */
-.min-width {
-  /* border: 2px solid green; */
-  width: 80%;
-  min-width: 100px;
-  max-width: 150px;
-}
-
-
-/* LANDING PAGE CSS */
-
-
-
-
 
 /* --------------------------------------------------------------------------------
 Alert
