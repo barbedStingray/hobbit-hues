@@ -96,7 +96,7 @@ router.get('/projects', (req, res) => {
   console.log(`user_id`, req.user.id);
 
 
-  const queryText = `SELECT * FROM "projects" WHERE "user_id" = $1;`;
+  const queryText = `SELECT * FROM "projects" WHERE "user_id" = $1 ORDER BY "model" ASC;`;
 
   pool.query(queryText, [req.user.id]).then((result) => {
     console.log(`success in GET /projects`);

@@ -300,8 +300,7 @@ body,
 /* CODE FOR DETAILS PAGE */
 
 #details-page {
-  /* ! removing this border shifts your css for some reason */
-  border: 0.1px solid red;
+  border: 2px solid red;
   background-image: url('../../Images/HobbitHole.jpg');
   background-repeat: no-repeat;
   background-position: center;
@@ -323,189 +322,214 @@ body,
       text-align: center;
     }
     #details-body {
-      /* border: 2px solid gold; */
+      border: 2px solid gold;
       display: flex;
       flex-direction: row;
-      justify-content: center;
-      /* ! top margin altered */
-      margin-top: -30px;
-      height: 550px;
-      gap: 1%;
-      /* gap: -10px; */
       /* justify-content: center; */
+      margin-top: -2%;
+      height: 76%;
     }
+    /* ! main column */
         #color-view{
           /* border: 2px solid blue; */
           border: 3px solid #4d4848;
           border-radius: 10px;
           background-color: #f5f5f5aa;
-  
           display: flex;
           flex-direction: column;
-          padding: 10px;
+          flex-basis: 520px;
         }
-            .detail-palette {
+            #project-mainDescription {
+              /* border: 2px solid magenta; */
+              display: flex;
+              padding: 5px 20px;
+              text-align: center;
+            }
+            #projectImage-div {
+              /* border: 1.5px solid yellow; */
+              display: flex;
+              flex-grow: 1;
+              justify-content: center;
+              align-items: center;
+              height: auto;
+              text-align: center;
+            }
+                .detailsPhoto {
+                  border: 1.5px solid black;
+                  object-fit: cover;
+                  width: 100%;
+                  max-width: 500px;
+                }
+            #detail-palette {
               /* border: 2px solid red; */
-              /* flex: 1; */
-              /* width: 250px; */
               display: flex;
               flex-direction: column-reverse;
-              align-items: center; 
-              margin-top: 2%;
+              justify-content: center;
+              flex-grow: 1;
             }
-            .palette-container {
-              /* border: 2px solid greenyellow; */
-              display: flex;
-              flex-direction: row;
-              /* flex-wrap: wrap; */
-              /* min-width: 450px; */
-              align-items: center;
-              flex: 1;
-              gap: 5px;
-              margin: -13px;
-              
-            }
-                .detailPrime {
-                  height: 65px;
-                  width: 65px;
+                .palette-container {
+                  border: 2px solid greenyellow;
                   display: flex;
+                  flex-direction: row;
                   justify-content: center;
                   align-items: center;
-                  border-radius: 50%;
-                  border: 2px solid black;
                 }
-                .detailSecond {
-                  height: 55px;
-                  width: 55px;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  border-radius: 50%;
-                  border: 2px solid black;
-                }
-                .detailThird {
-                  height: 45px;
-                  width: 45px;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  border-radius: 50%;
-                  border: 2px solid black;
-                }
+                    .detailPrime {
+                      height: 100%;
+                      width: 55px;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      border-radius: 50%;
+                      border: 2px solid black;
+                    }
+                    .detailSecond {
+                      height: 90%;
+                      width: 50px;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      border-radius: 50%;
+                      border: 2px solid black;
+                    }
+                    .detailThird {
+                      height: 80%;
+                      width: 45px;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      border-radius: 50%;
+                      border: 2px solid black;
+                    }
 
-        #projectImage-div {
-          /* border: 1.5px solid black; */
-          max-width: 450px;
-          min-width: 300px;
-          text-align: center;
-          margin: 3px;
-        }
-            #details-photo {
-              border: 1.5px solid black;
 
-              /* border: 2px solid red; */
-              width: 450px;
-              height: auto;
-            }
+
+
+        /* ! main column  inputs */
         #paint-inputs {
           border: 3px solid #4d4848;
           border-radius: 10px;
           background-color: #f5f5f5aa;
           display: flex;
           flex-direction: column;
-          justify-content: space-evenly;
-          align-items: center;
-          border-radius: 10px;
-          width: 180px;
-          /* padding: 10px; */
-          background-color: #f5f5f5aa;
+          flex-basis: 100px;
 
+          /* justify-content: space-evenly; */
+          /* align-items: center; */
+          /* border-radius: 10px; */
+          /* width: 180px; */
+          /* padding: 10px; */
           /* align-items: center; */
           /* text-align: center; */
         }
+        /* ! main column steps */
+        #painted-models {
+          overflow-x: scroll;
+          /* ! code here to adjust the list of paints used */
+          display: flex;
+          flex-basis: 200px;
+          /* flex-direction: row; */
+          border: 3px solid #4d4848;
+          border-radius: 10px;
+          background-color: #f5f5f5aa;
+          /* padding: 10px; */
+          /* width: 40%; */
+          /* max-width: 900px; */
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             #paint-show {
-              margin: -50px;
+              /* margin: -50px; */
             }
+
             #paint-dropdowns {
               border: 2px solid blue;
               display: flex;
               flex-direction: column;
-              text-align: center;
+              /* text-align: center; */
               /* gap: 10px; */
             }
-            #upload-detail {
+            /* #upload-detail {
               border: 2px solid skyblue;
               display: flex;
               flex-direction: column;
               justify-content: center;
               align-items: center;
               min-width: none;
-              /* gap: 10px; */
-              /* height: 80px; */
-            }
+              gap: 10px;
+              height: 80px;
+            } */
                 #add-paint {
-                  border: 2px solid green;
-                  display: flex;
-                  flex-direction: column;
-                  gap: 40px;
+                  border: 2px solid magenta;
+                  /* display: flex; */
+                  /* flex-direction: column; */
+                  /* gap: 40px; */
                 }
 
-        #painted-models {
-          overflow-x: scroll;
-          /* ! code here to adjust the list of paints used */
-          display: flex;
-          flex-direction: row;
-          border: 3px solid #4d4848;
-          border-radius: 10px;
-          background-color: #f5f5f5aa;
-          padding: 10px;
-          width: 40%;
-          max-width: 900px;
-
-        }
 
         #project-paints {
           /* border: 2px solid red; */
-          margin: 1% 1%;
-          display: flex;
-          flex-direction: column;
-          box-shadow: 0 0 10px black;
+          /* margin: 1% 1%; */
+          /* display: flex; */
+          /* flex-direction: column; */
+          /* box-shadow: 0 0 10px black; */
           /* justify-content: space-evenly; */
         }
             #paint-step {
               /* border: 2px solid green; */
-              width: 260px;
-              height: auto;
+              /* width: 260px; */
+              /* height: auto; */
             }
                 #painted-image {
-                  border: 1.5px solid black; 
+                  border: 2px solid greenyellow; 
                   width: 250px;
                   /* ! center your photo */
-                  margin: 3.5px;
+                  /* margin: 3.5px; */
                 }
-                #painted-image:hover {
+                /* #painted-image:hover {
                   transform: scale(2.0);
                   transition: 0.3s;
                   z-index: 10;
-                }
+                } */
 
 
             #paint-description {
               /* border: 2px solid blue; */
-              text-align: center;
+              /* text-align: center; */
             }
-                #paint-box {
+            /* ! replaced by the color input */
+                /* #paint-box {
                   border: 2px solid orangered;
                   width: 100px;
                   height: 35px;
                   margin: auto;
                   margin-bottom: 4px;
-                }
+                } */
 
             #paint-delete {
               /* border: 2px solid green; */
-              display: flex;
-              justify-content: center;
+              /* display: flex; */
+              /* justify-content: center; */
               /* padding: 3px; */
             }
                 #delete-paint {
@@ -678,12 +702,3 @@ Alert
   font-size: 0.8rem;
 }
 
-
-
-
-
-
-
-
-
-/* !! The imageUpload component is now contained always inside the picture-input DIV */

@@ -92,7 +92,7 @@ function ProjectDetails() {
         console.log(`refreshing details id:`, id);
         // fetch the project details
         dispatch({ type: 'FETCH_PROJECT_DETAILS', payload: id });
-        
+
     }
     // fetches paint dropdowns
     function fetchPaintsDropdown() {
@@ -194,42 +194,43 @@ function ProjectDetails() {
                 <h2>{projectDetails.model}</h2>
             </div>
 
-            Project Details: <br /> {JSON.stringify(projectDetails)}
+            {/* Project Details: <br /> {JSON.stringify(projectDetails)} */}
             {/* PAINT DETAILS: {JSON.stringify(paintDetails)} */}
 
             <div id='details-body'>
 
                 <div id='color-view'>
 
-                    <div id='projectImage-div'>
-
+                    <div id='project-mainDescription'>
                         {toggleProject === true ?
-                            <div>
+
                                 <p key={projectDetails.id}>{projectDetails.description}</p>
-                            </div>
                             :
-                            <div>
                                 <textarea
                                     onChange={editProjectChange('description')}
                                     id='createDescription-input'
                                     value={editProjectPackage.description}
                                 >
                                 </textarea>
-                                {JSON.stringify(editProjectPackage)}
-                            </div>
                         }
-
-                        {toggleProject === true ?
-                            <img key={projectDetails.id} src={projectDetails.picture} alt="No Photo Uploaded" id='details-photo' />
-                            :
-                            <ImageUpload photoFunction={editProjectPicture} />
-                        }
-
-
                     </div>
 
 
-                    <div className='detail-palette'>
+                    <div id='projectImage-div'>
+
+                        {toggleProject === true ?
+                            <img 
+                                key={projectDetails.id} 
+                                src={projectDetails.picture} 
+                                alt="No Photo Uploaded" 
+                                className='detailsPhoto' />
+                            :
+                            <ImageUpload photoFunction={editProjectPicture} />
+                        }
+                    </div>
+
+
+                    <div id='detail-palette'>
                         {/* Project Color Display */}
                         <div className="palette-container">
                             <div className="detailThird primary-triad-2"><p>T2</p></div>
@@ -245,7 +246,7 @@ function ProjectDetails() {
                             <div className="detailSecond primary-dark"><p>Dark</p></div>
                             <div className="detailThird primary-twodark"><p>Dark</p></div>
                         </div>
-                        {projectDetails.primary}
+                        {/* {projectDetails.primary} */}
 
                     </div>
 
@@ -255,8 +256,8 @@ function ProjectDetails() {
 
                     <div id='paint-show'>
                         <label><input
-                className='color-select'
-                type='color'
+                            className='color-select'
+                            type='color'
                             disabled
                             value={paintProject}
                         >
