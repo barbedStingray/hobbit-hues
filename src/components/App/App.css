@@ -344,6 +344,8 @@ body,
               display: flex;
               padding: 5px 20px;
               text-align: center;
+              justify-content: center;
+
             }
             #projectImage-div {
               /* border: 1.5px solid yellow; */
@@ -359,7 +361,18 @@ body,
                   object-fit: cover;
                   width: 100%;
                   max-width: 500px;
+                  max-height: 380px;
+                  box-shadow: 0 5px 15px black;
                 }
+                .newMainUpload {
+                  border: 2px solid black;
+                  border-radius: 10px;
+                  width: 80%;
+                  height: 80%;
+                  object-fit: cover;
+                  box-shadow: 0 5px 15px black;
+                }
+                /* ! landscape photos preferred,  */
             #detail-palette {
               /* border: 2px solid red; */
               display: flex;
@@ -368,11 +381,12 @@ body,
               flex-grow: 1;
             }
                 .palette-container {
-                  border: 2px solid greenyellow;
+                  /* border: 2px solid greenyellow; */
                   display: flex;
                   flex-direction: row;
                   justify-content: center;
                   align-items: center;
+                  /* margin: 5px 0; */
                 }
                     .detailPrime {
                       height: 100%;
@@ -405,15 +419,14 @@ body,
 
 
 
-        /* ! main column  inputs */
-        #paint-inputs {
-          border: 3px solid #4d4848;
-          border-radius: 10px;
-          background-color: #f5f5f5aa;
+
+
+        /* ! main column  newPaint inputs */
+        #middle-bar {
+          border: 2px solid mediumturquoise;
           display: flex;
           flex-direction: column;
-          flex-basis: 100px;
-
+          flex-basis: 200px;
           /* justify-content: space-evenly; */
           /* align-items: center; */
           /* border-radius: 10px; */
@@ -422,6 +435,26 @@ body,
           /* align-items: center; */
           /* text-align: center; */
         }
+        #add-paint {
+          border: 2px solid lightblue;
+          /* border: 3px solid #4d4848; */
+          border-radius: 10px;
+          background-color: #f5f5f5aa;
+          display: flex;
+          flex-direction: column;
+          flex-grow: 2;
+          /* gap: 40px; */
+        }
+        #button-bar {
+          border: 2px solid magenta;
+          /* border: 3px solid #4d4848; */
+          border-radius: 10px;
+          background-color: #f5f5f5aa;
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+        }
+
         /* ! main column steps */
         #painted-models {
           overflow-x: scroll;
@@ -479,12 +512,6 @@ body,
               gap: 10px;
               height: 80px;
             } */
-                #add-paint {
-                  border: 2px solid magenta;
-                  /* display: flex; */
-                  /* flex-direction: column; */
-                  /* gap: 40px; */
-                }
 
 
         #project-paints {

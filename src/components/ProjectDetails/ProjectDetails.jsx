@@ -40,6 +40,9 @@ function ProjectDetails() {
         notes: ''
     });
 
+    // new main photo display
+    let [imagePath, setImagePath] = useState('');
+
 
 
 
@@ -147,6 +150,7 @@ function ProjectDetails() {
     }
     function cancelEdit() {
         setToggleProject(!toggleProject);
+        setImagePath('');
     }
 
     // variable to update project image and description
@@ -171,14 +175,11 @@ function ProjectDetails() {
     }
     // prepares new picture for PUT request, props of ImageUpdate component
     function editProjectPicture(properties) {
+        console.log(`properties`, properties)
         setEditProjectPackage({ ...editProjectPackage, picture: properties });
+        setImagePath(properties);
+        console.log(`imagePath`, imagePath);
     }
-
-
-
-
-
-
 
 
 
@@ -204,14 +205,15 @@ function ProjectDetails() {
                     <div id='project-mainDescription'>
                         {toggleProject === true ?
 
-                                <p key={projectDetails.id}>{projectDetails.description}</p>
+                            <p key={projectDetails.id}>{projectDetails.description}</p>
                             :
-                                <textarea
-                                    onChange={editProjectChange('description')}
-                                    id='createDescription-input'
-                                    value={editProjectPackage.description}
-                                >
-                                </textarea>
+                            <textarea
+                                onChange={editProjectChange('description')}
+                                // ! this is the same as the createProject.css
+                                id='createDescription-input'
+                                value={editProjectPackage.description}
+                            >
+                            </textarea>
                         }
                     </div>
 
@@ -219,13 +221,30 @@ function ProjectDetails() {
                     <div id='projectImage-div'>
 
                         {toggleProject === true ?
-                            <img 
-                                key={projectDetails.id} 
-                                src={projectDetails.picture} 
-                                alt="No Photo Uploaded" 
+                            <img
+                                key={projectDetails.id}
+                                src={projectDetails.picture}
+                                alt="No Photo Uploaded"
                                 className='detailsPhoto' />
                             :
-                            <ImageUpload photoFunction={editProjectPicture} />
+                            <>
+                                <ImageUpload photoFunction={editProjectPicture} />
+                                {
+                                    imagePath === '' ? (
+                                        <></>
+                                    ) : (
+
+                                        <div id='image-preview'>
+
+                                            <img className='newMainUpload' src={imagePath} />
+                                        </div>
+
+                                    )
+
+                                }
+                            </>
+
+
                         }
                     </div>
 
@@ -252,71 +271,70 @@ function ProjectDetails() {
 
                 </div>
 
-                <div id='paint-inputs'>
-
-                    <div id='paint-show'>
-                        <label><input
-                            className='color-select'
-                            type='color'
-                            disabled
-                            value={paintProject}
-                        >
-                        </input></label>
-                    </div>
-
-                    <div id='paint-dropdowns'>
-
-                        <label>Paint <br /><select
-                            name='paints'
-                            id='paint-dropdown'
-                            // onChange={(e) => setPaintProject(JSON.parse(e.target.value))}
-                            // onChange={(e) => setNewPaint({ ...newPaint, paint_id: (JSON.parse(e.target.value))})}
-                            onChange={(e) => setMultiple({ ...newPaint, paint_id: (JSON.parse(e.target.value)) })}
-
-                        >
-                            {paints.map((paint) =>
-                                // <option value={paint.hexcode} key={paint.id}>{paint.paint}</option>
-                                <option value={JSON.stringify({ hexcode: paint.hexcode, id: paint.id })} key={paint.id}>{paint.paint}</option>
-                            )}
-                        </select></label>
-
-                        <label>Technique <br /><select
-                            name='techniques'
-                            id='technique-dropdown'
-                            onChange={newPaintChange('technique_id')}
-                        >
-                            {techniqueList.map((technique) =>
-                                <option value={technique.id} key={technique.id}>{technique.technique}</option>
-                            )}
-
-
-                            {/* !! Adding new TEXT AREA for NOTES */}
-                        </select></label>
-
-                        <label><textarea
-                            name='notes'
-                            onChange={newPaintChange('notes')}
-                            placeholder='paint notes here...'
-                        ></textarea></label>
-
-
-
-
-                        {/* New Paint: {JSON.stringify(newPaint)} */}
-
-
-
-
-                    </div>
-
-                    {/* image upload for new paint addition */}
-                    <ImageUpload photoFunction={newPaintImage} />
+                {/* NEW PAINT INPUTS */}
+                <div id='middle-bar'>
 
                     <div id='add-paint'>
-                        <button
-                            onClick={addNewPaint}
-                            className='btn'
-                        >Add Paint</button>
+
+                        <div id='paint-show'>
+                            <label><input
+                                className='color-select'
+                                type='color'
+                                disabled
+                                value={paintProject}
+                            >
+                            </input></label>
+                        </div>
+
+                        <div id='paint-dropdowns'>
+
+                            <label>Paint <br /><select
+                                name='paints'
+                                id='paint-dropdown'
+                                // onChange={(e) => setPaintProject(JSON.parse(e.target.value))}
+                                // onChange={(e) => setNewPaint({ ...newPaint, paint_id: (JSON.parse(e.target.value))})}
+                                onChange={(e) => setMultiple({ ...newPaint, paint_id: (JSON.parse(e.target.value)) })}
+
+                            >
+                                {paints.map((paint) =>
+                                    // <option value={paint.hexcode} key={paint.id}>{paint.paint}</option>
+                                    <option value={JSON.stringify({ hexcode: paint.hexcode, id: paint.id })} key={paint.id}>{paint.paint}</option>
+                                )}
+                            </select></label>
+
+                            <label>Technique <br /><select
+                                name='techniques'
+                                id='technique-dropdown'
+                                onChange={newPaintChange('technique_id')}
+                            >
+                                {techniqueList.map((technique) =>
+                                    <option value={technique.id} key={technique.id}>{technique.technique}</option>
+                                )}
+
+
+                                {/* !! Adding new TEXT AREA for NOTES */}
+                            </select></label>
+
+                            <label><textarea
+                                name='notes'
+                                onChange={newPaintChange('notes')}
+                                placeholder='paint notes here...'
+                            ></textarea></label>
+
+                            {/* image upload for new paint addition */}
+                            <ImageUpload photoFunction={newPaintImage} />
+
+
+                            <button
+                                onClick={addNewPaint}
+                                className='btn'
+                            >Add Paint</button>
+
+
+                        </div>
+                    </div>
+
+                    <div id='button-bar'>
 
                         {/* Toggle Buttons to Edit Project */}
                         {toggleProject === true ?
@@ -338,12 +356,7 @@ function ProjectDetails() {
                             className='btn'
                         >Delete <br /> Project</button>
 
-
-
-
                     </div>
-
-
                 </div>
 
 
