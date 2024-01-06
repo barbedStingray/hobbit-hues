@@ -38,8 +38,9 @@
             -webkit-text-stroke-width: 1px;
             background: linear-gradient(green, 40%, yellow, 60%, darkorange);
             background-clip: text;
-            /* display: flex; */
             text-align: center;
+            /* text-decoration: underline; */
+            /* text-decoration-color: #4b4b4b; */
           }
           /* color input css */
           .color-input {
@@ -49,6 +50,7 @@
             /* align-items: flex-end; */
             justify-content: space-between;
             padding: 2% 4%;
+
           }
               #color-input-buttons {
                 /* border: 2px solid pink; */
@@ -60,6 +62,7 @@
                 text-align: center;
                 gap: 10px;
                 font-size: 20px;
+
               }
   
   .side-colors {
@@ -89,6 +92,7 @@
     align-items: center;
     border-radius: 50%;
     border: 2px solid black;
+    box-shadow: 0 5px 15px black;
   }
   .divSecondary {
     height: 110px;
@@ -98,6 +102,7 @@
     align-items: center;
     border-radius: 50%;
     border: 2px solid black;
+    box-shadow: 0 5px 15px black;
   }
   .divTertiary {
     height: 95px;
@@ -107,6 +112,7 @@
     align-items: center;
     border-radius: 50%;
     border: 2px solid black;
+    box-shadow: 0 5px 15px black;
   }
   
   #newProject-button {

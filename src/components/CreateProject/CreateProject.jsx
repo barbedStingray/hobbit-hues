@@ -10,6 +10,8 @@ import axios from 'axios';
 // components
 import ImageUpload from '../ImageUpload/ImageUpload.jsx';
 
+import './CreateProject.css';
+
 
 
 function CreateProject() {
@@ -89,13 +91,18 @@ function CreateProject() {
                         id='model-box'
                         onChange={projectChange('model')}
                         type='text'
-                        placeholder='model name...'>
+                        placeholder='Model Name Here...'
+                    >
                     </input>
+
+                    <div id='palette-variable'>
+                        <p>Palette: {hexcode}</p>
+                    </div>
+
+
+
                 </div>
 
-                {/* <div id='palette-variable'>
-                    <p>Palette Code: {hexcode}</p>
-                </div> */}
 
                 <div id='description-input'>
                     <textarea
@@ -105,15 +112,19 @@ function CreateProject() {
                     </textarea>
                 </div>
 
+                <div id='image-work'>
+                    <ImageUpload photoFunction={setMultiple} />
 
-                <ImageUpload photoFunction={setMultiple} />
-
-                <div id='image-preview'>
                     {
                         imagePath === '' ? (
-                            <h3>Upload a Photo!</h3>
+                            <></>
                         ) : (
-                            <img className='mainUpload' src={imagePath} />
+
+                            <div id='image-preview'>
+
+                                <img className='mainUpload' src={imagePath} />
+                            </div>
+
                         )
 
                     }

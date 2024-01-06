@@ -55,14 +55,17 @@ function ImageUpload(props) {
 
 
     return (
-            <div id='picture-input'>
-                <input
-                    type="file"
-                    accept="image/*"
-                    onChange={onFileChange}
-                />
-                <br />
-            </div>
+        <div id='picture-input'>
+            <input
+                type="file"
+                accept="image/*"
+                onChange={onFileChange}
+                className='pictureImport'
+                id='fileInput'
+            />
+            <label for="fileInput" className="ben-file-upload">Add a Photo!</label>
+
+        </div>
     );
 }
 

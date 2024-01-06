@@ -302,146 +302,6 @@ body,
 
 
 
-/* CODE FOR CREATE PROJECT PAGE */
-
-#create-page {
-  border: 2px solid red;
-    background-image: url('../../Images/SouthFarthing.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    min-height: 775px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;  
-
-    /* justify-content: space-evenly; */
-}
-
-    #create-heading {
-      /* border: 2px solid blue; */
-      font-family: ringbearer;
-      font-size: 48px;
-      color: transparent;
-      -webkit-text-stroke-color: black;
-      -webkit-text-stroke-width: 1px;
-      background: linear-gradient(green, 40%, yellow, 60%, darkorange);
-      background-clip: text;
-      text-align: center;
-      margin-left: 45%;
-
-    }
-
-    #create-form {
-      border: 2px solid gold;
-      margin: 0% 1% 0 45%;
-      display: flex;
-      flex-direction: column;
-    }
-        #model-input {
-          border: 2px solid lightgrey;
-          display: flex;
-          flex-direction: column;
-          /* justify-content: center; */
-          align-items: center;
-          /* padding: 1%; */
-        }
-            #model-box {
-              border: 2px solid red;
-              /* width: 45%; */
-              /* min-width: 200px; */
-
-              border: 2px solid black;
-              background: linear-gradient(#ffffff, 80%, #c8c8c8);
-              font-size: 18px;
-              width: 100%;
-              height: 40px;
-              max-width: 200px;
-              min-width: 100px;
-              text-align: center;
-            
-              border-radius: 5px;
-              /* background-color: #e7e7e7; */
-            }
-
-            /* PALETTE CSS
-              border: 2px solid black;
-  background: linear-gradient(#ffffff, 90%, #c8c8c8);
-  width: 45%;
-  height: 30px;
-  text-align: center;
-  border-radius: 3px;
-  font-size: 18px;
-
-            */
-
-
-        /* #palette-variable {
-          border: 2px solid green; */
-          
-          /* display: flex; */
-          /* justify-content: center; */
-          /* background-color: #e7e7e7; */
-          /* border: 3px solid grey; */
-          /* border-radius: 5px; */
-          /* min-width: 210px; */
-          /* margin: 2% 25% */
-        /* } */
-
-
-        #description-input {
-          border: 2px solid purple;
-          display: flex;
-          justify-content: center;
-          /* margin: 3%; */
-        }
-            #createDescription-input {
-              border: 2px solid black;
-              width: 60%;
-              max-width: 425px;
-              height: 100px;
-              background: linear-gradient(#ffffff, 80%, #c8c8c8);
-              border-radius: 10px;
-              padding: 1%;
-              font-size: 16px;
-              min-width: 250px;
-
-              /* color: black; */
-            }
-        #picture-input {
-          border: 2px solid orange;
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          /* padding: 1%; */
-        }
-            /* .mainUpload {
-              border: 2px solid black;
-              max-width: 225px;
-            } */
-        #image-preview {
-          border: 2px solid red;
-
-        }
-
-
-        /* style={{ maxWidth: '250px' }} */
-        #create-submit {
-          border: 2px solid limegreen;
-          /* margin: 3% 0; */
-          /* display: flex; */
-          /* justify-content: center; */
-        }
-
-    /* #toColors-button {
-      margin-left: 60%;
-      margin-top: 5%;
-    } */
-
-
-
-
-/* CODE FOR CREATE PROJECT PAGE */
 
 
 
@@ -794,6 +654,8 @@ INPUT - Color
   cursor: pointer;
   padding: 0;
   vertical-align: middle;
+  box-shadow: 0 5px 15px black;
+
 }
 
 input[type="color"]::-webkit-color-swatch-wrapper {
@@ -803,7 +665,46 @@ input[type="color"]::-webkit-color-swatch {
   border: none;
 }
 
-/* todo input type image?? */
+
+/* --------------------------------------------------------------------------------
+INPUT - file
+-------------------------------------------------------------------------------- */
+
+
+/* import image button */
+#picture-input {
+  /* border: 2px solid orange; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.pictureImport {
+  display: none;
+}
+
+.ben-file-upload {
+  cursor: pointer;
+  padding: 10px 15px;
+  font-size: 18px;
+  background-color: skyblue;
+  color: black;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px black;
+  outline: outset;
+  outline-color: skyblue;
+  border: 1px solid darkblue;
+  transition: 0.3s;
+}
+
+.ben-file-upload:hover {
+  /* background-color: #2980b9; */
+  border: 1px solid lightgreen;
+  outline-color: green;
+  background-color: green;
+  color: whitesmoke;
+
+}
 
 
 
@@ -818,6 +719,7 @@ INPUTS & SELECT & HEXCODE
   height: 40px;
   max-width: 200px;
   min-width: 100px;
+
 }
 
 .selectHex {
@@ -831,7 +733,7 @@ INPUTS & SELECT & HEXCODE
 }
 
 ::placeholder {
-  color: black;
+  color: grey;
 }
 
 
@@ -845,8 +747,7 @@ Button
   border-width: 5px;
   border-style: solid;
   background-color: goldenrod;
-  border: none;
-  color: black;
+  border: 1px solid gold;
   font-size: 1.1rem;
   outline: outset;
   outline-color: goldenrod;
@@ -857,8 +758,11 @@ Button
 .btn:hover {
   background-color: green;
   outline-color: green;
+  border: 1px solid lightgreen;
   text-decoration: none;
   transition: 0.5s;
+  color: white;
+
 }
 
 /* --------------------------------------------------------------------------------
