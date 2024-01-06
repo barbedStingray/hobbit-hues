@@ -92,3 +92,7 @@
 [] desctiptions of the techniques
 [] how to use it
 [] clarify parts that may be less specific
+
+
+TODO 
+    [] need to update GET routes to sort alphabetically

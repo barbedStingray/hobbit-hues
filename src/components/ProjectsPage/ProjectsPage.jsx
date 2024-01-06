@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import ProjectItem from '../ProjectItem/ProjectItem.jsx';
 // project item import
 
+import './ProjectsPage.css';
+
 
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the

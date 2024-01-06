@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import './ProjectItem.css';
+
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
 // component name TemplateFunction with the name for the new component.
@@ -32,7 +34,7 @@ function ProjectItem(props) {
         <div id='single-project' onClick={() => projectDetails(props.project)}>
 
             <div id='project-photo'>
-                <img src={props.project.picture} alt="No Photo Uploaded" id='photo-project' />
+                <img src={props.project.picture} alt="No Photo Uploaded" className='photo-project' />
             </div>
 
             <div id='project-words'>
@@ -43,7 +45,6 @@ function ProjectItem(props) {
                 <div id='project-description'>
                     <p>{props.project.description}</p>
                 </div>
-
             </div>
 
 

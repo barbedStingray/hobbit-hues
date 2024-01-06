@@ -297,116 +297,6 @@ body,
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* CODE FOR PROJECT PAGE */
-
-#projects-page {
-  /* border: 2px solid red; */
-    background-image: url('../../Images/HobbitHole11.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    flex: 1;  
-    align-items: center;
-}
-    #project-heading {
-      /* border: 2px solid red; */
-      font-family: ringbearer;
-      font-size: 48px;
-      color: transparent;
-      -webkit-text-stroke-color: black;
-      -webkit-text-stroke-width: 1px;
-      background: linear-gradient(green, 40%, yellow, 60%, darkorange);
-      background-clip: text;
-      text-align: center;
-
-    }
-    #projects-display {
-      border: 3px solid #4d4848;
-      background-color: #f5f5f5aa;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-      border-radius: 10px;
-      min-width: 600px;
-      width: 70%;
-      height: 450px;
-      margin-top: -20px;
-      padding: 15px 0;
-      overflow: scroll;
-    }
-        #single-project {
-          /* border: 2px solid black; */
-          border-radius: 5px;
-          padding: 3px;
-          margin: 1% 1%;
-          width: 45%;
-          display: flex;
-          box-shadow: 0 0 10px black;
-
-        }
-        #single-project:hover {
-          box-shadow: 0 0 15px gold;
-          cursor: pointer;
-          transition: 0.4s;
-        }
-                #photo-project {
-                  width: 220px;
-                  height: auto;
-                  border: 2px solid black;
-                  border-radius: 5px;
-                }
-
-            #project-words {
-              /* border: 2px solid purple; */
-              width: 70%;
-              margin-left: 8px;
-            }
-            #project-model {
-              /* border: 2px solid red; */
-              text-align: center;
-            }
-            /* #project-primary {
-              border: 2px solid purple;
-            } */
-            #project-description {
-              /* border: 2px solid goldenrod; */
-              text-align: left;
-              margin: 0 0;
-              padding: 0 8px;
-
-            }
-
-
-/* CODE FOR PROJECT PAGE */
-
-
-
-
-
-
-
-
-
-
-
-
 /* CODE FOR DETAILS PAGE */
 
 #details-page {
@@ -631,12 +521,20 @@ body,
                 }
 
                 /* ! decreases input file size */
-                input[type="file"] {
+                /* input[type="file"] {
                   min-width: 50px;
                   max-width: 170px;
-                }
+                } */
             
 /* CODE FOR DETAILS PAGE */
+
+
+
+
+
+
+
+
 
 
 

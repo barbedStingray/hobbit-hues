@@ -44,7 +44,7 @@ function ImageUpload(props) {
                 alert(`Upload Success!`);
             }).catch(error => {
                 console.log('error', error);
-                alert('There was an issue uploading your photo, refresh and try again');
+                alert('Upload Incomplete, Accepted formats: .gif, .jpeg, .png Please refresh and try again');
             })
         } else {
             alert('Please select an image');

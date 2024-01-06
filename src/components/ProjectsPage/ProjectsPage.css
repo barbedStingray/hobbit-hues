@@ -1,0 +1,45 @@
+
+
+
+#projects-page {
+    border: 2px solid red;
+      background-image: url('../../Images/HobbitHole11.jpg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      flex: 1;  
+      align-items: center;
+  }
+      #project-heading {
+        /* border: 2px solid red; */
+        font-family: ringbearer;
+        font-size: 48px;
+        color: transparent;
+        -webkit-text-stroke-color: black;
+        -webkit-text-stroke-width: 1px;
+        background: linear-gradient(darkgreen, 30%, limegreen, 40%, yellow, 50%, orange, 70%, red);
+        background-clip: text;
+        text-align: center;
+  
+      }
+      #projects-display {
+        border: 3px solid #4d4848;
+        background-color: #f5f5f5aa;
+        box-shadow: 0 0 15px black;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        border-radius: 10px;
+        min-width: 600px;
+        max-width: 1000px;
+        height: 470px;
+  
+        overflow: scroll;
+        padding: 1% 0;
+        margin-bottom: 2%;
+        margin-top: -1%;
+      }
+  
