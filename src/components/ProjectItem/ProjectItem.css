@@ -2,13 +2,20 @@
 
 
 #single-project {
-    /* border: 2px solid black; */
+    border: 0.5px solid black;
     border-radius: 10px;
-    width: 46%;
+    width: 350px;
     display: flex;
     box-shadow: 0 0 15px black;
-    margin: 1%;
+    margin: 0.5%;
     padding: 0.5%;
+
+    animation-name: project-magic;
+    animation-duration: 1s;
+    /* transform: translateY(150%); */
+    /* animation-fill-mode: forwards; */
+    animation-timing-function: ease-out;
+
   }
   #single-project:hover {
     box-shadow: 0 0 15px gold;
@@ -22,7 +29,7 @@
             border: 2px solid black;
             border-radius: 10px;
             display: flex;
-            flex: 1;
+            flex: 3;
           }
               .photo-project {
                 /* border: 2px solid black; */
@@ -36,7 +43,7 @@
       #project-words {
         /* border: 2px solid purple; */
         display: flex;
-        flex: 2;
+        flex: 4;
         flex-direction: column;
         margin-left: 8px;
       }
@@ -49,7 +56,7 @@
         /* border: 2px solid goldenrod; */
         text-align: left;
         padding: 0 8px;
-        margin-top: -15px;
+        margin-top: -20px;
       }
 
 

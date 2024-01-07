@@ -1,6 +1,8 @@
 
 import { useSelector, useDispatch } from 'react-redux';
 
+import './PaintDetails.css';
+
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
 // component name TemplateFunction with the name for the new component.
@@ -30,39 +32,39 @@ function PaintDetails(props) {
             </div>
 
             <div id='paint-description'>
+                <div>
+                    <h4 className='defaultMargin'>{props.paint.paint}</h4>
+                </div>
+
                 <div >
                     <p className='defaultMargin'>{props.paint.technique}</p>
-                </div>
-                <div>
-                    <p className='defaultMargin'>{props.paint.paint}</p>
                 </div>
                 <div>
                     <p className='defaultMargin'>{props.paint.notes}</p>
                 </div>
 
-                {/* Displaying the color of the paint! */}
-                <div id='paint-show'>
-                    <label><input
-                        className='color-select'
-                        type='color'
-                        disabled
-                        value={props.paint.hexcode}
-                    >
-                    </input></label>
-                </div>
+
+                <div id='paintColor-display'>
+                    {/* Displaying the color of the paint! */}
+                    <div>
+                        <label><input
+                            className='color-select'
+                            type='color'
+                            disabled
+                            value={props.paint.hexcode}
+                        >
+                        </input></label>
+                    </div>
 
 
-                <div id='paint-box'>
-                    {/* <p>color box</p> */}
+                    <div>
+                        <button
+                            onClick={() => deletePaint(props.paint.id)}
+                            className='btn_sm btn_del'
+                        >X</button>
+                    </div>
                 </div>
 
-                <div id='paint-delete'>
-                    <button
-                        onClick={() => deletePaint(props.paint.id)}
-                        id='delete-paint'
-                        className='btn'
-                    >X</button>
-                </div>
 
             </div>
         </div>

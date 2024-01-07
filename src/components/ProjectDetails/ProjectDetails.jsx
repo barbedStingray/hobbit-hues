@@ -10,6 +10,8 @@ import axios from 'axios';
 import ImageUpload from '../ImageUpload/ImageUpload.jsx';
 import PaintDetails from '../PaintDetails/PaintDetails';
 
+import './ProjectDetails.css';
+
 
 
 function ProjectDetails() {
@@ -199,7 +201,6 @@ function ProjectDetails() {
 
 
 
-
     return (
         <div id='details-page'>
 
@@ -362,6 +363,7 @@ function ProjectDetails() {
                             'Close Menu'}</button>
 
 
+
                         {/* Toggle Buttons to Edit Project */}
                         {toggleProject === true ?
                             <button
@@ -379,7 +381,7 @@ function ProjectDetails() {
                         <button
                             onClick={() => deleteProject(projectDetails.id)}
                             id='delete-project'
-                            className='btn_sm'
+                            className='btn_sm btn_del'
                         >Delete Project</button>
 
                     </div>
@@ -388,9 +390,9 @@ function ProjectDetails() {
                 {/* begin the details item list  */}
                 <div id='painted-models'>
 
-                        {paintDetails.map((paint) =>
-                            <PaintDetails paint={paint} refreshDetails={refreshDetails} />
-                        )}
+                    {paintDetails.map((paint) =>
+                        <PaintDetails paint={paint} refreshDetails={refreshDetails} />
+                    )}
                 </div>
                 {/* ! map for the paint details component */}
 
