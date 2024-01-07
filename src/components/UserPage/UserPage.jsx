@@ -3,7 +3,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { motion as m, AnimatePresence } from 'framer-motion';
 
 import ColorWheel from '../ColorWheel/ColorWheel.jsx';
 
@@ -114,145 +114,161 @@ const UserPage = ({ showComponent }) => {
 
 
 
+
+
   return (
+    <AnimatePresence
+      // initial={false}
+      mode={"wait"}
+    >
+      <m.div
+        key='user'
 
-    <div id='user-page'>
+        
+        initial={{ y: '-100%' }}
+        animate={{ y: '0%' }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+        exit={{ opacity: 1 }}
 
-      {/* {JSON.stringify(paints)} */}
 
-      {/* <ColorWheel 
+        id='user-page'>
+
+        {/* {JSON.stringify(paints)} */}
+
+        {/* <ColorWheel 
         setPalettePrime={setPalettePrime}
         setPaletteSecond={setPaletteSecond}
       /> */}
 
 
-      <div className='side-colors'>
-        {/* Primary Color Display */}
-        <div className="shape-container">
-          <div className="divTertiary primary-triad-2"><p>Triad 2</p></div>
-          <div className="divSecondary primary-triad-1"><p>Triad 1</p></div>
-          <div className="divPrime primary-complement"><p>Complement</p></div>
-          <div className="divSecondary primary-analog-1"><p>Analog 1</p></div>
-          <div className="divTertiary primary-analog-2"><p>Analog 2</p></div>
-        </div>
-        <div className="shape-container">
-          <div className="divTertiary primary-twolight"><p>Light</p></div>
-          <div className="divSecondary primary-light"><p>Light</p></div>
-          <div className="divPrime primary"><p>Primary</p></div>
-          <div className="divSecondary primary-dark"><p>Dark</p></div>
-          <div className="divTertiary primary-twodark"><p>Dark</p></div>
-        </div>
-      </div>
-
-      <div id='titleinputs-form'>
-
-        <div id='title-inputs'>
-          {/* page title */}
-          <div id='title-colors'>
-            {/* <h2>Color Wheel</h2> */}
-            <h2>Welcome {user.username}!</h2>
-
-            {/* <h2>Prancing Palette</h2> */}
+        <div className='side-colors'>
+          {/* Primary Color Display */}
+          <div className="shape-container">
+            <div className="divTertiary primary-triad-2"><p>Triad 2</p></div>
+            <div className="divSecondary primary-triad-1"><p>Triad 1</p></div>
+            <div className="divPrime primary-complement"><p>Complement</p></div>
+            <div className="divSecondary primary-analog-1"><p>Analog 1</p></div>
+            <div className="divTertiary primary-analog-2"><p>Analog 2</p></div>
           </div>
-
-
-          {/* primary/secondary inputs */}
-          <div className='color-input'>
-
-            <div id='color-input-buttons'>
-
-              <label>Primary<br /><input
-                className='color-select'
-                type='color'
-                value={palettePrime}
-                onChange={(e) => setColors(e.target.value, 'primary')}
-              >
-              </input></label>
-
-              <select
-                name='paints'
-                className='selectBox'
-                onChange={((e) => setColors(e.target.value, 'primary'))}
-              >
-                {paints.map((paint) =>
-                  <option value={paint.hexcode} key={paint.id}>{paint.paint}</option>
-                )}
-              </select>
-
-              <input
-                className='selectHex'
-                type='text'
-                value={palettePrime}
-                onChange={(e) => setColors(e.target.value, 'primary')}
-              >
-              </input>
-
-            </div>
-
-            <div id='color-input-buttons'>
-
-              <label>Secondary<br /><input
-                className='color-select'
-                type='color'
-                value={paletteSecond}
-                onChange={(e) => setColors(e.target.value, 'secondary')}
-              >
-              </input></label>
-
-              <select
-                name='paints'
-                className='selectBox'
-                onChange={((e) => setColors(e.target.value, 'secondary'))}
-              >
-                {paints.map((paint) =>
-                  <option value={paint.hexcode} key={paint.id}>{paint.paint}</option>
-                )}
-              </select>
-
-              <input
-                className='selectHex'
-                type='text'
-                value={paletteSecond}
-                onChange={(e) => setColors(e.target.value, 'secondary')}
-              >
-              </input>
-
-            </div>
-
-
-
+          <div className="shape-container">
+            <div className="divTertiary primary-twolight"><p>Light</p></div>
+            <div className="divSecondary primary-light"><p>Light</p></div>
+            <div className="divPrime primary"><p>Primary</p></div>
+            <div className="divSecondary primary-dark"><p>Dark</p></div>
+            <div className="divTertiary primary-twodark"><p>Dark</p></div>
           </div>
         </div>
 
-        <div id='newProject-button'>
-          {/* new project button */}
-          <button onClick={createNewProject} className="btn">Create New Project</button>
+        <div id='titleinputs-form'>
+
+          <div id='title-inputs'>
+            {/* page title */}
+            <div id='title-colors'>
+              {/* <h2>Color Wheel</h2> */}
+              <h2>Welcome {user.username}!</h2>
+
+              {/* <h2>Prancing Palette</h2> */}
+            </div>
+
+
+            {/* primary/secondary inputs */}
+            <div className='color-input'>
+
+              <div id='color-input-buttons'>
+
+                <label>Primary<br /><input
+                  className='color-select'
+                  type='color'
+                  value={palettePrime}
+                  onChange={(e) => setColors(e.target.value, 'primary')}
+                >
+                </input></label>
+
+                <select
+                  name='paints'
+                  className='selectBox'
+                  onChange={((e) => setColors(e.target.value, 'primary'))}
+                >
+                  {paints.map((paint) =>
+                    <option value={paint.hexcode} key={paint.id}>{paint.paint}</option>
+                  )}
+                </select>
+
+                <input
+                  className='selectHex'
+                  type='text'
+                  value={palettePrime}
+                  onChange={(e) => setColors(e.target.value, 'primary')}
+                >
+                </input>
+
+              </div>
+
+              <div id='color-input-buttons'>
+
+                <label>Secondary<br /><input
+                  className='color-select'
+                  type='color'
+                  value={paletteSecond}
+                  onChange={(e) => setColors(e.target.value, 'secondary')}
+                >
+                </input></label>
+
+                <select
+                  name='paints'
+                  className='selectBox'
+                  onChange={((e) => setColors(e.target.value, 'secondary'))}
+                >
+                  {paints.map((paint) =>
+                    <option value={paint.hexcode} key={paint.id}>{paint.paint}</option>
+                  )}
+                </select>
+
+                <input
+                  className='selectHex'
+                  type='text'
+                  value={paletteSecond}
+                  onChange={(e) => setColors(e.target.value, 'secondary')}
+                >
+                </input>
+
+              </div>
+
+
+
+            </div>
+          </div>
+
+          <div id='newProject-button'>
+            {/* new project button */}
+            <button onClick={createNewProject} className="btn">Create New Project</button>
+          </div>
+
+
+        </div>
+
+        <div className='side-colors'>
+          {/* Secondary Color Display */}
+          <div className="shape-container">
+            <div className="divTertiary secondary-twolight"><p>Light +15</p></div>
+            <div className="divSecondary secondary-light"><p>L +15</p></div>
+            <div className="divPrime secondary"><p>Secondary</p></div>
+            <div className="divSecondary secondary-dark"><p>L -15</p></div>
+            <div className="divTertiary secondary-twodark"><p>Dark</p></div>
+          </div>
+          <div className="shape-container">
+            <div className="divTertiary secondary-triad-2"><p>Triad 2</p></div>
+            <div className="divSecondary secondary-triad-1"><p>Triad 1</p></div>
+            <div className="divPrime secondary-complement"><p>Complement</p></div>
+            <div className="divSecondary secondary-analog-1"><p>Analog 1</p></div>
+            <div className="divTertiary secondary-analog-2"><p>Analog 2</p></div>
+          </div>
+
         </div>
 
 
-      </div>
-
-      <div className='side-colors'>
-        {/* Secondary Color Display */}
-        <div className="shape-container">
-          <div className="divTertiary secondary-twolight"><p>Light +15</p></div>
-          <div className="divSecondary secondary-light"><p>L +15</p></div>
-          <div className="divPrime secondary"><p>Secondary</p></div>
-          <div className="divSecondary secondary-dark"><p>L -15</p></div>
-          <div className="divTertiary secondary-twodark"><p>Dark</p></div>
-        </div>
-        <div className="shape-container">
-          <div className="divTertiary secondary-triad-2"><p>Triad 2</p></div>
-          <div className="divSecondary secondary-triad-1"><p>Triad 1</p></div>
-          <div className="divPrime secondary-complement"><p>Complement</p></div>
-          <div className="divSecondary secondary-analog-1"><p>Analog 1</p></div>
-          <div className="divTertiary secondary-analog-2"><p>Analog 2</p></div>
-        </div>
-
-      </div>
-
-
-    </div>
+      </m.div>
+    </AnimatePresence>
   );
 }
 

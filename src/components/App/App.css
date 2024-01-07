@@ -17,10 +17,12 @@ KEYFRAMES
     transform: translateX(0%); 
   }
 }
-@keyframes project-magic {
+/* @keyframes project-magic {
  from { opacity: 0; }
  to { opacity: 1;}
-}
+} */
+
+
 
 
 
