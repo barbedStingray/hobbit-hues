@@ -3,11 +3,14 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
 import ColorWheel from '../ColorWheel/ColorWheel.jsx';
 
 import './UserPage.css';
 
-function UserPage() {
+// function UserPage() {
+const UserPage = ({ showComponent }) => {
 
   const user = useSelector((store) => store.user);
   const paints = useSelector((store) => store.setPaintsDropdown);
@@ -112,6 +115,7 @@ function UserPage() {
 
 
   return (
+
     <div id='user-page'>
 
       {/* {JSON.stringify(paints)} */}
@@ -248,11 +252,6 @@ function UserPage() {
       </div>
 
 
-      {/* <div className="container">
-        <h3>Welcome, {user.username}!</h3>
-        <p>Your ID is: {user.id}</p>
-        <LogOutButton className="btn" />
-      </div> */}
     </div>
   );
 }
