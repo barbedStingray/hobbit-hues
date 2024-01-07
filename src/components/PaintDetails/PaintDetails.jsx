@@ -30,14 +30,14 @@ function PaintDetails(props) {
             </div>
 
             <div id='paint-description'>
-                <div>
-                    <p>{props.paint.technique}</p>
+                <div >
+                    <p className='defaultMargin'>{props.paint.technique}</p>
                 </div>
                 <div>
-                    <p>{props.paint.paint}</p>
+                    <p className='defaultMargin'>{props.paint.paint}</p>
                 </div>
                 <div>
-                    <p>{props.paint.notes}</p>
+                    <p className='defaultMargin'>{props.paint.notes}</p>
                 </div>
 
                 {/* Displaying the color of the paint! */}
@@ -56,21 +56,13 @@ function PaintDetails(props) {
                     {/* <p>color box</p> */}
                 </div>
 
-            </div>
-
-            <div id='paint-delete'>
-                <button
-                    onClick={() => deletePaint(props.paint.id)}
-                    id='delete-paint'
-                    className='btn'
-                >X</button>
-
-
-                {/* <button 
-                        onClick={() => editPaint(props.paint.id)} 
-                        id='edit-paint'
+                <div id='paint-delete'>
+                    <button
+                        onClick={() => deletePaint(props.paint.id)}
+                        id='delete-paint'
                         className='btn'
-                    >Edit</button> */}
+                    >X</button>
+                </div>
 
             </div>
         </div>

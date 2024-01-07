@@ -28,6 +28,7 @@ function ProjectDetails() {
     // VARIABLES FOR PROJECT DETAILS
     const [paintProject, setPaintProject] = useState('#hexcode'); // POST new paint variable
     const [toggleProject, setToggleProject] = useState(true); // toggle for editing project details
+    const [togglePaint, setTogglePaint] = useState(true); // toggle the add paint menu
     const { id } = useParams(); // hook for refresh
     // console.log(`useParams ID`, id);
 
@@ -42,6 +43,7 @@ function ProjectDetails() {
 
     // new main photo display
     let [imagePath, setImagePath] = useState('');
+
 
 
 
@@ -74,6 +76,10 @@ function ProjectDetails() {
         //     notes: ''
 
         // });    
+        // close your paint menu
+        setTogglePaint(!togglePaint);
+
+        // refresh page
         refreshDetails();
         // setTimeout(refreshDetails(), 2000);
     }
@@ -181,6 +187,12 @@ function ProjectDetails() {
         console.log(`imagePath`, imagePath);
     }
 
+    // toggles paint menu
+    function paintMenu() {
+        setTogglePaint(!togglePaint);
+        console.log(`paintMenu toggle`, togglePaint);
+    }
+
 
 
 
@@ -252,11 +264,11 @@ function ProjectDetails() {
                     <div id='detail-palette'>
                         {/* Project Color Display */}
                         <div className="palette-container">
-                            <div className="detailThird primary-triad-2"><p>T2</p></div>
-                            <div className="detailSecond primary-triad-1"><p>T1</p></div>
-                            <div className="detailPrime primary-complement"><p>Comp.</p></div>
-                            <div className="detailSecond primary-analog-1"><p>A1</p></div>
-                            <div className="detailThird primary-analog-2"><p>A2</p></div>
+                            <div className="detailThird primary-triad-2 "><p>T2</p></div>
+                            <div className="detailSecond primary-triad-1 "><p>T1</p></div>
+                            <div className="detailPrime primary-complement "><p>Comp.</p></div>
+                            <div className="detailSecond primary-analog-1 "><p>A1</p></div>
+                            <div className="detailThird primary-analog-2 "><p>A2</p></div>
                         </div>
                         <div className="palette-container">
                             <div className="detailThird primary-twolight"><p>Light</p></div>
@@ -274,97 +286,111 @@ function ProjectDetails() {
                 {/* NEW PAINT INPUTS */}
                 <div id='middle-bar'>
 
-                    <div id='add-paint'>
+                    {togglePaint === true ?
+                        <></>
+                        :
+                        <div>
+                            <div id='add-paint'>
 
-                        <div id='paint-show'>
-                            <label><input
-                                className='color-select'
-                                type='color'
-                                disabled
-                                value={paintProject}
-                            >
-                            </input></label>
+                                <button
+                                    onClick={addNewPaint}
+                                    className='btn_sm'
+                                >Add Paint</button>
+
+
+                                <div id='paint-show'>
+                                    <label><input
+                                        className='color-select'
+                                        type='color'
+                                        disabled
+                                        value={paintProject}
+                                    >
+                                    </input></label>
+                                </div>
+
+
+                                <label><select
+                                    name='paints'
+                                    className='selectBox'
+                                    // onChange={(e) => setPaintProject(JSON.parse(e.target.value))}
+                                    // onChange={(e) => setNewPaint({ ...newPaint, paint_id: (JSON.parse(e.target.value))})}
+                                    onChange={(e) => setMultiple({ ...newPaint, paint_id: (JSON.parse(e.target.value)) })}
+
+                                >
+                                    {paints.map((paint) =>
+                                        // <option value={paint.hexcode} key={paint.id}>{paint.paint}</option>
+                                        <option value={JSON.stringify({ hexcode: paint.hexcode, id: paint.id })} key={paint.id}>{paint.paint}</option>
+                                    )}
+                                </select></label>
+
+                                <label><select
+                                    name='techniques'
+                                    className='selectBox'
+                                    onChange={newPaintChange('technique_id')}
+                                >
+                                    {techniqueList.map((technique) =>
+                                        <option value={technique.id} key={technique.id}>{technique.technique}</option>
+                                    )}
+
+
+                                    {/* !! Adding new TEXT AREA for NOTES */}
+                                </select></label>
+
+                                <label><textarea
+                                    name='notes'
+                                    onChange={newPaintChange('notes')}
+                                    placeholder='paint notes here...'
+                                    className='notesArea'
+                                ></textarea></label>
+
+                                {/* image upload for new paint addition */}
+                                <ImageUpload photoFunction={newPaintImage} />
+
+                            </div>
+
                         </div>
-
-                        <div id='paint-dropdowns'>
-
-                            <label>Paint <br /><select
-                                name='paints'
-                                id='paint-dropdown'
-                                // onChange={(e) => setPaintProject(JSON.parse(e.target.value))}
-                                // onChange={(e) => setNewPaint({ ...newPaint, paint_id: (JSON.parse(e.target.value))})}
-                                onChange={(e) => setMultiple({ ...newPaint, paint_id: (JSON.parse(e.target.value)) })}
-
-                            >
-                                {paints.map((paint) =>
-                                    // <option value={paint.hexcode} key={paint.id}>{paint.paint}</option>
-                                    <option value={JSON.stringify({ hexcode: paint.hexcode, id: paint.id })} key={paint.id}>{paint.paint}</option>
-                                )}
-                            </select></label>
-
-                            <label>Technique <br /><select
-                                name='techniques'
-                                id='technique-dropdown'
-                                onChange={newPaintChange('technique_id')}
-                            >
-                                {techniqueList.map((technique) =>
-                                    <option value={technique.id} key={technique.id}>{technique.technique}</option>
-                                )}
-
-
-                                {/* !! Adding new TEXT AREA for NOTES */}
-                            </select></label>
-
-                            <label><textarea
-                                name='notes'
-                                onChange={newPaintChange('notes')}
-                                placeholder='paint notes here...'
-                            ></textarea></label>
-
-                            {/* image upload for new paint addition */}
-                            <ImageUpload photoFunction={newPaintImage} />
-
-
-                            <button
-                                onClick={addNewPaint}
-                                className='btn'
-                            >Add Paint</button>
-
-
-                        </div>
-                    </div>
+                    }
 
                     <div id='button-bar'>
+
+                        <button
+                            onClick={paintMenu}
+                            className='btn_sm'
+                        >{togglePaint === true ?
+                            'Paint Menu'
+                            :
+                            'Close Menu'}</button>
+
 
                         {/* Toggle Buttons to Edit Project */}
                         {toggleProject === true ?
                             <button
                                 onClick={() => editProject(projectDetails.id)}
                                 id='edit-project'
-                                className='btn'
-                            >Edit <br /> Project</button>
+                                className='btn_sm'
+                            >Edit Project</button>
                             :
-                            <>
-                                <button onClick={cancelEdit}>Cancel</button>
-                                <button onClick={saveEdits}>Save</button>
-                            </>
+                            <div id='cancelSave'>
+                                <button className='btn_sm' onClick={cancelEdit}>Cancel</button>
+                                <button className='btn_sm' onClick={saveEdits}>Save</button>
+                            </div>
                         }
 
                         <button
                             onClick={() => deleteProject(projectDetails.id)}
                             id='delete-project'
-                            className='btn'
-                        >Delete <br /> Project</button>
+                            className='btn_sm'
+                        >Delete Project</button>
 
                     </div>
                 </div>
 
-
                 {/* begin the details item list  */}
                 <div id='painted-models'>
-                    {paintDetails.map((paint) =>
-                        <PaintDetails paint={paint} refreshDetails={refreshDetails} />
-                    )}
+
+                        {paintDetails.map((paint) =>
+                            <PaintDetails paint={paint} refreshDetails={refreshDetails} />
+                        )}
                 </div>
                 {/* ! map for the paint details component */}
 
