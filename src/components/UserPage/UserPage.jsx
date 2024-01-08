@@ -26,6 +26,19 @@ const UserPage = ({ showComponent }) => {
   // variables
   let [palettePrime, setPalettePrime] = useState('#0056d6');
   let [paletteSecond, setPaletteSecond] = useState('#77bb41');
+  // custom motion variable
+  const container = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        // scale: 1,
+        transition: {
+            // duration: 2,
+            delayChildren: 0.4,
+            staggerChildren: 0.25
+        }
+    }
+};
 
 
 
@@ -44,15 +57,14 @@ const UserPage = ({ showComponent }) => {
 
   // button for a new project
   function createNewProject() {
-    // console.log(`creating new project`);
     dispatch({ type: 'SET_PRIMARY_HEXCODE', payload: palettePrime });
     // path to form page
     history.push('/create');
   }
 
+
   // function to convert hex => hsl and then assign HSL to css variable
   function setColors(H, inputType) {
-
     // set your variable
     if (inputType === 'primary') {
       setPalettePrime(H);
@@ -61,7 +73,6 @@ const UserPage = ({ showComponent }) => {
     } else {
       console.log(`palette exception`);
     }
-
     // conversion portion start
     // hex to rgb
     let r = 0, g = 0, b = 0;
@@ -116,26 +127,9 @@ const UserPage = ({ showComponent }) => {
 
 
 
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        // scale: 1,
-        transition: {
-            // duration: 2,
-            delayChildren: 0.4,
-            staggerChildren: 0.25
-        }
-    }
-};
-
-
-
-
   return (
     <m.div
       key={'createMotionUser'}
-
       className="container"
       variants={container}
       initial="hidden"
@@ -145,52 +139,29 @@ const UserPage = ({ showComponent }) => {
         opacity: 0,
         transition: { duration: 0.5 }
     }}
-
-      // initial={{ x: '-100%' }}
-      // animate={{ x: '0%' }}
-      // transition={{ duration: 0.75, ease: 'easeOut' }}
-      // exit={{ x: '100%' }}
-
-
       id='user-page'>
 
-      {/* {JSON.stringify(paints)} */}
-
-      {/* <ColorWheel 
-        setPalettePrime={setPalettePrime}
-        setPaletteSecond={setPaletteSecond}
-      /> */}
-
-
-      <ColorWheel
-        color={'primary'}
-      />
-
+      <ColorWheel color={'primary'} />
 
       <div id='titleinputs-form'>
 
         <div id='title-inputs'>
-          {/* page title */}
+
           <div id='title-colors'>
-            {/* <h2>Color Wheel</h2> */}
             <h2>Welcome {user.username}!</h2>
-
-            {/* <h2>Prancing Palette</h2> */}
           </div>
-
 
           {/* primary/secondary inputs */}
           <div className='color-input'>
 
             <div id='color-input-buttons'>
 
-              <label>Primary<br /><input
+              <label><input
                 className='color-select'
                 type='color'
                 value={palettePrime}
                 onChange={(e) => setColors(e.target.value, 'primary')}
-              >
-              </input></label>
+              ></input></label>
 
               <select
                 name='paints'
@@ -207,8 +178,7 @@ const UserPage = ({ showComponent }) => {
                 type='text'
                 value={palettePrime}
                 onChange={(e) => setColors(e.target.value, 'primary')}
-              >
-              </input>
+              ></input>
 
             </div>
 
@@ -219,8 +189,7 @@ const UserPage = ({ showComponent }) => {
                 type='color'
                 value={paletteSecond}
                 onChange={(e) => setColors(e.target.value, 'secondary')}
-              >
-              </input></label>
+              ></input></label>
 
               <select
                 name='paints'
@@ -237,31 +206,23 @@ const UserPage = ({ showComponent }) => {
                 type='text'
                 value={paletteSecond}
                 onChange={(e) => setColors(e.target.value, 'secondary')}
-              >
-              </input>
+              ></input>
 
             </div>
-
           </div>
         </div>
 
         <div id='newProject-button'>
-          {/* new project button */}
           <button onClick={createNewProject} className="btn">Create New Project</button>
         </div>
-
-
       </div>
 
-      <ColorWheel
-        color={'secondary'}
-      />
+      <ColorWheel color={'secondary'} />
 
     </m.div>
   );
 }
 
-// this allows us to use <App /> in index.js
 export default UserPage;
 
 

@@ -9,17 +9,13 @@ import detailsSaga from './details.saga';
 import projectPaintSaga from './newPaint.saga';
 import deleteProjectSaga from './deleteProject.saga';
 import updateProjectSaga from './updateProject.saga';
-
-import axios from 'axios';
+// import axios from 'axios';
 import techniqueSaga from './technique.saga';
 import deletePaintSaga from './deletePaint.saga';
-// import fetchPaintsDropdown from './paint.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
-
-
 // some sagas trigger other sagas, as an example
 // the registration triggers a login
 // and login triggers setting the user
@@ -28,7 +24,6 @@ export default function* rootSaga() {
     loginSaga(), // login saga is now registered
     registrationSaga(),
     userSaga(),
-    
     paintSaga(), // fills in paint dropdowns
     createSaga(), // POST route for new projects
     fetchProjects(), // sets user project reducer
@@ -39,7 +34,5 @@ export default function* rootSaga() {
     deletePaintSaga(), // deletes a single paint from project
     updateProjectSaga(), // updates project data
   
-  ]);
-  // ! NEW sagas in the yield all
-  
+  ]);  
 }
