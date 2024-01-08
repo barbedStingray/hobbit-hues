@@ -1,6 +1,9 @@
 
-
+// IMPORTS
+// middleware
 import React from 'react';
+
+
 import './AboutPage.css';
 import ImageUpload from '../ImageUpload/ImageUpload.jsx';
 import { AnimatePresence, motion as m } from 'framer-motion';

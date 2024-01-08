@@ -1,42 +1,56 @@
+
+// IMPORTS
+// middleware
 import React from 'react';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { motion as m, AnimatePresence } from 'framer-motion';
-
+// components
+import LogOutButton from '../LogOutButton/LogOutButton';
 import ColorWheel from '../ColorWheel/ColorWheel.jsx';
-
+// css
 import './UserPage.css';
 
 // function UserPage() {
 const UserPage = ({ showComponent }) => {
 
-  const user = useSelector((store) => store.user);
-  const paints = useSelector((store) => store.setPaintsDropdown);
+  // middleware variables
   const dispatch = useDispatch();
   const history = useHistory();
 
+  // redux variables
+  const user = useSelector((store) => store.user);
+  const paints = useSelector((store) => store.setPaintsDropdown);
+
+  // variables
   let [palettePrime, setPalettePrime] = useState('#0056d6');
   let [paletteSecond, setPaletteSecond] = useState('#77bb41');
 
-  // generate paint dropdown menus
 
-  function fetchPaintsDropdown() {
-    console.log(`getting paint dropdowns`);
-    dispatch({ type: 'FETCH_PAINTS_DROPDOWN' });
-  }
 
+  // ** Functions ************
+
+  // page load and refresh
   useEffect(() => {
     fetchPaintsDropdown();
   }, []);
 
+  // generate paint dropdown menus
+  function fetchPaintsDropdown() {
+    // console.log(`getting paint dropdowns`);
+    dispatch({ type: 'FETCH_PAINTS_DROPDOWN' });
+  }
 
+  // button for a new project
+  function createNewProject() {
+    // console.log(`creating new project`);
+    dispatch({ type: 'SET_PRIMARY_HEXCODE', payload: palettePrime });
+    // path to form page
+    history.push('/create');
+  }
 
-
-
-
-  // function to assign H S L to css variable
+  // function to convert hex => hsl and then assign HSL to css variable
   function setColors(H, inputType) {
 
     // set your variable
@@ -100,24 +114,11 @@ const UserPage = ({ showComponent }) => {
   }
 
 
-  // button for a new project
-  function createNewProject() {
-    console.log(`creating new project`);
-
-    dispatch({ type: 'SET_PRIMARY_HEXCODE', payload: palettePrime });
-
-    // path to form page
-    history.push('/create');
-
-  }
-
-
-
 
 
 
   return (
-      <m.div
+    <m.div
       key={'/user'}
 
       initial={{ x: '-100%' }}
@@ -126,143 +127,112 @@ const UserPage = ({ showComponent }) => {
       exit={{ x: '100%' }}
 
 
-        id='user-page'>
+      id='user-page'>
 
-        {/* {JSON.stringify(paints)} */}
+      {/* {JSON.stringify(paints)} */}
 
-        {/* <ColorWheel 
+      {/* <ColorWheel 
         setPalettePrime={setPalettePrime}
         setPaletteSecond={setPaletteSecond}
       /> */}
 
 
-        <div className='side-colors'>
-          {/* Primary Color Display */}
-          <div className="shape-container">
-            <div className="divTertiary primary-triad-2"><p>Triad 2</p></div>
-            <div className="divSecondary primary-triad-1"><p>Triad 1</p></div>
-            <div className="divPrime primary-complement"><p>Complement</p></div>
-            <div className="divSecondary primary-analog-1"><p>Analog 1</p></div>
-            <div className="divTertiary primary-analog-2"><p>Analog 2</p></div>
+      <ColorWheel
+        color={'primary'}
+      />
+
+
+      <div id='titleinputs-form'>
+
+        <div id='title-inputs'>
+          {/* page title */}
+          <div id='title-colors'>
+            {/* <h2>Color Wheel</h2> */}
+            <h2>Welcome {user.username}!</h2>
+
+            {/* <h2>Prancing Palette</h2> */}
           </div>
-          <div className="shape-container">
-            <div className="divTertiary primary-twolight"><p>Light</p></div>
-            <div className="divSecondary primary-light"><p>Light</p></div>
-            <div className="divPrime primary"><p>Primary</p></div>
-            <div className="divSecondary primary-dark"><p>Dark</p></div>
-            <div className="divTertiary primary-twodark"><p>Dark</p></div>
-          </div>
-        </div>
 
-        <div id='titleinputs-form'>
 
-          <div id='title-inputs'>
-            {/* page title */}
-            <div id='title-colors'>
-              {/* <h2>Color Wheel</h2> */}
-              <h2>Welcome {user.username}!</h2>
+          {/* primary/secondary inputs */}
+          <div className='color-input'>
 
-              {/* <h2>Prancing Palette</h2> */}
+            <div id='color-input-buttons'>
+
+              <label>Primary<br /><input
+                className='color-select'
+                type='color'
+                value={palettePrime}
+                onChange={(e) => setColors(e.target.value, 'primary')}
+              >
+              </input></label>
+
+              <select
+                name='paints'
+                className='selectBox'
+                onChange={((e) => setColors(e.target.value, 'primary'))}
+              >
+                {paints.map((paint) =>
+                  <option value={paint.hexcode} key={paint.id}>{paint.paint}</option>
+                )}
+              </select>
+
+              <input
+                className='selectHex'
+                type='text'
+                value={palettePrime}
+                onChange={(e) => setColors(e.target.value, 'primary')}
+              >
+              </input>
+
             </div>
 
+            <div id='color-input-buttons'>
 
-            {/* primary/secondary inputs */}
-            <div className='color-input'>
+              <label>Secondary<br /><input
+                className='color-select'
+                type='color'
+                value={paletteSecond}
+                onChange={(e) => setColors(e.target.value, 'secondary')}
+              >
+              </input></label>
 
-              <div id='color-input-buttons'>
+              <select
+                name='paints'
+                className='selectBox'
+                onChange={((e) => setColors(e.target.value, 'secondary'))}
+              >
+                {paints.map((paint) =>
+                  <option value={paint.hexcode} key={paint.id}>{paint.paint}</option>
+                )}
+              </select>
 
-                <label>Primary<br /><input
-                  className='color-select'
-                  type='color'
-                  value={palettePrime}
-                  onChange={(e) => setColors(e.target.value, 'primary')}
-                >
-                </input></label>
-
-                <select
-                  name='paints'
-                  className='selectBox'
-                  onChange={((e) => setColors(e.target.value, 'primary'))}
-                >
-                  {paints.map((paint) =>
-                    <option value={paint.hexcode} key={paint.id}>{paint.paint}</option>
-                  )}
-                </select>
-
-                <input
-                  className='selectHex'
-                  type='text'
-                  value={palettePrime}
-                  onChange={(e) => setColors(e.target.value, 'primary')}
-                >
-                </input>
-
-              </div>
-
-              <div id='color-input-buttons'>
-
-                <label>Secondary<br /><input
-                  className='color-select'
-                  type='color'
-                  value={paletteSecond}
-                  onChange={(e) => setColors(e.target.value, 'secondary')}
-                >
-                </input></label>
-
-                <select
-                  name='paints'
-                  className='selectBox'
-                  onChange={((e) => setColors(e.target.value, 'secondary'))}
-                >
-                  {paints.map((paint) =>
-                    <option value={paint.hexcode} key={paint.id}>{paint.paint}</option>
-                  )}
-                </select>
-
-                <input
-                  className='selectHex'
-                  type='text'
-                  value={paletteSecond}
-                  onChange={(e) => setColors(e.target.value, 'secondary')}
-                >
-                </input>
-
-              </div>
-
-
+              <input
+                className='selectHex'
+                type='text'
+                value={paletteSecond}
+                onChange={(e) => setColors(e.target.value, 'secondary')}
+              >
+              </input>
 
             </div>
+
           </div>
-
-          <div id='newProject-button'>
-            {/* new project button */}
-            <button onClick={createNewProject} className="btn">Create New Project</button>
-          </div>
-
-
         </div>
 
-        <div className='side-colors'>
-          {/* Secondary Color Display */}
-          <div className="shape-container">
-            <div className="divTertiary secondary-twolight"><p>Light +15</p></div>
-            <div className="divSecondary secondary-light"><p>L +15</p></div>
-            <div className="divPrime secondary"><p>Secondary</p></div>
-            <div className="divSecondary secondary-dark"><p>L -15</p></div>
-            <div className="divTertiary secondary-twodark"><p>Dark</p></div>
-          </div>
-          <div className="shape-container">
-            <div className="divTertiary secondary-triad-2"><p>Triad 2</p></div>
-            <div className="divSecondary secondary-triad-1"><p>Triad 1</p></div>
-            <div className="divPrime secondary-complement"><p>Complement</p></div>
-            <div className="divSecondary secondary-analog-1"><p>Analog 1</p></div>
-            <div className="divTertiary secondary-analog-2"><p>Analog 2</p></div>
-          </div>
-
+        <div id='newProject-button'>
+          {/* new project button */}
+          <button onClick={createNewProject} className="btn">Create New Project</button>
         </div>
 
 
-      </m.div>
+      </div>
+
+      <ColorWheel
+        color={'secondary'}
+      />
+
+    </m.div>
   );
 }
 
