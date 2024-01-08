@@ -64,14 +64,36 @@ function CreateProject() {
         history.push('/projects');
     }
 
+    const container = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            // scale: 1,
+            transition: {
+                // duration: 2,
+                delayChildren: 0.5,
+                staggerChildren: 0.2
+            }
+        }
+    };
+
+
+
+
+
 
 
     return (
         <m.div 
-        initial={{ x: '-100%' }}
-        animate={{ x: '0%' }}
+        className="container"
+        variants={container}
+        initial="hidden"
         transition={{ duration: 0.75, ease: 'easeOut' }}
-        exit={{ x: '100%' }}
+        animate="visible"
+        exit={{ 
+            opacity: 0,
+            transition: { duration: 0.5 }
+        }}
 
         id='create-page'>
 
@@ -118,7 +140,8 @@ function CreateProject() {
                         imagePath === '' ? (
                             <></>
                         ) : (
-                            <div id='image-preview'>
+                            <div 
+                            id='image-preview'>
 
                                 <img className='mainUpload' src={imagePath} />
                             </div>

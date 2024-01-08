@@ -4,8 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import axios from 'axios';
-import { AnimatePresence, motion as m } from 'framer-motion';
+import { motion as m } from 'framer-motion';
 
 
 // components
@@ -204,14 +203,58 @@ function ProjectDetails() {
 
 
 
+// ! custom motion actions for paint details segment
+    const container = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            // scale: 1,
+            transition: {
+                // duration: 2,
+                delayChildren: 0.5,
+                staggerChildren: 0.2
+            }
+        }
+    };
+
+    const item = {
+        hidden: { y: 20, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1
+        }
+    };
+
+
+
+
+
+
+
     return (
         <m.div
-            // key={'/details'}
+            key={'/details'}
 
-            initial={{ x: '-100%' }}
-            animate={{ x: '0%' }}
+            className="container"
+            variants={container}
+            initial="hidden"
             transition={{ duration: 0.75, ease: 'easeOut' }}
-            exit={{ x: '100%' }}
+            animate="visible"
+            exit={{ 
+                    opacity: 0,
+                    transition: { duration: 0.5 }
+                }}
+
+            // initial={{ opacity: 0, scale: 0.75 }}
+            // animate={{ opacity: 1, scale: 1 }}
+            // transition={{ duration: 0.75, ease: 'easeOut' }}
+            // exit={{ opacity: 0 }}
+
+            
+            // initial={{ x: '-100%' }}
+            // animate={{ x: '0%' }}
+            // transition={{ duration: 0.75, ease: 'easeOut' }}
+            // exit={{ x: '100%' }}
 
 
             id='details-page'>
@@ -222,6 +265,7 @@ function ProjectDetails() {
 
             {/* Project Details: <br /> {JSON.stringify(projectDetails)} */}
             {/* PAINT DETAILS: {JSON.stringify(paintDetails)} */}
+
 
             <div id='details-body'>
 
@@ -246,11 +290,14 @@ function ProjectDetails() {
                     <div id='projectImage-div'>
 
                         {toggleProject === true ?
-                            <img
+                            <m.img
+                            
+                                variants={item}
+
                                 key={projectDetails.id}
                                 src={projectDetails.picture}
                                 alt="No Photo Uploaded"
-                                className='detailsPhoto' />
+                                className='detailsPhoto item' />
                             :
                             <>
                                 <ImageUpload photoFunction={editProjectPicture} />
@@ -398,10 +445,22 @@ function ProjectDetails() {
                 </div>
 
                 {/* begin the details item list  */}
-                <div id='painted-models'>
+                <div
+                    // className="container"
+                    // variants={container}
+                    // initial="hidden"
+                    // animate="visible"
 
-                    {paintDetails.map((paint) =>
-                        <PaintDetails paint={paint} refreshDetails={refreshDetails} />
+                    id='painted-models'>
+
+                    {paintDetails.map((paint, index) =>
+                        <m.div
+                            key={index}
+                            className="item"
+                            variants={item}
+                        >
+                            <PaintDetails paint={paint} refreshDetails={refreshDetails} />
+                        </m.div>
                     )}
                 </div>
 

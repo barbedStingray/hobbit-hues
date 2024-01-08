@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { motion as m } from 'framer-motion';
+
 
 import './ProjectItem.css';
 
@@ -29,9 +31,24 @@ function ProjectItem(props) {
 
     }
 
+    const item = {
+        hidden: { y: 20, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1
+        }
+    };
+
+
 
     return (
-        <div id='single-project' onClick={() => projectDetails(props.project)}>
+        <m.div
+            key={'sigleMotionProject'}
+            className="item"
+            variants={item}
+
+            id='single-project'
+            onClick={() => projectDetails(props.project)}>
 
             <div id='project-photo'>
                 <img src={props.project.picture} alt="No Photo Uploaded" className='photo-project' />
@@ -48,7 +65,7 @@ function ProjectItem(props) {
             </div>
 
 
-        </div>
+        </m.div>
     );
 }
 

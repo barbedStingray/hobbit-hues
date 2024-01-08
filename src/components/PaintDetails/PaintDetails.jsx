@@ -1,5 +1,7 @@
 
 import { useSelector, useDispatch } from 'react-redux';
+import { motion as m } from 'framer-motion';
+
 
 import './PaintDetails.css';
 
@@ -24,8 +26,24 @@ function PaintDetails(props) {
     }
 
 
+
+
+    // const item = {
+    //     hidden: { y: 20, opacity: 0 },
+    //     visible: {
+    //       y: 0,
+    //       opacity: 1
+    //     }
+    //   };
+    
+
+
     return (
-        <div id='project-paints'>
+        <div 
+        // className="item" 
+        // variants={item}
+        id='project-paints'>
+
             <div id='paint-step'>
                 <img key={props.paint.id} src={props.paint.photo} alt="No Photo Uploaded" id='painted-image' className='photo-zoom' />
                 {/* {JSON.stringify(props.paint)} */}
