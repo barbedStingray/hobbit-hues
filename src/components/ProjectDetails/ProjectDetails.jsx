@@ -5,13 +5,12 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
-
-
 // components
 import ImageUpload from '../ImageUpload/ImageUpload.jsx';
 import PaintDetails from '../PaintDetails/PaintDetails';
 import SelectTechnique from '../SelectTechnique/SelectTechnique.jsx';
-// import ButtonB from '../ButtonB/ButtonB.jsx';
+// todo import ButtonB from '../ButtonB/ButtonB.jsx';
+//css
 import './ProjectDetails.css';
 
 
@@ -20,190 +19,34 @@ function ProjectDetails() {
 
     // reducer information
     const store = useSelector((store) => store);
-    const paints = useSelector((store) => store.setPaintsDropdown);
-    const projectDetails = useSelector((store) => store.projectDetails);
-    const techniqueList = useSelector((store) => store.techniqueList);
-    const paintDetails = useSelector((store) => store.paintDetails);
+    const paints = useSelector((store) => store.setPaintsDropdown); // list of paints
+    const projectDetails = useSelector((store) => store.projectDetails); // list of projects details
+    const techniqueList = useSelector((store) => store.techniqueList); // list of techniques
+    const paintDetails = useSelector((store) => store.paintDetails); // list of paint details for project
 
     // middleware functions
     const dispatch = useDispatch();
     const history = useHistory();
+    const { id } = useParams(); // hook for refresh
 
     // VARIABLES FOR PROJECT DETAILS
     const [paintProject, setPaintProject] = useState('#hexcode'); // POST new paint variable
     const [toggleProject, setToggleProject] = useState(true); // toggle for editing project details
     const [togglePaint, setTogglePaint] = useState(true); // toggle the add paint menu
-    const { id } = useParams(); // hook for refresh
-    // console.log(`useParams ID`, id);
-
-    // variable to post a new paint
+    let [imagePath, setImagePath] = useState(''); // new main photo display
     let [newPaint, setNewPaint] = useState({
         project_id: id,
         paint_id: '38',
         technique_id: '1',
         photo: '',
         notes: ''
-    });
-
-    // new main photo display
-    let [imagePath, setImagePath] = useState('');
-
-
-
-
-
-    // function to set newPaint
-    const newPaintChange = (key) => (event) => {
-        console.log('changed newProject');
-        setNewPaint({ ...newPaint, [key]: event.target.value });
-    }
-    // set new paint IMAGE FUNCTION
-    function newPaintImage(newImage) {
-        console.log(`adding the new paint image to the new paint variable`);
-        setNewPaint({ ...newPaint, photo: newImage });
-    }
-
-    // function to submit new paint post
-    function addNewPaint() {
-        console.log(`adding new paint`);
-        console.log(`newPaint object:`, newPaint);
-
-        // dispatch to POST Saga
-        dispatch({ type: 'POST_PROJECT_PAINT', payload: newPaint });
-
-        // clear your inputs
-        // setNewPaint({
-        //     project_id: id,
-        //     paint_id: '38',
-        //     technique_id: '1',
-        //     photo: '',
-        //     notes: ''
-
-        // });    
-        // close your paint menu
-        setTogglePaint(!togglePaint);
-
-        // refresh page
-        refreshDetails();
-        // setTimeout(refreshDetails(), 2000);
-    }
-
-    function setMultiple(benThought) {
-        console.log(`setting multiple properties`);
-        console.log(`benThought`, benThought);
-        console.log(`benThought.paint_id.id`, benThought.paint_id.id);
-        console.log(`benThought.paint_id.id`, benThought.paint_id.hexcode);
-        setNewPaint({ ...newPaint, paint_id: benThought.paint_id.id });
-        setPaintProject(benThought.paint_id.hexcode);
-    }
-
-
-
-
-    // loads details after page refresh
-    function refreshDetails() {
-        console.log(`refreshing details id:`, id);
-        // fetch the project details
-        dispatch({ type: 'FETCH_PROJECT_DETAILS', payload: id });
-
-    }
-    // fetches paint dropdowns
-    function fetchPaintsDropdown() {
-        console.log(`getting paint dropdowns`);
-        dispatch({ type: 'FETCH_PAINTS_DROPDOWN' });
-    }
-    // fetches technique dropdowns
-    function fetchTechniqueDropdown() {
-        console.log(`fetching techniques`);
-        dispatch({ type: 'FETCH_TECHNIQUES_DROPDOWN' });
-    }
-
-    useEffect(() => {
-        refreshDetails()
-        fetchPaintsDropdown()
-        fetchTechniqueDropdown()
-    }, [id]);
-
-
-
-
-
-
-    // ! delete project code 
-    // delete entire project function
-    function deleteProject(project) {
-        console.log(`deleting the entire project - id:`, project);
-        // dispatch the delete 
-        dispatch({ type: 'DELETE_ENTIRE_PROJECT', payload: project });
-        // navigate to /projects
-        history.push('/projects');
-
-    }
-
-
-
-
-    // ! edit project code
-    // toggles the Edit boxes appearances and propagates two buttons 'save' and 'cancel'
-    function editProject() {
-        console.log(`editing your project`);
-        // toggle your edit boxes
-        setToggleProject(!toggleProject);
-        console.log(`toggle project:`, toggleProject);
-
-        // set your delivery package
-        setEditProjectPackage({
-            id: id,
-            description: `${projectDetails.description}`,
-            picture: `${projectDetails.picture}`
-        });
-    }
-    function cancelEdit() {
-        setToggleProject(!toggleProject);
-        setImagePath('');
-    }
-
-    // variable to update project image and description
+    }); // variable to post a new paint
     const [editProjectPackage, setEditProjectPackage] = useState({
         id: id,
         description: ``,
         picture: ''
-    });
-    // PUT request start for id, description, and picture
-    function saveEdits() {
-        console.log(`saving your new edits payload:`, editProjectPackage);
-        // dispatch your new information
-        dispatch({ type: 'UPDATE_PROJECT_DETAILS', payload: editProjectPackage });
-        // refresh the page
-        setTimeout(() => refreshDetails(), 250);
-        setTimeout(() => setToggleProject(!toggleProject), 250);
-    }
-    // handles the description change
-    const editProjectChange = (key) => (event) => {
-        console.log('changed newProject');
-        setEditProjectPackage({ ...editProjectPackage, [key]: event.target.value });
-    }
-    // prepares new picture for PUT request, props of ImageUpdate component
-    function editProjectPicture(properties) {
-        console.log(`properties`, properties)
-        setEditProjectPackage({ ...editProjectPackage, picture: properties });
-        setImagePath(properties);
-        console.log(`imagePath`, imagePath);
-    }
-
-    // toggles paint menu
-    function paintMenu() {
-        setTogglePaint(!togglePaint);
-        console.log(`paintMenu toggle`, togglePaint);
-    }
-
-
-
-
-
-
-
-    // ! custom motion actions for paint details segment
+    }); // used to PUT new picture and description
+    // custom motion Variables
     const container = {
         hidden: { opacity: 0 },
         visible: {
@@ -216,7 +59,6 @@ function ProjectDetails() {
             }
         }
     };
-
     const mainPhotoMotion = {
         hidden: { y: 20, opacity: 0 },
         visible: {
@@ -228,6 +70,102 @@ function ProjectDetails() {
 
 
 
+    // ** Functions ****************
+
+    // pageReload functions if ID changes
+    useEffect(() => {
+        refreshDetails()
+        fetchPaintsDropdown()
+        fetchTechniqueDropdown()
+    }, [id]);
+
+    // function to set newPaint
+    const newPaintChange = (key) => (event) => {
+        console.log('changed newProject');
+        setNewPaint({ ...newPaint, [key]: event.target.value });
+    }
+    // set new paint IMAGE FUNCTION
+    function newPaintImage(newImage) {
+        console.log(`adding the new paint image to the new paint variable`);
+        setNewPaint({ ...newPaint, photo: newImage });
+    }
+    // function sets new paint and paint project variables
+    function setMultiple(benThought) {
+        setNewPaint({ ...newPaint, paint_id: benThought.paint_id.id });
+        setPaintProject(benThought.paint_id.hexcode);
+    }
+    // page refresh function
+    function refreshDetails() {
+        dispatch({ type: 'FETCH_PROJECT_DETAILS', payload: id });
+    }
+    // fetches paint dropdowns
+    function fetchPaintsDropdown() {
+        dispatch({ type: 'FETCH_PAINTS_DROPDOWN' });
+    }
+    // fetches technique dropdowns
+    function fetchTechniqueDropdown() {
+        dispatch({ type: 'FETCH_TECHNIQUES_DROPDOWN' });
+    }
+    // POST function to add new paint
+    function addNewPaint() {
+        // dispatch to POST Saga
+        dispatch({ type: 'POST_PROJECT_PAINT', payload: newPaint });
+        // todo clear your inputs?
+        // close your paint menu
+        setTogglePaint(!togglePaint);
+        // refresh page
+        refreshDetails();
+    }
+    // DELETE entire project
+    function deleteProject(project) {
+        // dispatch the delete 
+        dispatch({ type: 'DELETE_ENTIRE_PROJECT', payload: project });
+        // navigate to /projects
+        history.push('/projects');
+    }
+    // toggles the Edit box appearances and propagates two buttons 'save' and 'cancel'
+    function editProject() {
+        // toggle your edit boxes
+        setToggleProject(!toggleProject);
+        // set your delivery package
+        setEditProjectPackage({
+            id: id,
+            description: `${projectDetails.description}`,
+            picture: `${projectDetails.picture}`
+        });
+    }
+    // cancels your edit and resets your appearances
+    function cancelEdit() {
+        setToggleProject(!toggleProject);
+        setImagePath('');
+    }
+    // PUT request for chaning your main descriptors
+    function saveEdits() {
+        // dispatch your new information
+        dispatch({ type: 'UPDATE_PROJECT_DETAILS', payload: editProjectPackage });
+        // refresh the page
+        setTimeout(() => refreshDetails(), 250);
+        setTimeout(() => setToggleProject(!toggleProject), 250);
+    }
+    // handles the description change of your edit package
+    const editProjectChange = (key) => (event) => {
+        setEditProjectPackage({ ...editProjectPackage, [key]: event.target.value });
+    }
+    // prepares new picture for PUT request, props of ImageUpdate component
+    function editProjectPicture(properties) {
+        setEditProjectPackage({ ...editProjectPackage, picture: properties });
+        setImagePath(properties);
+    }
+    // toggles paint menu
+    function paintMenu() {
+        setTogglePaint(!togglePaint);
+        console.log(`paintMenu toggle`, togglePaint);
+    }
+
+
+
+
+
 
 
 
@@ -235,7 +173,6 @@ function ProjectDetails() {
     return (
         <m.div
             key={'createMotionProjectDetails'}
-
             className="container"
             variants={container}
             initial="hidden"
@@ -245,36 +182,19 @@ function ProjectDetails() {
                 opacity: 0,
                 transition: { duration: 0.5 }
             }}
-
-            // initial={{ opacity: 0, scale: 0.75 }}
-            // animate={{ opacity: 1, scale: 1 }}
-            // transition={{ duration: 0.75, ease: 'easeOut' }}
-            // exit={{ opacity: 0 }}
-
-
-            // initial={{ x: '-100%' }}
-            // animate={{ x: '0%' }}
-            // transition={{ duration: 0.75, ease: 'easeOut' }}
-            // exit={{ x: '100%' }}
-
-
             id='details-page'>
 
             <div id='details-header'>
                 <h2>{projectDetails.model}</h2>
             </div>
 
-            {/* Project Details: <br /> {JSON.stringify(projectDetails)} */}
-            {/* PAINT DETAILS: {JSON.stringify(paintDetails)} */}
-
-
             <div id='details-body'>
 
+                {/* page left display */}
                 <div id='color-view'>
 
                     <div id='project-mainDescription'>
                         {toggleProject === true ?
-
                             <p key={projectDetails.id}>{projectDetails.description}</p>
                             :
                             <textarea
@@ -283,45 +203,30 @@ function ProjectDetails() {
                                 id='createDescription-input'
                                 value={editProjectPackage.description}
                             >
-                            </textarea>
-                        }
+                            </textarea>}
                     </div>
 
-
                     <div id='projectImage-div'>
-
                         {toggleProject === true ?
                             <m.img
-                                // key={projectDetails.id}
                                 key={'motionMainPhoto'}
-
                                 variants={mainPhotoMotion}
-
                                 src={projectDetails.picture}
                                 alt="No Photo Uploaded"
                                 className='detailsPhoto mainPhotoMotion' />
                             :
                             <>
                                 <ImageUpload photoFunction={editProjectPicture} />
-                                {
-                                    imagePath === '' ? (
-                                        <></>
-                                    ) : (
+                                {imagePath === '' ? (
+                                    <></>
+                                ) : (
+                                    <div id='image-preview'>
 
-                                        <div id='image-preview'>
-
-                                            <img className='newMainUpload' src={imagePath} />
-                                        </div>
-
-                                    )
-
-                                }
-                            </>
-
-
-                        }
+                                        <img className='newMainUpload' src={imagePath} />
+                                    </div>
+                                )}
+                            </>}
                     </div>
-
 
                     <div id='detail-palette'>
                         {/* Project Color Display */}
@@ -339,26 +244,22 @@ function ProjectDetails() {
                             <div className="detailSecond primary-dark"><p>Dark</p></div>
                             <div className="detailThird primary-twodark"><p>Dark</p></div>
                         </div>
-                        {/* {projectDetails.primary} */}
 
+                        {/* todo !! Private/Public button here */}
                     </div>
-
                 </div>
 
                 {/* NEW PAINT INPUTS */}
                 <div id='middle-bar'>
-
                     {togglePaint === true ?
                         <></>
                         :
                         <div>
                             <div id='add-paint'>
-
                                 <button
                                     onClick={addNewPaint}
                                     className='btn_sm'
                                 >Add Paint</button>
-
 
                                 <div id='paint-show'>
                                     <label><input
@@ -366,32 +267,24 @@ function ProjectDetails() {
                                         type='color'
                                         disabled
                                         value={paintProject}
-                                    >
-                                    </input></label>
+                                    ></input></label>
                                 </div>
-
 
                                 <label><select
                                     name='paints'
                                     className='selectBox'
-                                    // onChange={(e) => setPaintProject(JSON.parse(e.target.value))}
-                                    // onChange={(e) => setNewPaint({ ...newPaint, paint_id: (JSON.parse(e.target.value))})}
                                     onChange={(e) => setMultiple({ ...newPaint, paint_id: (JSON.parse(e.target.value)) })}
-
                                 >
                                     {paints.map((paint) =>
-                                        // <option value={paint.hexcode} key={paint.id}>{paint.paint}</option>
                                         <option value={JSON.stringify({ hexcode: paint.hexcode, id: paint.id })} key={paint.id}>{paint.paint}</option>
                                     )}
                                 </select></label>
-
 
                                 <SelectTechnique
                                     changeFunction={newPaintChange}
                                     stringChange={'technique_id'}
                                     techniqueList={techniqueList}
                                 />
-
                                 <label><textarea
                                     name='notes'
                                     onChange={newPaintChange('notes')}
@@ -399,21 +292,13 @@ function ProjectDetails() {
                                     className='notesArea'
                                 ></textarea></label>
 
-                                {/* image upload for new paint addition */}
                                 <ImageUpload photoFunction={newPaintImage} />
-
                             </div>
-
                         </div>
                     }
 
                     <div id='button-bar'>
 
-                        {/* <ButtonB 
-                            clickFunction={paintMenu}
-                            classname={'btn_sm'}
-                            buttonName={`Paint Menu`}
-                        /> */}
                         <button
                             onClick={paintMenu}
                             className='btn_sm'
@@ -421,7 +306,6 @@ function ProjectDetails() {
                             'Paint Menu'
                             :
                             'Close Menu'}</button>
-
 
                         {/* Toggle Buttons to Edit Project */}
                         {toggleProject === true ?
@@ -448,14 +332,11 @@ function ProjectDetails() {
 
                 {/* begin the details item list  */}
                 <div id='painted-models'>
-
                     {paintDetails.map((paint) =>
                         <PaintDetails paint={paint} refreshDetails={refreshDetails} />
                     )}
                 </div>
-
             </div>
-
         </m.div>
     );
 }

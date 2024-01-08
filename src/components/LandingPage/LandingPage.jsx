@@ -24,8 +24,7 @@ function LandingPage() {
     setLogin(!login);
   };
 
-
-
+// custom motion variable
   const container = {
     hidden: { opacity: 0 },
     visible: {
@@ -54,9 +53,7 @@ function LandingPage() {
         opacity: 0,
         transition: { duration: 0.5 }
     }}
-
       id='landing-page'>
-
 
       <div id='title-hobbit'><h2>Hobbit Hues</h2></div>
 

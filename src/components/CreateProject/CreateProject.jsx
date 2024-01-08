@@ -5,7 +5,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { AnimatePresence, motion as m } from 'framer-motion';
+import { motion as m } from 'framer-motion';
 // components
 import ImageUpload from '../ImageUpload/ImageUpload.jsx';
 // css
@@ -20,12 +20,12 @@ function CreateProject() {
     const dispatch = useDispatch();
 
     // redux variables
-    const store = useSelector((store) => store);
-    const user = useSelector((store) => store.user);
-    const hexcode = useSelector((store) => store.hexcode);
+    const store = useSelector((store) => store); 
+    const user = useSelector((store) => store.user); 
+    const hexcode = useSelector((store) => store.hexcode); 
 
     // variables
-    const [heading, setHeading] = useState('Create a Project!');
+    const [heading, setHeading] = useState('Create a Project!'); // sets page heading
     let [imagePath, setImagePath] = useState(''); // image upload variable
     let [newProject, setNewProject] = useState({
         user_id: user.id,
@@ -40,14 +40,11 @@ function CreateProject() {
 
     // function to change newProject variable
     const projectChange = (key) => (event) => {
-        // console.log('changed newProject');
         setNewProject({ ...newProject, [key]: event.target.value })
     }
 
     // function sets the newProject image and imagePath variables
     function setMultiple(properties) {
-        // console.log(`setting multiple`);
-        // console.log(`properties:`, properties);
         // set image for object passed to axios
         setNewProject({ ...newProject, picture: properties });
         // set image for display to dom
@@ -57,13 +54,13 @@ function CreateProject() {
     // Create your new project - submit your form!
     function createProject(e) {
         e.preventDefault();
-        // console.log(`creating your new project`);
         // dispatch newProject
         dispatch({ type: 'CREATE_NEW_PROJECT', payload: newProject });
         // navigate to project page
         history.push('/projects');
     }
 
+    // Animation variable
     const container = {
         hidden: { opacity: 0 },
         visible: {
@@ -73,20 +70,17 @@ function CreateProject() {
                 // duration: 2,
                 delayChildren: 0.5,
                 staggerChildren: 0.2
-            }
-        }
+            }}
     };
 
 
 
 
 
-
-
     return (
+        
         <m.div 
         key={'createMotionProject'}
-
         className="container"
         variants={container}
         initial="hidden"
@@ -96,7 +90,6 @@ function CreateProject() {
             opacity: 0,
             transition: { duration: 0.5 }
         }}
-
         id='create-page'>
 
             {/* Heading Div */}

@@ -19,15 +19,12 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
-// import LoginPage from '../LoginPage/LoginPage';
-// import RegisterPage from '../RegisterPage/RegisterPage';
 import CreateProject from '../CreateProject/CreateProject.jsx';
 import ProjectsPage from '../ProjectsPage/ProjectsPage.jsx';
 import ProjectDetails from '../ProjectDetails/ProjectDetails.jsx';
 
 // css
 import './App.css';
-
 
 
 
@@ -38,7 +35,6 @@ function App() {
   let location = useLocation();
 
   const user = useSelector(store => store.user);
-
 
 
   // page reload, render dom

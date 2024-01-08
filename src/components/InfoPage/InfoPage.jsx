@@ -6,6 +6,7 @@ import './InfoPage.css';
 
 function InfoPage() {
 
+  // custom motion Variables
   const container = {
     hidden: { opacity: 0 },
     visible: {
@@ -25,7 +26,6 @@ function InfoPage() {
       opacity: 1
     }
   };
-
 
 
 

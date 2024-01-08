@@ -1,19 +1,17 @@
 
+// IMPORTS
+// middleware
 import { useSelector, useDispatch } from 'react-redux';
 import { motion as m } from 'framer-motion';
-
-
+// css
 import './PaintDetails.css';
 
-// Basic functional component structure for React with default state
-// value setup. When making a new component be sure to replace the
-// component name TemplateFunction with the name for the new component.
 function PaintDetails(props) {
-    // Using hooks we're creating local state for a "heading" variable with
-    // a default value of 'Functional Component'
-    const store = useSelector((store) => store);
 
+    // middleware variables
     const dispatch = useDispatch();
+    // redux variables
+    const store = useSelector((store) => store);
 
 
     // delete single paint
@@ -21,12 +19,11 @@ function PaintDetails(props) {
         console.log(`deleting a single paint ID`, paint);
         // delete single paint
         dispatch({ type: 'DELETE_SINGLE_PAINT', payload: paint });
-        // todo refresh page / passed from props
+        // refresh page / passed from props
         props.refreshDetails();
     }
 
-
-
+    // custom motion variable
     const paintDetailsMotion = {
         hidden: { y: 20, opacity: 0 },
         visible: {
@@ -43,7 +40,6 @@ function PaintDetails(props) {
                 key={'paintMotionDetails'}
                 className="paintDetailsMotion"
                 variants={paintDetailsMotion}
-
                 id='project-paints'>
 
                 <div id='paint-step'>
@@ -62,8 +58,6 @@ function PaintDetails(props) {
                     <div>
                         <p className='defaultMargin'>{props.paint.notes}</p>
                     </div>
-
-
                     <div id='paintColor-display'>
                         {/* Displaying the color of the paint! */}
                         <div>
@@ -75,8 +69,6 @@ function PaintDetails(props) {
                             >
                             </input></label>
                         </div>
-
-
                         <div>
                             <button
                                 onClick={() => deletePaint(props.paint.id)}
@@ -84,8 +76,6 @@ function PaintDetails(props) {
                             >X</button>
                         </div>
                     </div>
-
-
                 </div>
             </m.div>
     );

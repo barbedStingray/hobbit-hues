@@ -5,7 +5,7 @@ import { motion as m } from 'framer-motion';
 
 function ColorWheel(props) {
 
-
+// Custom animation variables
   const container = {
     hidden: { opacity: 1, scale: 0 },
     visible: {
@@ -27,8 +27,7 @@ function ColorWheel(props) {
   };
 
 
-
-
+  
 
   return (
 
