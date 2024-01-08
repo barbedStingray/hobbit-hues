@@ -7,11 +7,9 @@ import {
   Redirect,
   Route,
   Switch,
-  useLocation
-} from 'react-router-dom';
+  useLocation} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
-
 
 // components
 import Nav from '../Nav/Nav';

@@ -203,7 +203,7 @@ function ProjectDetails() {
 
 
 
-// ! custom motion actions for paint details segment
+    // ! custom motion actions for paint details segment
     const container = {
         hidden: { opacity: 0 },
         visible: {
@@ -241,17 +241,17 @@ function ProjectDetails() {
             initial="hidden"
             transition={{ duration: 0.55, ease: 'easeOut' }}
             animate="visible"
-            exit={{ 
-                    opacity: 0,
-                    transition: { duration: 0.5 }
-                }}
+            exit={{
+                opacity: 0,
+                transition: { duration: 0.5 }
+            }}
 
             // initial={{ opacity: 0, scale: 0.75 }}
             // animate={{ opacity: 1, scale: 1 }}
             // transition={{ duration: 0.75, ease: 'easeOut' }}
             // exit={{ opacity: 0 }}
 
-            
+
             // initial={{ x: '-100%' }}
             // animate={{ x: '0%' }}
             // transition={{ duration: 0.75, ease: 'easeOut' }}
@@ -292,8 +292,8 @@ function ProjectDetails() {
 
                         {toggleProject === true ?
                             <m.img
-                            // key={projectDetails.id}
-                            key={'motionMainPhoto'}
+                                // key={projectDetails.id}
+                                key={'motionMainPhoto'}
 
                                 variants={mainPhotoMotion}
 
@@ -447,16 +447,10 @@ function ProjectDetails() {
                 </div>
 
                 {/* begin the details item list  */}
-                <div
-                    // className="container"
-                    // variants={container}
-                    // initial="hidden"
-                    // animate="visible"
-
-                    id='painted-models'>
+                <div id='painted-models'>
 
                     {paintDetails.map((paint) =>
-                            <PaintDetails paint={paint} refreshDetails={refreshDetails} />
+                        <PaintDetails paint={paint} refreshDetails={refreshDetails} />
                     )}
                 </div>
 

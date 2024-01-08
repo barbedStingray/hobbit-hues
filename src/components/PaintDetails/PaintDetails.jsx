@@ -27,7 +27,6 @@ function PaintDetails(props) {
 
 
 
-
     const paintDetailsMotion = {
         hidden: { y: 20, opacity: 0 },
         visible: {
@@ -39,55 +38,56 @@ function PaintDetails(props) {
 
 
     return (
-        <m.div
-            key={'paintMotionDetails'}
-            className="paintDetailsMotion"
-            variants={paintDetailsMotion}
 
-            id='project-paints'>
+            <m.div
+                key={'paintMotionDetails'}
+                className="paintDetailsMotion"
+                variants={paintDetailsMotion}
 
-            <div id='paint-step'>
-                <img key={props.paint.id} src={props.paint.photo} alt="No Photo Uploaded" id='painted-image' className='photo-zoom' />
-                {/* {JSON.stringify(props.paint)} */}
-            </div>
+                id='project-paints'>
 
-            <div id='paint-description'>
-                <div>
-                    <h4 className='defaultMargin'>{props.paint.paint}</h4>
+                <div id='paint-step'>
+                    <img key={props.paint.id} src={props.paint.photo} alt="No Photo Uploaded" id='painted-image' className='photo-zoom' />
+                    {/* {JSON.stringify(props.paint)} */}
                 </div>
 
-                <div >
-                    <p className='defaultMargin'>{props.paint.technique}</p>
-                </div>
-                <div>
-                    <p className='defaultMargin'>{props.paint.notes}</p>
-                </div>
-
-
-                <div id='paintColor-display'>
-                    {/* Displaying the color of the paint! */}
+                <div id='paint-description'>
                     <div>
-                        <label><input
-                            className='color-select'
-                            type='color'
-                            disabled
-                            value={props.paint.hexcode}
-                        >
-                        </input></label>
+                        <h4 className='defaultMargin'>{props.paint.paint}</h4>
+                    </div>
+
+                    <div >
+                        <p className='defaultMargin'>{props.paint.technique}</p>
+                    </div>
+                    <div>
+                        <p className='defaultMargin'>{props.paint.notes}</p>
                     </div>
 
 
-                    <div>
-                        <button
-                            onClick={() => deletePaint(props.paint.id)}
-                            className='btn_sm btn_del'
-                        >X</button>
+                    <div id='paintColor-display'>
+                        {/* Displaying the color of the paint! */}
+                        <div>
+                            <label><input
+                                className='color-select'
+                                type='color'
+                                disabled
+                                value={props.paint.hexcode}
+                            >
+                            </input></label>
+                        </div>
+
+
+                        <div>
+                            <button
+                                onClick={() => deletePaint(props.paint.id)}
+                                className='btn_sm btn_del'
+                            >X</button>
+                        </div>
                     </div>
+
+
                 </div>
-
-
-            </div>
-        </m.div>
+            </m.div>
     );
 }
 

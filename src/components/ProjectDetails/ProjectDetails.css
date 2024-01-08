@@ -1,6 +1,8 @@
 
 
-/* CODE FOR DETAILS PAGE */
+  
+
+  /* CODE FOR DETAILS PAGE */
 
 #details-page {
     /* border: 2px solid red; */
@@ -147,15 +149,15 @@
                 padding: 1%;
                 box-shadow: 0 5px 15px black;
                 height: 350px;
-
-
+  
+  
                 animation-name: slide-in;
                 animation-duration: 0.5s;
                 transform: translateX(-80%);
                 animation-fill-mode: forwards;
                 animation-timing-function: ease;
               }
-
+  
               
               #button-bar {
                 /* border: 2px solid magenta; */
