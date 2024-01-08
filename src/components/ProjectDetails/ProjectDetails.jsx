@@ -11,7 +11,8 @@ import { AnimatePresence, motion as m } from 'framer-motion';
 // components
 import ImageUpload from '../ImageUpload/ImageUpload.jsx';
 import PaintDetails from '../PaintDetails/PaintDetails';
-
+import SelectTechnique from '../SelectTechnique/SelectTechnique.jsx';
+// import ButtonB from '../ButtonB/ButtonB.jsx';
 import './ProjectDetails.css';
 
 
@@ -204,16 +205,16 @@ function ProjectDetails() {
 
 
     return (
-        <m.div 
-        // key={'/details'}
+        <m.div
+            // key={'/details'}
 
-        initial={{ x: '-100%' }}
-        animate={{ x: '0%' }}
-        transition={{ duration: 0.75, ease: 'easeOut' }}
-        exit={{ x: '100%' }}
+            initial={{ x: '-100%' }}
+            animate={{ x: '0%' }}
+            transition={{ duration: 0.75, ease: 'easeOut' }}
+            exit={{ x: '100%' }}
 
-        
-        id='details-page'>
+
+            id='details-page'>
 
             <div id='details-header'>
                 <h2>{projectDetails.model}</h2>
@@ -335,18 +336,12 @@ function ProjectDetails() {
                                     )}
                                 </select></label>
 
-                                <label><select
-                                    name='techniques'
-                                    className='selectBox'
-                                    onChange={newPaintChange('technique_id')}
-                                >
-                                    {techniqueList.map((technique) =>
-                                        <option value={technique.id} key={technique.id}>{technique.technique}</option>
-                                    )}
 
-
-                                    {/* !! Adding new TEXT AREA for NOTES */}
-                                </select></label>
+                                <SelectTechnique
+                                    changeFunction={newPaintChange}
+                                    stringChange={'technique_id'}
+                                    techniqueList={techniqueList}
+                                />
 
                                 <label><textarea
                                     name='notes'
@@ -365,6 +360,11 @@ function ProjectDetails() {
 
                     <div id='button-bar'>
 
+                        {/* <ButtonB 
+                            clickFunction={paintMenu}
+                            classname={'btn_sm'}
+                            buttonName={`Paint Menu`}
+                        /> */}
                         <button
                             onClick={paintMenu}
                             className='btn_sm'
@@ -372,7 +372,6 @@ function ProjectDetails() {
                             'Paint Menu'
                             :
                             'Close Menu'}</button>
-
 
 
                         {/* Toggle Buttons to Edit Project */}
@@ -405,9 +404,6 @@ function ProjectDetails() {
                         <PaintDetails paint={paint} refreshDetails={refreshDetails} />
                     )}
                 </div>
-                {/* ! map for the paint details component */}
-
-                {/* </div> */}
 
             </div>
 

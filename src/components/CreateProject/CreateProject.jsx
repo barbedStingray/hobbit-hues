@@ -5,68 +5,61 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
 import { AnimatePresence, motion as m } from 'framer-motion';
-
-
 // components
 import ImageUpload from '../ImageUpload/ImageUpload.jsx';
-
+// css
 import './CreateProject.css';
 
 
 
 function CreateProject() {
 
+    // middleware variables
     const history = useHistory();
     const dispatch = useDispatch();
 
+    // redux variables
     const store = useSelector((store) => store);
     const user = useSelector((store) => store.user);
     const hexcode = useSelector((store) => store.hexcode);
+
+    // variables
     const [heading, setHeading] = useState('Create a Project!');
-
-
-    // image upload variable
-    let [imagePath, setImagePath] = useState('');
-    console.log(`hexcode passed:`, hexcode);
-
-
-    // axios.post to projects table
-    // variables include... user_id, model, primary, description, picture
+    let [imagePath, setImagePath] = useState(''); // image upload variable
     let [newProject, setNewProject] = useState({
         user_id: user.id,
         model: '',
         primary: hexcode,
         description: '',
         picture: ''
-    });
+    }); // axios.post to projects table
+
+
+    // ** Functions ************
 
     // function to change newProject variable
     const projectChange = (key) => (event) => {
-        console.log('changed newProject');
+        // console.log('changed newProject');
         setNewProject({ ...newProject, [key]: event.target.value })
     }
 
+    // function sets the newProject image and imagePath variables
     function setMultiple(properties) {
-        console.log(`setting multiple`);
-        console.log(`properties:`, properties);
-        // set image for object
+        // console.log(`setting multiple`);
+        // console.log(`properties:`, properties);
+        // set image for object passed to axios
         setNewProject({ ...newProject, picture: properties });
-        // set image for display
+        // set image for display to dom
         setImagePath(properties);
-
     }
 
-
-    // submit your form!
+    // Create your new project - submit your form!
     function createProject(e) {
         e.preventDefault();
-        console.log(`creating your new project`);
-
+        // console.log(`creating your new project`);
         // dispatch newProject
         dispatch({ type: 'CREATE_NEW_PROJECT', payload: newProject });
-
         // navigate to project page
         history.push('/projects');
     }
@@ -82,19 +75,17 @@ function CreateProject() {
 
         id='create-page'>
 
+            {/* Heading Div */}
             <div id='create-heading'>
                 <h3>{heading}</h3>
-                {/* <p>User ID: {user.id}</p> */}
             </div>
-
-            {/* {JSON.stringify(newProject)} */}
-
-
+            
+            {/* Create New Project Form */}
             <form id='create-form'>
 
                 <div id='model-input'>
-                    {/* <h3>Name your Project!</h3>
-                    <br /> */}
+
+                    {/* model name input */}
                     <input
                         id='model-box'
                         onChange={projectChange('model')}
@@ -103,15 +94,15 @@ function CreateProject() {
                     >
                     </input>
 
+                    {/* display hexCode palette */}
                     <div id='palette-variable'>
                         <p>Palette: {hexcode}</p>
                     </div>
 
-
-
                 </div>
 
 
+                {/* Description of Model Input */}
                 <div id='description-input'>
                     <textarea
                         onChange={projectChange('description')}
@@ -120,30 +111,27 @@ function CreateProject() {
                     </textarea>
                 </div>
 
+                {/* Image Upload Section */}
                 <div id='image-work'>
                     <ImageUpload photoFunction={setMultiple} />
-
                     {
                         imagePath === '' ? (
                             <></>
                         ) : (
-
                             <div id='image-preview'>
 
                                 <img className='mainUpload' src={imagePath} />
                             </div>
-
                         )
-
                     }
                 </div>
 
+                {/* Create new project Button - submit form */}
                 <div id='create-submit'>
                     <button onClick={createProject} className="btn">Create!</button>
                 </div>
 
             </form>
-
         </m.div>
     );
 }

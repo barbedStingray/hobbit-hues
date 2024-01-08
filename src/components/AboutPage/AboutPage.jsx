@@ -1,12 +1,12 @@
+
+
 import React from 'react';
 import './AboutPage.css';
 import ImageUpload from '../ImageUpload/ImageUpload.jsx';
 import { AnimatePresence, motion as m } from 'framer-motion';
 
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
+
+
 
 function AboutPage() {
 
@@ -22,7 +22,6 @@ function AboutPage() {
         transition={{ duration: 0.75, ease: 'easeOut' }}
         exit={{ x: '100%' }}
   
-
         id='about-pageDiv'
         className="container"
       >

@@ -1,3 +1,6 @@
+
+// IMPORTS
+// middleware
 import React, { useEffect, useState } from 'react';
 import {
   HashRouter as Router,
@@ -10,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 
 
+// components
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -23,10 +27,15 @@ import CreateProject from '../CreateProject/CreateProject.jsx';
 import ProjectsPage from '../ProjectsPage/ProjectsPage.jsx';
 import ProjectDetails from '../ProjectDetails/ProjectDetails.jsx';
 
+// css
 import './App.css';
+
+
+
 
 function App() {
 
+  // store variables
   const dispatch = useDispatch();
   let location = useLocation();
 
@@ -34,26 +43,29 @@ function App() {
 
 
 
-
+  // page reload, render dom
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
 
+  // console logs the location pathname of the dom
   useEffect(() => {
     console.log(`location.pathname`, location.pathname);
   }, [location]);
 
 
 
+
+
   return (
-    // <Router>
+
     <div id='app-mainDiv'>
       <Nav />
 
-
+      {/* Wrapped switch element to allow animations/transitions */}
       <AnimatePresence
         mode='wait'
-        
+      // ! There should be another key here 
       >
         <Switch location={location} key={location.pathname}>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
@@ -81,9 +93,7 @@ function App() {
             <UserPage />
           </ProtectedRoute>
 
-
-
-          // ! these are the new components
+          // ** these are the new components
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
@@ -91,7 +101,6 @@ function App() {
           >
             <CreateProject />
           </ProtectedRoute>
-
 
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
@@ -101,7 +110,6 @@ function App() {
             <ProjectsPage />
           </ProtectedRoute>
 
-
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
@@ -110,7 +118,7 @@ function App() {
             <ProjectDetails />
           </ProtectedRoute>
 
-          // ! new form Component
+          // ** new Components above
 
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
@@ -119,35 +127,6 @@ function App() {
           >
             <InfoPage />
           </ProtectedRoute>
-
-
-          {/* <Route
-            exact
-            path="/login"
-          >
-            {user.id ?
-              // If the user is already logged in, 
-              // redirect to the /user page
-              <Redirect to="/user" />
-              :
-              // Otherwise, show the login page
-              <LoginPage />
-            }
-          </Route> */}
-
-          {/* <Route
-            exact
-            path="/registration"
-          >
-            {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
-              :
-              // Otherwise, show the registration page
-              <RegisterPage />
-            }
-          </Route> */}
 
           <Route
             exact
@@ -169,8 +148,6 @@ function App() {
           </Route>
         </Switch>
       </AnimatePresence>
-
-
       <Footer />
     </div>
     // </Router>

@@ -1,10 +1,9 @@
 import React from 'react';
 import { AnimatePresence, motion as m } from 'framer-motion';
 
-// This is one of our simplest components
-// It doesn't have local state
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is
+import './InfoPage.css';
+
+
 
 function InfoPage() {
   return (
@@ -18,6 +17,7 @@ function InfoPage() {
         exit={{ x: '100%' }}
   
         className="container"
+        id='info-page'
       >
         <h1>Hobbit Hues Info</h1>
 
