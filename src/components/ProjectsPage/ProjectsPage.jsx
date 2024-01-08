@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { AnimatePresence, motion as m } from 'framer-motion';
+
 
 
 
@@ -39,7 +41,16 @@ function ProjectsPage(props) {
 
     return (
 
-        <div id='projects-page'>
+        <m.div 
+        // key={'/projects'}
+        initial={{ x: '-100%' }}
+        animate={{ x: '0%' }}
+        transition={{ duration: 0.75, ease: 'easeOut' }}
+        exit={{ x: '100%' }}
+
+        
+        
+        id='projects-page'>
 
 
 
@@ -57,7 +68,7 @@ function ProjectsPage(props) {
                 }
             </div>
 
-        </div>
+        </m.div>
 
     );
 }

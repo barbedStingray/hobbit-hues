@@ -5,6 +5,8 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { AnimatePresence, motion as m } from 'framer-motion';
+
 
 // components
 import ImageUpload from '../ImageUpload/ImageUpload.jsx';
@@ -202,7 +204,16 @@ function ProjectDetails() {
 
 
     return (
-        <div id='details-page'>
+        <m.div 
+        // key={'/details'}
+
+        initial={{ x: '-100%' }}
+        animate={{ x: '0%' }}
+        transition={{ duration: 0.75, ease: 'easeOut' }}
+        exit={{ x: '100%' }}
+
+        
+        id='details-page'>
 
             <div id='details-header'>
                 <h2>{projectDetails.model}</h2>
@@ -400,7 +411,7 @@ function ProjectDetails() {
 
             </div>
 
-        </div>
+        </m.div>
     );
 }
 

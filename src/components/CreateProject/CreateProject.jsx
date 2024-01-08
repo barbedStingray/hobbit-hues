@@ -6,6 +6,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { AnimatePresence, motion as m } from 'framer-motion';
+
 
 // components
 import ImageUpload from '../ImageUpload/ImageUpload.jsx';
@@ -72,7 +74,13 @@ function CreateProject() {
 
 
     return (
-        <div id='create-page'>
+        <m.div 
+        initial={{ x: '-100%' }}
+        animate={{ x: '0%' }}
+        transition={{ duration: 0.75, ease: 'easeOut' }}
+        exit={{ x: '100%' }}
+
+        id='create-page'>
 
             <div id='create-heading'>
                 <h3>{heading}</h3>
@@ -136,7 +144,7 @@ function CreateProject() {
 
             </form>
 
-        </div>
+        </m.div>
     );
 }
 

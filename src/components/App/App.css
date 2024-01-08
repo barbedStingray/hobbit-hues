@@ -39,6 +39,12 @@ body,
   height: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  /* background-color: blue; */
+  background-image: url('../../Images/StoneBridgeGreyscale.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
 }
 
 /* ! screen size manipulation */

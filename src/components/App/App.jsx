@@ -4,8 +4,10 @@ import {
   Redirect,
   Route,
   Switch,
+  useLocation
 } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { AnimatePresence } from 'framer-motion';
 
 
 import Nav from '../Nav/Nav';
@@ -26,7 +28,8 @@ import './App.css';
 function App() {
 
   const dispatch = useDispatch();
-  // let location = useLocation();
+  let location = useLocation();
+
   const user = useSelector(store => store.user);
 
 
@@ -34,16 +37,25 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
-    
   }, [dispatch]);
+
+  useEffect(() => {
+    console.log(`location.pathname`, location.pathname);
+  }, [location]);
+
 
 
   return (
-    <Router>
-      <div id='app-mainDiv'>
-        <Nav />
+    // <Router>
+    <div id='app-mainDiv'>
+      <Nav />
 
-        <Switch >
+
+      <AnimatePresence
+        mode='wait'
+        
+      >
+        <Switch location={location} key={location.pathname}>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
 
@@ -156,10 +168,12 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
+      </AnimatePresence>
 
-        <Footer />
-      </div>
-    </Router>
+
+      <Footer />
+    </div>
+    // </Router>
   );
 }
 

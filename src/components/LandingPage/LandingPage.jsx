@@ -3,6 +3,8 @@
 // middleware
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { motion as m } from 'framer-motion';
+
 
 // css
 import './LandingPage.css';
@@ -29,7 +31,16 @@ function LandingPage() {
   };
 
   return (
-    <div id='landing-page'>
+    <m.div 
+    key={'/home'}
+
+    initial={{ x: '-100%' }}
+    animate={{ x: '0%' }}
+    transition={{ duration: 0.75, ease: 'easeOut' }}
+    exit={{ x: '100%' }}
+
+    
+    id='landing-page'>
 
       <div id='title-hobbit'><h2>Hobbit Hues</h2></div>
 
@@ -69,7 +80,7 @@ function LandingPage() {
 
 
       </div>
-    </div>
+    </m.div>
   );
 }
 

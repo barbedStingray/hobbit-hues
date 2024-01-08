@@ -4,10 +4,10 @@
 
 #user-page {
     /* border: 2px solid blue; */
-    background-image: url('../../Images/StoneBridgeGreyscale.jpg');
+    /* background-image: url('../../Images/StoneBridgeGreyscale.jpg');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: cover; */
     /* min-height: 775px; */
     padding: 0px;
     display: flex;

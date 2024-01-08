@@ -117,18 +117,13 @@ const UserPage = ({ showComponent }) => {
 
 
   return (
-    <AnimatePresence
-      // initial={false}
-      mode={"wait"}
-    >
       <m.div
-        key='user'
+      key={'/user'}
 
-        
-        initial={{ y: '-100%' }}
-        animate={{ y: '0%' }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
-        exit={{ opacity: 1 }}
+      initial={{ x: '-100%' }}
+      animate={{ x: '0%' }}
+      transition={{ duration: 0.75, ease: 'easeOut' }}
+      exit={{ x: '100%' }}
 
 
         id='user-page'>
@@ -268,7 +263,6 @@ const UserPage = ({ showComponent }) => {
 
 
       </m.div>
-    </AnimatePresence>
   );
 }
 

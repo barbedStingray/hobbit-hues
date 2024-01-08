@@ -13,21 +13,15 @@ function AboutPage() {
 
 
   return (
-    <AnimatePresence 
-      mode='wait'
 
-      key={'/about'}
-    >
       <m.div
-        key={'about'}
+        key={'/about'}
 
-
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, ease: 'easeOut' }}
-        exit={{ opacity: 0 }}
-        // exit='exit'
-
+        initial={{ x: '-100%' }}
+        animate={{ x: '0%' }}
+        transition={{ duration: 0.75, ease: 'easeOut' }}
+        exit={{ x: '100%' }}
+  
 
         id='about-pageDiv'
         className="container"
@@ -58,7 +52,6 @@ function AboutPage() {
         </div>
 
       </m.div>
-    </AnimatePresence>
   );
 }
 

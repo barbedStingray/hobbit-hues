@@ -2,10 +2,10 @@
 
 #landing-page {
     /* border: 2px solid red; */
-    background-image: url('../../Images/HobbitHole.jpg');
+    /* background-image: url('../../Images/HobbitHole.jpg');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: cover; */
     display: flex;
     flex-direction: row-reverse;
     flex: 1;  

@@ -4,10 +4,10 @@
 
 #create-page {
     /* border: 2px solid red; */
-      background-image: url('../../Images/SouthFarthing.jpg');
+      /* background-image: url('../../Images/SouthFarthing.jpg');
       background-repeat: no-repeat;
       background-position: center;
-      background-size: cover;
+      background-size: cover; */
       min-height: 700px;
       display: flex;
       flex-direction: column;

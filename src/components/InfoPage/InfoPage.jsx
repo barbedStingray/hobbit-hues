@@ -8,26 +8,21 @@ import { AnimatePresence, motion as m } from 'framer-motion';
 
 function InfoPage() {
   return (
-    <AnimatePresence
-      // initial={false}
-      key={'info'}
-      mode='wait'
-    >
 
       <m.div
-        key={'info'}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, ease: 'easeOut' }}
-        exit={{ opacity: 0 }}
-        // exit='exit'
+        key={'/info'}
+
+        initial={{ x: '-100%' }}
+        animate={{ x: '0%' }}
+        transition={{ duration: 0.75, ease: 'easeOut' }}
+        exit={{ x: '100%' }}
+  
         className="container"
       >
         <h1>Hobbit Hues Info</h1>
 
 
       </m.div>
-    </AnimatePresence>
   );
 }
 
