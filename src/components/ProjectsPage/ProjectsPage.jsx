@@ -44,8 +44,8 @@ function ProjectsPage(props) {
             // scale: 1,
             transition: {
                 // duration: 2,
-                delayChildren: 0.5,
-                staggerChildren: 0.2
+                delayChildren: 0.15,
+                staggerChildren: 0.05
             }
         }
     };
@@ -54,11 +54,10 @@ function ProjectsPage(props) {
 
 
 
-
     return (
 
         <m.div 
-        key={'/projects'}
+        key={'createMotionProjectsPage'}
 
         className="container"
         variants={container}
@@ -70,13 +69,6 @@ function ProjectsPage(props) {
             transition: { duration: 0.5 }
         }}
 
-        // initial={{ x: '-100%' }}
-        // animate={{ x: '0%' }}
-        // transition={{ duration: 0.75, ease: 'easeOut' }}
-        // exit={{ x: '100%' }}
-
-        
-        
         id='projects-page'>
 
 

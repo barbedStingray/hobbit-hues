@@ -7,10 +7,10 @@ import './InfoPage.css';
 function InfoPage() {
 
   const container = {
-    hidden: { opacity: 1, scale: 0 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      scale: 1,
+      // scale: 1,
       transition: {
         delayChildren: 0.75,
         staggerChildren: 0.2
@@ -28,17 +28,23 @@ function InfoPage() {
 
 
 
+
+
   return (
 
     <m.div
-      key={'/info'}
-
-      initial={{ x: '-100%' }}
-      animate={{ x: '0%' }}
-      transition={{ duration: 0.75, ease: 'easeOut' }}
-      exit={{ x: '100%' }}
+      key={'createMotionInfo'}
 
       className="container"
+      variants={container}
+      initial="hidden"
+      transition={{ duration: 0.55, ease: 'easeOut' }}
+      animate="visible"
+      exit={{ 
+        opacity: 0,
+        transition: { duration: 0.5 }
+    }}
+
       id='info-page'
     >
       <h1>Hobbit Hues Info</h1>

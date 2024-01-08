@@ -211,13 +211,13 @@ function ProjectDetails() {
             // scale: 1,
             transition: {
                 // duration: 2,
-                delayChildren: 0.5,
-                staggerChildren: 0.2
+                delayChildren: 0.25,
+                staggerChildren: 0.1
             }
         }
     };
 
-    const item = {
+    const mainPhotoMotion = {
         hidden: { y: 20, opacity: 0 },
         visible: {
             y: 0,
@@ -231,14 +231,15 @@ function ProjectDetails() {
 
 
 
+
     return (
         <m.div
-            key={'/details'}
+            key={'createMotionProjectDetails'}
 
             className="container"
             variants={container}
             initial="hidden"
-            transition={{ duration: 0.75, ease: 'easeOut' }}
+            transition={{ duration: 0.55, ease: 'easeOut' }}
             animate="visible"
             exit={{ 
                     opacity: 0,
@@ -291,13 +292,14 @@ function ProjectDetails() {
 
                         {toggleProject === true ?
                             <m.img
-                            
-                                variants={item}
+                            // key={projectDetails.id}
+                            key={'motionMainPhoto'}
 
-                                key={projectDetails.id}
+                                variants={mainPhotoMotion}
+
                                 src={projectDetails.picture}
                                 alt="No Photo Uploaded"
-                                className='detailsPhoto item' />
+                                className='detailsPhoto mainPhotoMotion' />
                             :
                             <>
                                 <ImageUpload photoFunction={editProjectPicture} />
@@ -453,14 +455,8 @@ function ProjectDetails() {
 
                     id='painted-models'>
 
-                    {paintDetails.map((paint, index) =>
-                        <m.div
-                            key={index}
-                            className="item"
-                            variants={item}
-                        >
+                    {paintDetails.map((paint) =>
                             <PaintDetails paint={paint} refreshDetails={refreshDetails} />
-                        </m.div>
                     )}
                 </div>
 

@@ -85,10 +85,12 @@ function CreateProject() {
 
     return (
         <m.div 
+        key={'createMotionProject'}
+
         className="container"
         variants={container}
         initial="hidden"
-        transition={{ duration: 0.75, ease: 'easeOut' }}
+        transition={{ duration: 0.55, ease: 'easeOut' }}
         animate="visible"
         exit={{ 
             opacity: 0,

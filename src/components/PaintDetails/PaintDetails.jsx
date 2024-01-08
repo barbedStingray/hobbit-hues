@@ -28,21 +28,23 @@ function PaintDetails(props) {
 
 
 
-    // const item = {
-    //     hidden: { y: 20, opacity: 0 },
-    //     visible: {
-    //       y: 0,
-    //       opacity: 1
-    //     }
-    //   };
-    
+    const paintDetailsMotion = {
+        hidden: { y: 20, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1
+        }
+    };
+
 
 
     return (
-        <div 
-        // className="item" 
-        // variants={item}
-        id='project-paints'>
+        <m.div
+            key={'paintMotionDetails'}
+            className="paintDetailsMotion"
+            variants={paintDetailsMotion}
+
+            id='project-paints'>
 
             <div id='paint-step'>
                 <img key={props.paint.id} src={props.paint.photo} alt="No Photo Uploaded" id='painted-image' className='photo-zoom' />
@@ -85,7 +87,7 @@ function PaintDetails(props) {
 
 
             </div>
-        </div>
+        </m.div>
     );
 }
 

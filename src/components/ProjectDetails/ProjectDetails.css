@@ -31,7 +31,7 @@
         justify-content: center;
         gap: 1%;
         margin-top: -2%;
-        height: 74%;
+        height: 76%;
       }
       /* ! main column */
           #color-view{
@@ -187,8 +187,9 @@
             border: 3px solid #4d4848;
             border-radius: 10px;
             background-color: #f5f5f5aa;
-            height: 100%;
-            max-height: 515px;
+            height: 515px;
+            /* height: 100%; */
+            /* max-height: 515px; */
             padding: 1%;
           }
   

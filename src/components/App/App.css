@@ -40,10 +40,11 @@ body,
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
   /* background-color: blue; */
-  background-image: url('../../Images/StoneBridgeGreyscale.jpg');
+  background-image: url('../../Images/HobbitHole9.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  /* min-height: 700px; */
 
 }
 

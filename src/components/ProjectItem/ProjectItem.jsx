@@ -31,7 +31,21 @@ function ProjectItem(props) {
 
     }
 
-    const item = {
+    // const container = {
+    //     hidden: { opacity: 0 },
+    //     visible: {
+    //         opacity: 1,
+    //         // scale: 1,
+    //         transition: {
+    //             // duration: 2,
+    //             delayChildren: 1,
+    //             staggerChildren: 0.5
+    //         }
+    //     }
+    // };
+
+
+    const singleProjectItem = {
         hidden: { y: 20, opacity: 0 },
         visible: {
             y: 0,
@@ -42,30 +56,35 @@ function ProjectItem(props) {
 
 
     return (
-        <m.div
-            key={'sigleMotionProject'}
-            className="item"
-            variants={item}
 
-            id='single-project'
-            onClick={() => projectDetails(props.project)}>
+            <m.div
+                key={'sigleMotionProject'}
+                className="singleProjectItem"
+                variants={singleProjectItem}
 
-            <div id='project-photo'>
-                <img src={props.project.picture} alt="No Photo Uploaded" className='photo-project' />
-            </div>
+                id='single-project'
+                onClick={() => projectDetails(props.project)}>
 
-            <div id='project-words'>
-                <div id='project-model'>
-                    <h3>{props.project.model}</h3>
+                <div id='project-photo'>
+                    <img src={props.project.picture} alt="No Photo Uploaded" className='photo-project' />
                 </div>
 
-                <div id='project-description'>
-                    <p>{props.project.description}</p>
+                <div id='project-words'>
+                    <div id='project-model'>
+                        <h3>{props.project.model}</h3>
+                    </div>
+
+                    <div id='project-description'>
+                        <p>{props.project.description}</p>
+                    </div>
                 </div>
-            </div>
+
+            </m.div>
 
 
-        </m.div>
+
+
+
     );
 }
 
