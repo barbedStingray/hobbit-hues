@@ -184,7 +184,7 @@ const UserPage = ({ showComponent }) => {
 
             <div id='color-input-buttons'>
 
-              <label>Secondary<br /><input
+              <label><input
                 className='color-select'
                 type='color'
                 value={paletteSecond}

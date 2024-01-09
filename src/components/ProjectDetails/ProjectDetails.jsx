@@ -207,7 +207,7 @@ function ProjectDetails() {
                     </div>
 
                     <div id='projectImage-div'>
-                        {toggleProject === true ?
+                        {toggleProject === true ? 
                             <m.img
                                 key={'motionMainPhoto'}
                                 variants={mainPhotoMotion}
