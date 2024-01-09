@@ -1,0 +1,34 @@
+
+
+#community-page {
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    flex: 1;  
+}
+
+#community-heading {
+    /* border: 2px solid orange; */
+    font-family: ringbearer;
+    font-size: 48px;
+    color: transparent;
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 1px;
+    background: linear-gradient(darkgreen, 30%, limegreen, 40%, yellow, 50%, orange, 70%, red);
+    background-clip: text;
+    text-align: center;
+}
+
+#community-display {
+    /* border: 2px solid limegreen; */
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 450px;
+    gap: 1%;
+    margin: 0% 4% 0 4%;
+    overflow-x: scroll;
+}

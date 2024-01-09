@@ -42,6 +42,10 @@ function Nav() {
               Projects
             </Link>
 
+            <Link className="navLink" to="/community">
+              Community
+            </Link>
+
             <Link className="navLink" to="/info">
               Info Page
             </Link>

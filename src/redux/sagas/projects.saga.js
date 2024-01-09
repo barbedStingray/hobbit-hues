@@ -15,7 +15,7 @@ function* fetchUserProjects(action) {
 
     } catch (error) {
       // console.log(`error in POST createNewProject`);
-      alert(`something went wrong, your project was not created!`);
+      alert(`something went wrong, your project list was not generated!`);
     }
   }
 

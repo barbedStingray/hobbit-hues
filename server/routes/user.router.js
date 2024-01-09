@@ -136,6 +136,26 @@ ORDER BY "projects_paints"."id" DESC
   });
 });
 
+// GET /community request (/api/user/community)
+// GET /projects request
+router.get('/community', (req, res) => {
+  const queryText = `SELECT * FROM "projects"
+                      JOIN "user" ON "user"."id" = "projects"."user_id"
+                      ORDER BY "model" ASC, "username" ASC
+                      ;`;
+  pool.query(queryText).then((result) => {
+    console.log(`success in GET /projects`);
+    res.send(result.rows);
+  }).catch((error) => {
+    console.log(`error in generating community projects list`);
+    res.sendStatus(500);
+  })
+});
+
+
+
+
+
 // *** ALL GET REQUESTS
 
 

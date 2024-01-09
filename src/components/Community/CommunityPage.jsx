@@ -5,22 +5,22 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { motion as m } from 'framer-motion';
 // components
-import ProjectItem from '../ProjectItem/ProjectItem.jsx';
+import CommunityItem from './CommunityItem/CommunityItem';
 // css
-import './ProjectsPage.css';
+import './CommunityPage.css';
 
 
 
-function ProjectsPage(props) {
+function CommunityPage() {
 
     // middleware variables
     const dispatch = useDispatch();
 
     // redux variables
-    const userProjects = useSelector((store) => store.userProjects);
+    const communityProjects = useSelector((store) => store.communityProjects);
 
     // variables
-    const [heading, setHeading] = useState('Projects');
+    const [heading, setHeading] = useState('Community');
     // custom motion variable
     const container = {
         hidden: { opacity: 0 },
@@ -28,20 +28,20 @@ function ProjectsPage(props) {
             opacity: 1,
             transition: {
                 delayChildren: 0.15,
-                staggerChildren: 0.05
+                staggerChildren: 0.03
             }
         }
     };
 
 
     // page refresh
-    function setProjectList() {
-        dispatch({ type: 'FETCH_PROJECTS' });
+    function setCommunityList() {
+        console.log(`setting the community list`);
+        dispatch({ type: 'FETCH_COMMUNITY_PROJECTS' });
     }
     useEffect(() => {
-        setProjectList();
+        setCommunityList();
     }, []);
-
 
 
 
@@ -49,25 +49,27 @@ function ProjectsPage(props) {
     return (
 
         <m.div
-            key={'createMotionProjectsPage'}
+            key={'createMotionCommunityPage'}
             className="container"
             variants={container}
             initial="hidden"
-            transition={{ duration: 0.55, ease: 'easeOut' }}
+            transition={{ duration: 0.75, ease: 'easeOut' }}
             animate="visible"
             exit={{
                 opacity: 0,
                 transition: { duration: 0.5 }
             }}
-            id='projects-page'>
+            id='community-page'>
 
-            <div id='project-heading'>
+                {/* {JSON.stringify(communityProjects)} */}
+
+            <div id='community-heading'>
                 <h2>{heading}</h2>
             </div>
 
-            <div id='projects-display'>
-                {userProjects.map((project) =>
-                    (<ProjectItem
+            <div id='community-display'>
+                {communityProjects.map((project) =>
+                    (<CommunityItem
                         key={project.id}
                         project={project}
                     />))
@@ -78,4 +80,4 @@ function ProjectsPage(props) {
     );
 }
 
-export default ProjectsPage;
+export default CommunityPage;

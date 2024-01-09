@@ -22,6 +22,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import CreateProject from '../CreateProject/CreateProject.jsx';
 import ProjectsPage from '../ProjectsPage/ProjectsPage.jsx';
 import ProjectDetails from '../ProjectDetails/ProjectDetails.jsx';
+import CommunityPage from '../Community/CommunityPage.jsx';
 
 // css
 import './App.css';
@@ -110,6 +111,14 @@ function App() {
             path="/details/:id"
           >
             <ProjectDetails />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/community"
+          >
+            <CommunityPage />
           </ProtectedRoute>
 
           // ** new Components above
