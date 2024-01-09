@@ -1,13 +1,69 @@
 
 #info-page {
     /* border: 2px solid red; */
-      /* background-image: url('../../Images/SouthFarthing.jpg');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover; */
-      /* min-height: 700px; */
       display: flex;
       flex-direction: column;
       flex: 1;  
 
 }
+    #info-header {
+        font-family: ringbearer;
+        font-size: 48px;
+        color: transparent;
+        -webkit-text-stroke-color: black;
+        -webkit-text-stroke-width: 1px;
+        background: linear-gradient(darkgreen, 30%, limegreen, 40%, yellow, 50%, orange, 70%, red);
+        background-clip: text;
+        text-align: center;
+
+    }
+    #overflow-trial {
+      border: 2px solid red;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 400px;
+      height: 400px;
+      overflow: hidden;
+    }
+    #text-swipes {
+      border: 2px solid blue;
+      
+      width: 150px;
+      height: 150px;
+    }
+    #swipe-image {
+      /* position: absolute; */
+      height: 200px;
+      /* max-width: 100vw; */
+      border: solid 5px limegreen;
+    }
+    
+.next,
+.prev {
+  top: calc(50% - 20px);
+  /* position: absolute; */
+  background: white;
+  border-radius: 30px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+  z-index: 2;
+}
+
+.next {
+  right: 10px;
+}
+
+.prev {
+  left: 10px;
+  transform: scale(-1);
+}
+

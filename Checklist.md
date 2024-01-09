@@ -2,6 +2,9 @@
 ## Overall Goals and Functionalities for Hobbit Hues
 
 BASE FUNCTIONALITY ACHIEVED
+community page? How do I optimize it for 100's of projects?
+what is the difference between code inside the componenet vs outside of it?
+
 
 
 ## Rounding Out the Project
