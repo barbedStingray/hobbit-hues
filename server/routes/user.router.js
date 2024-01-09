@@ -137,12 +137,19 @@ ORDER BY "projects_paints"."id" DESC
 });
 
 // GET /community request (/api/user/community)
-// GET /projects request
 router.get('/community', (req, res) => {
-  const queryText = `SELECT * FROM "projects"
-                      JOIN "user" ON "user"."id" = "projects"."user_id"
-                      ORDER BY "model" ASC, "username" ASC
-                      ;`;
+  const queryText = `SELECT 
+	"projects"."id",
+	"projects"."description",
+	"projects"."model",
+	"projects"."picture",
+	"projects"."primary",
+	"user"."username"
+FROM "projects" 
+JOIN "user" ON "user"."id" = "projects"."user_id"
+WHERE "public" = TRUE
+ORDER BY RANDOM() LIMIT 25
+;`;
   pool.query(queryText).then((result) => {
     console.log(`success in GET /projects`);
     res.send(result.rows);
@@ -151,6 +158,8 @@ router.get('/community', (req, res) => {
     res.sendStatus(500);
   })
 });
+
+
 
 
 
@@ -286,6 +295,23 @@ router.put(`/editProject/:id`, (req, res) => {
       res.sendStatus(201);
     }).catch((error) => {
       // console.log(`error in PUT project details`);
+      res.sendStatus(500);
+    });
+});
+
+// PUT to make project public
+router.put(`/publicprivate/:id`, (req, res) => {
+
+  console.log(`reqparams`, req.params.id);
+  const queryText = `UPDATE "projects"
+                      SET "public" = NOT public
+                      WHERE "id" = $1;`;
+  pool.query(queryText,
+    [req.params.id]).then((result) => {
+      console.log(`success! in PUT public private!`);
+      res.sendStatus(201);
+    }).catch((error) => {
+      console.log(`error in PUT public private`);
       res.sendStatus(500);
     });
 });

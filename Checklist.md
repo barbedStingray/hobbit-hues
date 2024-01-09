@@ -2,9 +2,6 @@
 ## Overall Goals and Functionalities for Hobbit Hues
 
 BASE FUNCTIONALITY ACHIEVED
-community page? How do I optimize it for 100's of projects?
-what is the difference between code inside the componenet vs outside of it?
-
 
 
 ## Rounding Out the Project
@@ -20,7 +17,7 @@ what is the difference between code inside the componenet vs outside of it?
 
 
 ## Stretch Goals
-    [] community page displaying a list of ALL projects. 
+    [] community page displaying a list of 10 random projects. 
     [] ability to toggle public/private projects from the user (think boolean column in "projects" sql)
 
 ## Bug Hunt

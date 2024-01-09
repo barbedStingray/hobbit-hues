@@ -12,6 +12,7 @@ import updateProjectSaga from './updateProject.saga';
 import techniqueSaga from './technique.saga';
 import deletePaintSaga from './deletePaint.saga';
 import fetchCommunity from './community.saga';
+import publicSaga from './public.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -34,6 +35,7 @@ export default function* rootSaga() {
     deletePaintSaga(), // deletes a single paint from project
     updateProjectSaga(), // updates project data
     fetchCommunity(), // fetches community projects
+    publicSaga(), // allows user to switch public/private
 
   ]);  
 }

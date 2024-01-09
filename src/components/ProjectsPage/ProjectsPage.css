@@ -25,9 +25,11 @@
   
       }
       #projects-display {
-        border: 3px solid #4d4848;
-        background-color: #f5f5f5bb;
-        box-shadow: 0 0 15px black;
+        border-top: 2px solid black;
+        border-bottom: 1px solid black;
+        /* border: 3px solid #4d4848;
+        background-color: #f5f5f5bb; */
+        /* box-shadow: 0 0 15px black; */
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;

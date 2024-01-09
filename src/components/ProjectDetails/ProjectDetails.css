@@ -87,6 +87,14 @@
                 justify-content: center;
                 flex-grow: 1;
               }
+                #palette-button {
+                  /* border: 2px solid magenta; */
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: center;
+                  /* align-items: center; */
+                  gap: 10px;
+                }
                   .palette-container {
                     /* border: 2px solid greenyellow; */
                     display: flex;
@@ -94,6 +102,7 @@
                     justify-content: center;
                     align-items: center;
                     gap: 2%;
+                    width: 400px;
                   }
                       .detailPrime {
                         height: 100%;

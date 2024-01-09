@@ -471,16 +471,14 @@ Button
   border-radius: 5px;
   box-shadow: 0 5px 15px black;
 }
-.btn:hover {
+.btn_pc:hover, .btn_pb:hover, .btn_sm:hover, .btn:hover {
   background-color: green;
   outline-color: green;
   border: 1px solid lightgreen;
   text-decoration: none;
   transition: 0.5s;
   color: white;
-
 }
-
 .btn_sm {
   display: inline-block;
   padding: 2px 5px;
@@ -495,15 +493,6 @@ Button
   border-radius: 5px;
   box-shadow: 0 5px 15px black;
 }
-.btn_sm:hover {
-  background-color: green;
-  outline-color: green;
-  border: 1px solid lightgreen;
-  text-decoration: none;
-  transition: 0.5s;
-  color: white;
-
-}
 .btn_del:hover {
   background-color: darkred;
   outline-color: red;
@@ -511,6 +500,43 @@ Button
   text-decoration: none;
   transition: 0.5s;
   color: white;
+}
+.btn_pb {
+  display: inline-block;
+  padding: 2px 5px;
+  border-width: 2px;
+  border-style: solid;
+  background-color: purple;
+  border: 1px solid pink;
+  font-size: 1.1rem;
+  outline: outset;
+  outline-color: purple;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px black;
+  height: 50px;
+  width: 70px;
+  color: white;
+  align-self: center;
+  margin-right: 10px;
+}
+.btn_pc {
+  display: inline-block;
+  padding: 2px 5px;
+  border-width: 2px;
+  border-style: solid;
+  background-color: darkblue;
+  border: 1px solid lightblue;
+  font-size: 1.1rem;
+  outline: outset;
+  outline-color: darkblue;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px black;
+  height: 50px;
+  width: 70px;
+  color: white;
+  align-self: center;
 
 }
 

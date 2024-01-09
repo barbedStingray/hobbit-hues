@@ -17,7 +17,7 @@ function CommunityItem(props) {
 
     // custom motion variable
     const singleCommunityItem = {
-        hidden: { y: 20, opacity: 0 },
+        hidden: { opacity: 0 },
         visible: {
             y: 0,
             opacity: 1
@@ -27,7 +27,10 @@ function CommunityItem(props) {
     // takes user to project details page
     function communityDetails(project) {
         console.log(`going to community Details page`)
-        // history.push(`/details/${props.project.id}`);
+        console.log(`props.project.id`, props.project.id);
+        console.log(`props.project.user_id`, props.project.user_id);
+        console.log(`props.project`, props.project);
+        history.push(`/communityDetail/${props.project.id}`);
     }
 
 
@@ -35,11 +38,15 @@ function CommunityItem(props) {
     return (
 
         <m.div
-
-            key={'sigleMotionCommunityItem'}
-            className="sigleMotionCommunityItem"
+            key={'singleMotionCommunityItem'}
+            className="singleMotionCommunityItem"
             variants={singleCommunityItem}
             id='single-communityProject'
+            exit={{
+                opacity: 0,
+                transition: { duration: 0.5 }
+            }}
+
             onClick={() => communityDetails(props.project)}>
 
             <div id='community-model'>

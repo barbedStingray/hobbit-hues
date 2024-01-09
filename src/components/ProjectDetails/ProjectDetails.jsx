@@ -32,6 +32,7 @@ function ProjectDetails() {
     // VARIABLES FOR PROJECT DETAILS
     const [paintProject, setPaintProject] = useState('#hexcode'); // POST new paint variable
     const [toggleProject, setToggleProject] = useState(true); // toggle for editing project details
+    // const [togglePublic, setTogglePublic] = useState(false); // toggle for editing project details
     const [togglePaint, setTogglePaint] = useState(true); // toggle the add paint menu
     let [imagePath, setImagePath] = useState(''); // new main photo display
     let [newPaint, setNewPaint] = useState({
@@ -161,6 +162,15 @@ function ProjectDetails() {
         setTogglePaint(!togglePaint);
         console.log(`paintMenu toggle`, togglePaint);
     }
+    // toggles your project public/private
+    function togglePublicPrivate() {
+        console.log(`making your project public`);
+        dispatch({ type: 'MAKE_PUBLIC_PRIVATE', payload: id });
+        // setTogglePublic(!togglePublic);
+        // console.log(`togglePublic`, togglePublic);
+        setTimeout(() => refreshDetails(), 150);
+
+    }
 
 
 
@@ -207,13 +217,19 @@ function ProjectDetails() {
                     </div>
 
                     <div id='projectImage-div'>
-                        {toggleProject === true ? 
+                        {toggleProject === true ?
                             <m.img
                                 key={'motionMainPhoto'}
                                 variants={mainPhotoMotion}
                                 src={projectDetails.picture}
                                 alt="No Photo Uploaded"
-                                className='detailsPhoto mainPhotoMotion' />
+                                className='detailsPhoto mainPhotoMotion'
+                                exit={{
+                                    opacity: 0,
+                                    transition: { duration: 0.5 }
+                                }}
+
+                            />
                             :
                             <>
                                 <ImageUpload photoFunction={editProjectPicture} />
@@ -228,25 +244,31 @@ function ProjectDetails() {
                             </>}
                     </div>
 
-                    <div id='detail-palette'>
-                        {/* Project Color Display */}
-                        <div className="palette-container">
-                            <div className="detailThird primary-triad-2 "><p>T2</p></div>
-                            <div className="detailSecond primary-triad-1 "><p>T1</p></div>
-                            <div className="detailPrime primary-complement "><p>Comp.</p></div>
-                            <div className="detailSecond primary-analog-1 "><p>A1</p></div>
-                            <div className="detailThird primary-analog-2 "><p>A2</p></div>
-                        </div>
-                        <div className="palette-container">
-                            <div className="detailThird primary-twolight"><p>Light</p></div>
-                            <div className="detailSecond primary-light"><p>Light</p></div>
-                            <div className="detailPrime primary"><p>Prime</p></div>
-                            <div className="detailSecond primary-dark"><p>Dark</p></div>
-                            <div className="detailThird primary-twodark"><p>Dark</p></div>
+                    <div id='palette-button'>
+                        <div id='detail-palette'>
+                            {/* Project Color Display */}
+                            <div className="palette-container">
+                                <div className="detailThird primary-triad-2 "><p>T2</p></div>
+                                <div className="detailSecond primary-triad-1 "><p>T1</p></div>
+                                <div className="detailPrime primary-complement "><p>Comp.</p></div>
+                                <div className="detailSecond primary-analog-1 "><p>A1</p></div>
+                                <div className="detailThird primary-analog-2 "><p>A2</p></div>
+                            </div>
+                            <div className="palette-container">
+                                <div className="detailThird primary-twolight"><p>Light</p></div>
+                                <div className="detailSecond primary-light"><p>Light</p></div>
+                                <div className="detailPrime primary"><p>Prime</p></div>
+                                <div className="detailSecond primary-dark"><p>Dark</p></div>
+                                <div className="detailThird primary-twodark"><p>Dark</p></div>
+                            </div>
                         </div>
 
-                        {/* todo !! Private/Public button here */}
+                        <button
+                            className={projectDetails.public ? 'btn_pb' : 'btn_pc'}
+                            onClick={togglePublicPrivate}
+                        >{projectDetails.public ? 'Public' : 'Private'}</button>
                     </div>
+
                 </div>
 
                 {/* NEW PAINT INPUTS */}

@@ -1,30 +1,15 @@
 
+
 // IMPORTS
 // middleware
 import { useSelector, useDispatch } from 'react-redux';
 import { motion as m } from 'framer-motion';
 // css
-import './PaintDetails.css';
 
-function PaintDetails(props) {
-
-    // middleware variables
-    const dispatch = useDispatch();
-    // redux variables
-    const store = useSelector((store) => store);
-
-
-    // delete single paint
-    function deletePaint(paint) {
-        console.log(`deleting a single paint ID`, paint);
-        // delete single paint
-        dispatch({ type: 'DELETE_SINGLE_PAINT', payload: paint });
-        // refresh page / passed from props
-        props.refreshDetails();
-    }
+function CommunityPaint(props) {
 
     // custom motion variable
-    const paintDetailsMotion = {
+    const paintCommunityDetailsMotion = {
         hidden: { y: 20, opacity: 0 },
         visible: {
             y: 0,
@@ -33,23 +18,21 @@ function PaintDetails(props) {
     };
 
 
-
     return (
 
             <m.div
-                key={'paintMotionDetails'}
+                key={'paintMotionCommunityDetails'}
                 className="paintDetailsMotion"
-                variants={paintDetailsMotion}
+                variants={paintCommunityDetailsMotion}
                 exit={{
                     opacity: 0,
                     transition: { duration: 0.5 }
                 }}
-
+    
                 id='project-paints'>
 
                 <div id='paint-step'>
                     <img key={props.paint.id} src={props.paint.photo} alt="No Photo Uploaded" id='painted-image' className='photo-zoom' />
-                    {/* {JSON.stringify(props.paint)} */}
                 </div>
 
                 <div id='paint-description'>
@@ -74,16 +57,10 @@ function PaintDetails(props) {
                             >
                             </input></label>
                         </div>
-                        <div>
-                            <button
-                                onClick={() => deletePaint(props.paint.id)}
-                                className='btn_sm btn_del'
-                            >X</button>
-                        </div>
                     </div>
                 </div>
             </m.div>
     );
 }
 
-export default PaintDetails;
+export default CommunityPaint;

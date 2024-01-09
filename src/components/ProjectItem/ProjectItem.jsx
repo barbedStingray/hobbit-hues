@@ -38,6 +38,11 @@ function ProjectItem(props) {
             className="singleProjectItem"
             variants={singleProjectItem}
             id='single-project'
+            exit={{
+                opacity: 0,
+                transition: { duration: 0.5 }
+            }}
+
             onClick={() => projectDetails(props.project)}>
 
             <div id='project-photo'>
