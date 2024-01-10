@@ -2,7 +2,6 @@
 
 // IMPORTS
 // middleware
-import { useSelector, useDispatch } from 'react-redux';
 import { motion as m } from 'framer-motion';
 // css
 import './CommunityPaint.css';

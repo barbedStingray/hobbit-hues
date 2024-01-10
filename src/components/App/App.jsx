@@ -3,7 +3,6 @@
 // middleware
 import React, { useEffect, useState } from 'react';
 import {
-  HashRouter as Router,
   Redirect,
   Route,
   Switch,

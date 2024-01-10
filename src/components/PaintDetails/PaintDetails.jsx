@@ -49,7 +49,6 @@ function PaintDetails(props) {
 
                 <div id='paint-step'>
                     <img key={props.paint.id} src={props.paint.photo} alt="No Photo Uploaded" id='painted-image' className='photo-zoom' />
-                    {/* {JSON.stringify(props.paint)} */}
                 </div>
 
                 <div id='paint-description'>

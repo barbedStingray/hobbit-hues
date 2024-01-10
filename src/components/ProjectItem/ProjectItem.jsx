@@ -1,8 +1,6 @@
 
 // IMPORTS
 // middleware
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
 // css

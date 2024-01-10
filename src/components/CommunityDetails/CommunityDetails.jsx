@@ -1,9 +1,9 @@
 
 // IMPORTS
 // middleware
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
 // components
 import CommunityPaint from '../CommunityPaint/CommunityPaint.jsx';
@@ -28,11 +28,11 @@ function CommunityDetails() {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
-            // scale: 1,
+            scale: 1,
             transition: {
-                // duration: 2,
-                delayChildren: 0.25,
-                // staggerChildren: 0.1
+                duration: 0.5,
+                delayChildren: 0.3,
+                // staggerChildren: 1.0
             }
         }
     };
@@ -49,14 +49,18 @@ function CommunityDetails() {
 
     // pageReload functions if ID changes
     useEffect(() => {
-        refreshDetails()
+        refreshDetails();
+
+        // clears reducer
+        return () => {
+            dispatch({ type: 'RESET_PROJECT_DETAILS' });
+        }
     }, [id]);
 
     // page refresh function
     function refreshDetails() {
         dispatch({ type: 'FETCH_PROJECT_DETAILS', payload: id });
     }
-
 
 
 
@@ -95,7 +99,6 @@ function CommunityDetails() {
                                 opacity: 0,
                                 transition: { duration: 0.5 }
                             }}
-
                         />
                     </div>
 

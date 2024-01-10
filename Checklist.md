@@ -17,9 +17,8 @@ BASE FUNCTIONALITY ACHIEVED
 
 ## Bug Hunt
     [] animations for projectItems and paintItems do not animate upon first view, but every time after they work fine
-    [] css background image / viewport relationship is slightly askew
-    [] make sure item renders are ordered the way you need (GET requests alphabetical)
-    [] scroll divs affect the heights awkwardly (maybe left to right scrolls?)
+    [] projectDetails and communityDetails title "blinks" into focus upon changing the state of the reducer while animation is playing
+    [] css background image / viewport relationship is slightly askew... slightly, in relation to height
 
 
 

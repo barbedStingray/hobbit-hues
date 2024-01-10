@@ -56,7 +56,7 @@ function ColorWheel(props) {
 
         <m.div className={`item divTertiary ${props.color}-twolight`} variants={item}><p>Light</p></m.div>
         <m.div className={`item divSecondary ${props.color}-light`} variants={item}><p>Light</p></m.div>
-        <m.div className={`item divPrime ${props.color}`} variants={item}><p>Secondary</p></m.div>
+        <m.div className={`item divPrime ${props.color}`} variants={item}><p>Primary</p></m.div>
         <m.div className={`item divSecondary ${props.color}-dark`} variants={item}><p>Dark</p></m.div>
         <m.div className={`item divTertiary ${props.color}-twodark`} variants={item}><p>Dark</p></m.div>
       </m.div>

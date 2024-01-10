@@ -33,7 +33,6 @@ function ProjectsPage(props) {
         }
     };
 
-
     // page refresh
     function setProjectList() {
         dispatch({ type: 'FETCH_PROJECTS' });
@@ -41,8 +40,6 @@ function ProjectsPage(props) {
     useEffect(() => {
         setProjectList();
     }, []);
-
-
 
 
 

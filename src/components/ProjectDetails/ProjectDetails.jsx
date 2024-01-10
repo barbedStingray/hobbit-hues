@@ -51,11 +51,11 @@ function ProjectDetails() {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
-            // scale: 1,
+            scale: 1,
             transition: {
-                // duration: 2,
-                // delayChildren: 0.25,
-                // staggerChildren: 0.1
+                duration: 0.5,
+                delayChildren: 0.3,
+                // staggerChildren: 1.0
             }
         }
     };
@@ -73,9 +73,14 @@ function ProjectDetails() {
 
     // pageReload functions if ID changes
     useEffect(() => {
-        refreshDetails()
-        fetchPaintsDropdown()
-        fetchTechniqueDropdown()
+        refreshDetails();
+        fetchPaintsDropdown();
+        fetchTechniqueDropdown();
+
+        return () => {
+            dispatch({ type: 'RESET_PROJECT_DETAILS' });
+        }
+
     }, [id]);
 
     // function to set newPaint
@@ -158,16 +163,11 @@ function ProjectDetails() {
     // toggles paint menu
     function paintMenu() {
         setTogglePaint(!togglePaint);
-        console.log(`paintMenu toggle`, togglePaint);
     }
     // toggles your project public/private
     function togglePublicPrivate() {
-        console.log(`making your project public`);
         dispatch({ type: 'MAKE_PUBLIC_PRIVATE', payload: id });
-        // setTogglePublic(!togglePublic);
-        // console.log(`togglePublic`, togglePublic);
         setTimeout(() => refreshDetails(), 150);
-
     }
 
 
@@ -198,19 +198,6 @@ function ProjectDetails() {
                 {/* page left display */}
                 <div id='color-view'>
 
-                    {/* <div id='project-mainDescription'>
-                        {toggleProject === true ?
-                            <p key={projectDetails.id}>{projectDetails.description}</p>
-                            :
-                            <textarea
-                                onChange={editProjectChange('description')}
-                                // ! this is the same as the createProject.css
-                                id='createDescription-input'
-                                value={editProjectPackage.description}
-                            >
-                            </textarea>}
-                    </div> */}
-
                     <div id='projectImage-div'>
                         {toggleProject === true ?
                             <m.img
@@ -223,7 +210,6 @@ function ProjectDetails() {
                                     opacity: 0,
                                     transition: { duration: 0.5 }
                                 }}
-
                             />
                             :
                             <>
@@ -278,7 +264,6 @@ function ProjectDetails() {
                                     :
                                     <textarea
                                         onChange={editProjectChange('description')}
-                                        // ! this is the same as the createProject.css
                                         id='mainDescrip-input'
                                         value={editProjectPackage.description}
                                     >

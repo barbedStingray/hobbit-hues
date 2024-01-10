@@ -36,7 +36,7 @@
             color: transparent;
             -webkit-text-stroke-color: black;
             -webkit-text-stroke-width: 1px;
-            background: linear-gradient(green, 40%, yellow, 60%, darkorange);
+            background: linear-gradient(darkgreen, 30%, limegreen, 40%, yellow, 50%, orange, 70%, red);
             background-clip: text;
             text-align: center;
             /* text-decoration: underline; */

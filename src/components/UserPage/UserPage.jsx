@@ -7,7 +7,6 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { motion as m, AnimatePresence } from 'framer-motion';
 // components
-import LogOutButton from '../LogOutButton/LogOutButton';
 import ColorWheel from '../ColorWheel/ColorWheel.jsx';
 // css
 import './UserPage.css';
