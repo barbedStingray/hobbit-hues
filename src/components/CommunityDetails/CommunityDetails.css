@@ -28,35 +28,35 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
+        align-items: flex-start;
         gap: 1%;
         margin-top: -2%;
-        height: 76%;
+        height: 505px;
       }
       /* ! main column */
           #communityColor-view{
-            /* border: 2px solid blue; */
-            border: 3px solid #4d4848;
-            border-radius: 10px;
-            background-color: #f5f5f5aa;
             display: flex;
             flex-direction: column;
             flex-basis: 500px;
-            box-shadow: 0 5px 15px black;
-            padding: 5px;
+            height: 500px;
           }
               #community-mainDescription {
                 /* border: 2px solid magenta; */
+                border: 3px solid #4d4848;
+                background-color: #f5f5f5bb;
+                border-radius: 10px;
                 display: flex;
-                text-align: center;
                 justify-content: center;
+                text-align: center;
+                width: 150px;
+                /* height: 175px; */
+                padding: 0.5%;
               }
               #projectImage-communityDiv {
                 /* border: 1.5px solid yellow; */
                 display: flex;
-                flex-grow: 1;
                 justify-content: center;
                 align-items: center;
-                height: auto;
                 text-align: center;
               }
                   .detailsPhoto {
@@ -73,7 +73,7 @@
                 display: flex;
                 flex-direction: column-reverse;
                 justify-content: center;
-                flex-grow: 1;
+                margin-top: 15px;
               }
                   .palette-container {
                     /* border: 2px solid greenyellow; */
@@ -113,16 +113,13 @@
                       }
 
           #community-models {
+            border-top: 2px solid black;
+            border-bottom: 2px solid black;
             overflow: scroll;
             display: flex;
             flex-direction: column;
             flex-basis: 500px;
-            border: 3px solid #4d4848;
-            border-radius: 10px;
-            background-color: #f5f5f5aa;
-            height: 515px;
-            /* max-height: 515px; */
-            padding: 1%;
+            height: 500px;
           }
   
   

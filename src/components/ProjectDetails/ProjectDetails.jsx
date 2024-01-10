@@ -198,7 +198,7 @@ function ProjectDetails() {
                 {/* page left display */}
                 <div id='color-view'>
 
-                    <div id='project-mainDescription'>
+                    {/* <div id='project-mainDescription'>
                         {toggleProject === true ?
                             <p key={projectDetails.id}>{projectDetails.description}</p>
                             :
@@ -209,7 +209,7 @@ function ProjectDetails() {
                                 value={editProjectPackage.description}
                             >
                             </textarea>}
-                    </div>
+                    </div> */}
 
                     <div id='projectImage-div'>
                         {toggleProject === true ?
@@ -269,7 +269,21 @@ function ProjectDetails() {
                 {/* NEW PAINT INPUTS */}
                 <div id='middle-bar'>
                     {togglePaint === true ?
-                        <></>
+                    
+                            <div id='project-mainDescription'>
+                                {toggleProject === true ?
+                                    <p 
+                                        key={projectDetails.id}
+                                        >{projectDetails.description}</p>
+                                    :
+                                    <textarea
+                                        onChange={editProjectChange('description')}
+                                        // ! this is the same as the createProject.css
+                                        id='mainDescrip-input'
+                                        value={editProjectPackage.description}
+                                    >
+                                    </textarea>}
+                            </div>
                         :
                         <div>
                             <div id='add-paint'>

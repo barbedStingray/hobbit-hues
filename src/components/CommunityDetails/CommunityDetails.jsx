@@ -56,7 +56,7 @@ function CommunityDetails() {
     function refreshDetails() {
         dispatch({ type: 'FETCH_PROJECT_DETAILS', payload: id });
     }
-    
+
 
 
 
@@ -84,23 +84,19 @@ function CommunityDetails() {
                 {/* page left display */}
                 <div id='communityColor-view'>
 
-                    <div id='community-mainDescription'>
-                            <p key={projectDetails.id}>{projectDetails.description}</p>
-                    </div>
-
                     <div id='projectImage-communityDiv'>
-                            <m.img
-                                key={'motionMainCommunitydetailsPhoto'}
-                                variants={mainPhotoCommunityMotion}
-                                src={projectDetails.picture}
-                                alt="No Photo Uploaded"
-                                className='detailsPhoto mainPhotoMotion' 
-                                exit={{
-                                    opacity: 0,
-                                    transition: { duration: 0.5 }
-                                }}
-                
-                                />
+                        <m.img
+                            key={'motionMainCommunitydetailsPhoto'}
+                            variants={mainPhotoCommunityMotion}
+                            src={projectDetails.picture}
+                            alt="No Photo Uploaded"
+                            className='detailsPhoto mainPhotoMotion'
+                            exit={{
+                                opacity: 0,
+                                transition: { duration: 0.5 }
+                            }}
+
+                        />
                     </div>
 
                     <div id='community-palette'>
@@ -121,6 +117,11 @@ function CommunityDetails() {
                         </div>
                     </div>
                 </div>
+
+                <div id='community-mainDescription'>
+                    <p key={projectDetails.id}>{projectDetails.description}</p>
+                </div>
+
 
                 {/* begin the details item list  */}
                 <div id='community-models'>

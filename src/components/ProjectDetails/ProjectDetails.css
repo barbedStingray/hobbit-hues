@@ -1,20 +1,11 @@
 
 
-  
-
-  /* CODE FOR DETAILS PAGE */
-
 #details-page {
     /* border: 2px solid red; */
-    /* background-image: url('../../Images/HobbitHole.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover; */
     display: flex;
     flex-direction: column;
     flex: 1;
   }
-  
       #details-header {
         /* border: 2px solid orange; */
         font-family: ringbearer;
@@ -33,21 +24,31 @@
         justify-content: center;
         gap: 1%;
         margin-top: -2%;
-        height: 76%;
+        height: 510px;
       }
-      /* ! main column */
           #color-view{
             /* border: 2px solid blue; */
-            border: 3px solid #4d4848;
-            border-radius: 10px;
-            background-color: #f5f5f5aa;
+            /* border-radius: 10px; */
             display: flex;
             flex-direction: column;
             flex-basis: 500px;
-            box-shadow: 0 5px 15px black;
-            padding: 5px;
+            height: 500px;
           }
+
+              #mainDescrip-input {
+                /* border: 2px solid blue; */
+                border: 2px solid #5a5a5a;
+                height: 150px;
+                background: linear-gradient(#ffffff, 80%, #c8c8c8);
+                border-radius: 5px;
+                padding: 5px;
+                font-size: 16px;
+              }
+
               #project-mainDescription {
+                background-color: #f5f5f5bb;
+                border: 3px solid #4d4848;
+                border-radius: 10px;
                 /* border: 2px solid magenta; */
                 display: flex;
                 text-align: center;
@@ -56,11 +57,10 @@
               #projectImage-div {
                 /* border: 1.5px solid yellow; */
                 display: flex;
-                flex-grow: 1;
                 justify-content: center;
                 align-items: center;
-                height: auto;
                 text-align: center;
+                margin-bottom: 10px;
               }
                   .detailsPhoto {
                     border: 1.5px solid black;
@@ -79,7 +79,6 @@
                     object-fit: cover;
                     box-shadow: 0 5px 15px black;
                   }
-                  /* ! landscape photos preferred,  */
               #detail-palette {
                 /* border: 2px solid red; */
                 display: flex;
@@ -110,6 +109,7 @@
                         align-items: center;
                         border-radius: 50%;
                         border: 2px solid black;
+                        box-shadow: 0 5px 15px black;
                       }
                       .detailSecond {
                         height: 90%;
@@ -119,6 +119,7 @@
                         align-items: center;
                         border-radius: 50%;
                         border: 2px solid black;
+                        box-shadow: 0 5px 15px black;
                       }
                       .detailThird {
                         height: 80%;
@@ -128,9 +129,8 @@
                         align-items: center;
                         border-radius: 50%;
                         border: 2px solid black;
-                      }
-  
-          /* ! main column  newPaint inputs */
+                        box-shadow: 0 5px 15px black;
+                      }  
           #middle-bar {
             /* border: 2px solid mediumturquoise; */
             display: flex;
@@ -154,29 +154,20 @@
                 text-align: center;
                 font-size: 18px;
                 padding: 1%;
-                box-shadow: 0 5px 15px black;
-                height: 350px;
+                box-shadow: 0 5px 10px black;
+                height: 325px;
   
-  
-                animation-name: slide-in;
-                animation-duration: 0.5s;
-                transform: translateX(-80%);
-                animation-fill-mode: forwards;
-                animation-timing-function: ease;
+
               }
   
               
               #button-bar {
                 /* border: 2px solid magenta; */
-                border: 3px solid #4d4848;
                 border-radius: 10px;
-                background-color: #f5f5f5aa;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-around;
                 align-items: center;
-                /* flex-grow: 1; */
-                box-shadow: 0 5px 15px black;
                 padding: 10px 0;
                 height: 25%;
               }
@@ -185,21 +176,15 @@
                     flex-direction: row-reverse;
                     gap: 15px;
                     margin: 8px 0px;
-                  }
-  
-          /* ! main column steps */
+                  }  
           #painted-models {
+            border-top: 2px solid black;
+            border-bottom: 2px solid black;
             overflow: scroll;
             display: flex;
             flex-direction: column;
             flex-basis: 500px;
-            border: 3px solid #4d4848;
-            border-radius: 10px;
-            background-color: #f5f5f5aa;
-            height: 515px;
-            /* height: 100%; */
-            /* max-height: 515px; */
-            padding: 1%;
+            height: 500px;
           }
   
   
