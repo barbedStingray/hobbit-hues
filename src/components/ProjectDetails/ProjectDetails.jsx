@@ -32,7 +32,6 @@ function ProjectDetails() {
     // VARIABLES FOR PROJECT DETAILS
     const [paintProject, setPaintProject] = useState('#hexcode'); // POST new paint variable
     const [toggleProject, setToggleProject] = useState(true); // toggle for editing project details
-    // const [togglePublic, setTogglePublic] = useState(false); // toggle for editing project details
     const [togglePaint, setTogglePaint] = useState(true); // toggle the add paint menu
     let [imagePath, setImagePath] = useState(''); // new main photo display
     let [newPaint, setNewPaint] = useState({
@@ -55,8 +54,8 @@ function ProjectDetails() {
             // scale: 1,
             transition: {
                 // duration: 2,
-                delayChildren: 0.25,
-                staggerChildren: 0.1
+                // delayChildren: 0.25,
+                // staggerChildren: 0.1
             }
         }
     };
@@ -67,7 +66,6 @@ function ProjectDetails() {
             opacity: 1
         }
     };
-
 
 
 
@@ -171,9 +169,6 @@ function ProjectDetails() {
         setTimeout(() => refreshDetails(), 150);
 
     }
-
-
-
 
 
 

@@ -1,0 +1,64 @@
+
+
+
+
+#community-paints {
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: row;
+    min-width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px black;
+    margin: 1% 1%;
+
+    /* animation-name: slide-spread;
+    animation-duration: 3s;
+    transform: translateY(-740%);
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out; */
+
+
+  }
+      #paintCommunity-step {
+        /* border: 2px solid green; */
+        display: flex;
+        margin: 1%;    
+      }
+      #paintCommunity-description {
+        /* border: 2px solid blue; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        gap: 10px;
+        min-width: 110px;
+        text-align: center;
+      }
+          #painted-image {
+            /* border: 2px solid greenyellow;  */
+            border: 1.5px solid black;
+            border-radius: 10px;
+            object-fit: cover;
+            width: 100%;
+            width: 220px;
+            height: 220px;
+          }
+          /* #painted-image:hover {
+            transform: scale(2.0);
+            transition: 0.3s;
+            z-index: 10;
+          } */
+
+          .defaultMargin {
+            margin: 0;
+          }
+          #paintColor-Communitydisplay {
+            /* border: 2px solid yellow; */
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 70%;
+            margin-top: 10px;
+          }
+

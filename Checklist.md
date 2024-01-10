@@ -15,14 +15,8 @@ BASE FUNCTIONALITY ACHIEVED
     [] how to use it
     [] clarify parts that may be less specific
 
-
-## Stretch Goals
-    [] community page displaying a list of 10 random projects. 
-    [] ability to toggle public/private projects from the user (think boolean column in "projects" sql)
-
 ## Bug Hunt
-    [] animations for projectItems and paintItems do not animate upon first view, but every
-        time after they work fine
+    [] animations for projectItems and paintItems do not animate upon first view, but every time after they work fine
     [] css background image / viewport relationship is slightly askew
     [] make sure item renders are ordered the way you need (GET requests alphabetical)
     [] scroll divs affect the heights awkwardly (maybe left to right scrolls?)

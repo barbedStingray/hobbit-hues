@@ -3,15 +3,36 @@ import { motion as m, wrap } from "framer-motion";
 import './InfoPage.css';
 
 
-const images = [
-  "https://d33wubrfki0l68.cloudfront.net/dd23708ebc4053551bb33e18b7174e73b6e1710b/dea24/static/images/wallpapers/shared-colors@2x.png",
-  "https://d33wubrfki0l68.cloudfront.net/49de349d12db851952c5556f3c637ca772745316/cfc56/static/images/wallpapers/bridge-02@2x.png",
-  "https://d33wubrfki0l68.cloudfront.net/594de66469079c21fc54c14db0591305a1198dd6/3f4b1/static/images/wallpapers/bridge-01@2x.png"
-]
+// const images = [
+//   "https://d33wubrfki0l68.cloudfront.net/dd23708ebc4053551bb33e18b7174e73b6e1710b/dea24/static/images/wallpapers/shared-colors@2x.png",
+//   "https://d33wubrfki0l68.cloudfront.net/49de349d12db851952c5556f3c637ca772745316/cfc56/static/images/wallpapers/bridge-02@2x.png",
+//   "https://d33wubrfki0l68.cloudfront.net/594de66469079c21fc54c14db0591305a1198dd6/3f4b1/static/images/wallpapers/bridge-01@2x.png"
+// ]
 const paintingTips = [
-  { title: 'Underpaint', info: 'This is the first layer of paint that is applied to the model', image: 'https://d33wubrfki0l68.cloudfront.net/594de66469079c21fc54c14db0591305a1198dd6/3f4b1/static/images/wallpapers/bridge-01@2x.png' },
-  { title: 'Layer', info: 'A coat of paint that is applied on top of the base, or another layer, generally taking on the color of itself and the paint underneath' },
-  { title: 'Base', info: 'A coat of paint that does not allow the paints to show' },
+  { title: 'Welcome!', info: 'On this page you will find a few tips on how Hobbit Hues operates, as well as a description of techniques for painting incredible miniatures!' },
+  { title: 'Color Wheel', info: 'This page is designed to display a little bit of color theory to help you select a palette. Select "Create New Project," to save the palette on the left to your new Project.' },
+  { title: 'Images', info: '' },
+  { title: 'Image Upload Time', info: 'The Image Upload accepts the following file types: .gif, .jpeg, .png. Keep your models toward center frame and use a landscape or square layout for best results.' },
+  { title: 'Sharing Your Projects', info: 'All of your created projects will, by default, be private. If you would like to make them public, toggle the Private/Public button in the details of that project.' },
+  // { title: 'Paint Lists', info: 'The named paints used in this app are from Citadel. If you are using Citadel paints, their colors will closely match the actual color of paint.' },
+  { title: 'Underpaint', info: 'An initial layer of paint that contacts the material of the model. usually monochromatic, and will help define base or layer paints that are applied over it.' },
+  { title: 'Base', info: 'A paint that when applied will take on the lightness variable, but not the color of the paint beneath it.' },
+  { title: 'Layer', info: 'This layer of paint is usually thin and will be affected by the colors beneath it.' },
+  { title: 'Highlight', info: '' },
+  { title: 'Edge Highlight', info: '' },
+  { title: 'Wash (Shade)', info: '' },
+  { title: 'Dry Brush', info: '' },
+  { title: 'Glaze (Contrast)', info: '' },
+  { title: 'Wet Blend', info: '' },
+  { title: 'Feather', info: '' },
+  { title: 'Two Brush Blend', info: '' },
+  { title: 'Loaded Brush Feather', info: '' },
+  { title: 'Airbrush', info: '' },
+  { title: '', info: '' },
+  { title: 'Technical', info: '' },
+  { title: 'Stipple', info: '' },
+  { title: 'Splatter', info: '' },
+  { title: 'Zenithal Priming', info: '' },
 ]
 
 
@@ -25,7 +46,7 @@ function InfoPage() {
 
   const [[page, direction], setPage] = useState([0, 0]);
   // images
-  const imageIndex = wrap(0, images.length, page);
+  // const imageIndex = wrap(0, images.length, page);
   // paint tips
   const tipsIndex = wrap(0, paintingTips.length, page);
 
@@ -38,10 +59,10 @@ function InfoPage() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      scale: 1,
+      // scale: 1,
       transition: {
-        delayChildren: 3.0,
-        staggerChildren: 3
+        // delayChildren: 3.0,
+        // staggerChildren: 3
       }
     }
   };

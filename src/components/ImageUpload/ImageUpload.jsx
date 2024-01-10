@@ -18,20 +18,6 @@ function ImageUpload(props) {
         if (acceptedImageTypes.includes(fileToUpload.type)) {
             const formData = new FormData();
 
-            // todo convert heic files
-            // Convert HEIC to JPEG
-            // if (fileToUpload.type === 'image/heic') {
-            //     const { buffer } = await heicConvert({
-            //         buffer: await fileToUpload.arrayBuffer(),
-            //         format: 'JPEG',
-            //         quality: 1,
-            //     });
-            //     const convertedFile = new File([buffer], 'image.jpg', { type: 'image/jpeg' });
-            //     formData.append('file', convertedFile);
-            // } else {
-            //     formData.append('file', fileToUpload);
-            // }
-
             formData.append('file', fileToUpload);
             // console.log(`process.env.REACT_APP_PRESET`, process.env.REACT_APP_PRESET);
 

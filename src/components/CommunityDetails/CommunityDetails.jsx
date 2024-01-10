@@ -6,19 +6,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
 // components
-// import ImageUpload from '../ImageUpload/ImageUpload.jsx';
 import CommunityPaint from '../CommunityPaint/CommunityPaint.jsx';
-// import SelectTechnique from '../SelectTechnique/SelectTechnique.jsx';
-// // todo import ButtonB from '../ButtonB/ButtonB.jsx';
 //css
-// import './ProjectDetails.css';
+import './CommunityDetails.css';
 
 
 
 function CommunityDetails() {
 
     // reducer information
-    const store = useSelector((store) => store);
+    // const store = useSelector((store) => store);
     const projectDetails = useSelector((store) => store.projectDetails); // list of projects details
     const paintDetails = useSelector((store) => store.paintDetails); // list of paint details for project
 
@@ -35,7 +32,7 @@ function CommunityDetails() {
             transition: {
                 // duration: 2,
                 delayChildren: 0.25,
-                staggerChildren: 0.1
+                // staggerChildren: 0.1
             }
         }
     };
@@ -76,24 +73,24 @@ function CommunityDetails() {
                 opacity: 0,
                 transition: { duration: 0.5 }
             }}
-            id='details-page'>
+            id='communityDetails-page'>
 
-            <div id='details-header'>
+            <div id='communityDetails-header'>
                 <h2>{projectDetails.model}</h2>
             </div>
 
-            <div id='details-body'>
+            <div id='communityDetails-body'>
 
                 {/* page left display */}
-                <div id='color-view'>
+                <div id='communityColor-view'>
 
-                    <div id='project-mainDescription'>
+                    <div id='community-mainDescription'>
                             <p key={projectDetails.id}>{projectDetails.description}</p>
                     </div>
 
-                    <div id='projectImage-div'>
+                    <div id='projectImage-communityDiv'>
                             <m.img
-                                key={'motionMainCommunityPhoto'}
+                                key={'motionMainCommunitydetailsPhoto'}
                                 variants={mainPhotoCommunityMotion}
                                 src={projectDetails.picture}
                                 alt="No Photo Uploaded"
@@ -106,7 +103,7 @@ function CommunityDetails() {
                                 />
                     </div>
 
-                    <div id='detail-palette'>
+                    <div id='community-palette'>
                         {/* Project Color Display */}
                         <div className="palette-container">
                             <div className="detailThird primary-triad-2 "><p>T2</p></div>
@@ -126,7 +123,7 @@ function CommunityDetails() {
                 </div>
 
                 {/* begin the details item list  */}
-                <div id='painted-models'>
+                <div id='community-models'>
                     {paintDetails.map((paint) =>
                         <CommunityPaint paint={paint} refreshDetails={refreshDetails} />
                     )}

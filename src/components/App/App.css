@@ -518,7 +518,8 @@ Button
   width: 70px;
   color: white;
   align-self: center;
-  margin-right: 10px;
+  align-items: center;
+  margin-right: 30px;
 }
 .btn_pc {
   display: inline-block;
@@ -537,6 +538,7 @@ Button
   width: 70px;
   color: white;
   align-self: center;
+  margin-right: 5px;
 
 }
 

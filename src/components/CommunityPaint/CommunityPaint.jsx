@@ -5,6 +5,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { motion as m } from 'framer-motion';
 // css
+import './CommunityPaint.css';
 
 function CommunityPaint(props) {
 
@@ -21,21 +22,20 @@ function CommunityPaint(props) {
     return (
 
             <m.div
-                key={'paintMotionCommunityDetails'}
+                key={'paintMotionCommunityPaints'}
                 className="paintDetailsMotion"
                 variants={paintCommunityDetailsMotion}
                 exit={{
                     opacity: 0,
                     transition: { duration: 0.5 }
                 }}
-    
-                id='project-paints'>
+                id='community-paints'>
 
-                <div id='paint-step'>
+                <div id='paintCommunity-step'>
                     <img key={props.paint.id} src={props.paint.photo} alt="No Photo Uploaded" id='painted-image' className='photo-zoom' />
                 </div>
 
-                <div id='paint-description'>
+                <div id='paintCommunity-description'>
                     <div>
                         <h4 className='defaultMargin'>{props.paint.paint}</h4>
                     </div>
@@ -46,7 +46,7 @@ function CommunityPaint(props) {
                     <div>
                         <p className='defaultMargin'>{props.paint.notes}</p>
                     </div>
-                    <div id='paintColor-display'>
+                    <div id='paintColor-Communitydisplay'>
                         {/* Displaying the color of the paint! */}
                         <div>
                             <label><input
