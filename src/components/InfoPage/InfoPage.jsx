@@ -8,8 +8,8 @@ import './InfoPage.css';
 function InfoPage() {
 
   const paintingTips = [
-    { title: 'Welcome!', info: 'On this page you will find a few tips on how Hobbit Hues operates, as well as a description of techniques for painting incredible miniatures!' },
-    { title: 'Color Wheel', info: 'This page is designed to display a little bit of color theory to help you select a palette. Select "Create New Project," to save the palette on the left to your new Project.' },
+    { title: 'Welcome!', info: 'On this page you will find a few tips on how Hobbit Hues operates, happy painting!' },
+    { title: 'Color Wheel', info: 'This page is designed to display a little bit of color theory to help you select a palette. Click "Create New Project," to save the palette on the left to your new Project.' },
     { title: 'Image Upload', info: 'The Image Upload accepts the following file types: .gif, .jpeg, .png. Keep your models toward center frame and use a landscape or square layout for best results.' },
     { title: 'Sharing Your Projects', info: 'All of your created projects will, by default, be private. If you would like to make them public, toggle the Private/Public button in the details of that project.' },
     // // { title: 'Paint Lists', info: 'The named paints used in this app are from Citadel. If you are using Citadel paints, their colors will closely match the actual color of paint.' },
