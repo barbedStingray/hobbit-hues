@@ -8,11 +8,11 @@ import './InfoPage.css';
 function InfoPage() {
 
   const paintingTips = [
-    { title: 'Welcome!', info: 'On this page you will find a few tips on how Hobbit Hues operates, happy painting!' },
+    { title: 'Welcome!', info: 'On this page you will find a few tips on how Hobbit Hues operates as well as helpful hints for your models, happy painting!' },
     { title: 'Color Wheel', info: 'This page is designed to display a little bit of color theory to help you select a palette. Click "Create New Project," to save the palette on the left to your new Project.' },
     { title: 'Image Upload', info: 'The Image Upload accepts the following file types: .gif, .jpeg, .png. Keep your models toward center frame and use a landscape or square layout for best results.' },
     { title: 'Sharing Your Projects', info: 'All of your created projects will, by default, be private. If you would like to make them public, toggle the Private/Public button in the details of that project.' },
-    // { title: 'Paint Lists', info: 'The named paints used in this app are from Citadel. If you are using Citadel paints, their colors will closely match the actual color of paint.' },
+    { title: 'Paint Lists', info: 'The named paints used in this app are from Citadel. If you are using Citadel paints, their colors will closely match the actual color of paint.' },
     { title: 'Underpaint', info: 'An initial layer of paint that contacts the material of the model. usually monochromatic, and will help define base or layer paints that are applied over it.' },
     { title: 'Base', info: 'A paint that when applied will take on the lightness variable, but not the color of the paint beneath it.' },
     { title: 'Layer', info: 'This layer of paint is usually thin and more translucent. They are affected by the colors beneath it.' },
@@ -25,7 +25,6 @@ function InfoPage() {
     { title: 'Feather', info: 'Blending two paints together while both are still wet.' },
     { title: 'Two Brush Blend', info: 'Applying paint with one brush, and blending the color to a smooth transition with another.' },
     { title: 'Loaded Brush Feather', info: 'A process where you load your brush with two colors, then in a zig-zag motion draw the brush down the area giving a two-color blend as you go.' },
-    { title: 'Airbrush', info: 'I dont own an airbrush, so im not familiar with any techniques used. ' },
     { title: 'Technical', info: 'The use of a technical paint generally adds texture. A common example would be mixing sand in a color to allow a grain to appear.' },
     { title: 'Stipple', info: 'Dabbing gently against the model (use paint sparingly) to generate shading effects by using small dots.' },
     { title: 'Splatter', info: 'Using your finger, pull back the bristles on your brush and allow them to flick forward, essentially splattering paint randomly across your model.' },

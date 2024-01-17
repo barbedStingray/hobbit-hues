@@ -117,6 +117,16 @@ function ProjectDetails() {
         // todo clear your inputs?
         // close your paint menu
         setTogglePaint(!togglePaint);
+        // clear your new paint variable
+        setNewPaint({
+            project_id: id,
+            paint_id: '38',
+            technique_id: '1',
+            photo: '',
+            notes: ''
+            });
+        // reset your paint project variable to black
+        setPaintProject('#000000');
         // refresh page
         refreshDetails();
     }
