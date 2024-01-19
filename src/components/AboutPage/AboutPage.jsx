@@ -48,35 +48,35 @@ function AboutPage() {
       </div>
 
       <div id='about-body'>
-      <div id='about-text'>
-        <p>Hello!</p>
-        <p>
-          Check it out! My first hosted application! Very excited to make this available for use.
-          Thank you to Prime Digital Academy, my Taaffeite Cohort, and Chris Black (instructor) for providing the tools to create something incredible!
-        </p>
-        <p>
-          If you, as a mini-model enthusiast, have an interest in viewing your improvement or sharing 
-          your models with others, then this is a great app for you to use! It is beginner friendly, easy to use, and provides you 
-          with a little bit of color theory to start you off in your painting. 
-        </p>
-      </div>
+        <div id='about-text'>
+          <p>Hello!</p>
+          <p>
+            Check it out! My first hosted application! Very excited to make this available for use.
+            Thank you to Prime Digital Academy, my Taaffeite Cohort, and Chris Black (instructor) for providing the tools to create something incredible!
+          </p>
+          <p>
+            If you, as a mini-model enthusiast, have an interest in viewing your improvement or sharing
+            your models with others, then this is a great app for you to use! It is beginner friendly, easy to use, and provides you
+            with a little bit of color theory to start you off in your painting.
+          </p>
+        </div>
 
-      <div id='tech-div'>
-        <p id='center'>Tech Used</p>
-        <ul>
-          <li>React</li>
-          <li>Cloudinary</li>
-          <li>Framer Motion</li>
-          <li>Passport</li>
-          <li>Javascript</li>
-          <li>PostgreSQL</li>
-          <li>Sagas</li>
-          <li>Redux</li>
-          <li>Axios</li>
-          <li>CSS Flexbox</li>
-        </ul>
+        <div id='tech-div'>
+          <p id='center'>Tech Used</p>
+          <ul>
+            <li>React</li>
+            <li>Cloudinary</li>
+            <li>Framer Motion</li>
+            <li>Passport</li>
+            <li>Javascript</li>
+            <li>PostgreSQL</li>
+            <li>Sagas</li>
+            <li>Redux</li>
+            <li>Axios</li>
+            <li>CSS Flexbox</li>
+          </ul>
 
-      </div>
+        </div>
       </div>
 
     </m.div>

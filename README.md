@@ -1,73 +1,54 @@
 
-# Prime Solo Project Starting Repo
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+## Welcome to Hobbit Hues!
 
-We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
+This is my solo project completed for Prime Digital Academy! I really enjoyed working on this, and I think I've produced a great product that shows all that i've learned throughout school thus far. 
 
-## Use the Template for This Repository (Don't Clone)
+If you enjoy painting miniature models as much as I do, then this app is for you! Enjoy a smooth experience in creating new projects, viewing color theory, and selecting a palette that you can use to paint your miniatures. Create and view your own step by step guide to how you uniquely paint your models, or, if you need inspirations, view models that others have painted!
 
-- Don't Fork or Clone. Instead, click the `Use this Template` button, and make a copy to your personal account. Make the project `PUBLIC`!
+Your models, your choice. You can use this app privately, or publicly, the choice is yours. Every model in your collection has the option to be shared for public display. Love what you painted? Share it to the world! Want to keep your secret techniques to yourself? That's ok too! 
+
+Whichever way you choose to use this app, I hope you enjoy being able to create and reflect upon all the good times you've had with your miniatures. :D
+
+## Color Wheel
+
+Enjoy an interactive display to see how the different colors look together. You can select your colors by hexcode, citadel paint reference, or a simple "select a color" option. Whichever you decide, watch the colors on your palette transform magically until you settle on a palette for new project. 
+
+## Create a Project!
+
+After clicking the "create new project" button. This is your chance to set the stage for your new models profile. Give it a name, a description, and attach a photo so you can see where it all started! After clicking submit, you'll be able to find your new project on the "projects" page. 
+
+## Projects
+
+This is a list of all your projects that you have created. Enjoy reminiscing in the glorious models you have painted or enjoy thoughts of how beautiful they looked when conquering your enemy. If you'd like to see the details of a model, simply click on it.
+
+## Model Details
+
+Here we have the step by step process of how you decided to paint your model. You have complete control of how you edit this page, as you can display each paint that you used on your model, accompanied by a photo to help you visualize the affect. This allows you to build your step by step guide to painting the greatest warrior of Minas Tirith the earth has ever seen... or whatever you're doing. Feel free to make adjustments to your paints, or the original model photo and description as this is YOUR projects, so make it how you like! If you're proud of it, make it public by switching the toggle button to display "public", or... if it's ugly, trash the entire model with the simple delete button. 
 
 
-## Prerequisites
+## Community
 
-Before you get started, make sure you have the following software installed on your computer:
+Here is where the inspiration happens. View what other people are painting and look for cool color combinations, or other tips and tricks! If you'd like to see the details of a particular model, simply click on the model.
 
-- [Node.js](https://nodejs.org/en/)
-- [PostrgeSQL](https://www.postgresql.org/)
-- [Nodemon](https://nodemon.io/)
+## Community Details
 
-## Create database and table
+Once a model has been selected, you will be able to see all the details just as if you were viewing your own models details. Although, none of it will be editable, because we don't touch other peoples stuff. hah. Enjoy perusing at your lesiure the creative minds of others. 
 
-Create a new database called `prime_app` and create a `user` table:
+## Info Page
 
-```SQL
-CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
-);
-```
+If you're stuck, or frustrated, come to the info page! Here, you can find some helpful hints on the quirks of Hobbit Hues. Also, i've provided a shortlist of descriptions that reference the various techniques that have helped me throughout the years. Happy Painting!
 
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
 
-## Development Setup Instructions
 
-- Run `npm install`
-- Create a `.env` file at the root of the project and paste this line into the file:
-  ```
-  SERVER_SESSION_SECRET=superDuperSecret
-  ```
-  While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
-- Start postgres if not running already by using `brew services start postgresql`
-- Run `npm run server`
-- Run `npm run client`
-- Navigate to `localhost:3000`
 
-## Debugging
 
-To debug, you will need to run the client-side separately from the server. Start the client by running the command `npm run client`. Start the debugging server by selecting the Debug button.
 
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
 
-Then make sure `Launch Program` is selected from the dropdown, then click the green play arrow.
 
-![VSCode Debug Bar](documentation/images/vscode-debug-bar.png)
 
-## Testing Routes with Postman
 
-To use Postman with this repo, you will need to set up requests in Postman to register a user and login a user at a minimum.
 
-Keep in mind that once you using the login route, Postman will manage your session cookie for you just like a browser, ensuring it is sent with each subsequent request. If you delete the `localhost` cookie in Postman, it will effectively log you out.
 
-1. Start the server - `npm run server`
-2. Import the sample routes JSON file [v2](./PostmanPrimeSoloRoutesv2.json) by clicking `Import` in Postman. Select the file.
-3. Click `Collections` and `Send` the following three calls in order:
-   1. `POST /api/user/register` registers a new user, see body to change username/password
-   2. `POST /api/user/login` will login a user, see body to change username/password
-   3. `GET /api/user` will get user information, by default it's not very much
-
-After running the login route above, you can try any other route you've created that requires a logged in user!
 
 ## Production Build
 
