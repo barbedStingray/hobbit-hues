@@ -5,7 +5,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { motion as m, AnimatePresence } from 'framer-motion';
+import { motion as m } from 'framer-motion';
 // components
 import ColorWheel from '../ColorWheel/ColorWheel.jsx';
 // css
