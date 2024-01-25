@@ -33,3 +33,6 @@ const PORT = process.env.PORT || 5076;
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 });
+
+// ! export your app for vercel
+module.exports = app;
