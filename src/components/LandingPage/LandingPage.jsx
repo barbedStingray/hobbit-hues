@@ -12,8 +12,6 @@ import RegisterForm from '../RegisterForm/RegisterForm';
 import LoginForm from '../LoginForm/LoginForm.jsx';
 
 
-
-
 function LandingPage() {
 
   // variables
@@ -56,6 +54,7 @@ function LandingPage() {
       id='landing-page'>
 
       <div id='title-hobbit'><h2>Hobbit Hues</h2></div>
+
 
       <div id='login-boxes'>
 
