@@ -16,12 +16,12 @@ let pool;
 // eg: 
 //  DATABASE_URL=postgresql://jDoe354:secretPw123@some.db.com/prime_app
 
-if (process.env.DATABASE_URL) {
+if (process.env.POSTGRES_URL) {
     console.log(`inside the IF statement`);
-    console.log(`URL`, process.env.DATABASE_URL);
+    console.log(`URL`, process.env.POSTGRES_URL);
 
     pool = new pg.Pool({
-        connectionString: "postgres://default:WnmeNh4xDV5y@ep-long-sun-08266129-pooler.us-east-1.postgres.vercel-storage.com/verceldb",
+        connectionString: process.env.POSTGRES_URL,
         ssl: {
             rejectUnauthorized: false
         }
