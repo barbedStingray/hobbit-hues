@@ -21,7 +21,7 @@ if (process.env.DATABASE_URL) {
     console.log(`URL`, process.env.DATABASE_URL);
 
     pool = new pg.Pool({
-        connectionString: process.env.DATABASE_URL,
+        connectionString: "postgres://default:WnmeNh4xDV5y@ep-long-sun-08266129-pooler.us-east-1.postgres.vercel-storage.com/verceldb",
         ssl: {
             rejectUnauthorized: false
         }
