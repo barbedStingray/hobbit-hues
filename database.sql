@@ -5,83 +5,20 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL
 );
 
-DROP TABLE "user";
-
-
-
-
-
-
 -- Paints table 
 CREATE TABLE "paints" (
 	"id" SERIAL PRIMARY KEY,
 	"paint" VARCHAR (40),
 	"hexcode" VARCHAR (20)
 );
-
-DELETE FROM "paints";
-DROP TABLE "paints";
-
-
--- paint dropdown axios --
-SELECT * FROM "paints"
-ORDER BY "paint" ASC
-;
-
-
-
-
-
+-- see paint insert values below
 
 -- Techniques table 
 CREATE TABLE "techniques" (
 	"id" SERIAL PRIMARY KEY,
 	"technique" VARCHAR (40)
 );
-
-DELETE FROM "techniques";
-DROP TABLE "techniques";
-
-
-SELECT * FROM "techniques";
-
-
-INSERT INTO "techniques" ("technique")
-VALUES
-
--- Basic
-('Base'),
-('Layer'),
-('Underpaint'),
-('Zenithal Priming'),
-
--- Highlights
-('Highlight'),
-('Edge Highlight'),
-('Wash (Shade)'),
-
--- Texture
-('Dry Brush'),
-('Splatter'),
-('Stipple'),
-('Technical'),
-
--- Blend
-('Glaze (Contrast)'),
-('Wet Blend'),
-('Feather'),
-('Two Brush Blend'),
-('Loaded Brush Feather'),
-
--- Airbrush
-('Airbrush')
-
-;
-
-
-
-
-
+-- see techniques insert values below
 
 -- Junction: project table
 CREATE TABLE "projects" (
@@ -90,61 +27,9 @@ CREATE TABLE "projects" (
 	"model" VARCHAR (80),
 	"primary" VARCHAR (25),
 	"description" VARCHAR (600),
-	"picture" VARCHAR (300)
+	"picture" VARCHAR (300),
+	"public" boolean default false;
 );
-
-DROP TABLE "projects";
-
-ALTER TABLE "projects"
-ADD "public" boolean default false;
-
--- GET projects request
-SELECT * FROM "projects" WHERE "user_id" = 1
-ORDER BY "model" ASC
-;
-
--- GET project Details request
-SELECT * FROM "projects" where "id" = 29;
-
-
-
--- Add to Projects from SQL
-INSERT INTO "projects" ("user_id", "model", "primary", "description", "picture")
-VALUES
-('2', 'b1 battle droid', '#54302a', 'got it', 'photo here');
-
--- edit projects PUT 
-UPDATE "projects" 
-SET "description" = 'best droid ever', "picture" = 'some new url'
-WHERE "id" = 47
-;
-
--- update project public
-UPDATE "projects"
-SET "public" = NOT public
-WHERE "id" = 76;
-
-
-SELECT * FROM "projects"
-JOIN "user" ON "user"."id" = "projects"."user_id"
-ORDER BY "model" ASC, "username" ASC
-;
-
-
-SELECT 
-	"projects"."id",
-	"projects"."description",
-	"projects"."model",
-	"projects"."picture",
-	"projects"."primary",
-	"user"."username"
-FROM "projects" 
-JOIN "user" ON "user"."id" = "projects"."user_id"
-WHERE "public" = TRUE
-ORDER BY RANDOM() LIMIT 5
-;
-
-
 
 -- junction: projects_paints
 CREATE TABLE "projects_paints" (
@@ -156,40 +41,6 @@ CREATE TABLE "projects_paints" (
 	"notes" VARCHAR (50)
 );
 
-DROP TABLE "projects_paints";
-
--- GET request to return paints for a project
-SELECT 
-	"projects_paints"."id",
-	"projects_paints"."photo",
-	"paints"."paint",
-	"paints"."hexcode",
-	"techniques"."technique"
-
-FROM "projects_paints" 
-JOIN "paints" ON "paints"."id" = "projects_paints"."paint_id"
-JOIN "techniques" ON "techniques"."id" = "projects_paints"."technique_id"
-
-
-WHERE "projects_paints"."project_id" = 48
-ORDER BY "projects_paints"."id" DESC
-;
-
--- DELETE paints from a project
-DELETE FROM "projects_paints"
-WHERE "project_id" = 27
-;
-
--- DELETE the project 
-DELETE FROM "projects"
-WHERE "id" = 27
-;
-
--- DELETE single paint from project
-DELETE FROM "projects_paints"
-WHERE "id" = 43;
-
--- altering the project paints table
 
 
 
@@ -201,10 +52,29 @@ WHERE "id" = 43;
 
 
 
+-- TECHNIQUE INSERTS
+INSERT INTO "techniques" ("technique")
+VALUES
+('Base'),
+('Layer'),
+('Underpaint'),
+('Zenithal Priming'),
+('Highlight'),
+('Edge Highlight'),
+('Wash (Shade)'),
+('Dry Brush'),
+('Splatter'),
+('Stipple'),
+('Technical'),
+('Glaze (Contrast)'),
+('Wet Blend'),
+('Feather'),
+('Two Brush Blend'),
+('Loaded Brush Feather'),
+('Airbrush');
 
 
-
--- base and layer
+-- PAINT INSERTS
 INSERT INTO "paints" ("paint", "hexcode")
 VALUES
 ('Thondia Brown', '#54302a'),
@@ -340,13 +210,7 @@ VALUES
 ('Kabalite Green', '#008962'),
 ('Fire Dragon Bright', '#f4864e'),
 ('Deathclaw Brown', '#af634e'),
-('Ahriman Blue', '#00708a')
-;
-
--- shades, technical, dry, and contrast
-INSERT INTO "paints" ("paint", "hexcode")
-VALUES
--- contrast
+('Ahriman Blue', '#00708a'),
 ('Nighthaunt Gloom', '#4c838a'),
 ('Hexwraith Flame', '#00a237'),
 ('Magmadroth', '#e75a26'),
@@ -407,7 +271,6 @@ VALUES
 ('Gryph-Hound Orange', '#b3431c'),
 ('Iyanden Yellow', '#e69814'),
 ('Luxion Purple', '#340b5f'),
--- shade
 ('Fuegan Orange', '#9e5631'),
 ('Coelia Greenshade', '#1a8079'),
 ('Druchii Violet', '#6c496f'),
@@ -427,7 +290,6 @@ VALUES
 ('Targor Rageshade', '#968996'),
 ('Poxwalker', '#72a6a8'),
 ('Kroak Green', '#91c49e'),
--- technical
 ('Tesseract Glow', '#49ad33'),
 ('Ardcoat', '#fffffe'),
 ('Waystone Green', '#1c503b'),
@@ -449,7 +311,6 @@ VALUES
 ('Armageddon Dust', '#d5b109'),
 ('Stirland Battlemire', '#70490d'),
 ('Martian Ironcrust', '#cf705d'),
--- dry
 ('Wrack White', '#d3d0cf'),
 ('Underhive Ash', '#bcbb7e'),
 ('Tyrant Skull', '#c8c483'),
@@ -463,8 +324,7 @@ VALUES
 ('Hexos Palesun', '#fff55a'),
 ('Golden Griffon', '#dfb476'),
 ('Eldar Flesh', '#e8c07f'),
-('Astorath Red', '#a9311e')
-;
+('Astorath Red', '#a9311e');
 
 
 
