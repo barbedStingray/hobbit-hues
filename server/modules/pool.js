@@ -15,16 +15,18 @@ let pool;
 // to set the connection info: web address, username/password, db name
 // eg: 
 //  DATABASE_URL=postgresql://jDoe354:secretPw123@some.db.com/prime_app
+console.log('DatabaseURL', process.env.POSTGRES_URL);
 
-if (process.env.DATABASE_URL) {
+if (process.env.POSTGRES_URL) {
+    console.log('DatabaseURL', process.env.POSTGRES_URL);
     console.log(`inside the IF statement`);
-    console.log(`URL`, process.env.DATABASE_URL);
+    console.log(`URL`, process.env.POSTGRES_URL);
 
     pool = new pg.Pool({
-        connectionString: process.env.DATABASE_URL,
-        ssl: {
-            rejectUnauthorized: false
-        }
+        connectionString: process.env.POSTGRES_URL,
+        // ssl: {
+        //     rejectUnauthorized: false
+        // }
     });
 }
 
