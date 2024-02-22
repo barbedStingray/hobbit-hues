@@ -24,9 +24,9 @@ if (process.env.POSTGRES_URL) {
 
     pool = new pg.Pool({
         connectionString: process.env.POSTGRES_URL,
-        // ssl: {
-        //     rejectUnauthorized: false
-        // }
+        ssl: {
+            rejectUnauthorized: false
+        }
     });
 }
 
