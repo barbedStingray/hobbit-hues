@@ -1,7 +1,7 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 require('dotenv').config();
 const app = express();
+const path = require('path');
 
 const sessionMiddleware = require('./modules/session-middleware');
 const passport = require('./strategies/user.strategy');
@@ -9,9 +9,8 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 
-// Body parser middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// Express middleware
+app.use(express.json());
 
 // Passport Session Configuration //
 app.use(sessionMiddleware);
@@ -24,7 +23,12 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 
 // Serve static files
-app.use(express.static('build'));
+app.use(express.static(path.join(__dirname, '..', 'build')));
+
+// Correctly handle any requests that don't match the above routes
+app.get('*', (_req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
+});
 
 // App Set //
 const PORT = process.env.PORT || 5076;
@@ -34,5 +38,5 @@ app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 });
 
-// ! export your app for vercel
+// export your app for vercel
 module.exports = app;

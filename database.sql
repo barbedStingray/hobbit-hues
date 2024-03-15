@@ -28,7 +28,7 @@ CREATE TABLE "projects" (
 	"primary" VARCHAR (25),
 	"description" VARCHAR (600),
 	"picture" VARCHAR (300),
-	"public" boolean default false;
+	"public" boolean default false
 );
 
 -- junction: projects_paints
