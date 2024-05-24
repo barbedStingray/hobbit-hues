@@ -4,11 +4,12 @@
     /* border: 2px solid red; */
     display: flex;
     flex-direction: column;
+    align-items: center;
     flex: 1;  
 }
 
-#community-heading {
-    /* border: 2px solid orange; */
+/* #community-heading {
+    border: 2px solid orange;
     font-family: ringbearer;
     font-size: 48px;
     color: transparent;
@@ -17,7 +18,7 @@
     background: linear-gradient(darkgreen, 30%, limegreen, 40%, yellow, 50%, orange, 70%, red);
     background-clip: text;
     text-align: center;
-}
+} */
 
 #community-display {
     /* border: 2px solid limegreen; */

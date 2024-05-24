@@ -1,7 +1,6 @@
 
-// IMPORTS
 // middleware
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { motion as m } from 'framer-motion';
 // components
@@ -11,17 +10,11 @@ import './ProjectsPage.css';
 
 
 
-function ProjectsPage(props) {
+function ProjectsPage() {
 
-    // middleware variables
     const dispatch = useDispatch();
-
-    // redux variables
     const userProjects = useSelector((store) => store.userProjects);
 
-    // variables
-    const [heading, setHeading] = useState('Projects');
-    // custom motion variable
     const container = {
         hidden: { opacity: 0 },
         visible: {
@@ -42,12 +35,11 @@ function ProjectsPage(props) {
     }, []);
 
 
-
     return (
 
         <m.div
             key={'createMotionProjectsPage'}
-            className="container"
+            className="projectsPage"
             variants={container}
             initial="hidden"
             transition={{ duration: 0.55, ease: 'easeOut' }}
@@ -56,20 +48,19 @@ function ProjectsPage(props) {
                 opacity: 0,
                 transition: { duration: 0.5 }
             }}
-            id='projects-page'>
+        >
 
-            <div id='project-heading'>
-                <h2>{heading}</h2>
-            </div>
+            <p className='pageHeading'>My Miniatures</p>
 
-            <div id='projects-display'>
+            <div className='projectsDisplay'>
                 {userProjects.map((project) =>
-                    (<ProjectItem
-                        key={project.id}
-                        project={project}
-                    />))
+                (<ProjectItem
+                    key={project.id}
+                    project={project}
+                />))
                 }
             </div>
+
         </m.div>
 
     );

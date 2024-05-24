@@ -11,8 +11,8 @@ function ImageUpload(props) {
         // Access the selected file
         const fileToUpload = event.target.files[0];
 
-        // Limit to specific file types.
-        const acceptedImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+        // ! Limit to specific file types. 
+        const acceptedImageTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/heic'];
 
         // Check if the file is one of the allowed types.
         if (acceptedImageTypes.includes(fileToUpload.type)) {
@@ -20,10 +20,11 @@ function ImageUpload(props) {
 
             formData.append('file', fileToUpload);
             // console.log(`process.env.REACT_APP_PRESET`, process.env.REACT_APP_PRESET);
-
             formData.append('upload_preset', process.env.REACT_APP_PRESET);
+
             let postUrl = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME}/image/upload`;
             console.log(`postURL`, postUrl);
+
             // console.log(`TARGET MARK`);
             axios.post(postUrl, formData).then(response => {
                 console.log('Success!', response);
@@ -31,10 +32,10 @@ function ImageUpload(props) {
                 alert(`Upload Success!`);
             }).catch(error => {
                 console.log('error', error);
-                alert('Upload Incomplete, Accepted formats: .gif, .jpeg, .png Please refresh and try again');
+                alert('Upload Incomplete, Accepted formats: .gif, .jpeg, .png, and .heic. Please refresh and try again');
             })
         } else {
-            alert('Please select an image');
+            alert('Upload Incomplete, Accepted formats: .gif, .jpeg, .png, and .heic. Please refresh and try again');
         }
     }
 

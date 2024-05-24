@@ -12,7 +12,8 @@ import ColorWheel from '../ColorWheel/ColorWheel.jsx';
 import './UserPage.css';
 
 // function UserPage() {
-const UserPage = ({ showComponent }) => {
+const UserPage = () => {
+
 
   // middleware variables
   const dispatch = useDispatch();
@@ -29,15 +30,15 @@ const UserPage = ({ showComponent }) => {
   const container = {
     hidden: { opacity: 0 },
     visible: {
-        opacity: 1,
-        // scale: 1,
-        transition: {
-            // duration: 2,
-            delayChildren: 0.4,
-            staggerChildren: 0.25
-        }
+      opacity: 1,
+      // scale: 1,
+      transition: {
+        // duration: 2,
+        delayChildren: 0.4,
+        staggerChildren: 0.25
+      }
     }
-};
+  };
 
 
 
@@ -134,10 +135,10 @@ const UserPage = ({ showComponent }) => {
       initial="hidden"
       transition={{ duration: 0.55, ease: 'easeOut' }}
       animate="visible"
-      exit={{ 
+      exit={{
         opacity: 0,
         transition: { duration: 0.5 }
-    }}
+      }}
       id='user-page'>
 
       <ColorWheel color={'primary'} />
@@ -146,9 +147,7 @@ const UserPage = ({ showComponent }) => {
 
         <div id='title-inputs'>
 
-          <div id='title-colors'>
-            <h2>Welcome {user.username}!</h2>
-          </div>
+          <p className='pageHeading'>Welcome {user.username}!</p>
 
           {/* primary/secondary inputs */}
           <div className='color-input'>
@@ -216,7 +215,7 @@ const UserPage = ({ showComponent }) => {
         </div>
       </div>
 
-      <ColorWheel color={'secondary'} />
+      {/* <ColorWheel color={'secondary'} /> */}
 
     </m.div>
   );

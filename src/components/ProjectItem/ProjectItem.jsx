@@ -8,10 +8,14 @@ import './ProjectItem.css';
 
 
 
-function ProjectItem(props) {
+function ProjectItem({ project }) {
 
     // middleware variables
     const history = useHistory();
+
+    console.log('project', project);
+    // destructure
+    const { description, id, model, picture } = project;
 
     // custom motion variable
     const singleProjectItem = {
@@ -23,8 +27,8 @@ function ProjectItem(props) {
     };
 
     // takes user to project details page
-    function projectDetails(project) {
-        history.push(`/details/${props.project.id}`);
+    function projectDetails() {
+        history.push(`/details/${id}`);
     }
 
 
@@ -35,27 +39,14 @@ function ProjectItem(props) {
             key={'sigleMotionProject'}
             className="singleProjectItem"
             variants={singleProjectItem}
-            id='single-project'
             exit={{
                 opacity: 0,
                 transition: { duration: 0.5 }
             }}
+            onClick={() => projectDetails(project)}>
 
-            onClick={() => projectDetails(props.project)}>
+            <img src={picture} alt="No Photo Uploaded" className='projectPagePhoto' />
 
-            <div id='project-photo'>
-                <img src={props.project.picture} alt="No Photo Uploaded" className='photo-project' />
-            </div>
-
-            <div id='project-words'>
-                <div id='project-model'>
-                    <h3>{props.project.model}</h3>
-                </div>
-
-                <div id='project-description'>
-                    <p>{props.project.description}</p>
-                </div>
-            </div>
         </m.div>
     );
 }

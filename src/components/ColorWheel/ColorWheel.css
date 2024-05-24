@@ -1,0 +1,40 @@
+.colorWheel {
+    border: 2px solid red;
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit, minmax(10vw, 1fr)); */
+    /* grid-template-rows: repeat(auto-fit, minmax(10vh, 1fr)); */
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 15px;
+    width: 100%;
+    height: auto;
+
+}
+
+/* divPrime-tertiary are adjustments for the circles - specific to userPage*/
+
+.divPrime, .divSecondary, .divTertiary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 2px solid black;
+    box-shadow: 0 5px 15px black;
+    width: 100%;
+    height: 100%;
+}
+.divPrime {
+    /* height: 16vh;
+    width: 16vh; */
+    flex-basis: 1;
+}
+
+.divSecondary {
+    /* height: 14vh;
+    width: 14vh; */
+}
+
+.divTertiary {
+    /* height: 12vh;
+    width: 12vh; */
+}

@@ -41,3 +41,9 @@ If you're stuck, or frustrated, come to the info page! Here, you can find some h
 
 If you like my work, give me a shout and feel free to connect with me over Github or linkedIn.
 
+
+
+## How to Start repo
+- npm run server
+- npm run client
+

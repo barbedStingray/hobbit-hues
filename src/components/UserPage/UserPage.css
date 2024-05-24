@@ -1,15 +1,10 @@
-
-  
-/* THIS CODE IS USED IN THE USER PAGE */
-
 #user-page {
-    /* border: 3px solid blue; */
+    border: 3px solid blue;
     /* background-image: url('../../Images/StoneBridgeGreyscale.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover; */
     /* min-height: 775px; */
-    padding: 0px;
     display: flex;
     flex-direction: row;
     flex: 1;  
@@ -22,26 +17,13 @@
         justify-content: space-between;
       }
       #title-inputs {
-        /* border: 2px solid red; */
+        border: 2px solid red;
         flex-basis: 350px;
         display: flex;
         flex-direction: column;
         /* justify-content: space-evenly; */
         /* align-items: center; */
       }
-          #title-colors {
-            /* border: 2px solid purple; */
-            font-family: ringbearer;
-            font-size: 48px;
-            color: transparent;
-            -webkit-text-stroke-color: black;
-            -webkit-text-stroke-width: 1px;
-            background: linear-gradient(darkgreen, 30%, limegreen, 40%, yellow, 50%, orange, 70%, red);
-            background-clip: text;
-            text-align: center;
-            /* text-decoration: underline; */
-            /* text-decoration-color: #4b4b4b; */
-          }
           /* color input css */
           .color-input {
             /* border: 2px solid greenyellow; */
@@ -62,58 +44,8 @@
                 text-align: center;
                 gap: 10px;
                 font-size: 20px;
-
               }
   
-  .side-colors {
-    /* border: 2px solid red; */
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-
-  }
-      .shape-container {
-        /* border: 2px solid greenyellow; */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-        margin: 0 2px;
-      }
-  
-  /* divPrime-tertiary are adjustments for the circles - specific to userPage*/
-  .divPrime {
-    height: 125px;
-    width: 125px;
-    flex-basis: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    border: 2px solid black;
-    box-shadow: 0 5px 15px black;
-  }
-  .divSecondary {
-    height: 110px;
-    width: 110px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    border: 2px solid black;
-    box-shadow: 0 5px 15px black;
-  }
-  .divTertiary {
-    height: 95px;
-    width: 95px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    border: 2px solid black;
-    box-shadow: 0 5px 15px black;
-  }
   
   #newProject-button {
     /* border: 2px solid blue; */

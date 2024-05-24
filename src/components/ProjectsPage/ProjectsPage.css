@@ -1,41 +1,22 @@
+.projectsPage {
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+}
 
+.projectsDisplay {
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  /* border: 2px solid magenta; */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20vh, 1fr));
+  grid-auto-rows: 25vh;
+  gap: 15px;
 
-
-#projects-page {
-    /* border: 2px solid red; */
-      /* background-image: url('../../Images/HobbitHole11.jpg');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover; */
-      display: flex;
-      flex-direction: column;
-      flex: 1;  
-      align-items: center;
-  }
-      #project-heading {
-        /* border: 2px solid red; */
-        font-family: ringbearer;
-        font-size: 48px;
-        color: transparent;
-        -webkit-text-stroke-color: black;
-        -webkit-text-stroke-width: 1px;
-        background: linear-gradient(darkgreen, 30%, limegreen, 40%, yellow, 50%, orange, 70%, red);
-        background-clip: text;
-        text-align: center;
-  
-      }
-      #projects-display {
-        border-top: 2px solid black;
-        border-bottom: 2px solid black;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        min-width: 400px;
-        max-width: 85%;
-        height: 480px;
-        overflow: scroll;
-        padding: 0.75% 0;
-        margin-bottom: 2%;
-      }
-  
+  width: 80vw;
+  height: 60vh;
+  padding: 2vh 2vw;
+  overflow: scroll;
+}

@@ -61,18 +61,16 @@ function CommunityPage() {
             }}
             id='community-page'>
 
-                {/* {JSON.stringify(communityProjects)} */}
+            {/* {JSON.stringify(communityProjects)} */}
 
-            <div id='community-heading'>
-                <h2>{heading}</h2>
-            </div>
+            <h2 className='pageHeading'>{heading}</h2>
 
             <div id='community-display'>
                 {communityProjects.map((project) =>
-                    (<CommunityItem
-                        key={project.id}
-                        project={project}
-                    />))
+                (<CommunityItem
+                    key={project.id}
+                    project={project}
+                />))
                 }
             </div>
         </m.div>
