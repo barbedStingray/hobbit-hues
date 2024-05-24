@@ -4,7 +4,7 @@ import { motion as m } from 'framer-motion';
 import './ColorWheel.css';
 
 
-function ColorWheel(props) {
+function ColorWheel() {
 
   // Custom animation variables
   const container = {
@@ -32,7 +32,6 @@ function ColorWheel(props) {
 
   return (
 
-    // <div className='colorWheel'>
 
       <m.div
         variants={container}
@@ -40,47 +39,17 @@ function ColorWheel(props) {
         animate="visible"
         className="colorWheel"
       >
-        <m.div className={`item divTertiary ${props.color}-twolight`} variants={item}><p>Light</p></m.div>
-        <m.div className={`item divSecondary ${props.color}-light`} variants={item}><p>Light</p></m.div>
-        <m.div className={`item divPrime ${props.color}`} variants={item}><p>Primary</p></m.div>
-        <m.div className={`item divSecondary ${props.color}-dark`} variants={item}><p>Dark</p></m.div>
-        <m.div className={`item divTertiary ${props.color}-twodark`} variants={item}><p>Dark</p></m.div>
-        <m.div className={`item divTertiary ${props.color}-triad-2`} variants={item}><p>Triad 2</p></m.div>
-        <m.div className={`item divSecondary ${props.color}-triad-1`} variants={item}><p>Triad 1</p></m.div>
-        <m.div className={`item divPrime ${props.color}-complement`} variants={item}><p>Complement</p></m.div>
-        <m.div className={`item divSecondary ${props.color}-analog-1`} variants={item}><p>Analog 1</p></m.div>
-        <m.div className={`item divTertiary ${props.color}-analog-2`} variants={item}><p>Analog 2</p></m.div>
+        <m.div className={`tertiaryColor primary-twolight`} variants={item}><p>Light</p></m.div>
+        <m.div className={`secondaryColor primary-light`} variants={item}><p>Light</p></m.div>
+        <m.div className={`pirmaryColor primary`} variants={item}><p>Primary</p></m.div>
+        <m.div className={`secondaryColor primary-dark`} variants={item}><p>Dark</p></m.div>
+        <m.div className={`tertiaryColor primary-twodark`} variants={item}><p>Dark</p></m.div>
+        <m.div className={`tertiaryColor primary-triad-2`} variants={item}><p>Triad 2</p></m.div>
+        <m.div className={`secondaryColor primary-triad-1`} variants={item}><p>Triad 1</p></m.div>
+        <m.div className={`pirmaryColor primary-complement`} variants={item}><p>Complement</p></m.div>
+        <m.div className={`secondaryColor primary-analog-1`} variants={item}><p>Analog 1</p></m.div>
+        <m.div className={`tertiaryColor primary-analog-2`} variants={item}><p>Analog 2</p></m.div>
       </m.div>
-
-
-      /* ** original code */
-      /* <m.div
-        variants={container}
-        initial="hidden"
-        animate="visible"
-        className="shape-container"
-      >
-        <m.div className={`item divTertiary ${props.color}-triad-2`} variants={item}><p>Triad 2</p></m.div>
-        <m.div className={`item divSecondary ${props.color}-triad-1`} variants={item}><p>Triad 1</p></m.div>
-        <m.div className={`item divPrime ${props.color}-complement`} variants={item}><p>Complement</p></m.div>
-        <m.div className={`item divSecondary ${props.color}-analog-1`} variants={item}><p>Analog 1</p></m.div>
-        <m.div className={`item divTertiary ${props.color}-analog-2`} variants={item}><p>Analog 2</p></m.div>
-      </m.div>
-
-      <m.div
-        variants={container}
-        initial="hidden"
-        animate="visible"
-        className="shape-container"
-      >
-        <m.div className={`item divTertiary ${props.color}-twolight`} variants={item}><p>Light</p></m.div>
-        <m.div className={`item divSecondary ${props.color}-light`} variants={item}><p>Light</p></m.div>
-        <m.div className={`item divPrime ${props.color}`} variants={item}><p>Primary</p></m.div>
-        <m.div className={`item divSecondary ${props.color}-dark`} variants={item}><p>Dark</p></m.div>
-        <m.div className={`item divTertiary ${props.color}-twodark`} variants={item}><p>Dark</p></m.div>
-      </m.div> */
-    // </div>
-
   );
 }
 

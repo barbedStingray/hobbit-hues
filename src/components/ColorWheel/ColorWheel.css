@@ -1,40 +1,29 @@
+.colorWheelContainer {
+    border: 2px solid yellow;
+    width: 75vw;
+    height: calc(2 * 15vh + 10px);
+    overflow: hidden;
+}
+
 .colorWheel {
     border: 2px solid red;
     display: grid;
-    /* grid-template-columns: repeat(auto-fit, minmax(10vw, 1fr)); */
-    /* grid-template-rows: repeat(auto-fit, minmax(10vh, 1fr)); */
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(2, auto);
-    gap: 15px;
     width: 100%;
-    height: auto;
-
+    /* grid-template-columns: repeat(auto-fill, minmax(15vh, 1fr)); */
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 15vh;
 }
 
-/* divPrime-tertiary are adjustments for the circles - specific to userPage*/
-
-.divPrime, .divSecondary, .divTertiary {
+.pirmaryColor, .secondaryColor, .tertiaryColor {
+    /* border: 2px solid magenta; */
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
     border: 2px solid black;
     box-shadow: 0 5px 15px black;
-    width: 100%;
+    /* padding-top: 100%; */
     height: 100%;
-}
-.divPrime {
-    /* height: 16vh;
-    width: 16vh; */
-    flex-basis: 1;
+    width: 100%;
 }
 
-.divSecondary {
-    /* height: 14vh;
-    width: 14vh; */
-}
-
-.divTertiary {
-    /* height: 12vh;
-    width: 12vh; */
-}
