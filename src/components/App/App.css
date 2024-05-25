@@ -62,8 +62,6 @@ body,
 
 
 
-
-
 /* *** COLOR CODE CSS *** */
 /* ROOT VARIABLES */
 :root {
@@ -344,8 +342,18 @@ body,
 
 
 
+/* --------------------------------------------------------------------------------
+Alert
+-------------------------------------------------------------------------------- */
 
-
+.alert {
+  border: 1px solid #e01616;
+  background-color: #efefef;
+  font-size: 1.75vh;
+  padding: 0.4vh;
+  border-radius: 3px;
+  color: #e01616;
+}
 
 
 
@@ -543,20 +551,6 @@ Button
 
 }
 
-/* --------------------------------------------------------------------------------
-Alert
--------------------------------------------------------------------------------- */
-
-.alert {
-  box-sizing: border-box;
-  padding: 15px 10px;
-  margin: 15px 0;
-  border: 2px solid #e01616;
-  background-color: #efefef;
-  border-radius: 3px;
-  color: #e01616;
-  font-size: 0.8rem;
-}
 
 
 

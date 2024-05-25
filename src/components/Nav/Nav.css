@@ -9,14 +9,6 @@
   padding: 0 3vh;
 }
 
-.navBar {
-  /* border: 2px solid red; */
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 50vw;
-}
 
 .headerTitle {
   /* border: 2px solid green; */
@@ -27,6 +19,15 @@
 }
 .hobbitHeader a {
   text-decoration: none;
+}
+
+.navBar {
+  /* border: 2px solid red; */
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 50vw;
 }
 .hobbitLink {
   /* border: 2px solid purple; */
@@ -41,4 +42,5 @@
 }
 .hobbitLink:hover, .headerTitle:hover {
   color: gold;
+  transform: scale(1.1);
 }

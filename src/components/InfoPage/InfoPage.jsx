@@ -63,17 +63,20 @@ function InfoPage() {
   const variants = {
     enter: (direction) => ({
       x: direction > 0 ? 1000 : -1000,
-      opacity: 0
+      opacity: 0,
+      // transition: { duration: 0.3 }
     }),
     center: {
       zIndex: 1,
       x: 0,
-      opacity: 1
+      opacity: 1,
+      // transition: { duration: 0.3 }
     },
     exit: (direction) => ({
       zIndex: 0,
       x: direction < 0 ? 1000 : -1000,
-      opacity: 0
+      opacity: 0,
+      // transition: { duration: 0.3 }
     })
   };
 

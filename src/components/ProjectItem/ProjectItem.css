@@ -6,6 +6,7 @@
 
 .projectPagePhoto:hover {
   border: 2px solid yellowgreen;
+  transform: scale(1.08);
   /* box-shadow: 0 0 10px white; */
   cursor: pointer;
 }

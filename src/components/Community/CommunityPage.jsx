@@ -4,7 +4,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { motion as m } from 'framer-motion';
-// components
 import CommunityItem from './CommunityItem/CommunityItem';
 // css
 import './CommunityPage.css';
@@ -13,15 +12,9 @@ import './CommunityPage.css';
 
 function CommunityPage() {
 
-    // middleware variables
     const dispatch = useDispatch();
-
-    // redux variables
     const communityProjects = useSelector((store) => store.communityProjects);
 
-    // variables
-    const [heading, setHeading] = useState('Community');
-    // custom motion variable
     const container = {
         hidden: { opacity: 0 },
         visible: {
@@ -50,7 +43,7 @@ function CommunityPage() {
 
         <m.div
             key={'createMotionCommunityPage'}
-            className="container"
+            className="communityPage"
             variants={container}
             initial="hidden"
             transition={{ duration: 0.75, ease: 'easeOut' }}
@@ -59,13 +52,10 @@ function CommunityPage() {
                 opacity: 0,
                 transition: { duration: 0.5 }
             }}
-            id='community-page'>
+        >
+            <p className='pageHeading'>Community</p>
 
-            {/* {JSON.stringify(communityProjects)} */}
-
-            <h2 className='pageHeading'>{heading}</h2>
-
-            <div id='community-display'>
+            <div className='communityDisplay'>
                 {communityProjects.map((project) =>
                 (<CommunityItem
                     key={project.id}

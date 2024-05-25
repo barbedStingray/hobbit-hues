@@ -17,24 +17,21 @@ function LandingPage() {
   // variables
   const [login, setLogin] = useState(true); // toggle for login display
 
-  // Function - toggle login and register boxes
-  const loginOrRegister = (event) => {
-    setLogin(!login);
-  };
 
-// custom motion variable
+  // custom motion variable
   const container = {
     hidden: { opacity: 0 },
     visible: {
-        opacity: 1,
-        // scale: 1,
-        transition: {
-            // duration: 2,
-            delayChildren: 0.5,
-            staggerChildren: 0.2
-        }
+      opacity: 1,
+      // scale: 1,
+      transition: {
+        // duration: 2,
+        delayChildren: 0.5,
+        staggerChildren: 0.2
+      }
     }
-};
+  };
+
 
 
 
@@ -42,44 +39,31 @@ function LandingPage() {
     <m.div
       key={'/home'}
 
-      className="container"
+      className="landingPage"
       variants={container}
       initial="hidden"
       transition={{ duration: 0.75, ease: 'easeOut' }}
       animate="visible"
-      exit={{ 
+      exit={{
         opacity: 0,
         transition: { duration: 0.5 }
-    }}
-      id='landing-page'>
+      }}
+    >
 
-      <div id='title-hobbit'><h2>Hobbit Hues</h2></div>
+      <p className='pageHeading'>Hobbit Hues</p>
 
-
-      <div id='login-boxes'>
-
-        <div>
-          <div className={login ? 'visible' : 'invisible'}>
+      <div className='registerOrLogin'>
+        {login ? (
+          <>
             <LoginForm />
-          </div>
-
-          <div className={login ? 'invisible' : 'visible'}>
+            <button className="btn" onClick={() => setLogin(!login)}>Register</button>
+          </>
+        ) : (
+          <>
             <RegisterForm />
-          </div>
-
-          <div className={login ? 'visible' : 'invisible'}>
-            <button className="btn" onClick={loginOrRegister}>
-              Register
-            </button>
-          </div>
-
-          <div className={login ? 'invisible' : 'visible'}>
-            <button className="btn" onClick={loginOrRegister}>
-              Login
-            </button>
-          </div>
-        </div>
-
+            <button className="btn" onClick={() => setLogin(!login)}>Login</button>
+          </>
+        )}
       </div>
     </m.div>
   );

@@ -27,41 +27,41 @@ function LoginForm() {
 
   return (
     <form className="formPanel" onSubmit={login}>
+
       <h2>Login</h2>
+
+      <label htmlFor="username">
+        <input
+          type="text"
+          placeholder='Username'
+          name="username"
+          required
+          className='signInboxes'
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+        />
+      </label>
+
+      <label htmlFor="password">
+        <input
+          type="password"
+          placeholder='Password'
+          name="password"
+          required
+          className='signInboxes'
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
+      </label>
+
+      <input className="btn" type="submit" name="submit" value="Log In" />
+    
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
         </h3>
       )}
-      <div>
-        <label htmlFor="username">
-          Username:
-          <input
-            type="text"
-            name="username"
-            required
-            value={username}
-            className='min-width'
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </label>
-      </div>
-      <div >
-        <label htmlFor="password">
-          Password:
-          <input
-            type="password"
-            name="password"
-            required
-            value={password}
-            className='min-width'
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
-      </div>
+
     </form>
   );
 }

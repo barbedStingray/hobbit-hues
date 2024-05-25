@@ -1,43 +1,6 @@
 
 
-#single-communityProject {
-    border: 2px solid blue;
-    border: 3px solid #4d4848;
-    border-radius: 10px;
-    background-color: #f5f5f5aa;
-
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 1%;
-    margin: 0.5%;
-    width: 150px;
-    text-align: center;
+.communityItem {
+    /* border: 2px solid blue; */
 }
-#single-communityProject:hover {
-    box-shadow: 0 0 15px gold;
-    cursor: pointer;
-    transition: 0.4s;
-  }
 
-
-/* #community-model {
-    border: 2px solid black;
-} */
-
-/* #community-artist {
-    border: 2px solid magenta;
-} */
-
-/* #community-photo {
-    border: 2px solid purple;
-} */
-        .photo-communityProject {
-            border: 2px solid gold;
-            height: 120px;
-            border: 1px solid black;
-            border-radius: 10px;
-            object-fit: cover;
-            width: 90%;
-            box-shadow: 0 5px 15px black;
-        }
