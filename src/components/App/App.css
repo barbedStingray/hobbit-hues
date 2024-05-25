@@ -43,7 +43,7 @@ body,
 
 
 .pageHeading {
-  /* border: 2px solid red; */
+  border: 2px solid red;
   font-family: ringbearer;
   font-size: 8vh;
   color: transparent;
@@ -53,6 +53,7 @@ body,
   background: linear-gradient(#7cff7c, 30%, #ffff00, 50%, #ffc55a, 70%, #ff4646);
   background-clip: text;
   margin: 4vh 0vh;
+  text-align: center;
 }
 
 
@@ -357,7 +358,7 @@ body,
 INPUT - Color
 -------------------------------------------------------------------------------- */
 
-.color-select {
+/* .color-select {
   border: 2px solid black;
   border-radius: 10px;
   width: 65px;
@@ -369,7 +370,7 @@ INPUT - Color
   vertical-align: middle;
   box-shadow: 0 5px 15px black;
 
-}
+} */
 
 input[type="color"]::-webkit-color-swatch-wrapper {
   padding: 0;
@@ -424,7 +425,7 @@ INPUT - file
 /* --------------------------------------------------------------------------------
 INPUTS & SELECT & HEXCODE
 -------------------------------------------------------------------------------- */
-.selectBox {
+/* .selectBox {
   border: 2px solid black;
   background: linear-gradient(#ffffff, 90%, #c8c8c8);
   font-size: 18px;
@@ -432,9 +433,9 @@ INPUTS & SELECT & HEXCODE
   height: 40px;
   max-width: 200px;
   min-width: 100px;
-}
+} */
 
-.selectHex {
+/* .selectHex {
   border: 2px solid black;
   background: linear-gradient(#ffffff, 90%, #c8c8c8);
   width: 45%;
@@ -442,7 +443,7 @@ INPUTS & SELECT & HEXCODE
   text-align: center;
   border-radius: 5px;
   font-size: 18px;
-}
+} */
 
 .notesArea {
   border: 2px solid black;
@@ -464,26 +465,21 @@ Button
 
 .btn {
   display: inline-block;
-  padding: 10px 15px;
-  border-width: 5px;
-  border-style: solid;
+  padding: 1vh;
+  font-size: 2.5vh;
+  cursor: pointer;
   background-color: goldenrod;
   border: 1px solid gold;
-  font-size: 1.1rem;
-  outline: outset;
-  outline-color: goldenrod;
-  cursor: pointer;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0 5px 15px black;
+  transition: 0.5s;
 }
 .btn_pc:hover, .btn_pb:hover, .btn_sm:hover, .btn:hover {
   background-color: green;
-  outline-color: green;
   border: 1px solid lightgreen;
-  text-decoration: none;
-  transition: 0.5s;
   color: white;
 }
+
 .btn_sm {
   display: inline-block;
   padding: 2px 5px;
