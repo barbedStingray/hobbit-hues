@@ -1,5 +1,6 @@
 .userPage {
   /* border: 3px solid blue; */
+  padding: 0 2vw;
   display: flex;
   flex-flow: row nowrap;
   flex: 1;
