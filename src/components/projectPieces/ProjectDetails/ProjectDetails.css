@@ -17,11 +17,21 @@
   display: flex;
   flex: 3;
   overflow: scroll;
+  color: white;
 }
 .detailsRightSide {
   border: 2px solid magenta;
   display: flex;
   flex: 2;
+}
+
+.projectDetailsPicture {
+  border: 2px solid pink;
+  width: 20vh;
+  height: 20vh;
+  object-fit: cover;
+  box-shadow: 0 5px 15px black;
+
 }
 
 

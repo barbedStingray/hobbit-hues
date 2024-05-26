@@ -6,6 +6,9 @@ import { motion as m } from 'framer-motion';
 // css
 import './ProjectItem.css';
 
+// scripts 
+import goToProjectDetails from '../../../scripts/goToProjectDetails';
+
 
 
 function ProjectItem({ project }) {
@@ -26,13 +29,8 @@ function ProjectItem({ project }) {
         }
     };
 
-    // takes user to project details page
-    function projectDetails() {
-        history.push(`/details/${id}`);
-    }
 
-
-
+    
     return (
 
         <m.div
@@ -43,7 +41,7 @@ function ProjectItem({ project }) {
                 opacity: 0,
                 transition: { duration: 0.5 }
             }}
-            onClick={() => projectDetails(project)}>
+            onClick={() => goToProjectDetails(history, id)}>
 
             <img src={picture} alt="No Photo Uploaded" className='projectPagePhoto' />
 

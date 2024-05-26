@@ -4,17 +4,24 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { motion as m } from 'framer-motion';
 // components
-import ProjectItem from '../../components/ProjectItem/ProjectItem.jsx';
+import ProjectItem from '../ProjectItem/ProjectItem.jsx';
 // css
-import './ProjectsPage.css';
+// import './ProjectsDisplay.css';
+import './ProjectsDisplay.jsx';
 
 
 
-function ProjectsPage() {
+function ProjectsDisplay({ fetchProjectsAction, selector, heading }) {
 
     const dispatch = useDispatch();
-    const userProjects = useSelector((store) => store.userProjects);
+    const projects = useSelector(selector);
 
+    useEffect(() => {
+        // setProjectList();
+        dispatch({ type: fetchProjectsAction });
+    }, [dispatch, fetchProjectsAction]);
+    
+    
     const container = {
         hidden: { opacity: 0 },
         visible: {
@@ -25,15 +32,6 @@ function ProjectsPage() {
             }
         }
     };
-
-    // page refresh
-    function setProjectList() {
-        dispatch({ type: 'FETCH_PROJECTS' });
-    }
-    useEffect(() => {
-        setProjectList();
-    }, []);
-
 
     return (
 
@@ -50,10 +48,10 @@ function ProjectsPage() {
             }}
         >
 
-            <p className='pageHeading'>My Miniatures</p>
+            <p className='pageHeading'>{heading}</p>
 
             <div className='projectsDisplay'>
-                {userProjects.map((project) =>
+                {projects.map((project) =>
                 (<ProjectItem
                     key={project.id}
                     project={project}
@@ -66,4 +64,4 @@ function ProjectsPage() {
     );
 }
 
-export default ProjectsPage;
+export default ProjectsDisplay;

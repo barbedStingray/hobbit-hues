@@ -28,11 +28,7 @@ function ColorWheel({ color }) {
   };
 
 
-
-
   return (
-
-
     <m.div
       variants={container}
       initial="hidden"

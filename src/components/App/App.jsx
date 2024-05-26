@@ -1,7 +1,7 @@
 
 // IMPORTS
 // middleware
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Redirect,
   Route,
@@ -16,11 +16,11 @@ import UserPage from '../../pages/UserPage/UserPage.jsx';
 import InfoPage from '../../pages/InfoPage/InfoPage.jsx';
 import LandingPage from '../../pages/LandingPage/LandingPage.jsx';
 import CreateProject from '../../pages/CreateProject/CreateProject.jsx';
-import ProjectsPage from '../../pages/ProjectsPage/ProjectsPage.jsx';
-import CommunityPage from '../../pages/CommunityPage/CommunityPage.jsx';
+import PersonalProjects from '../../pages/ProjectsPage/PersonalProjects.jsx';
+import CommunityProjects from '../../pages/ProjectsPage/CommunityProjects.jsx';
 
-import ProjectDetails from '../ProjectDetails/ProjectDetails.jsx';
-import CommunityDetails from '../CommunityDetails/CommunityDetails.jsx';
+import ProjectDetails from '../projectPieces/ProjectDetails/ProjectDetails.jsx';
+// import CommunityDetails from '../CommunityDetails/CommunityDetails.jsx';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -47,8 +47,6 @@ function App() {
   useEffect(() => {
     console.log(`location.pathname`, location.pathname);
   }, [location]);
-
-
 
 
 
@@ -102,9 +100,15 @@ function App() {
             exact
             path="/projects"
           >
-            <ProjectsPage />
+            <PersonalProjects/>
           </ProtectedRoute>
 
+
+
+
+
+
+    {/* THESE TWO SHOULD LEAD TO THE SAME PATH */}
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
@@ -113,20 +117,27 @@ function App() {
             <ProjectDetails />
           </ProtectedRoute>
 
-          <ProtectedRoute
+          {/* <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
             path="/communityDetail/:id"
           >
             <CommunityDetails />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
+
+
+
+
+
+
+
 
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
             path="/community"
           >
-            <CommunityPage />
+            <CommunityProjects />
           </ProtectedRoute>
 
           // ** new Components above

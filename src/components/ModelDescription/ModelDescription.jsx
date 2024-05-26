@@ -19,7 +19,7 @@ const ModelDescription = ({ picture, description }) => {
                 variants={mainPhotoMotion}
                 src={picture}
                 alt="No Photo Uploaded"
-                className='detailsPhoto mainPhotoMotion'
+                className='projectDetailsPicture'
             // exit={{
             //     opacity: 0,
             //     transition: { duration: 0.5 }

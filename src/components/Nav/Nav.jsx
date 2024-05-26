@@ -11,7 +11,7 @@ import './Nav.css';
 
 
 
-function Nav() {
+function Nav({ setProjectView }) {
 
   const user = useSelector((store) => store.user);
 
@@ -22,11 +22,11 @@ function Nav() {
     },
     {
       name: 'Projects',
-      path: '/projects'
+      path: '/projects',
     },
     {
       name: 'Community',
-      path: '/community'
+      path: '/community',
     },
     {
       name: 'Tips',

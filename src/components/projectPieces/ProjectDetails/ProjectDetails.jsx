@@ -6,13 +6,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
 // components
-import ImageUpload from '../ImageUpload/ImageUpload.jsx';
-import PaintDetails from '../PaintDetails/PaintDetails';
-import SelectTechnique from '../SelectTechnique/SelectTechnique.jsx';
+import ImageUpload from '../../ImageUpload/ImageUpload.jsx';
+import PaintDetails from '../../PaintDetails/PaintDetails.jsx';
+import SelectTechnique from '../../SelectTechnique/SelectTechnique.jsx';
 
 // ** NEW
-import ModelDescription from '../ModelDescription/ModelDescription.jsx';
-import PaintList from '../PaintList/PaintList.jsx';
+import ModelDescription from '../../ModelDescription/ModelDescription.jsx';
+import PaintList from '../../PaintList/PaintList.jsx';
 
 //css
 import './ProjectDetails.css';
