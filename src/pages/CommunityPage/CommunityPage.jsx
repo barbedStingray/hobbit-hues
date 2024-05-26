@@ -1,12 +1,16 @@
 
 // IMPORTS
 // middleware
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { motion as m } from 'framer-motion';
 import CommunityItem from '../../components/CommunityItem/CommunityItem';
 // css
 import './CommunityPage.css';
+
+// scripts
+import setCommunityList from '../../scripts/setCommunityList';
+
 
 
 
@@ -28,12 +32,13 @@ function CommunityPage() {
 
 
     // page refresh
-    function setCommunityList() {
-        console.log(`setting the community list`);
-        dispatch({ type: 'FETCH_COMMUNITY_PROJECTS' });
-    }
+    // function setCommunityList() {
+    //     console.log(`setting the community list`);
+    //     dispatch({ type: 'FETCH_COMMUNITY_PROJECTS' });
+    // }
     useEffect(() => {
-        setCommunityList();
+        // setCommunityList();
+        setCommunityList(dispatch);
     }, []);
 
 

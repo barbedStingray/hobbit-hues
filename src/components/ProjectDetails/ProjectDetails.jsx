@@ -9,7 +9,11 @@ import { motion as m } from 'framer-motion';
 import ImageUpload from '../ImageUpload/ImageUpload.jsx';
 import PaintDetails from '../PaintDetails/PaintDetails';
 import SelectTechnique from '../SelectTechnique/SelectTechnique.jsx';
+
+// ** NEW
 import ModelDescription from '../ModelDescription/ModelDescription.jsx';
+import PaintList from '../PaintList/PaintList.jsx';
+
 //css
 import './ProjectDetails.css';
 
@@ -141,30 +145,30 @@ function ProjectDetails() {
 
 
 
-    // toggles the Edit box appearances and propagates two buttons 'save' and 'cancel'
-    function editProject() {
-        // toggle your edit boxes
-        setToggleProject(!toggleProject);
-        // set your delivery package
-        setEditProjectPackage({
-            id: id,
-            description: `${projectDetails.description}`,
-            picture: `${projectDetails.picture}`
-        });
-    }
-    // cancels your edit and resets your appearances
-    function cancelEdit() {
-        setToggleProject(!toggleProject);
-        setImagePath('');
-    }
-    // PUT request for chaning your main descriptors
-    function saveEdits() {
-        // dispatch your new information
-        dispatch({ type: 'UPDATE_PROJECT_DETAILS', payload: editProjectPackage });
-        // refresh the page
-        setTimeout(() => refreshDetails(), 250);
-        setTimeout(() => setToggleProject(!toggleProject), 250);
-    }
+    // // toggles the Edit box appearances and propagates two buttons 'save' and 'cancel'
+    // function editProject() {
+    //     // toggle your edit boxes
+    //     setToggleProject(!toggleProject);
+    //     // set your delivery package
+    //     setEditProjectPackage({
+    //         id: id,
+    //         description: `${projectDetails.description}`,
+    //         picture: `${projectDetails.picture}`
+    //     });
+    // }
+    // // cancels your edit and resets your appearances
+    // function cancelEdit() {
+    //     setToggleProject(!toggleProject);
+    //     setImagePath('');
+    // }
+    // // PUT request for chaning your main descriptors
+    // function saveEdits() {
+    //     // dispatch your new information
+    //     dispatch({ type: 'UPDATE_PROJECT_DETAILS', payload: editProjectPackage });
+    //     // refresh the page
+    //     setTimeout(() => refreshDetails(), 250);
+    //     setTimeout(() => setToggleProject(!toggleProject), 250);
+    // }
 
 
 
@@ -204,11 +208,7 @@ function ProjectDetails() {
             case 'paintList':
 
                 // returns paint list for model
-                return <div>
-                    {paintDetails.map((color, i) => (
-                        <p key={i}>{color.paint}</p>
-                    ))}
-                </div>
+                return <PaintList paintDetails={paintDetails} />
 
             case 'stepByStep':
                 // returns step by step images
@@ -262,7 +262,6 @@ function ProjectDetails() {
                     <button onClick={() => setDisplayView('paintList')} className='btn'>paints</button>
                     <button onClick={() => setDisplayView('stepByStep')} className='btn'>steps</button>
                 </div>
-
 
             </div>
 
@@ -333,30 +332,11 @@ function ProjectDetails() {
 
             {/* Palette and Public button */}
 
-            {/* <div id='palette-button'> */}
-            {/* <div id='detail-palette'>
-                            <div className="palette-container">
-                                <div className="detailThird primary-triad-2 "><p>T2</p></div>
-                                <div className="detailSecond primary-triad-1 "><p>T1</p></div>
-                                <div className="detailPrime primary-complement "><p>Comp.</p></div>
-                                <div className="detailSecond primary-analog-1 "><p>A1</p></div>
-                                <div className="detailThird primary-analog-2 "><p>A2</p></div>
-                            </div>
-                            <div className="palette-container">
-                                <div className="detailThird primary-twolight"><p>Light</p></div>
-                                <div className="detailSecond primary-light"><p>Light</p></div>
-                                <div className="detailPrime primary"><p>Prime</p></div>
-                                <div className="detailSecond primary-dark"><p>Dark</p></div>
-                                <div className="detailThird primary-twodark"><p>Dark</p></div>
-                            </div>
-                        </div> */}
-
             {/* <button
                             className={projectDetails.public ? 'btn_pb' : 'btn_pc'}
                             onClick={togglePublicPrivate}
                         >{projectDetails.public ? 'Public' : 'Private'}
-                        </button> */}
-            {/* </div> */}
+            </button> */}
 
 
             {/* NEW PAINT INPUTS */}
