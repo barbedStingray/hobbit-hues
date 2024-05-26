@@ -8,8 +8,8 @@ import { motion as m } from 'framer-motion';
 import './LandingPage.css';
 
 // components
-import RegisterForm from '../RegisterForm/RegisterForm';
-import LoginForm from '../LoginForm/LoginForm.jsx';
+import RegisterForm from '../../components/RegisterForm/RegisterForm.jsx';
+import LoginForm from '../../components/LoginForm/LoginForm.jsx';
 
 
 function LandingPage() {

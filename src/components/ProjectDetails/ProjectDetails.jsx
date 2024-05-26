@@ -9,6 +9,7 @@ import { motion as m } from 'framer-motion';
 import ImageUpload from '../ImageUpload/ImageUpload.jsx';
 import PaintDetails from '../PaintDetails/PaintDetails';
 import SelectTechnique from '../SelectTechnique/SelectTechnique.jsx';
+import ModelDescription from '../ModelDescription/ModelDescription.jsx';
 //css
 import './ProjectDetails.css';
 
@@ -30,7 +31,6 @@ function ProjectDetails() {
 
     // VARIABLES FOR PROJECT DETAILS
 
-    const [togglePaintMenu, setTogglePaintMenu] = useState(false);
 
     const [paintProject, setPaintProject] = useState('#hexcode'); // POST new paint variable
     const [toggleProject, setToggleProject] = useState(true); // toggle for editing project details
@@ -137,30 +137,38 @@ function ProjectDetails() {
     //     // navigate to /projects
     //     history.push('/projects');
     // }
-    // // toggles the Edit box appearances and propagates two buttons 'save' and 'cancel'
-    // function editProject() {
-    //     // toggle your edit boxes
-    //     setToggleProject(!toggleProject);
-    //     // set your delivery package
-    //     setEditProjectPackage({
-    //         id: id,
-    //         description: `${projectDetails.description}`,
-    //         picture: `${projectDetails.picture}`
-    //     });
-    // }
-    // // cancels your edit and resets your appearances
-    // function cancelEdit() {
-    //     setToggleProject(!toggleProject);
-    //     setImagePath('');
-    // }
-    // // PUT request for chaning your main descriptors
-    // function saveEdits() {
-    //     // dispatch your new information
-    //     dispatch({ type: 'UPDATE_PROJECT_DETAILS', payload: editProjectPackage });
-    //     // refresh the page
-    //     setTimeout(() => refreshDetails(), 250);
-    //     setTimeout(() => setToggleProject(!toggleProject), 250);
-    // }
+
+
+
+
+    // toggles the Edit box appearances and propagates two buttons 'save' and 'cancel'
+    function editProject() {
+        // toggle your edit boxes
+        setToggleProject(!toggleProject);
+        // set your delivery package
+        setEditProjectPackage({
+            id: id,
+            description: `${projectDetails.description}`,
+            picture: `${projectDetails.picture}`
+        });
+    }
+    // cancels your edit and resets your appearances
+    function cancelEdit() {
+        setToggleProject(!toggleProject);
+        setImagePath('');
+    }
+    // PUT request for chaning your main descriptors
+    function saveEdits() {
+        // dispatch your new information
+        dispatch({ type: 'UPDATE_PROJECT_DETAILS', payload: editProjectPackage });
+        // refresh the page
+        setTimeout(() => refreshDetails(), 250);
+        setTimeout(() => setToggleProject(!toggleProject), 250);
+    }
+
+
+
+
 
     // // handles the description change of your edit package
     // const editProjectChange = (key) => (event) => {
@@ -185,6 +193,45 @@ function ProjectDetails() {
 
 
     console.log('paintDetails', paintDetails);
+    const [displayView, setDisplayView] = useState('mainDescription')
+
+    function determineDisplay(displayView) {
+        console.log('determining display', displayView);
+        switch (displayView) {
+            case 'mainDescription':
+                // returns main display of model
+                return <ModelDescription picture={projectDetails.picture} details={projectDetails.description} />
+            case 'paintList':
+
+                // returns paint list for model
+                return <div>
+                    {paintDetails.map((color, i) => (
+                        <p key={i}>{color.paint}</p>
+                    ))}
+                </div>
+
+            case 'stepByStep':
+                // returns step by step images
+                return <div>
+                    {paintDetails.map((paint, i) =>
+                        <PaintDetails key={i} paint={paint} refreshDetails={refreshDetails} />
+                    )}
+                </div>
+
+            case 'Edit Main Image':
+                // returns the edit view for your model
+                return;
+
+            default:
+                // should never get here
+                return console.log('Theyre taking the hobbits to Isengard');
+        }
+
+    }
+
+
+
+
 
 
 
@@ -204,59 +251,20 @@ function ProjectDetails() {
         >
             <p className='pageHeading'>{projectDetails.model}</p>
 
-            <div className='modelAndColorStep'>
-                <m.img
-                    // key={'motionMainPhoto'}
-                    // variants={mainPhotoMotion}
-                    src={projectDetails.picture}
-                    // alt="No Photo Uploaded"
-                    className='detailsPhoto mainPhotoMotion'
-                // exit={{
-                //     opacity: 0,
-                //     transition: { duration: 0.5 }
-                // }}
-                />
-                {/* <p>{paintDetails[0].paint}</p>
-                    <p>{paintDetails[0].technique}</p>
-                    <p>{paintDetails[0].notes}</p>
-                    <p>{paintDetails[0].id}</p> */}
-                <input
-                    className='color-select'
-                    type='color'
-                    disabled
-                // value={paintDetails[0].hexcode}
-                />
-            </div>
+            <div className='detailsBody'>
 
-
-            {togglePaintMenu ? (
-                <div>
-                    {paintDetails.map((color) => (
-                        <p>{color.paint}</p>
-                    ))}
+                <div className='detailsLeftSide'>
+                    {determineDisplay(displayView)}
                 </div>
-            ) : (
-                <>
-                    {paintDetails.map((paint) =>
-                        <PaintDetails paint={paint} refreshDetails={refreshDetails} />
-                    )}
-                </>
-            )}
 
+                <div className='detailsRightSide'>
+                    <button onClick={() => setDisplayView('mainDescription')} className='btn'>desc</button>
+                    <button onClick={() => setDisplayView('paintList')} className='btn'>paints</button>
+                    <button onClick={() => setDisplayView('stepByStep')} className='btn'>steps</button>
+                </div>
 
-
-            <div className='projectButtonsAndDescription'>
-                <button
-                    onClick={() => setTogglePaintMenu(!togglePaintMenu)}
-                    className='btn'
-                >{togglePaintMenu === true ?
-                    'Display Images'
-                    :
-                    'Display Paints'}
-                </button>
 
             </div>
-
 
 
             {/*  ******** NEW FEATURES

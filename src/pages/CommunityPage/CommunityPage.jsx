@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { motion as m } from 'framer-motion';
-import CommunityItem from './CommunityItem/CommunityItem';
+import CommunityItem from '../../components/CommunityItem/CommunityItem';
 // css
 import './CommunityPage.css';
 

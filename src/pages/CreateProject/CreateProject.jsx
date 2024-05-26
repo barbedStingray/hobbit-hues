@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
 // components
-import ImageUpload from '../ImageUpload/ImageUpload.jsx';
+import ImageUpload from '../../components/ImageUpload/ImageUpload.jsx';
 // css
 import './CreateProject.css';
 

@@ -1,7 +1,7 @@
 
 // IMPORTS
 // middleware
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {
   Redirect,
   Route,
@@ -10,24 +10,24 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 
-// components
+// Pages
+import AboutPage from '../../pages/AboutPage/AboutPage.jsx';
+import UserPage from '../../pages/UserPage/UserPage.jsx';
+import InfoPage from '../../pages/InfoPage/InfoPage.jsx';
+import LandingPage from '../../pages/LandingPage/LandingPage.jsx';
+import CreateProject from '../../pages/CreateProject/CreateProject.jsx';
+import ProjectsPage from '../../pages/ProjectsPage/ProjectsPage.jsx';
+import CommunityPage from '../../pages/CommunityPage/CommunityPage.jsx';
+
+import ProjectDetails from '../ProjectDetails/ProjectDetails.jsx';
+import CommunityDetails from '../CommunityDetails/CommunityDetails.jsx';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
-import CreateProject from '../CreateProject/CreateProject.jsx';
-import ProjectsPage from '../ProjectsPage/ProjectsPage.jsx';
-import ProjectDetails from '../ProjectDetails/ProjectDetails.jsx';
-import CommunityPage from '../Community/CommunityPage.jsx';
-import CommunityDetails from '../CommunityDetails/CommunityDetails.jsx';
 
 // css
 import './App.css';
 
-// lets deploy hobbit hues
 
 function App() {
 

@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
 // components
-import ColorWheel from '../ColorWheel/ColorWheel.jsx';
+import ColorWheel from '../../components/ColorWheel/ColorWheel.jsx';
 // css
 import './UserPage.css';
 

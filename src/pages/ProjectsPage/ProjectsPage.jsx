@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { motion as m } from 'framer-motion';
 // components
-import ProjectItem from '../ProjectItem/ProjectItem.jsx';
+import ProjectItem from '../../components/ProjectItem/ProjectItem.jsx';
 // css
 import './ProjectsPage.css';
 
