@@ -27,6 +27,7 @@ const ModelDescription = ({ picture, description }) => {
             // }}
             />
             <p className='projectDetailsModelDescription'>{description}</p>
+        
         </div>
     )
 }

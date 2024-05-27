@@ -60,8 +60,8 @@ function PaintDetails({ paint, refreshDetails }) {
 
                 <div>
                     <p className=''>{paint.paint}</p>
-                    <p className=''>{paint.technique}</p>
                     <div className='paintStepColor' style={{ backgroundColor: paint.hexcode }}></div>
+                    <p className=''>{paint.technique}</p>
                 </div>
                 <p className='detailNotes'>{paint.notes}</p>
 

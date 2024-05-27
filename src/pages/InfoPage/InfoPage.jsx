@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { motion as m, wrap } from "framer-motion";
 import './InfoPage.css';
 
+import { GiHobbitDoor } from "react-icons/gi";
+
+
 
 
 
@@ -30,16 +33,15 @@ function InfoPage() {
     { title: 'Splatter', info: 'Using your finger, pull back the bristles on your brush and allow them to flick forward, essentially splattering paint randomly across your model.' },
     { title: 'Zenithal Priming', info: 'This technique uses both a dark and a light primer. When the model is completed, the areas with lighter primer will look as though they are bathed in light.' }
   ]
-  
+
 
   const swipeConfidenceThreshold = 10000;
 
   const swipePower = (offset, velocity) => Math.abs(offset) * velocity;
 
   const [[page, direction], setPage] = useState([0, 0]);
-  // images
-  // const imageIndex = wrap(0, images.length, page);
-  // paint tips
+  console.log('page', page);
+
   const tipsIndex = wrap(0, paintingTips.length, page);
 
   const paginate = (newDirection) => {
@@ -88,7 +90,7 @@ function InfoPage() {
 
     <m.div
       key={'createMotionInfoPage'}
-      className="container"
+      className="informationPage"
       variants={container}
       initial="hidden"
       transition={{ duration: 0.55, ease: 'easeOut' }}
@@ -98,20 +100,18 @@ function InfoPage() {
         transition: { duration: 0.5 }
       }}
 
-      id='info-page'>
+    >
 
-      <div id='info-header'>
-        <h2>Hobbit Hues Info</h2>
-      </div>
+      <p className="pageHeading">Hobbit Hues Info</p>
 
-      <div id='overflow-trial'>
+      <div className='tipBoard'>
 
         <div className="prev" onClick={() => paginate(-1)}>
-          {"‣"}
+          <GiHobbitDoor />
         </div>
 
         <m.div
-          id='text-swipes'
+          className='tipInformation'
           key={page}
           custom={direction}
           variants={variants}
@@ -127,7 +127,6 @@ function InfoPage() {
           dragElastic={1}
           onDragEnd={(e, { offset, velocity }) => {
             const swipe = swipePower(offset.x, velocity.x);
-
             if (swipe < -swipeConfidenceThreshold) {
               paginate(1);
             } else if (swipe > swipeConfidenceThreshold) {
@@ -135,12 +134,12 @@ function InfoPage() {
             }
           }}
         >
-            <h4>{paintingTips[tipsIndex].title}</h4>
-            <p>{paintingTips[tipsIndex].info}</p>
+          <h4>{paintingTips[tipsIndex].title}</h4>
+          <p>{paintingTips[tipsIndex].info}</p>
         </m.div>
 
         <div className="next" onClick={() => paginate(1)}>
-          {"‣"}
+          <GiHobbitDoor />
         </div>
 
       </div>

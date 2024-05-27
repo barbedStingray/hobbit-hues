@@ -17,6 +17,9 @@ import PaintList from '../../PaintList/PaintList.jsx';
 //css
 import './ProjectDetails.css';
 
+// scripts 
+import handleObjectChange from '../../../scripts/handleObjectChange.js';
+
 
 
 function ProjectDetails() {
@@ -38,16 +41,19 @@ function ProjectDetails() {
 
 
     const [paintProject, setPaintProject] = useState('#hexcode'); // POST new paint variable
-    const [toggleProject, setToggleProject] = useState(true); // toggle for editing project details
-    const [togglePaint, setTogglePaint] = useState(true); // toggle the add paint menu
+    const [toggleEditMainProject, setToggleEditMainProject] = useState(false); // toggle for editing project details
+    const [toggleAddAPaint, setToggleAddAPaint] = useState(false); // toggle the add paint menu
+
     let [imagePath, setImagePath] = useState(''); // new main photo display
-    let [newPaint, setNewPaint] = useState({
+
+    let [newPaintStep, setNewPaintStep] = useState({
         project_id: id,
         paint_id: '38',
         technique_id: '1',
         photo: '',
         notes: ''
     }); // variable to post a new paint
+
     const [editProjectPackage, setEditProjectPackage] = useState({
         id: id,
         description: ``,
@@ -88,22 +94,59 @@ function ProjectDetails() {
         // }
     }, [id]);
 
-    // // function to set newPaint
-    // const newPaintChange = (key) => (event) => {
-    //     console.log('changed newProject');
-    //     setNewPaint({ ...newPaint, [key]: event.target.value });
-    // }
-    // // set new paint IMAGE FUNCTION
-    // function newPaintImage(newImage) {
-    //     console.log(`adding the new paint image to the new paint variable`);
-    //     setNewPaint({ ...newPaint, photo: newImage });
-    // }
+
+
+
+
+    // !! ADD NEW PAINT 
+    // function to set newPaint
+    const newPaintChange = (key) => (event) => {
+        console.log('changed newProject');
+        setNewPaintStep({ ...newPaintStep, [key]: event.target.value });
+    }
+    // set new paint IMAGE FUNCTION
+    function newPaintImage(newImage) {
+        console.log(`adding the new paint image to the new paint variable`);
+        setNewPaintStep({ ...newPaintStep, photo: newImage });
+    }
+    // POST function to add new paint
+    function addNewPaint() {
+        // dispatch to POST Saga
+        dispatch({ type: 'POST_PROJECT_PAINT', payload: newPaintStep });
+        // ? clear your inputs?
+        // close your paint menu
+        // setTogglePaint(!togglePaint);
+        // clear your new paint variable
+        // setNewPaintStep({
+        //     project_id: id,
+        //     paint_id: '38',
+        //     technique_id: '1',
+        //     photo: '',
+        //     notes: ''
+        // });
+        // reset your paint project variable to black
+        setPaintProject('#000000');
+        
+        // refresh page
+        refreshDetails();
+    }
+
+    console.log('newPaint', newPaintStep);
+
+
+
+
+
+
     // // function sets new paint and paint project variables
     // function setMultiple(benThought) {
     //     setNewPaint({ ...newPaint, paint_id: benThought.paint_id.id });
     //     setPaintProject(benThought.paint_id.hexcode);
     // }
-    // page refresh function
+
+
+
+    // !! page refresh functions
     function refreshDetails() {
         dispatch({ type: 'FETCH_PROJECT_DETAILS', payload: id });
     }
@@ -115,26 +158,7 @@ function ProjectDetails() {
     function fetchTechniqueDropdown() {
         dispatch({ type: 'FETCH_TECHNIQUES_DROPDOWN' });
     }
-    // // POST function to add new paint
-    // function addNewPaint() {
-    //     // dispatch to POST Saga
-    //     dispatch({ type: 'POST_PROJECT_PAINT', payload: newPaint });
-    //     // todo clear your inputs?
-    //     // close your paint menu
-    //     setTogglePaint(!togglePaint);
-    //     // clear your new paint variable
-    //     setNewPaint({
-    //         project_id: id,
-    //         paint_id: '38',
-    //         technique_id: '1',
-    //         photo: '',
-    //         notes: ''
-    //     });
-    //     // reset your paint project variable to black
-    //     setPaintProject('#000000');
-    //     // refresh page
-    //     refreshDetails();
-    // }
+
     // // DELETE entire project
     // function deleteProject(project) {
     //     // dispatch the delete 
@@ -146,17 +170,15 @@ function ProjectDetails() {
 
 
 
-    // // toggles the Edit box appearances and propagates two buttons 'save' and 'cancel'
-    // function editProject() {
-    //     // toggle your edit boxes
-    //     setToggleProject(!toggleProject);
-    //     // set your delivery package
-    //     setEditProjectPackage({
-    //         id: id,
-    //         description: `${projectDetails.description}`,
-    //         picture: `${projectDetails.picture}`
-    //     });
-    // }
+    // toggles the Edit box appearances and propagates two buttons 'save' and 'cancel'
+    function editProject() {
+        setToggleEditMainProject(!toggleEditMainProject);
+        setEditProjectPackage({
+            id: id,
+            description: `${projectDetails.description}`,
+            picture: `${projectDetails.picture}`
+        });
+    }
     // // cancels your edit and resets your appearances
     // function cancelEdit() {
     //     setToggleProject(!toggleProject);
@@ -173,18 +195,11 @@ function ProjectDetails() {
 
 
 
-
-
-    // // handles the description change of your edit package
-    // const editProjectChange = (key) => (event) => {
-    //     setEditProjectPackage({ ...editProjectPackage, [key]: event.target.value });
-    // }
-
-    // // prepares new picture for PUT request, props of ImageUpdate component
-    // function editProjectPicture(properties) {
-    //     setEditProjectPackage({ ...editProjectPackage, picture: properties });
-    //     setImagePath(properties);
-    // }
+    // prepares new picture for PUT request, props of ImageUpdate component
+    function editProjectPicture(properties) {
+        setEditProjectPackage({ ...editProjectPackage, picture: properties });
+        setImagePath(properties);
+    }
     // // toggles paint menu
     // function paintMenu() {
     //     setTogglePaint(!togglePaint);
@@ -197,15 +212,147 @@ function ProjectDetails() {
 
 
 
-    console.log('paintDetails', paintDetails);
+
+
+
     const [displayView, setDisplayView] = useState('mainDescription')
+
+
+
+    console.log('editProjectPackage', editProjectPackage);
+    function determineEditView(displayView) {
+        switch (displayView) {
+            case 'mainDescription':
+                return <div className='editMenuOptions'>
+
+                    {toggleEditMainProject ? (
+                        <div>
+                            <button className='btn' onClick={() => setToggleEditMainProject(!toggleEditMainProject)}>
+                                Cancel
+                            </button>
+                            <ImageUpload photoFunction={editProjectPicture} />
+                            <textarea
+                                name='description'
+                                className=''
+                                value={editProjectPackage.description}
+                                onChange={(e) => handleObjectChange(e, setEditProjectPackage, editProjectPackage)}
+                                placeholder='Description of the project...'>
+                            </textarea>
+                        </div>
+                    ) : (
+                        <button
+                            onClick={() => editProject(projectDetails.id)}
+                            id='edit-project'
+                            className='btn'
+                        >
+                            Edit Project
+                        </button>
+                    )}
+
+                </div >
+
+            case 'paintList':
+                return <div className='editMenuOptions'>
+                    <p>PAINT LIST</p>
+                </div>
+            case 'stepByStep':
+                return <div className='editMenuOptions'>
+                    {toggleAddAPaint ? (
+                        <div>
+                            <button className='btn' onClick={() => setToggleAddAPaint(!toggleAddAPaint)}>Cancel</button>
+                            <button onClick={addNewPaint} className='btn'>Add Paint</button>
+
+                            <input
+                                className='color-select'
+                                type='color'
+                                disabled
+                                value={paintProject}
+                            />
+
+                            <select
+                                name='paint_id'
+                                onChange={(e) => handleObjectChange(e, setNewPaintStep, newPaintStep)}
+                            >
+                                {paints.map((paint) =>
+                                    // <option value={JSON.stringify({ hexcode: paint.hexcode, id: paint.id })} key={paint.id}>{paint.paint}</option>
+                                    <option value={paint.id} key={paint.id}>{paint.paint}</option>
+                                )}
+                            </select>
+
+                            <select
+                                name='technique_id'
+                                onChange={(e) => handleObjectChange(e, setNewPaintStep, newPaintStep)}
+                            >
+                                {techniqueList.map((technique) => (
+                                    <option value={technique.id} key={technique.id}>{technique.technique}</option>
+                                ))}
+                            </select>
+
+                            <textarea
+                                name='notes'
+                                onChange={(e) => handleObjectChange(e, setNewPaintStep, newPaintStep)}
+                                placeholder='paint notes here...'
+                            ></textarea>
+                        </div>
+                    ) : (
+                        <button onClick={() => setToggleAddAPaint(!toggleAddAPaint)} className='btn'>
+                            Add A Step
+                        </button>
+                    )}
+
+                </div>
+            default:
+                return console.log('buttons went wrong!');
+        }
+    }
+
+
+
+
+
+
+
+
+    function determineButtons(displayView) {
+        switch (displayView) {
+            case 'mainDescription':
+                return <div className='viewButtons'>
+                    {/* <button onClick={() => setDisplayView('mainDescription')} className='btn'>desc</button> */}
+                    <button onClick={() => setDisplayView('paintList')} className='btn'>paints</button>
+                    <button onClick={() => setDisplayView('stepByStep')} className='btn'>steps</button>
+                </div>
+            case 'paintList':
+                return <div className='viewButtons'>
+                    <button onClick={() => setDisplayView('mainDescription')} className='btn'>desc</button>
+                    {/* <button onClick={() => setDisplayView('paintList')} className='btn'>paints</button> */}
+                    <button onClick={() => setDisplayView('stepByStep')} className='btn'>steps</button>
+                </div>
+            case 'stepByStep':
+                return <div className='viewButtons'>
+                    <button onClick={() => setDisplayView('mainDescription')} className='btn'>desc</button>
+                    <button onClick={() => setDisplayView('paintList')} className='btn'>paints</button>
+                    {/* <button onClick={() => setDisplayView('stepByStep')} className='btn'>steps</button> */}
+                </div>
+            default:
+                return console.log('buttons went wrong!');
+        }
+    }
+
+
+
+
+
+
+
 
     function determineDisplay(displayView) {
         console.log('determining display', displayView);
         switch (displayView) {
             case 'mainDescription':
-                // returns main display of model
-                return <ModelDescription picture={projectDetails.picture} description={projectDetails.description} />
+                return <ModelDescription
+                    picture={projectDetails.picture}
+                    description={projectDetails.description}
+                />
             case 'paintList':
 
                 // returns paint list for model
@@ -218,11 +365,6 @@ function ProjectDetails() {
                         <PaintDetails key={i} paint={paint} refreshDetails={refreshDetails} />
                     )}
                 </div>
-
-            case 'Edit Main Image':
-                // returns the edit view for your model
-                return;
-
             default:
                 // should never get here
                 return console.log('Theyre taking the hobbits to Isengard');
@@ -261,9 +403,8 @@ function ProjectDetails() {
                 </div>
 
                 <div className='detailsRightSide'>
-                    <button onClick={() => setDisplayView('mainDescription')} className='btn'>desc</button>
-                    <button onClick={() => setDisplayView('paintList')} className='btn'>paints</button>
-                    <button onClick={() => setDisplayView('stepByStep')} className='btn'>steps</button>
+                    {determineButtons(displayView)}
+                    {determineEditView(displayView)}
                 </div>
 
             </div>
@@ -438,12 +579,6 @@ function ProjectDetails() {
 
             {/* </div> */}
 
-            {/* begin the details item list  */}
-            {/* <div id='painted-models'>
-                    {paintDetails.map((paint) =>
-                        <PaintDetails paint={paint} refreshDetails={refreshDetails} />
-                    )}
-                </div> */}
 
         </m.div>
     );
