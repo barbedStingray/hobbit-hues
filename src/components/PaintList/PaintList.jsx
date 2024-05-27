@@ -1,10 +1,18 @@
-import React from 'react'
+import React from 'react';
+import './PaintList.css';
+
+
 
 const PaintList = ({ paintDetails }) => {
+
+    
     return (
-        <div>
+        <div className='paintList'>
             {paintDetails.map((color, i) => (
-                <p key={i}>{color.paint}</p>
+                <div className='paintListRow' key={i}>
+                    <p>{color.paint}</p>
+                    <div className='paintListColor' style={{ backgroundColor: color.hexcode }}></div>
+                </div>
             ))}
         </div>
     )

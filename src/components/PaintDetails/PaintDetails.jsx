@@ -6,7 +6,8 @@ import { motion as m } from 'framer-motion';
 // css
 import './PaintDetails.css';
 
-function PaintDetails(props) {
+function PaintDetails({ paint, refreshDetails }) {
+
 
     // middleware variables
     const dispatch = useDispatch();
@@ -20,7 +21,7 @@ function PaintDetails(props) {
         // delete single paint
         dispatch({ type: 'DELETE_SINGLE_PAINT', payload: paint });
         // refresh page / passed from props
-        props.refreshDetails();
+        refreshDetails();
     }
 
     // custom motion variable
@@ -36,52 +37,36 @@ function PaintDetails(props) {
 
     return (
 
-            <m.div
-                key={'paintMotionDetails'}
-                className="paintDetailsMotion"
-                variants={paintDetailsMotion}
-                exit={{
-                    opacity: 0,
-                    transition: { duration: 0.5 }
-                }}
+        <m.div
+            key={'paintMotionDetails'}
+            className="paintDetailStep"
+            variants={paintDetailsMotion}
+            exit={{
+                opacity: 0,
+                transition: { duration: 0.5 }
+            }}
+        >
+            <button
+                onClick={() => deletePaint(paint.id)}
+                className='btn_sm btn_del'
+            >X</button>
 
-                id='project-paints'>
 
-                <div id='paint-step'>
-                    <img key={props.paint.id} src={props.paint.photo} alt="No Photo Uploaded" id='painted-image' className='photo-zoom' />
+            <div className='detailsStepImageDiv'>
+                <img src={paint.photo} alt="No Photo Uploaded" className='detailStepImage' />
+            </div>
+
+            <div className='detailStepDescription'>
+
+                <div>
+                    <p className=''>{paint.paint}</p>
+                    <p className=''>{paint.technique}</p>
+                    <div className='paintStepColor' style={{ backgroundColor: paint.hexcode }}></div>
                 </div>
+                <p className='detailNotes'>{paint.notes}</p>
 
-                <div id='paint-description'>
-                    <div>
-                        <h4 className='defaultMargin'>{props.paint.paint}</h4>
-                    </div>
-
-                    <div >
-                        <p className='defaultMargin'>{props.paint.technique}</p>
-                    </div>
-                    <div>
-                        <p className='defaultMargin'>{props.paint.notes}</p>
-                    </div>
-                    <div id='paintColor-display'>
-                        {/* Displaying the color of the paint! */}
-                        <div>
-                            <label><input
-                                className='color-select'
-                                type='color'
-                                disabled
-                                value={props.paint.hexcode}
-                            >
-                            </input></label>
-                        </div>
-                        <div>
-                            <button
-                                onClick={() => deletePaint(props.paint.id)}
-                                className='btn_sm btn_del'
-                            >X</button>
-                        </div>
-                    </div>
-                </div>
-            </m.div>
+            </div>
+        </m.div>
     );
 }
 

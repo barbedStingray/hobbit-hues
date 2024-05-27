@@ -10,35 +10,44 @@
   display: flex;
   flex: 1;
   flex-flow: row nowrap;
-
 }
+
 .detailsLeftSide {
   border: 2px solid yellow;
   display: flex;
   flex: 3;
-  overflow: scroll;
-  color: white;
+  justify-content: center;
+  align-items: center;
 }
+
+.overflowContainer {
+  /* border: 2px solid magenta; */
+  /* border-top: 2px solid white;
+  border-bottom: 2px solid white; */
+  height: 64vh;
+  overflow: scroll;
+}
+
+
+.modelAndColorStep {
+  border: 2px solid yellow;
+}
+
+
+
+
+
+
+
+
+
+
 .detailsRightSide {
   border: 2px solid magenta;
   display: flex;
   flex: 2;
 }
 
-.projectDetailsPicture {
-  border: 2px solid pink;
-  width: 20vh;
-  height: 20vh;
-  object-fit: cover;
-  box-shadow: 0 5px 15px black;
-
-}
-
-
-
-.modelAndColorStep {
-  border: 2px solid yellow;
-}
 
 
 

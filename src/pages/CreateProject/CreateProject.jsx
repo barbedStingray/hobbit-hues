@@ -11,6 +11,9 @@ import ImageUpload from '../../components/ImageUpload/ImageUpload.jsx';
 // css
 import './CreateProject.css';
 
+// scripts
+import handleObjectChange from '../../scripts/handleObjectChange.js';
+
 
 
 function CreateProject() {
@@ -20,43 +23,33 @@ function CreateProject() {
     const dispatch = useDispatch();
 
     // redux variables
-    const store = useSelector((store) => store); 
-    const user = useSelector((store) => store.user); 
-    const hexcode = useSelector((store) => store.hexcode); 
+    // const store = useSelector((store) => store);
+    const user = useSelector((store) => store.user);
+    const hexcode = useSelector((store) => store.hexcode);
 
     // variables
-    const [heading, setHeading] = useState('Create a Project!'); // sets page heading
-    let [imagePath, setImagePath] = useState(''); // image upload variable
+    // let [imagePath, setImagePath] = useState(''); // image upload variable
     let [newProject, setNewProject] = useState({
         user_id: user.id,
         model: '',
         primary: hexcode,
         description: '',
         picture: ''
-    }); // axios.post to projects table
+    });
+    console.log('newProject', newProject);
 
 
     // ** Functions ************
 
-    // function to change newProject variable
-    const projectChange = (key) => (event) => {
-        setNewProject({ ...newProject, [key]: event.target.value })
-    }
 
-    // function sets the newProject image and imagePath variables
-    function setMultiple(properties) {
-        // set image for object passed to axios
+    function setNewProjectImageUp(properties) {
         setNewProject({ ...newProject, picture: properties });
-        // set image for display to dom
-        setImagePath(properties);
     }
 
     // Create your new project - submit your form!
     function createProject(e) {
         e.preventDefault();
-        // dispatch newProject
         dispatch({ type: 'CREATE_NEW_PROJECT', payload: newProject });
-        // navigate to project page
         history.push('/projects');
     }
 
@@ -70,85 +63,69 @@ function CreateProject() {
                 // duration: 2,
                 delayChildren: 0.5,
                 staggerChildren: 0.2
-            }}
+            }
+        }
     };
 
 
 
-
-
     return (
-        
-        <m.div 
-        key={'createMotionProject'}
-        className="container"
-        variants={container}
-        initial="hidden"
-        transition={{ duration: 0.55, ease: 'easeOut' }}
-        animate="visible"
-        exit={{ 
-            opacity: 0,
-            transition: { duration: 0.5 }
-        }}
-        id='create-page'>
+
+        <m.div
+            key={'createMotionProject'}
+            className="createProjectPage"
+            variants={container}
+            initial="hidden"
+            transition={{ duration: 0.55, ease: 'easeOut' }}
+            animate="visible"
+            exit={{
+                opacity: 0,
+                transition: { duration: 0.5 }
+            }}
+        >
 
             {/* Heading Div */}
-            <div id='create-heading'>
-                <h3>{heading}</h3>
-            </div>
-            
+            <p className='pageHeading'>Create A Project!</p>
+
             {/* Create New Project Form */}
-            <form id='create-form'>
+            <form className='newProjectForm'>
 
-                <div id='model-input'>
 
-                    {/* model name input */}
-                    <input
-                        id='model-box'
-                        onChange={projectChange('model')}
-                        type='text'
-                        placeholder='Model Name Here...'
-                    >
-                    </input>
+                <input
+                    name='model'
+                    className='newProjectNameInput'
+                    onChange={(e) => handleObjectChange(e, setNewProject, newProject)}
+                    type='text'
+                    placeholder='Model Name Here...'
+                >
+                </input>
 
-                    {/* display hexCode palette */}
-                    <div id='palette-variable'>
+                {/* display hexCode palette */}
+                {/* <div id='palette-variable'>
                         <p>Palette: {hexcode}</p>
-                    </div>
+                    </div> */}
 
-                </div>
+                <textarea
+                    name='description'
+                    className='newProjectDescriptionTextArea'
+                    onChange={(e) => handleObjectChange(e, setNewProject, newProject)}
+                    placeholder='Description of the project...'>
+                </textarea>
 
+                <ImageUpload photoFunction={setNewProjectImageUp} />
 
-                {/* Description of Model Input */}
-                <div id='description-input'>
-                    <textarea
-                        onChange={projectChange('description')}
-                        id='createDescription-input'
-                        placeholder='Description of the project...'>
-                    </textarea>
-                </div>
-
-                {/* Image Upload Section */}
-                <div id='image-work'>
-                    <ImageUpload photoFunction={setMultiple} />
+                <div className='photoUploadDiv'>
                     {
-                        imagePath === '' ? (
+                        newProject.picture === '' ? (
                             <></>
                         ) : (
-                            <div 
-                            id='image-preview'>
-
-                                <img className='mainUpload' src={imagePath} />
-                            </div>
+                            <img className='uploadImage' src={newProject.picture} />
                         )
                     }
                 </div>
 
-                {/* Create new project Button - submit form */}
-                <div id='create-submit'>
-                    <button onClick={createProject} className="btn">Create!</button>
-                </div>
-
+                <button onClick={createProject} className="btn">Create!</button>
+            
             </form>
         </m.div>
     );

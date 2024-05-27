@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion as m } from 'framer-motion';
+import './ModelDescription.css';
 
 const ModelDescription = ({ picture, description }) => {
 
@@ -13,7 +14,7 @@ const ModelDescription = ({ picture, description }) => {
 
     
     return (
-        <div>
+        <div className='projectDetailsModel'>
             <m.img
                 key={'motionMainPhoto'}
                 variants={mainPhotoMotion}
@@ -25,7 +26,7 @@ const ModelDescription = ({ picture, description }) => {
             //     transition: { duration: 0.5 }
             // }}
             />
-            <p>{description}</p>
+            <p className='projectDetailsModelDescription'>{description}</p>
         </div>
     )
 }

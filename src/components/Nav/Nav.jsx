@@ -9,9 +9,12 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 // css
 import './Nav.css';
 
+// import { GiHobbitDwelling } from "react-icons/gi";
 
 
-function Nav({ setProjectView }) {
+
+
+function Nav() {
 
   const user = useSelector((store) => store.user);
 
@@ -40,6 +43,7 @@ function Nav({ setProjectView }) {
 
       <Link to="/home">
         <p className="headerTitle">Hobbit Hues</p>
+        {/* <p className="headerTitle"><GiHobbitDwelling /></p> */}
       </Link>
 
       <div className='navBar'>

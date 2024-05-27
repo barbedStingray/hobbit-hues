@@ -18,6 +18,7 @@ function ProtectedRoute({ component, children, ...props }) {
 
   // Component may be passed in as a "component" prop,
   // or as a child component.
+  console.log('USER', user);
   // !!deleted const ProtectedComponent = component || (() => children);
 
   // We return a Route component that gets added to our list of routes

@@ -1,7 +1,7 @@
 
 // IMPORTS
 // middleware
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {
   Redirect,
   Route,
@@ -79,24 +79,27 @@ function App() {
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
 
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
             exact
             path="/user"
           >
             <UserPage />
           </ProtectedRoute>
 
+
+
+
           // ** these are the new components
+
+
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
             exact
             path="/create"
           >
             <CreateProject />
           </ProtectedRoute>
 
+
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
             exact
             path="/projects"
           >
@@ -125,15 +128,7 @@ function App() {
             <CommunityDetails />
           </ProtectedRoute> */}
 
-
-
-
-
-
-
-
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
             exact
             path="/community"
           >
@@ -143,7 +138,6 @@ function App() {
           // ** new Components above
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
             exact
             path="/info"
           >

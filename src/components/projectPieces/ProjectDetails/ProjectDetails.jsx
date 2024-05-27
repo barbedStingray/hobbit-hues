@@ -27,6 +27,7 @@ function ProjectDetails() {
     const projectDetails = useSelector((store) => store.projectDetails); // list of projects details
     const techniqueList = useSelector((store) => store.techniqueList); // list of techniques
     const paintDetails = useSelector((store) => store.paintDetails); // list of paint details for project
+    console.log('paintdetails', paintDetails);
 
     // middleware functions
     const dispatch = useDispatch();
@@ -204,7 +205,7 @@ function ProjectDetails() {
         switch (displayView) {
             case 'mainDescription':
                 // returns main display of model
-                return <ModelDescription picture={projectDetails.picture} details={projectDetails.description} />
+                return <ModelDescription picture={projectDetails.picture} description={projectDetails.description} />
             case 'paintList':
 
                 // returns paint list for model
@@ -254,7 +255,9 @@ function ProjectDetails() {
             <div className='detailsBody'>
 
                 <div className='detailsLeftSide'>
-                    {determineDisplay(displayView)}
+                    <div className='overflowContainer'>
+                        {determineDisplay(displayView)}
+                    </div>
                 </div>
 
                 <div className='detailsRightSide'>
