@@ -59,10 +59,15 @@ function PaintDetails({ paint, refreshDetails }) {
             <div className='detailStepDescription'>
 
                 <div>
-                    <p className=''>{paint.paint}</p>
-                    <div className='paintStepColor' style={{ backgroundColor: paint.hexcode }}></div>
-                    <p className=''>{paint.technique}</p>
+                    <h4>{paint.paint}</h4>
+                    <div className='paintStepColor'
+                        style={{
+                            backgroundImage: `linear-gradient(to right, ${paint.hexcode}, ${paint.hexcode}00)`
+                        }}>
+                    </div>
+                    <p>{paint.technique}</p>
                 </div>
+
                 <p className='detailNotes'>{paint.notes}</p>
 
             </div>

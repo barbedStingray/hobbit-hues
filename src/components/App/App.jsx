@@ -18,8 +18,8 @@ import LandingPage from '../../pages/LandingPage/LandingPage.jsx';
 import CreateProject from '../../pages/CreateProject/CreateProject.jsx';
 import PersonalProjects from '../../pages/ProjectsPage/PersonalProjects.jsx';
 import CommunityProjects from '../../pages/ProjectsPage/CommunityProjects.jsx';
+import ProjectDetails from '../../pages/ProjectDetails/ProjectDetails.jsx';
 
-import ProjectDetails from '../projectPieces/ProjectDetails/ProjectDetails.jsx';
 // import CommunityDetails from '../CommunityDetails/CommunityDetails.jsx';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';

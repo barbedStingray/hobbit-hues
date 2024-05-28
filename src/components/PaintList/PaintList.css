@@ -1,7 +1,19 @@
 
+.overflowPaintListContainer {
+    /* border: 2px solid lime; */
+    border-bottom: 2px solid white;
+    border-top: 2px solid white;
+    padding: 1vh;
+    display: flex;
+    flex-flow: column nowrap;
+    height: 45vh;
+    overflow: scroll;
+  }
+  
+
 .paintList {
     /* border: 2px solid blue; */
-    margin-top: 1vh;
+    margin: 1vh 0;
     display: flex;
     flex-flow: column nowrap;
     width: 40vh;

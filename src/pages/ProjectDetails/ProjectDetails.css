@@ -1,0 +1,37 @@
+.myProjectDetailsPage {
+  border: 2px solid orange;
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1;
+}
+.viewButtons {
+  border: 2px solid pink;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  gap: 2vh;
+}
+.detailsBody {
+  border: 2px solid blue;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3vh;
+}
+.detailsLeftSide {
+  /* border: 2px solid yellow; */
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.detailsRightSide {
+  /* border: 2px solid magenta; */
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+
+

@@ -6,19 +6,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
 // components
-import ImageUpload from '../../ImageUpload/ImageUpload.jsx';
-import PaintDetails from '../../PaintDetails/PaintDetails.jsx';
-import SelectTechnique from '../../SelectTechnique/SelectTechnique.jsx';
+import ImageUpload from '../../components/ImageUpload/ImageUpload.jsx';
+import PaintDetails from '../../components/PaintDetails/PaintDetails.jsx';
+import SelectTechnique from '../../components/SelectTechnique/SelectTechnique.jsx';
 
 // ** NEW
-import ModelDescription from '../../ModelDescription/ModelDescription.jsx';
-import PaintList from '../../PaintList/PaintList.jsx';
+import ModelDescription from '../../components/ModelDescription/ModelDescription.jsx';
+import PaintList from '../../components/PaintList/PaintList.jsx';
 
 //css
 import './ProjectDetails.css';
 
 // scripts 
-import handleObjectChange from '../../../scripts/handleObjectChange.js';
+import handleObjectChange from '../../scripts/handleObjectChange.js';
 
 
 
@@ -30,7 +30,7 @@ function ProjectDetails() {
     const projectDetails = useSelector((store) => store.projectDetails); // list of projects details
     const techniqueList = useSelector((store) => store.techniqueList); // list of techniques
     const paintDetails = useSelector((store) => store.paintDetails); // list of paint details for project
-    console.log('paintdetails', paintDetails);
+    // console.log('paintdetails', paintDetails);
 
     // middleware functions
     const dispatch = useDispatch();
@@ -101,12 +101,12 @@ function ProjectDetails() {
     // !! ADD NEW PAINT 
     // function to set newPaint
     const newPaintChange = (key) => (event) => {
-        console.log('changed newProject');
+        // console.log('changed newProject');
         setNewPaintStep({ ...newPaintStep, [key]: event.target.value });
     }
     // set new paint IMAGE FUNCTION
     function newPaintImage(newImage) {
-        console.log(`adding the new paint image to the new paint variable`);
+        // console.log(`adding the new paint image to the new paint variable`);
         setNewPaintStep({ ...newPaintStep, photo: newImage });
     }
     // POST function to add new paint
@@ -126,7 +126,7 @@ function ProjectDetails() {
         // });
         // reset your paint project variable to black
         setPaintProject('#000000');
-        
+
         // refresh page
         refreshDetails();
     }
@@ -240,13 +240,7 @@ function ProjectDetails() {
                             </textarea>
                         </div>
                     ) : (
-                        <button
-                            onClick={() => editProject(projectDetails.id)}
-                            id='edit-project'
-                            className='btn'
-                        >
-                            Edit Project
-                        </button>
+                        <></>
                     )}
 
                 </div >
@@ -295,9 +289,7 @@ function ProjectDetails() {
                             ></textarea>
                         </div>
                     ) : (
-                        <button onClick={() => setToggleAddAPaint(!toggleAddAPaint)} className='btn'>
-                            Add A Step
-                        </button>
+                        <></>
                     )}
 
                 </div>
@@ -317,21 +309,22 @@ function ProjectDetails() {
         switch (displayView) {
             case 'mainDescription':
                 return <div className='viewButtons'>
-                    {/* <button onClick={() => setDisplayView('mainDescription')} className='btn'>desc</button> */}
-                    <button onClick={() => setDisplayView('paintList')} className='btn'>paints</button>
-                    <button onClick={() => setDisplayView('stepByStep')} className='btn'>steps</button>
-                </div>
-            case 'paintList':
-                return <div className='viewButtons'>
-                    <button onClick={() => setDisplayView('mainDescription')} className='btn'>desc</button>
-                    {/* <button onClick={() => setDisplayView('paintList')} className='btn'>paints</button> */}
-                    <button onClick={() => setDisplayView('stepByStep')} className='btn'>steps</button>
+                    <button onClick={() => setDisplayView('stepByStep')} className='btn'>Paint Steps</button>
+                    <button
+                        onClick={() => editProject(projectDetails.id)}
+                        id='edit-project'
+                        className='btn'
+                    >
+                        Edit Project
+                    </button>
                 </div>
             case 'stepByStep':
                 return <div className='viewButtons'>
-                    <button onClick={() => setDisplayView('mainDescription')} className='btn'>desc</button>
-                    <button onClick={() => setDisplayView('paintList')} className='btn'>paints</button>
-                    {/* <button onClick={() => setDisplayView('stepByStep')} className='btn'>steps</button> */}
+                    <button onClick={() => setDisplayView('mainDescription')} className='btn'>Model View</button>
+                    <button onClick={() => setToggleAddAPaint(!toggleAddAPaint)} className='btn'>
+                        Add A Step
+                    </button>
+
                 </div>
             default:
                 return console.log('buttons went wrong!');
@@ -349,24 +342,27 @@ function ProjectDetails() {
         console.log('determining display', displayView);
         switch (displayView) {
             case 'mainDescription':
-                return <ModelDescription
-                    picture={projectDetails.picture}
-                    description={projectDetails.description}
-                />
-            case 'paintList':
+                return <>
+                    <div className='detailsLeftSide'>
+                        <ModelDescription picture={projectDetails.picture} description={projectDetails.description} />
+                    </div>
+                    <div className='detailsRightSide'>
+                        <div className='overflowPaintListContainer'>
+                            <PaintList paintDetails={paintDetails} />
+                        </div>
+                    </div>
+                </>
 
-                // returns paint list for model
-                return <PaintList paintDetails={paintDetails} />
 
             case 'stepByStep':
-                // returns step by step images
-                return <div>
-                    {paintDetails.map((paint, i) =>
-                        <PaintDetails key={i} paint={paint} refreshDetails={refreshDetails} />
-                    )}
-                </div>
+                return <>
+                    <div className='overflowPaintStepsContainer'>
+                        {paintDetails.map((paint, i) =>
+                            <PaintDetails key={i} paint={paint} refreshDetails={refreshDetails} />
+                        )}
+                    </div>
+                </>
             default:
-                // should never get here
                 return console.log('Theyre taking the hobbits to Isengard');
         }
 
@@ -394,19 +390,11 @@ function ProjectDetails() {
         >
             <p className='pageHeading'>{projectDetails.model}</p>
 
+            {determineButtons(displayView)}
+
+
             <div className='detailsBody'>
-
-                <div className='detailsLeftSide'>
-                    <div className='overflowContainer'>
-                        {determineDisplay(displayView)}
-                    </div>
-                </div>
-
-                <div className='detailsRightSide'>
-                    {determineButtons(displayView)}
-                    {determineEditView(displayView)}
-                </div>
-
+                {determineDisplay(displayView)}
             </div>
 
 
