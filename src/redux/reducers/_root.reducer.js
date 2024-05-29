@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
 import setPaintsDropdown from './paint.reducer';
-import hexcode from './hexcode.reducer';
+// import hexcode from './hexcode.reducer';
 import userProjects from './projects.reducer';
 import projectDetails from './details.reducer';
 import techniqueList from './technique.reducer';
@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
 
   // ** NEW REDUCERS
   setPaintsDropdown, // sets the list of server side paints
-  hexcode, // passes the hexcode from user page to create project page
+  // hexcode, // passes the hexcode from user page to create project page
   userProjects, // container for user projects
   projectDetails, // contains data for project details page
   techniqueList, // contains server technique list

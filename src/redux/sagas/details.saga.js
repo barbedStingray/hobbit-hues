@@ -15,49 +15,6 @@ function* fetchProjectDetails(action) {
     yield put({ type: 'SET_PROJECT_DETAILS', payload: detailResults.data });
     yield put({ type: 'SET_PAINT_DETAILS', payload: detailPaintResults.data });
 
-    // Color function used here to display the saved palette on dom
-    function setColors(hue) {
-      console.log(`BEGIN SET COLORS hue:`, hue)
-      let r = 0, g = 0, b = 0;
-      if (hue.length == 4) {
-        r = "0x" + hue[1] + hue[1];
-        g = "0x" + hue[2] + hue[2];
-        b = "0x" + hue[3] + hue[3];
-      } else if (hue.length == 7) {
-        r = "0x" + hue[1] + hue[2];
-        g = "0x" + hue[3] + hue[4];
-        b = "0x" + hue[5] + hue[6];
-      }
-      r /= 255;
-      g /= 255;
-      b /= 255;
-      let cmin = Math.min(r, g, b),
-        cmax = Math.max(r, g, b),
-        delta = cmax - cmin,
-        h = 0,
-        s = 0,
-        l = 0;
-      if (delta == 0)
-        h = 0;
-      else if (cmax == r)
-        h = ((g - b) / delta) % 6;
-      else if (cmax == g)
-        h = (b - r) / delta + 2;
-      else
-        h = (r - g) / delta + 4;
-      h = Math.round(h * 60);
-      if (h < 0)
-        h += 360;
-      l = (cmax + cmin) / 2;
-      s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
-      s = +(s * 100).toFixed(1);
-      l = +(l * 100).toFixed(1);
-      document.documentElement.style.setProperty(`--primary-color-h`, h);
-      document.documentElement.style.setProperty(`--primary-color-s`, s + '%');
-      document.documentElement.style.setProperty(`--primary-color-l`, l + '%');
-    }
-    // set color wheel - call function
-    setColors(detailResults.data.primary);
 
   } catch (error) {
     // console.log(`error in GET /details/:id`);

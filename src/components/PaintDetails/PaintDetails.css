@@ -14,7 +14,7 @@
 
 
 .paintDetailStep {
-  border: 2px solid white;
+  border: 2px solid green;
   display: flex;
   flex-flow: row nowrap;
   margin-bottom: 1.5vh;
@@ -24,20 +24,20 @@
 }
 
 .detailsStepImageDiv {
-  border: 2px solid greenyellow;
+  /* border: 2px solid greenyellow; */
   display: flex;
   flex: 2;
 }
 .detailStepImage {
   border-right: 2px solid white;
-  border: 2px solid purple;
+  /* border: 2px solid purple; */
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
 .detailStepDescription {
-  border: 2px solid magenta;
+  /* border: 2px solid magenta; */
   display: flex;
   flex: 3;
   flex-flow: column nowrap;
@@ -50,13 +50,17 @@
   font-size: 3vw;
   font-family: ringbearer;
 }
+.detailStepDescription p {
+  /* border: 2px solid black; */
+  font-size: 2vw;
+}
 
 .paintStepColor {
   height: 2vh;
 }
 
 .detailNotes {
-  border: 2px solid yellow;
+  /* border: 2px solid yellow; */
 }
 
 

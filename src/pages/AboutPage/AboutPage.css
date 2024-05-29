@@ -1,47 +1,37 @@
 
 
-#about-pageDiv {
+.aboutPage {
     display: flex;
-    flex-direction: column;
+    flex-flow: column nowrap;
     flex: 1;  
 }
-#about-header {
-    font-family: ringbearer;
-    font-size: 48px;
-    color: transparent;
-    -webkit-text-stroke-color: black;
-    -webkit-text-stroke-width: 1px;
-    background: linear-gradient(darkgreen, 30%, limegreen, 40%, yellow, 50%, orange, 70%, red);
-    background-clip: text;
-    text-align: center;
-}
-#about-body{
+
+.aboutBody{
     /* border: 2px solid gold; */
     display: flex;
+    flex-flow: row nowrap;
     justify-content: center;
-    height: 315px;
-    gap: 2%;
+    gap: 1vh;
 }
-#about-text {
+.aboutText,
+.techUsed {
     border: 3px solid #4d4848;
     background-color: #f5f5f5bb;
-    border-radius: 10px;
-    width: 400px;
     display: flex;
-    flex-direction: column;
-    box-shadow: 0 0 15px black;
-    padding: 0 1%;
-}
-
-#tech-div {
-    /* border: 2px solid red; */
-    width: 200px;
-    border: 3px solid #4d4848;
-    background-color: #f5f5f5bb;
+    flex-flow: column nowrap;
     border-radius: 10px;
+    padding: 2vh;
+    font-size: 2vh;
 }
-#center {
-    text-align: center;
-}
+.aboutText {
+    width: 50vh;
+    gap: 2vh;
 
+}
+.techUsed {
+    /* border: 2px solid red; */
+    align-items: center;    
+    width: 20vh;
+    gap: 0.5vh;
+}
 

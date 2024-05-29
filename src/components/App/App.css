@@ -33,7 +33,7 @@ body,
 
 /* ! screen size manipulation */
 #app-mainDiv {
-  border: green 2px solid;
+  /* border: green 2px solid; */
   display: flex;
   flex-direction: column;
   /* flex-grow: 1; */
@@ -43,7 +43,7 @@ body,
 
 
 .pageHeading {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   font-family: ringbearer;
   font-size: 8vh;
   color: transparent;

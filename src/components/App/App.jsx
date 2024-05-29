@@ -1,7 +1,7 @@
 
 // IMPORTS
 // middleware
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Redirect,
   Route,
@@ -37,6 +37,8 @@ function App() {
 
   const user = useSelector(store => store.user);
 
+  const [canEdit, setCanEdit] = useState(false);
+
 
   // page reload, render dom
   useEffect(() => {
@@ -53,7 +55,7 @@ function App() {
   return (
 
     <div id='app-mainDiv'>
-      <Nav />
+      <Nav setCanEdit={setCanEdit} />
 
       {/* Wrapped switch element to allow animations/transitions */}
       <AnimatePresence
@@ -103,7 +105,7 @@ function App() {
             exact
             path="/projects"
           >
-            <PersonalProjects/>
+            <PersonalProjects />
           </ProtectedRoute>
 
 
@@ -117,7 +119,7 @@ function App() {
             exact
             path="/details/:id"
           >
-            <ProjectDetails />
+            <ProjectDetails canEdit={canEdit} />
           </ProtectedRoute>
 
           {/* <ProtectedRoute

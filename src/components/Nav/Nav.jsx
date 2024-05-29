@@ -14,7 +14,7 @@ import './Nav.css';
 
 
 
-function Nav() {
+function Nav({ setCanEdit }) {
 
   const user = useSelector((store) => store.user);
 
@@ -50,12 +50,25 @@ function Nav() {
         {user.id ? (
           <>
             {/* LOGGED in, show these links */}
-            {loggedInLinks.map((link) => (
+            <Link className="hobbitLink" to="/user">
+              <p>Colors</p>
+            </Link>
+            <Link className="hobbitLink" to="/projects">
+              <p onClick={() => setCanEdit(true)}>Projects</p>
+            </Link>
+            <Link className="hobbitLink" to="/community">
+              <p onClick={() => setCanEdit(false)}>Community</p>
+            </Link>
+            <Link className="hobbitLink" to="/info">
+              <p>Tips</p>
+            </Link>
+            {/* {loggedInLinks.map((link) => (
               <Link className='hobbitLink' to={link.path}>
                 {link.name}
               </Link>
-            ))}
+            ))} */}
             <LogOutButton className="hobbitLink" />
+
           </>
         ) : (
           <>
@@ -68,6 +81,8 @@ function Nav() {
             </Link>
           </>
         )}
+
+
       </div>
     </div >
   );

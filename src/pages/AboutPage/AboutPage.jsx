@@ -10,6 +10,16 @@ import { motion as m } from 'framer-motion';
 
 function AboutPage() {
 
+  const techUsed = [
+    'React',
+    'Cloudinary',
+    'Framer Motion',
+    'Passport',
+    'Javascript',
+    'PostgreSQL',
+    'Redux',
+    'Axios'
+  ];
 
   const container = {
     hidden: { opacity: 0 },
@@ -30,7 +40,7 @@ function AboutPage() {
     <m.div
       key={'createMotionAbout'}
 
-      className="container"
+      className="aboutPage"
       variants={container}
       initial="hidden"
       transition={{ duration: 0.55, ease: 'easeOut' }}
@@ -39,16 +49,12 @@ function AboutPage() {
         opacity: 0,
         transition: { duration: 0.5 }
       }}
-
-      id='about-pageDiv'
     >
 
-      <div id='about-header'>
-        <h1>About Hobbit Hues</h1>
-      </div>
+        <h1 className='pageHeading'>About Hobbit Hues</h1>
 
-      <div id='about-body'>
-        <div id='about-text'>
+      <div className='aboutBody'>
+        <div className='aboutText'>
           <p>Hello!</p>
           <p>
             Check it out! My first hosted application! Very excited to make this available for use.
@@ -61,21 +67,11 @@ function AboutPage() {
           </p>
         </div>
 
-        <div id='tech-div'>
-          <p id='center'>Tech Used</p>
-          <ul>
-            <li>React</li>
-            <li>Cloudinary</li>
-            <li>Framer Motion</li>
-            <li>Passport</li>
-            <li>Javascript</li>
-            <li>PostgreSQL</li>
-            <li>Sagas</li>
-            <li>Redux</li>
-            <li>Axios</li>
-            <li>CSS Flexbox</li>
-          </ul>
-
+        <div className='techUsed'>
+          <h4>Tech Used</h4>
+          {techUsed.map((tech) => (
+            <p>{tech}</p>
+          ))}
         </div>
       </div>
 

@@ -1,7 +1,7 @@
 /* CODE FOR CREATE PROJECT PAGE */
 
 .createProjectPage {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -10,7 +10,7 @@
 
 
 .newProjectForm {
-  border: 2px solid gold;
+  /* border: 2px solid gold; */
   display: flex;
   flex-flow: column nowrap;
   width: 65vh;
@@ -21,34 +21,35 @@
 
 .newProjectNameInput,
 .newProjectDescriptionTextArea {
-  border: 2px solid green;
+  /* border: 2px solid green; */
   height: 4vh;
   width: 60%;
   font-size: 2.5vh;
   text-align: center;
   border-radius: 10px;
   background-color: #ffffffdd;
+  border: 2px solid black;
   color: black;
 }
 
 .newProjectDescriptionTextArea {
-  border: 2px solid red;
+  border: 2px solid black;
   height: 8vh;
   font-size: 2vh;
   padding: 0.5vh;
 }
 
 .photoUploadDiv {
-  border: 2px solid limegreen;
+  /* border: 2px solid limegreen; */
   /* display: flex; */
-
 }
 
 
 .uploadImage {
-  border: 2px solid magenta;
-  height: 12vh;
-  width: 12vh;
+  /* border: 2px solid magenta; */
+  border: 2px solid black;
+  height: 15vh;
+  width: 15vh;
   border-radius: 10px;
   object-fit: cover;
   box-shadow: 0 5px 15px black;
@@ -76,39 +77,6 @@
   border-radius: 10px;
 } */
 
-/* #palette-variable {
-  background: linear-gradient(#ffffff, 80%, #c8c8c8);
-  box-shadow: 0 5px 15px black;
-  border: 2px solid #5a5a5a;
-  border-radius: 10px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 150px;
-  min-width: 50px;
-} */
-
-/* #description-input {
-  border: 2px solid purple;
-  display: flex;
-  justify-content: center;
-
-} */
-
-/* #createDescription-input {
-  border: 2px solid #5a5a5a;
-  width: 60%;
-  max-width: 425px;
-  height: 100px;
-  background: linear-gradient(#ffffff, 80%, #c8c8c8);
-  border-radius: 10px;
-  padding: 1%;
-  font-size: 16px;
-  min-width: 250px;
-  box-shadow: 0 5px 15px black;
-} */
 
 /* #image-work {
   border: 2px solid lightgreen;
@@ -118,7 +86,7 @@
   align-items: center;
 } */
 
-#image-preview {
+/* #image-preview {
   border: 2px solid red;
   display: flex;
   flex-direction: row;
@@ -134,7 +102,7 @@
   height: 100%;
   object-fit: cover;
   box-shadow: 0 5px 15px black;
-}
+} */
 
 /* #create-submit {
   border: 2px solid limegreen;

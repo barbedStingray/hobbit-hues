@@ -57,8 +57,7 @@ const UserPage = () => {
 
   // button for a new project
   function createNewProject() {
-    dispatch({ type: 'SET_PRIMARY_HEXCODE', payload: palettePrime });
-    // path to form page
+    // dispatch({ type: 'SET_PRIMARY_HEXCODE', payload: palettePrime });
     history.push('/create');
   }
 

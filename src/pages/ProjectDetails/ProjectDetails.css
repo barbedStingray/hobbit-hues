@@ -1,18 +1,18 @@
 .myProjectDetailsPage {
-  border: 2px solid orange;
+  /* border: 2px solid orange; */
   display: flex;
   flex-flow: column nowrap;
   flex: 1;
 }
 .viewButtons {
-  border: 2px solid pink;
+  /* border: 2px solid pink; */
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   gap: 2vh;
 }
 .detailsBody {
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -32,6 +32,72 @@
   flex-flow: column nowrap;
   align-items: center;
 }
+
+
+
+/* Modal Views */
+
+.editModal {
+  /* border: 2px solid lime; */
+  background-color: #000000dd;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;  
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* gap: 1vh; */
+}
+
+
+/* Edit Main Description View */
+
+.editMainImage {
+  border: 2px solid white;
+  width: 40vh;
+  height: 40vh;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.editMenuOptions {
+  /* border: 2px solid purple; */
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 3vh;
+}
+
+.editInputs,
+.editButtons {
+  /* border: 2px solid gold; */
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2vh;
+}
+
+.editButtons {
+  /* border: 2px solid blue; */
+  gap: 4vh;
+}
+
+.editDescription {
+  /* border: 2px solid blue; */
+  height: 10vh;
+  border: 2px solid white;
+  background-color: #ffffffcc;
+  border-radius: 10px;
+  padding: 1vh;
+  font-size: 2vh;
+}
+
+
+
 
 
 
