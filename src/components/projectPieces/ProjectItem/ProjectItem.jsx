@@ -1,7 +1,7 @@
 
 // IMPORTS
 // middleware
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
 // css
 import './ProjectItem.css';
@@ -14,7 +14,7 @@ import goToProjectDetails from '../../../scripts/goToProjectDetails';
 function ProjectItem({ project }) {
 
     // middleware variables
-    const history = useHistory();
+    const navigate = useNavigate();
 
     console.log('project', project);
     // destructure
@@ -41,7 +41,7 @@ function ProjectItem({ project }) {
                 opacity: 0,
                 transition: { duration: 0.5 }
             }}
-            onClick={() => goToProjectDetails(history, id)}>
+            onClick={() => goToProjectDetails(navigate, id)}>
 
             <img src={picture} alt="No Photo Uploaded" className='projectPagePhoto' />
 

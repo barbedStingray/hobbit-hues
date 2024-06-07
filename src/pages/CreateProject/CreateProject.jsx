@@ -4,7 +4,7 @@
 // middleware
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
 // components
 import ImageUpload from '../../components/ImageUpload/ImageUpload.jsx';
@@ -19,7 +19,7 @@ import handleObjectChange from '../../scripts/handleObjectChange.js';
 function CreateProject() {
 
     // middleware variables
-    const history = useHistory();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     // redux variables
@@ -50,7 +50,7 @@ function CreateProject() {
     function createProject(e) {
         e.preventDefault();
         dispatch({ type: 'CREATE_NEW_PROJECT', payload: newProject });
-        history.push('/projects');
+        navigate('/projects');
     }
 
     // Animation variable

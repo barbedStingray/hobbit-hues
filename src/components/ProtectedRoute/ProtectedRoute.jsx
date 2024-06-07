@@ -1,7 +1,7 @@
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import LandingPage from '../../pages/LandingPage/LandingPage';
-import {useSelector} from 'react-redux';
 
 // A Custom Wrapper Component -- This will keep our code DRY.
 // Responsible for watching redux state, and returning an appropriate component
@@ -13,31 +13,31 @@ import {useSelector} from 'react-redux';
 // by checking req.isAuthenticated for authentication
 // and by checking req.user for authorization
 
-function ProtectedRoute({ component, children, ...props }) {
+function ProtectedRoute({ children }) {
   const user = useSelector((store) => store.user);
+  console.log('user', user);
+  const navigate = useNavigate();
 
-  // Component may be passed in as a "component" prop,
-  // or as a child component.
-  console.log('USER', user);
-  // !!deleted const ProtectedComponent = component || (() => children);
+  useEffect(() => {
+    console.log('user', user.id);
+    // navigate('/user');
+  }, [user]);
 
-  // We return a Route component that gets added to our list of routes
+
+
   return (
-
-    <Route
-      // all props like 'exact' and 'path' that were passed in
-      // are now passed along to the 'Route' Component
-      {...props}
-    >
+    <>
       {user.id ?
         // If the user is logged in, show the protected component
-        // !!deleted <ProtectedComponent />
-        children 
+        children
         :
-        // Otherwise, redirect to the Loginpage ** LANDING PAGE UPDATE
+        // Otherwise, redirect to the Loginpage
+        // ! This navigate seems to trigger on page refreshes
+        // <Navigate to='/' />
+        // ! substitude landing page for now
         <LandingPage />
       }
-    </Route>
+    </>
 
   );
 }

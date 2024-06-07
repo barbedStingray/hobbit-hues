@@ -51,6 +51,7 @@ body,
   -webkit-text-stroke-width: 1px;
   /* background: linear-gradient(darkgreen, 30%, limegreen, 40%, yellow, 50%, orange, 70%, red); */
   background: linear-gradient(#7cff7c, 30%, #ffff00, 50%, #ffc55a, 70%, #ff4646);
+  background: linear-gradient(#7ee7fe, 35%, #ffff6b, 75%, #7cff7c);
   background-clip: text;
   margin: 4vh 0vh;
   text-align: center;

@@ -1,14 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function LogOutButton(props) {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   function logoutAndReturn() {
+    navigate('/');
     dispatch({ type: 'LOGOUT' });
-    history.push('/home');
     console.log(`sent to home`);
   }
   return (

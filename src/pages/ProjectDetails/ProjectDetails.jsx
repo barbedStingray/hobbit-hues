@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
 
 // components
@@ -23,7 +23,7 @@ function ProjectDetails({ canEdit }) {
     const paintDetails = useSelector((store) => store.paintDetails); // list of paint details for project
 
     const dispatch = useDispatch();
-    const history = useHistory();
+    const navigate = useNavigate();
     const { id } = useParams(); // hook for refresh
 
     const [displayView, setDisplayView] = useState('mainDescription')
@@ -112,7 +112,7 @@ function ProjectDetails({ canEdit }) {
     // ** DELETE requests
     function deleteProject(project) {
         dispatch({ type: 'DELETE_ENTIRE_PROJECT', payload: project });
-        history.push('/projects');
+        navigate('/projects');
     }
 
     // ** PUT requests
