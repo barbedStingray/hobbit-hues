@@ -1,8 +1,10 @@
 
 // IMPORTS
 // middleware
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion as m } from 'framer-motion';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 // css
 import './LandingPage.css';
@@ -15,7 +17,15 @@ import LoginForm from '../../components/LoginForm/LoginForm.jsx';
 function LandingPage() {
 
   // variables
+  const navigate = useNavigate();
   const [login, setLogin] = useState(true); // toggle for login display
+  const user = useSelector(store => store.user);
+
+  useEffect(() => {
+    if (user.id) {
+      navigate('/user');
+    }
+  }, [user]);
 
 
   // custom motion variable

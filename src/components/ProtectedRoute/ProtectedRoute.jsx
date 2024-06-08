@@ -16,12 +16,12 @@ import LandingPage from '../../pages/LandingPage/LandingPage';
 function ProtectedRoute({ children }) {
   const user = useSelector((store) => store.user);
   console.log('user', user);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log('user', user.id);
-    // navigate('/user');
-  }, [user]);
+  // useEffect(() => {
+  //   console.log('user', user.id);
+  //   // navigate('/user');
+  // }, [user]);
 
 
 

@@ -17,6 +17,7 @@ import './Nav.css';
 function Nav({ setCanEdit }) {
 
   const user = useSelector((store) => store.user);
+  console.log('USER NAVVVVV', user);
 
   const loggedInLinks = [
     {
@@ -41,7 +42,7 @@ function Nav({ setCanEdit }) {
   return (
     <div className="hobbitHeader">
 
-      <Link to="/home">
+      <Link to="/">
         <p className="headerTitle">Hobbit Hues</p>
         {/* <p className="headerTitle"><GiHobbitDwelling /></p> */}
       </Link>
@@ -50,15 +51,15 @@ function Nav({ setCanEdit }) {
         {user.id ? (
           <>
             {/* LOGGED in, show these links */}
-            <Link className="hobbitLink" to="/user"><p>Colors</p></Link>
+            <Link className="hobbitLink" to="/"><p>Colors</p></Link>
             <Link className="hobbitLink" to="/projects"><p onClick={() => setCanEdit(true)}>Projects</p></Link>
             <Link className="hobbitLink" to="/community"><p onClick={() => setCanEdit(false)}>Community</p></Link>
             <Link className="hobbitLink" to="/info"><p>Tips</p></Link>
             {/* {loggedInLinks.map((link) => (
               <Link className='hobbitLink' to={link.path}>
-                {link.name}
+              {link.name}
               </Link>
-            ))} */}
+              ))} */}
             <LogOutButton className="hobbitLink" />
 
           </>

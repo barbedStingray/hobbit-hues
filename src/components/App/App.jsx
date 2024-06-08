@@ -32,7 +32,7 @@ function App() {
   const location = useLocation();
 
   const user = useSelector(store => store.user);
-  console.log('USER', user);
+  // console.log('USER', user);
 
   const [canEdit, setCanEdit] = useState(false);
 
@@ -52,6 +52,7 @@ function App() {
   return (
 
     <div id='app-mainDiv'>
+
       <Nav setCanEdit={setCanEdit} />
 
       <AnimatePresence mode='wait'>

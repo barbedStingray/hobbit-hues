@@ -7,9 +7,11 @@ function LogOutButton(props) {
   const navigate = useNavigate();
 
   function logoutAndReturn() {
-    navigate('/');
+
     dispatch({ type: 'LOGOUT' });
+    navigate('/');
     console.log(`sent to home`);
+
   }
   return (
     <button

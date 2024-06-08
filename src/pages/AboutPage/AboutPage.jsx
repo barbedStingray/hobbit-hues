@@ -69,8 +69,8 @@ function AboutPage() {
 
         <div className='techUsed'>
           <h4>Tech Used</h4>
-          {techUsed.map((tech) => (
-            <p>{tech}</p>
+          {techUsed.map((tech, i) => (
+            <p key={i}>{tech}</p>
           ))}
         </div>
       </div>
