@@ -15,7 +15,12 @@ function* loginUser(action) {
     // send the action.payload as the body
     // the config includes credentials which
     // allow the server session to recognize the user
-    yield axios.post('/api/user/login', action.payload, config);
+    const result = yield axios.post('/api/user/login', action.payload, config);
+
+    if (result) {
+      console.log('RES', result);
+
+    }
 
     // after the user has logged in
     // get the user information from the server

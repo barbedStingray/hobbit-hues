@@ -4,7 +4,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
 // components
 import ColorWheel from '../../components/ColorWheel/ColorWheel.jsx';
@@ -17,7 +17,7 @@ const UserPage = () => {
 
   // middleware variables
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   // redux variables
   const user = useSelector((store) => store.user);
@@ -58,7 +58,7 @@ const UserPage = () => {
   // button for a new project
   function createNewProject() {
     // dispatch({ type: 'SET_PRIMARY_HEXCODE', payload: palettePrime });
-    history.push('/create');
+    navigate('/create');
   }
 
 

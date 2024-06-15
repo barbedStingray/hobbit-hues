@@ -1,7 +1,7 @@
 
 
-const goToProjectDetails = (history, id) => {
-    history.push(`/details/${id}`);
+const goToProjectDetails = (navigate, id) => {
+    navigate(`/details/${id}`);
 }
 
 module.exports = goToProjectDetails;
