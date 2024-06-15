@@ -17,26 +17,26 @@ import './Nav.css';
 function Nav({ setCanEdit }) {
 
   const user = useSelector((store) => store.user);
-  console.log('USER NAVVVVV', user);
+  console.log('USER NAVVVVV', user.id);
 
-  const loggedInLinks = [
-    {
-      name: 'Colors',
-      path: '/user'
-    },
-    {
-      name: 'Projects',
-      path: '/projects',
-    },
-    {
-      name: 'Community',
-      path: '/community',
-    },
-    {
-      name: 'Tips',
-      path: '/info'
-    },
-  ];
+  // const loggedInLinks = [
+  //   {
+  //     name: 'Colors',
+  //     path: '/user'
+  //   },
+  //   {
+  //     name: 'Projects',
+  //     path: '/projects',
+  //   },
+  //   {
+  //     name: 'Community',
+  //     path: '/community',
+  //   },
+  //   {
+  //     name: 'Tips',
+  //     path: '/info'
+  //   },
+  // ];
 
 
   return (
@@ -66,12 +66,8 @@ function Nav({ setCanEdit }) {
         ) : (
           <>
             {/* NOT logged in, show these links */}
-            <Link className="hobbitLink" to="/">
-              Login / Register
-            </Link>
-            <Link className="hobbitLink" to="/about">
-              About
-            </Link>
+            <Link className="hobbitLink" to="/">Login / Register</Link>
+            <Link className="hobbitLink" to="/about">About</Link>
           </>
         )}
 

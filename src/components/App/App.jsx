@@ -4,7 +4,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { AnimatePresence } from 'framer-motion';
 
 // Pages
 import AboutPage from '../../pages/AboutPage/AboutPage.jsx';
@@ -55,13 +54,14 @@ function App() {
 
       <Nav setCanEdit={setCanEdit} />
 
-      <AnimatePresence mode='wait'>
+      {/* <AnimatePresence mode='wait'> */}
 
         <Routes location={location} key={location.pathname}>
 
           {/* Open Routes */}
-          <Route path='/' element={<LandingPage />} />
-          <Route path='/about' element={<AboutPage />} />
+          <Route path='/' element={<LandingPage />} /> 
+          <Route path='/about' element={<AboutPage />} /> 
+          {/* <Route path='/about' element={<AboutPage />} /> */}
 
           {/* User Routes */}
           <Route path='/user' element={<ProtectedRoute> <UserPage /> </ProtectedRoute>} />
@@ -74,7 +74,7 @@ function App() {
 
         </Routes>
 
-      </AnimatePresence>
+      {/* </AnimatePresence> */}
       <Footer />
     </div>
   );

@@ -24,7 +24,6 @@ function LoginForm() {
     } else {
       dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
-    navigate('/user');
   }; // end login
 
 
