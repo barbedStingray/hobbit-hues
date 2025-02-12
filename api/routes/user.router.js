@@ -10,9 +10,9 @@ const router = express.Router();
 
 
 
-// NEW
+// NEW -- Create Page
 
-
+// GET /attributes request (/api/user/attributes)
 router.get('/attributes', (req, res) => {
   const queryText = 'SELECT * FROM "realm"';
   pool.query(queryText).then((result) => {
@@ -23,6 +23,40 @@ router.get('/attributes', (req, res) => {
     res.sendStatus(500);
   });
 });
+
+
+// POST /newMini request (/api/user/newMini)
+router.post('/newMini', async (req, res) => {
+  const { model, theme, rank, picture } = req.body.newMini
+  const theRealms = req.body.realms
+  
+  const miniQuery = `
+  INSERT INTO "minis" ("model", "theme", "rank", "picture")
+  VALUES ($1, $2, $3, $4) RETURNING id;`
+
+  const realmQuery = `
+  INSERT INTO "mini_realm" ("mini_id", "realm_id")
+  VALUES ($1, $2);`
+
+  try {
+
+    const result = await pool.query(miniQuery, [model, theme, rank, picture])
+    const newMiniId = result.rows[0].id
+
+    if (theRealms.length > 0) {
+      const realmInsertPromises = theRealms.map(realmId => {
+        return pool.query(realmQuery, [newMiniId, realmId])
+      });
+      await Promise.all(realmInsertPromises)
+    }
+    res.sendStatus(201)
+
+  } catch (error) {
+    console.log('Error in newMini route:', error)
+    res.sendStatus(500)
+  }
+});
+
 
 
 
@@ -224,26 +258,6 @@ ORDER BY RANDOM() LIMIT 25
 
 // *** ALL POST REQUESTS
 
-// POST /newProject request (/api/user/newProject)
-router.post('/newProject', (req, res) => {
-  let queryText = `INSERT INTO "projects" 
-                  ("user_id", 
-                  "model", 
-                  "primary", 
-                  "description", 
-                  "picture")
-  VALUES
-  ($1, $2, $3, $4, $5);`;
-  pool.query(queryText,
-    [req.body.user_id, req.body.model, req.body.primary, req.body.description, req.body.picture
-    ]).then(result => {
-      // console.log(`success in POST /newProject`);
-      res.sendStatus(201);
-    }).catch((error) => {
-      // console.log(`error in POST /newProject`);
-      res.sendStatus(500);
-    });
-});
 
 // POST request for a new paint (/api/user/newPaint)
 router.post('/newPaint', (req, res) => {

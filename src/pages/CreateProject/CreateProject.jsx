@@ -30,18 +30,10 @@ function CreateProject() {
     let [newMini, setNewMini] = useState({
         model: '',
         theme: '',
-        realms: [],
         rank: 0,
         picture: ''
     });
     console.log('newMini', newMini);
-
-
-
-
-
-
-
 
 
 
@@ -80,18 +72,30 @@ function CreateProject() {
     }
 
 
+    const [selectedRealms, setSelectedRealms] = useState([]);
+    console.log('selectedRealms', selectedRealms)
     const handleRealmChange = (e) => {
         const { value, checked } = e.target;
-        const realmId = Number(value);
-    
-        setNewMini((prevMini) => ({
-            ...prevMini,
-            realms: checked
-                ? [...prevMini.realms, realmId] // Add realm if checked
-                : prevMini.realms.filter(id => id !== realmId) // Remove if unchecked
-        }));
+        const realmId = Number(value); // needed if value is a string - which it is
+        setSelectedRealms((prevSelected) =>
+            checked ? [...prevSelected, realmId] : prevSelected.filter(id => id !== realmId)
+        );
     };
 
+    const createNewMini = async (e) => {
+        e.preventDefault()
+        try {
+            // todo need to ensure sure everything is filled out
+            await axios.post('/api/user/newMini', { newMini: newMini, realms: selectedRealms });
+            // todo fetch projects reducer
+            console.log('success in posting a new mini!')
+            // todo navigate to minis page for editing: optional
+
+        } catch (error) {
+            console.log(`error in POST createNewMini`);
+            alert(`The Hobbits were taken to Isengard, your project was not created! Sorry, Try again.`);
+        }
+    }
 
 
     const realmsToShow = () => {
@@ -106,29 +110,13 @@ function CreateProject() {
     }
 
 
-
-
-
-
     // ** Functions ************
-
-
     function setNewProjectImageUp(properties) {
         setNewMini({ ...newMini, picture: properties });
     }
 
-    // Create your new project - submit your form!
-    function createProject(e) {
-        e.preventDefault();
-        dispatch({ type: 'CREATE_NEW_PROJECT', payload: newMini });
-        navigate('/projects');
-    }
-
-
-
 
     return (
-
         <m.div
             key={'createMotionProject'}
             className="createProjectPage"
@@ -142,10 +130,11 @@ function CreateProject() {
         >
 
             <p className='pageHeading'>Create A Project!</p>
-            <form className='newProjectForm'>
+            <form className='newProjectForm' onSubmit={createNewMini}>
 
                 <input
                     name='model'
+                    required
                     className='newProjectNameInput'
                     onChange={(e) => handleObjectChange(e, setNewMini, newMini)}
                     type='text'
@@ -153,7 +142,7 @@ function CreateProject() {
                 >
                 </input>
 
-                <select name='theme' value={newMini.theme} onChange={(e) => handleObjectChange(e, setNewMini, newMini)}>
+                <select required name='theme' value={newMini.theme} onChange={(e) => handleObjectChange(e, setNewMini, newMini)}>
                     <option value="">Choose Category</option>
                     {themes.map((theme, i) => (
                         <option key={i} value={theme}>
@@ -162,7 +151,7 @@ function CreateProject() {
                     ))}
                 </select>
 
-                <select name='rank' value={newMini.rank} onChange={(e) => handleObjectChange(e, setNewMini, newMini)}>
+                <select required name='rank' value={newMini.rank} onChange={(e) => handleObjectChange(e, setNewMini, newMini)}>
                     <option value="">Select Rank</option>
                     {[...Array(10)].map((_, i) => (
                         <option key={i + 1} value={i + 1}>
@@ -178,7 +167,7 @@ function CreateProject() {
                             <input
                                 type="checkbox"
                                 value={realm.id}
-                                checked={newMini.realms.includes(realm.id)}
+                                checked={selectedRealms.includes(realm.id)}
                                 onChange={handleRealmChange}
                             />
                             {realm.group}
@@ -199,7 +188,7 @@ function CreateProject() {
                     }
                 </div>
 
-                <button onClick={createProject} className="btn">Create!</button>
+                <button type='submit' className="btn">Create!</button>
 
             </form>
 
