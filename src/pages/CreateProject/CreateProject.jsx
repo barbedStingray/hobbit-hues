@@ -27,6 +27,27 @@ function CreateProject() {
     const [lotrRealms, setLotrRealms] = useState([])
     const [swRealms, setSwRealms] = useState([])
 
+    let [newMini, setNewMini] = useState({
+        model: '',
+        theme: '',
+        realms: [],
+        rank: 0,
+        picture: ''
+    });
+    console.log('newMini', newMini);
+
+
+
+
+
+
+
+
+
+
+    useEffect(() => {
+        getMiniAttributes()
+    }, [])
 
     const getMiniAttributes = async () => {
         console.log('fetching fill ins')
@@ -40,7 +61,7 @@ function CreateProject() {
                 return attributes
                     .filter(item => item.theme === theme)  // Filter by theme
                     .map(item => ({ id: item.id, group: item.group }))  // Extract id and group
-                    .filter((value, index, self) => 
+                    .filter((value, index, self) =>
                         index === self.findIndex((t) => (
                             t.id === value.id && t.group === value.group
                         )));  // Ensure uniqueness
@@ -58,22 +79,31 @@ function CreateProject() {
         }
     }
 
-    useEffect(() => {
-        getMiniAttributes()
-    }, [])
 
-    // variables
-    // let [imagePath, setImagePath] = useState(''); // image upload variable
-    let [newMini, setNewMini] = useState({
-        model: '',
-        theme: '',
-        rank: 0,
-        picture: ''
-    });
-    console.log('newProject', newMini);
-
+    const handleRealmChange = (e) => {
+        const { value, checked } = e.target;
+        const realmId = Number(value);
+    
+        setNewMini((prevMini) => ({
+            ...prevMini,
+            realms: checked
+                ? [...prevMini.realms, realmId] // Add realm if checked
+                : prevMini.realms.filter(id => id !== realmId) // Remove if unchecked
+        }));
+    };
 
 
+
+    const realmsToShow = () => {
+        switch (newMini.theme) {
+            case 'starWars':
+                return swRealms;
+            case 'lordOfTheRings':
+                return lotrRealms;
+            default:
+                return []
+        }
+    }
 
 
 
@@ -96,6 +126,7 @@ function CreateProject() {
 
 
 
+
     return (
 
         <m.div
@@ -110,12 +141,8 @@ function CreateProject() {
             }}
         >
 
-            {/* Heading Div */}
             <p className='pageHeading'>Create A Project!</p>
-
-            {/* Create New Project Form */}
             <form className='newProjectForm'>
-
 
                 <input
                     name='model'
@@ -125,6 +152,39 @@ function CreateProject() {
                     placeholder='Model Name Here...'
                 >
                 </input>
+
+                <select name='theme' value={newMini.theme} onChange={(e) => handleObjectChange(e, setNewMini, newMini)}>
+                    <option value="">Choose Category</option>
+                    {themes.map((theme, i) => (
+                        <option key={i} value={theme}>
+                            {theme}
+                        </option>
+                    ))}
+                </select>
+
+                <select name='rank' value={newMini.rank} onChange={(e) => handleObjectChange(e, setNewMini, newMini)}>
+                    <option value="">Select Rank</option>
+                    {[...Array(10)].map((_, i) => (
+                        <option key={i + 1} value={i + 1}>
+                            {i + 1}
+                        </option>
+                    ))}
+                </select>
+
+                <div className="realmsContainer">
+                    <p>Select Realms:</p>
+                    {realmsToShow().map((realm) => (
+                        <label key={realm.id}>
+                            <input
+                                type="checkbox"
+                                value={realm.id}
+                                checked={newMini.realms.includes(realm.id)}
+                                onChange={handleRealmChange}
+                            />
+                            {realm.group}
+                        </label>
+                    ))}
+                </div>
 
 
                 <ImageUpload photoFunction={setNewProjectImageUp} />
