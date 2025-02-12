@@ -8,6 +8,47 @@ const userStrategy = require('../strategies/user.strategy');
 
 const router = express.Router();
 
+
+
+// NEW
+
+
+router.get('/attributes', (req, res) => {
+  const queryText = 'SELECT * FROM "realm"';
+  pool.query(queryText).then((result) => {
+    console.log(`/attributes query success!`);
+    res.send(result.rows);
+  }).catch((error) => {
+    console.log(`error in completing /attributes query`);
+    res.sendStatus(500);
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// NEW
+
+
+
+
+
+
+
+
+
 // Handles Ajax request for user information if user is authenticated
 router.get('/', rejectUnauthenticated, (req, res) => {
   // Send back user object from the session (previously queried from the database)

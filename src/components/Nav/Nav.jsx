@@ -17,7 +17,6 @@ import './Nav.css';
 function Nav({ setCanEdit }) {
 
   const user = useSelector((store) => store.user);
-  console.log('USER NAVVVVV', user.id);
 
   // const loggedInLinks = [
   //   {
