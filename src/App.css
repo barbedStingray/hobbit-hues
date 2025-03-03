@@ -2,7 +2,8 @@
 
 @font-face {
   font-family: ringbearer;
-  src: url('../../Fonts/Ringbearer.TTF');
+  /* src: url('../../Fonts/Ringbearer.TTF'); */
+  src: url('/src/Fonts/Ringbearer.TTF')
 }
 /* .ringbearer {
   font-family: ringbearer;
@@ -23,7 +24,7 @@ body,
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
   /* background-color: blue; */
-  background-image: url('../../Images/HobbitHole9.jpg');
+  background-image: url('/src/Images/HobbitHole9.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

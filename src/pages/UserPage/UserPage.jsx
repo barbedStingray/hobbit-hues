@@ -146,7 +146,7 @@ const UserPage = () => {
 
       <div className='titleInputsCreate'>
 
-        <p className='pageHeading'>Welcome {user.username}!</p>
+        <p className='pageHeading'>Welcome!</p>
 
         <div className='primeAndSecondColorInputs'>
           <div className='primaryColorInputs'>

@@ -3,8 +3,6 @@ require('dotenv').config();
 const app = express();
 const path = require('path');
 
-const sessionMiddleware = require('./modules/session-middleware');
-const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
@@ -12,12 +10,6 @@ const userRouter = require('./routes/user.router');
 // Express middleware
 app.use(express.json());
 
-// Passport Session Configuration //
-app.use(sessionMiddleware);
-
-// start up passport sessions
-app.use(passport.initialize());
-app.use(passport.session());
 
 /* EXPRESS Routes */
 app.use('/api/user', userRouter);

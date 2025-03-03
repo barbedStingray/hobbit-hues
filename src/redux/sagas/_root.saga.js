@@ -1,7 +1,4 @@
 import { all, takeLatest, takeEvery, put } from 'redux-saga/effects';
-import loginSaga from './login.saga';
-import registrationSaga from './registration.saga';
-import userSaga from './user.saga';
 import paintSaga from './paint.saga';
 import createSaga from './create.saga';
 import fetchProjects from './projects.saga';
@@ -22,9 +19,6 @@ import publicSaga from './public.saga';
 // and login triggers setting the user
 export default function* rootSaga() {
   yield all([
-    loginSaga(), // login saga is now registered
-    registrationSaga(),
-    userSaga(),
     paintSaga(), // fills in paint dropdowns
     createSaga(), // POST route for new projects
     fetchProjects(), // sets user project reducer

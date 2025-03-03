@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import store from './redux/store';
 
-import App from './components/App/App';
+import App from './App.jsx';
 
 
 const root = ReactDOM.createRoot(document.getElementById('react-root'));
