@@ -1,48 +1,26 @@
 
-// IMPORTS
-// middleware
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
-// components
 import ColorWheel from '../../components/ColorWheel/ColorWheel.jsx';
-// css
-import './UserPage.css';
+import './hobbitHues.css';
 
-// function UserPage() {
-const UserPage = () => {
+
+
+const HobbitHues = () => {
 
 
   // middleware variables
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // redux variables
-  const user = useSelector((store) => store.user);
   const paints = useSelector((store) => store.setPaintsDropdown);
 
   // variables
   let [palettePrime, setPalettePrime] = useState('#0056d6');
   let [paletteSecond, setPaletteSecond] = useState('#77bb41');
-  // custom motion variable
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      // scale: 1,
-      transition: {
-        // duration: 2,
-        delayChildren: 0.4,
-        staggerChildren: 0.25
-      }
-    }
-  };
-
-
-
-  // ** Functions ************
 
   // page load and refresh
   useEffect(() => {
@@ -130,7 +108,6 @@ const UserPage = () => {
     <m.div
       key={'createMotionUser'}
       className="userPage"
-      variants={container}
       initial="hidden"
       transition={{ duration: 0.55, ease: 'easeOut' }}
       animate="visible"
@@ -221,6 +198,6 @@ const UserPage = () => {
   );
 }
 
-export default UserPage;
+export default HobbitHues;
 
 

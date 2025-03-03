@@ -1,27 +1,13 @@
-
-
-// IMPORTS
-// middleware
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
-// components
 import ImageUpload from '../../components/ImageUpload/ImageUpload.jsx';
-// css
 import './CreateProject.css';
-
-// scripts
 import handleObjectChange from '../../scripts/handleObjectChange.js';
 
 
 
 function CreateProject() {
-
-    // middleware variables
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
 
     const [themes, setThemes] = useState([])
     const [lotrRealms, setLotrRealms] = useState([])
