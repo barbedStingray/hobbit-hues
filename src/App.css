@@ -2,12 +2,8 @@
 
 @font-face {
   font-family: ringbearer;
-  /* src: url('../../Fonts/Ringbearer.TTF'); */
   src: url('/src/Fonts/Ringbearer.TTF')
 }
-/* .ringbearer {
-  font-family: ringbearer;
-} */
 
 * {
   margin: 0;
@@ -32,16 +28,16 @@ body,
 
 }
 
-/* ! screen size manipulation */
-#app-mainDiv {
+.hobbit-hues {
   /* border: green 2px solid; */
+  height: 100dvh;
+  width: 100dvw;
   display: flex;
-  flex-direction: column;
-  /* flex-grow: 1; */
-  height: 100%;
-  /* height: 100vh; */
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
-
 
 .pageHeading {
   /* border: 2px solid red; */
@@ -54,7 +50,6 @@ body,
   background: linear-gradient(#7cff7c, 30%, #ffff00, 50%, #ffc55a, 70%, #ff4646);
   background: linear-gradient(#7ee7fe, 35%, #ffff6b, 75%, #7cff7c);
   background-clip: text;
-  margin: 4vh 0vh;
   text-align: center;
 }
 
@@ -79,7 +74,6 @@ body,
   
   --contrastThreshold: 60%;
 
-
   /*  Calculations Based on Lightness  */
   --lightnessTransform: 11%;
   --lightnessTransformTwo: 22%;
@@ -91,17 +85,8 @@ body,
   --primary-color-twolight-l: calc(var(--primary-color-l) + var(--lightnessTransformTwo));
   --primary-color-dark-l: calc(var(--primary-color-l) - var(--darknessTransform));
   --primary-color-twodark-l: calc(var(--primary-color-l) - var(--darknessTransformTwo));
-  /* secondary */
-  --secondary-color-light-l: calc(var(--secondary-color-l) + var(--lightnessTransform));
-  --secondary-color-twolight-l: calc(var(--secondary-color-l) + var(--lightnessTransformTwo));
-  --secondary-color-dark-l: calc(var(--secondary-color-l) - var(--darknessTransform));
-  --secondary-color-twodark-l: calc(var(--secondary-color-l) - var(--darknessTransformTwo));
   
-
-
-  /* Calculations based on Lightness */
-
-  /* primary lightness */
+  /* primary shades */
   --color-primary: hsl(var(--primary-color-h),
                        var(--primary-color-s),
                        var(--primary-color-l));
@@ -117,30 +102,6 @@ body,
   --color-primary-twodark:hsl(var(--primary-color-h),
                        var(--primary-color-s),
                        var(--primary-color-twodark-l));
-
-
-
-  /* secondary lightness */
-  --color-secondary: hsl(var(--secondary-color-h),
-                       var(--secondary-color-s),
-                       var(--secondary-color-l));
-  --color-secondary-light:hsl(var(--secondary-color-h),
-                       var(--secondary-color-s),
-                       var(--secondary-color-light-l));
-  --color-secondary-twolight:hsl(var(--secondary-color-h),
-                       var(--secondary-color-s),
-                       var(--secondary-color-twolight-l));
-  --color-secondary-dark:hsl(var(--secondary-color-h),
-                       var(--secondary-color-s),
-                       var(--secondary-color-dark-l));
-  --color-secondary-twodark:hsl(var(--secondary-color-h),
-                       var(--secondary-color-s),
-                       var(--secondary-color-twodark-l));
-
-                       
-
-
-  /*  Calculations Based on Hue  */
 
   /* primary hues */
   --color-primary-complement: hsl(calc(var(--primary-color-h) + 180),
@@ -158,23 +119,6 @@ body,
   --color-primary-analog-2: hsl(calc(var(--primary-color-h) - 30),
                           var(--primary-color-s),
                           var(--primary-color-l));
-
-  /* secondary hues */
-  --color-secondary-complement: hsl(calc(var(--secondary-color-h) + 180),
-                          var(--secondary-color-s),
-                          var(--secondary-color-l));
-  --color-secondary-triad-1: hsl(calc(var(--secondary-color-h) + 120),
-                          var(--secondary-color-s),
-                          var(--secondary-color-l));
-  --color-secondary-triad-2: hsl(calc(var(--secondary-color-h) - 120),
-                          var(--secondary-color-s),
-                          var(--secondary-color-l));
-  --color-secondary-analog-1: hsl(calc(var(--secondary-color-h) + 30),
-                          var(--secondary-color-s),
-                          var(--secondary-color-l));
-  --color-secondary-analog-2: hsl(calc(var(--secondary-color-h) - 30),
-                          var(--secondary-color-s),
-                          var(--secondary-color-l));
 }
 
 /* ROOT VARIABLES */
@@ -211,11 +155,7 @@ body,
   color: hsl(0, 0%, var(--switch));
 }
 
-/* primary color shades */
-
-
-
-/* primary color alternates */
+/* primary color hues */
 
 .primary-complement {
   background: var(--color-primary-complement);
@@ -245,72 +185,6 @@ body,
   color: hsl(0, 0%, var(--switch));
 }
 
-/* primary color alternatives */
-
-
-/* secondary color shades */
-
-.secondary {
-  background: var(--color-secondary);
-  --switch: calc((var(--secondary-color-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-.secondary-light {
-  background: var(--color-secondary-light);
-  --switch: calc((var(--secondary-color-light-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-.secondary-twolight {
-  background: var(--color-secondary-twolight);
-  --switch: calc((var(--secondary-color-light-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-.secondary-dark {
-  background: var(--color-secondary-dark);
-  --switch: calc((var(--secondary-color-dark-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-.secondary-twodark {
-  background: var(--color-secondary-twodark);
-  --switch: calc((var(--secondary-color-dark-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-
-/* secondary color shades */
-
-
-
-/* secondary color alternatives */
-
-.secondary-complement {
-  background: var(--color-secondary-complement);
-  --switch: calc((var(--secondary-color-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-.secondary-triad-1 {
-  background: var(--color-secondary-triad-1);
-  --switch: calc((var(--secondary-color-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-.secondary-triad-2 {
-  background: var(--color-secondary-triad-2);
-  --switch: calc((var(--secondary-color-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-.secondary-analog-1 {
-  background: var(--color-secondary-analog-1);
-  --switch: calc((var(--secondary-color-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-.secondary-analog-2 {
-  background: var(--color-secondary-analog-2);
-  --switch: calc((var(--secondary-color-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-
-/* secondary color alternatives */
-
-/* BACKGROUND FILLS */
 
 
 
@@ -329,65 +203,6 @@ body,
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* --------------------------------------------------------------------------------
-Alert
--------------------------------------------------------------------------------- */
-
-.alert {
-  border: 1px solid #e01616;
-  background-color: #efefef;
-  font-size: 1.75vh;
-  padding: 0.4vh;
-  border-radius: 3px;
-  color: #e01616;
-}
-
-
-
-
-
-
-
-
-/* --------------------------------------------------------------------------------
-INPUT - Color
--------------------------------------------------------------------------------- */
-
-/* .color-select {
-  border: 2px solid black;
-  border-radius: 10px;
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  overflow: hidden;
-  cursor: pointer;
-  padding: 0;
-  vertical-align: middle;
-  box-shadow: 0 5px 15px black;
-
-} */
-
-input[type="color"]::-webkit-color-swatch-wrapper {
-  padding: 0;
-}
-input[type="color"]::-webkit-color-swatch {
-  border: none;
-}
 
 
 /* --------------------------------------------------------------------------------

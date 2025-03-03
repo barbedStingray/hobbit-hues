@@ -1,5 +1,4 @@
 import { all, takeLatest, takeEvery, put } from 'redux-saga/effects';
-import paintSaga from './paint.saga';
 import createSaga from './create.saga';
 import fetchProjects from './projects.saga';
 import detailsSaga from './details.saga';
@@ -19,7 +18,6 @@ import publicSaga from './public.saga';
 // and login triggers setting the user
 export default function* rootSaga() {
   yield all([
-    paintSaga(), // fills in paint dropdowns
     createSaga(), // POST route for new projects
     fetchProjects(), // sets user project reducer
     detailsSaga(), // sets details of individual project

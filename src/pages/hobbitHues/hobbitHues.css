@@ -1,69 +1,79 @@
-.userPage {
-    /* border: 3px solid blue; */
-    padding: 0 2vw;
-    display: flex;
-    flex-flow: row nowrap;
-    flex: 1;
-    justify-content: center;
-  }
-  
-  .colorWheelContainer {
-    /* border: 2px solid yellow; */
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-  }
-  
-  .titleInputsCreate {
-    /* border: 2px solid magenta; */
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-around;
-  }
-  
-  .primeAndSecondColorInputs {
-    /* border: 2px solid purple; */
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .primaryColorInputs, .secondaryColorInputs {
-    /* border: 2px solid green; */
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    gap: 1vh;
-  }
-  
-  .createNewProjectDiv {
-    /* border: 2px solid pink; */
-    display: flex;
-    justify-content: center;
-  }
-  
-  .colorSelect {
-    border: 2px solid black;
-    width: 8vh;
-    height: 8vh;
-    border-radius: 50%;
-    overflow: hidden;
-    cursor: pointer;
-    box-shadow: 0 5px 15px black;
-  }
-  .paintSelectBox {
-    /* border: 2px solid red; */
-    background: linear-gradient(#ffffff, 90%, #c8c8c8);
-    font-size: 2vh;
-    height: 4vh;
-    width: 20vh;
-  }
-  .selectHexcode {
-    /* border: 2px solid orange; */
-    background: linear-gradient(#ffffff, 90%, #c8c8c8);
-    width: 15vh;
-    height: 5vh;
-    border-radius: 5px;
-    font-size: 2.5vh;
-    text-align: center;
-  }
+.hobbitHues-home {
+  /* Match padding to navbar size */
+  /* border: 3px solid blue; */
+  margin: 75px 0 50px 0;
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.colorSelector {
+  /* border: 2px solid white; */
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  height: 55dvh;
+  margin-bottom: 15px;
+}
+
+
+.colorWheelContainer {
+  /* border: 2px solid purple; */
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.colorInputs {
+  /* border: 2px solid green; */
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}
+
+.colorSelect {
+  border: 2px solid black;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 5px 15px black;
+}
+
+.paintSelectBox {
+  /* border: 2px solid red; */
+  background: linear-gradient(#ffffff, 90%, #c8c8c8);
+  font-size: 2dvh;
+  height: 40px;
+  width: 175px;
+}
+
+.selectHexcode {
+  /* border: 2px solid orange; */
+  background: linear-gradient(#ffffff, 90%, #c8c8c8);
+  width: 15dvh;
+  height: 5dvh;
+  border-radius: 5px;
+  font-size: 2.5vh;
+  text-align: center;
+}

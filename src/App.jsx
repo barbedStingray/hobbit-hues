@@ -1,22 +1,14 @@
-
-// IMPORTS
-// middleware
-import React, { useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
-// Pages
 import HobbitHues from './pages/hobbitHues/HobbitHues.jsx';
 import AboutPage from './pages/AboutPage/AboutPage.jsx';
 import InfoPage from './pages/InfoPage/InfoPage.jsx';
 import CreateProject from './pages/CreateProject/CreateProject.jsx';
 import PersonalProjects from './pages/ProjectsPage/PersonalProjects.jsx';
 import ProjectDetails from './pages/ProjectDetails/ProjectDetails.jsx';
-
 import Nav from './components/Nav/Nav.jsx';
 import Footer from './components/Footer/Footer.jsx';
-
 import './App.css';
-
 
 function App() {
 
@@ -24,9 +16,8 @@ function App() {
 
   return (
 
-    <div id='app-mainDiv'>
-
-      <Nav />
+    <div className='hobbit-hues'>
+      {/* <Nav /> */}
 
       {/* <AnimatePresence mode='wait'> */}
         <Routes location={location} key={location.pathname}>
@@ -39,7 +30,7 @@ function App() {
           {/* <Route path='*' element={ <fourOhFour /> } /> */}
         </Routes>
       {/* </AnimatePresence> */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

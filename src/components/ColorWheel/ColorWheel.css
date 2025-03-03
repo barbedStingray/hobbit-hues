@@ -1,31 +1,26 @@
-  
-.colorWheel {
-    /* border: 2px solid blue; */
-    display: flex;
-    flex-flow: row nowrap;
-    width: 100%;
-    /* gap: 3px; */
-}
+  .colorWheel {
+      /* border: 2px solid magenta; */
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+  }
 
-.colorColumnPrime, .colorColumnSecondary {
-    /* border: 2px solid magenta; */
-    display: flex;
-    flex-flow: column nowrap;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    /* gap: 0px; */
-}
+  .colorColumn {
+      /* display: flex;
+      flex-flow: column nowrap; */
+  }
 
-.pirmaryColor, .secondaryColor, .tertiaryColor {
-    border: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    box-shadow: 0 5px 15px black;
-    height: 12vh;
-    width: 12vh;
-    font-size: 2vh;
-}
-
+  .swatch {
+      border: 1px solid black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      box-shadow: 0 5px 15px black;
+      height: 10.5dvh;
+      width: 10.5dvh;
+      font-size: 2vh;
+  }

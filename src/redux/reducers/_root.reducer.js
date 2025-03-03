@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import setPaintsDropdown from './paint.reducer';
 // import hexcode from './hexcode.reducer';
 import userProjects from './projects.reducer';
 import projectDetails from './details.reducer';
@@ -17,7 +16,6 @@ import communityProjects from './community.reducer';
 const rootReducer = combineReducers({
 
   // ** NEW REDUCERS
-  setPaintsDropdown, // sets the list of server side paints
   // hexcode, // passes the hexcode from user page to create project page
   userProjects, // container for user projects
   projectDetails, // contains data for project details page
