@@ -27,15 +27,13 @@ function CreateProject() {
     const [lotrRealms, setLotrRealms] = useState([])
     const [swRealms, setSwRealms] = useState([])
 
-    let [newMini, setNewMini] = useState({
+    const [newMini, setNewMini] = useState({
         model: '',
         theme: '',
         rank: 0,
         picture: ''
     });
     console.log('newMini', newMini);
-
-
 
     useEffect(() => {
         getMiniAttributes()
@@ -85,18 +83,30 @@ function CreateProject() {
     const createNewMini = async (e) => {
         e.preventDefault()
         try {
-            // todo need to ensure sure everything is filled out
+            if(newMini.picture === '') {
+                return alert('please attatch a photo')
+            }
             await axios.post('/api/user/newMini', { newMini: newMini, realms: selectedRealms });
+            alert('successfully added new mini!')
             // todo fetch projects reducer
             console.log('success in posting a new mini!')
+
             // todo navigate to minis page for editing: optional
+
+            // resets
+            setNewMini({
+                model: '',
+                theme: '',
+                rank: 0,
+                picture: ''
+            });
+            setSelectedRealms([]);
 
         } catch (error) {
             console.log(`error in POST createNewMini`);
             alert(`The Hobbits were taken to Isengard, your project was not created! Sorry, Try again.`);
         }
     }
-
 
     const realmsToShow = () => {
         switch (newMini.theme) {
@@ -108,7 +118,6 @@ function CreateProject() {
                 return []
         }
     }
-
 
     // ** Functions ************
     function setNewProjectImageUp(properties) {
@@ -135,6 +144,7 @@ function CreateProject() {
                 <input
                     name='model'
                     required
+                    value={newMini.model}
                     className='newProjectNameInput'
                     onChange={(e) => handleObjectChange(e, setNewMini, newMini)}
                     type='text'
