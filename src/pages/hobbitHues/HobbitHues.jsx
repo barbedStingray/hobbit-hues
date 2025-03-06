@@ -4,28 +4,38 @@ import { useNavigate } from 'react-router-dom';
 import ColorWheel from '../../components/ColorWheel/ColorWheel.jsx';
 import './hobbitHues.css';
 import setColorsTwo from '../../components/setColorsTwo.js'
-
+import setRybColors from '../../components/setRybColors.js'
 import setColors from '../../components/setColors.js'
 import fetchPaints from '../../components/customHooks/fetchPaints.js';
+
+import { motion, useSpring, useMotionValue } from "framer-motion";
+import RYBcolors from '../../Images/RYBcolors.png'
+
 
 const HobbitHues = () => {
 
     const navigate = useNavigate()
-    const [palettePrime, setPalettePrime] = useState('#0056d6') // initial paint
+    const [palettePrime, setPalettePrime] = useState('#D94393') // initial paint
     const {
         textColor,
-        compColor, 
-        triadOne,
-        triadTwo,
-        analogOne,
-        analogTwo,
-        lightOne,
-        lightTwo,
-        darkOne,
-        darkTwo,
-    } = setColorsTwo(palettePrime)
-    
+        colorOne,
+        colorTwo,
+        colorThree,
+        colorFour,
+        colorFive,
+    } = setColorsTwo(palettePrime, 'complimentary')
+
     const { paintList, isLoaded, detailStatus } = fetchPaints()
+
+    const [rybCompColor, setRybCompColor] = useState(setRybColors('#FF0000'))
+    console.log('rybCompColor', rybCompColor)
+
+
+    const rotate = useSpring(0, { mass: 1, stiffness: 100, damping: 10 });
+    const handleRotate = (e, i) => {
+        rotate.set(rotate.get() + (i.delta.x + i.delta.y) * 2.5); // Adjust the factor to control speed
+    };
+
 
 
 
@@ -37,25 +47,53 @@ const HobbitHues = () => {
             <div className='colorSelector'>
 
                 <div className='colorWheelContainer'>
-                    <div className="colorWheel">
-                        <div className='colorColumn'>
-                            <div className='swatch' style={{ background: lightTwo, color: textColor }}><p>javalite2</p></div>
-                            <div className='swatch' style={{ background: lightOne, color: textColor }}><p>javalite</p></div>
-                            <div className='swatch' style={{ background: palettePrime, color: textColor }}><p>JavaPrime</p></div>
-                            <div className='swatch' style={{ background: darkOne, color: textColor }}><p>jdark</p></div>
-                            <div className='swatch' style={{ background: darkTwo, color: textColor }}><p>jdark2</p></div>
-                        </div>
-                        <div className='colorColumn'>
-                            <div className='swatch' style={{ background: triadTwo, color: textColor }}><p>Triad 2</p></div>
-                            <div className='swatch' style={{ background: triadOne, color: textColor }}><p>Triad 1</p></div>
-                            <div className='swatch' style={{ background: compColor, color: textColor }}><p>JavaComp</p></div>
-                            <div className='swatch' style={{ background: analogOne, color: textColor }}><p>javalogOne</p></div>
-                            <div className='swatch' style={{ background: analogTwo, color: textColor }}><p>javalog2</p></div>
-                        </div>
-                    </div>
+
+                    <motion.div
+                        className="rotating-box"
+                        style={{ rotate: rotate }}
+                        onPan={handleRotate}
+                    >
+                        <div className='line'></div>
+                        <div className="analog analog-1"></div>
+                        <div className="analog analog-2"></div>
+                        <div className="analog analog-3"></div>
+                    </motion.div>
+                    <img className='color-wheel' src={RYBcolors} />
+
+
+
+
                 </div>
 
-                <div className='colorInputs'>
+
+
+                {/* <div className="colorWheel">
+                        <div className='colorColumn'>
+                            <div className='swatch bgTestTwo'><p>two</p></div>
+                            <div className='swatch bgTestOne'><p>one</p></div>
+                            <div className='swatch bgTestPrime'><p>prime</p></div>
+                            <div className='swatch bgTestThree'><p>three</p></div>
+                            <div className='swatch bgTestFour'><p>four</p></div>
+                            <div className='swatch bgTestShade'><p>shade</p></div>
+                        </div>
+                        <div className='colorColumn'>
+                            <div className='swatch' style={{ background: colorTwo }}><p>c-two</p></div>
+                            <div className='swatch' style={{ background: colorOne }}><p>c-one</p></div>
+                            <div className='swatch' style={{ background: palettePrime }}><p>C-prime</p></div>
+                            <div className='swatch' style={{ background: colorThree }}><p>c-three</p></div>
+                            <div className='swatch' style={{ background: colorFour }}><p>c-four</p></div>
+                            <div className='swatch' style={{ background: colorFive }}><p>C-shade</p></div>
+                        </div>
+                        <div className='colorColumn'>
+                            <div className='swatch' style={{ background: palettePrime }}><p>prime</p></div>
+                            <div className='swatch' style={{ background: rybCompColor }}><p>ryb-comp</p></div>
+                        </div>
+                    </div> */}
+
+
+
+
+                {/* <div className='colorInputs'>
                     <label><input
                         className='colorSelect'
                         type='color'
@@ -81,7 +119,7 @@ const HobbitHues = () => {
                         value={palettePrime}
                         onChange={(e) => setPalettePrime(e.target.value)}
                     ></input>
-                </div>
+                </div> */}
             </div>
 
             <button onClick={() => navigate('/create')} className="btn">Create New Project</button>

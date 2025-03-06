@@ -51,22 +51,50 @@ function setColors(hex, scheme) {
 
 
 
-    const colorWheel = {
+
+    
+    let colorWheel = {
         textColor: l > 60 ? 'black' : 'white',
         primaryColor: hex,
-        compColor: `hsl(${h + 180}, ${s}%, ${l}%)`,
-        triadOne: `hsl(${h + 120}, ${s}%, ${l}%)`,
-        triadTwo: `hsl(${h - 120}, ${s}%, ${l}%)`,
-        analogOne: `hsl(${h + 30}, ${s}%, ${l}%)`,
-        analogTwo: `hsl(${h - 30}, ${s}%, ${l}%)`,
-        lightOne: `hsl(${h}, ${s}%, ${l + 12}%)`,
-        lightTwo: `hsl(${h}, ${s}%, ${l + 24}%)`,
-        darkOne: `hsl(${h}, ${s}%, ${l - 12}%)`,
-        darkTwo: `hsl(${h}, ${s}%, ${l - 24}%)`,
-        
+        colorOne: `hsl(${h - 20}, ${s}%, ${l}%)`,
+        colorTwo: `hsl(${h - 39}, ${s}%, ${l}%)`,
+        colorThree: `hsl(${h + 20}, ${s}%, ${l}%)`,
+        colorFour: `hsl(${h + 39}, ${s}%, ${l}%)`,
+        colorFive: `hsl(${h}, ${s - 7}%, ${l + 16}%)`,
     }
-    console.log('color Wheel', colorWheel)
-    return colorWheel
+
+
+    switch (scheme) {
+        case 'analogous':
+            colorWheel = {
+                colorTwo: `hsl(${h - 60}, ${s}%, ${l}%)`,
+                colorOne: `hsl(${h - 30}, ${s}%, ${l}%)`,
+                primaryColor: hex,
+                colorThree: `hsl(${h + 30}, ${s}%, ${l}%)`,
+                colorFour: `hsl(${h + 60}, ${s}%, ${l}%)`,
+                colorFive: `hsl(${h}, ${s - 7}%, ${l + 16}%)`,
+            }
+            // console.log('color Wheel', colorWheel)
+            return colorWheel
+        case 'complimentary':
+            colorWheel = {
+                // prime shades
+                primaryColor: hex,
+                colorTwo: `hsl(${h}, ${s - 72}%, ${l - 18}%)`,
+                colorOne: `hsl(${h}, ${s - 49}%, ${l - 6}%)`,
+                // compliment shades
+                colorThree: `hsl(${(h + 180) % 360}, ${s}%, ${l}%)`,
+                colorFour: `hsl(${h + 163}, ${s - 58}%, ${l - 9}%)`,
+                colorFive: `hsl(${h + 163}, ${s - 82}%, ${l - 29}%)`,
+            }
+            // console.log(h)
+            // console.log('color Wheel', colorWheel)
+            return colorWheel
+        default:
+            return colorWheel
+    }
+
+
 }
 
 
