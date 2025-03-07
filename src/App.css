@@ -1,5 +1,3 @@
-
-
 @font-face {
   font-family: ringbearer;
   src: url('/src/Fonts/Ringbearer.TTF')
@@ -12,22 +10,6 @@
 }
 
 
-html,
-body,
-#react-root {
-  min-height: 100vh;
-  height: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0px;
-  /* background-color: blue; */
-  background-image: url('/src/Images/HobbitHole9.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  /* min-height: 700px; */
-
-}
-
 .hobbit-hues {
   /* border: green 2px solid; */
   height: 100dvh;
@@ -37,6 +19,12 @@ body,
   justify-content: center;
   align-items: center;
   overflow: hidden;
+
+  background-image: url('/src/Images/HobbitHole9.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
 }
 
 .pageHeading {
@@ -46,11 +34,11 @@ body,
   color: transparent;
   -webkit-text-stroke-color: black;
   -webkit-text-stroke-width: 1px;
-  /* background: linear-gradient(darkgreen, 30%, limegreen, 40%, yellow, 50%, orange, 70%, red); */
-  background: linear-gradient(#7cff7c, 30%, #ffff00, 50%, #ffc55a, 70%, #ff4646);
-  background: linear-gradient(#7ee7fe, 35%, #ffff6b, 75%, #7cff7c);
+  background: linear-gradient(#28bddf, 48%, #ffffae, 52%, #159415);
   background-clip: text;
   text-align: center;
+  /* user-select: none; */
+
 }
 
 
@@ -62,6 +50,10 @@ body,
 /* *** COLOR CODE CSS *** */
 /* ROOT VARIABLES */
 :root {
+
+  /* header variables */
+  --header-height: 80px;
+
 
   /*  Base Values  */
   --primary-color-h: 216;
@@ -118,6 +110,10 @@ body,
 }
 
 /* ROOT VARIABLES */
+
+
+
+
 
 
 

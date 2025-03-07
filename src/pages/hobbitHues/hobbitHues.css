@@ -1,146 +1,141 @@
 .hobbitHues-home {
   /* Match padding to navbar size */
-  /* border: 3px solid blue; */
-  margin: 75px 0 50px 0;
-  width: 100dvw;
+  border: 3px solid blue;
+  position: relative;
+  /* margin: var(--header-height) 0 0px 0; */
+  padding: var(--header-height) 0 0 0;
   height: 100dvh;
+  width: 100dvw;
+  z-index: 1;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 
-.colorSelector {
+.colorWheel-container {
   /* border: 2px solid white; */
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  width: 95%;
-  height: 55dvh;
-  margin-bottom: 15px;
-}
-
-
-.colorWheelContainer {
-  /* border: 2px solid purple; */
   position: relative;
-  height: 100%;
-  flex: 1;
   display: flex;
-  flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+  height: 50dvh;
+  aspect-ratio: 1;
+  margin-bottom: 15px;
+  background-image: url('../../Images/RYBcolors.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  /* pointer-events: none;
+  user-select: none; */
 }
-
-.colorInputs {
-  /* border: 2px solid green; */
-  height: 100%;
-  flex: 1;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
-
-input[type="color"]::-webkit-color-swatch-wrapper {
-  padding: 0;
-}
-input[type="color"]::-webkit-color-swatch {
-  border: none;
-}
-
-.colorSelect {
-  border: 2px solid black;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: 0 5px 15px black;
-}
-
-.paintSelectBox {
-  /* border: 2px solid red; */
-  background: linear-gradient(#ffffff, 90%, #c8c8c8);
-  font-size: 2dvh;
-  height: 40px;
-  width: 175px;
-}
-
-.selectHexcode {
-  /* border: 2px solid orange; */
-  background: linear-gradient(#ffffff, 90%, #c8c8c8);
-  width: 15dvh;
-  height: 5dvh;
-  border-radius: 5px;
-  font-size: 2.5vh;
-  text-align: center;
-}
-
-
-
-
-
 
 
 .rotating-box {
   /* border: 2px solid lime; */
   border-radius: 50%;
-  /* width / heights will probably have to match the container */
-  width: 420px;
-  height: 420px; 
-  user-select: none;
-  z-index: 10;
-
-}
-
-.color-wheel {
-  /* border: 2px solid yellow; */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  object-fit: contain;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  user-select: none;
-}
-
-.line {
-  position: absolute;
+  position: absolute; 
   top: 0;
-  left: 50%;
-  width: 2px; /* Line thickness */
+  left: 0;
   height: 100%;
-  background-color: white;
-  transform: translateX(-50%);
+  width: 100%;
+  user-select: none;
+  touch-action: none; /* Prevent pinch-to-zoom and other default touch behaviors */
 }
 
 
-.analog {
-  position: absolute;
-  top: 50%;
-  width: 2px; /* Analog thickness */
-  height: 50%; /* Extend from center to border */
-  background-color: white;
-  transform-origin: top;
-}
 
-.analog-1 {
-  left: 50%;
-  transform: translateX(-50%) rotate(-30deg); /* First analog, 30 degrees left */
-}
+    
+  .complimentary,
+  .triad,
+  .analog,
+  .splitComp,
+  .square {
+    position: absolute;
+    top: 50%;
+    width: 2px;
+    height: 45%; 
+    background-color: #f0f0f0;
+    transform-origin: top;
+  }
 
-.analog-2 {
-  left: 50%;
-  transform: translateX(-50%) rotate(0deg); /* Center analog */
-}
+  .complimentary-1 {
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg);
 
-.analog-3 {
-  left: 50%;
-  transform: translateX(-50%) rotate(30deg); /* Third analog, 30 degrees right */
-}
+  }
+  .complimentary-2 {
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg); 
+  }
+
+  .splitComp-1 {
+    left: 50%;
+    transform: translateX(-50%) rotate(60deg);
+  }
+  
+  .splitComp-2 {
+    left: 50%;
+    transform: translateX(-50%) rotate(270deg);
+  }
+  
+  .splitComp-3 {
+    left: 50%;
+    transform: translateX(-50%) rotate(120deg); 
+  }
+
+  .analog-1 {
+    left: 50%;
+    transform: translateX(-50%) rotate(130deg); 
+  }
+  
+  .analog-2 {
+    left: 50%;
+    transform: translateX(-50%) rotate(100deg); 
+  }
+  
+  .analog-3 {
+    left: 50%;
+    transform: translateX(-50%) rotate(160deg); 
+  }
+  .analog-4 {
+    left: 50%;
+    transform: translateX(-50%) rotate(190deg); 
+  }
+
+  .square-1 {
+    left: 50%;
+    transform: translateX(-50%) rotate(50deg); 
+  }
+  
+  .square-2 {
+    left: 50%;
+    transform: translateX(-50%) rotate(140deg); 
+  }
+  
+  .square-3 {
+    left: 50%;
+    transform: translateX(-50%) rotate(230deg); 
+  }
+  .square-4 {
+    left: 50%;
+    transform: translateX(-50%) rotate(-40deg); 
+  }
+
+  .triad-1 {
+    left: 50%;
+    transform: translateX(-50%) rotate(330deg);
+  }
+  
+  .triad-2 {
+    left: 50%;
+    transform: translateX(-50%) rotate(210deg);
+  }
+
+  .triad-3 {
+    left: 50%;
+    transform: translateX(-50%) rotate(90deg); 
+  }
+

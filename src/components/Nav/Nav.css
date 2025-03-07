@@ -1,46 +1,45 @@
 .hobbitHeader {
-  /* border: 2px solid blue; */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #2e2e2e;
-  /* border-bottom: 2px solid black; */
-  height: 8vh;
-  padding: 0 3vh;
-}
-
-
-.headerTitle {
-  /* border: 2px solid green; */
-  font-size: 4vh;
-  font-family: ringbearer;
-  color: #aaaaaa;
-  transition: 0.3s;
-}
-.hobbitHeader a {
-  text-decoration: none;
-}
-
-.navBar {
-  /* border: 2px solid red; */
+  /* border: 2px solid #dc87dc; */
+  height: var(--header-height);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  width: 50vw;
+  padding: 0 20px;
+  z-index: 10;
 }
+
+.headerIcon svg {
+  font-size: 60px;
+  fill: white;
+  stroke: black;
+  stroke-width: 4;
+  z-index: 1000;
+}
+
+.nav-links {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
 .hobbitLink {
-  /* border: 2px solid purple; */
-  color: whitesmoke;
-  padding: 0.5vh;
-  font-size: 2vh;
-  /* button css lumped in */
-  background-color: #2e2e2e;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.hobbitLink:hover, .headerTitle:hover {
-  color: gold;
-  transform: scale(1.1);
+  /* border: 2px solid red; */
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+  height: 70px;
+  width: 95px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow:
+    2px 2px 0px black,
+    -2px -2px 0px black,
+    2px -2px 0px black,
+    -2px 2px 0px black;
+
 }

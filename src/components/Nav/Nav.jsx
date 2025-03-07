@@ -1,28 +1,55 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Nav.css'
+import { motion } from 'framer-motion'
+import { GiHobbitDwelling } from "react-icons/gi"
 
-// import { GiHobbitDwelling } from "react-icons/gi"
 
 
 function Nav() {
+  const [visible, setVisible] = useState(false);
+  console.log('visible', visible)
+
+  const containerVariants = {
+    visible: {
+      transition: {
+        staggerChildren: 0.3,
+      },
+    },
+    hidden: {},
+  }
+
+  const linkVariants = {
+    hidden: { opacity: 1, y: -100 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: 'spring', stiffness: 350, damping: 20 }
+    }
+  }
 
   return (
     <div className="hobbitHeader">
 
-      <Link to="/">
-        <p className="headerTitle">Hobbit Hues</p>
-        {/* <p className="headerTitle"><GiHobbitDwelling /></p> */}
-      </Link>
+      <p className="headerIcon" onClick={() => setVisible(!visible)}><GiHobbitDwelling /></p>
 
-      <div className='navBar'>
-            {/* NOT logged in, show these links */}
-            <Link className="hobbitLink" to="/"><p>Colors</p></Link>
-            <Link className="hobbitLink" to="/projects"><p>Projects</p></Link>
-            <Link className="hobbitLink" to="/about">About</Link>
-            <Link className="hobbitLink" to="/info"><p>Info</p></Link>
-      </div>
-    </div >
+      <motion.div
+        className="nav-links"
+        initial="hidden"
+        animate={visible ? "visible" : "hidden"}
+        variants={containerVariants}
+      >
+        <motion.div variants={linkVariants}>
+          <Link className="hobbitLink" onClick={() => setVisible(!visible)} to="/"><p>Colors</p></Link>
+        </motion.div>
+        <motion.div variants={linkVariants}>
+          <Link className="hobbitLink" onClick={() => setVisible(!visible)} to="/projects"><p>Projects</p></Link>
+        </motion.div>
+        <motion.div variants={linkVariants}>
+          <Link className="hobbitLink" onClick={() => setVisible(!visible)} to="/create"><p>New</p></Link>
+        </motion.div>
+      </motion.div>
+    </div>
   )
 }
 

@@ -1,12 +1,7 @@
-footer {
-  /* text-align: center; */
-  background-color: #2e2e2e;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1%;
-  color: darkred;
-  border-top: 2px solid black;
+.stingray-logo {
+  position: absolute;
+  bottom: 2%;
+  left: 3%;  
   height: 50px;
+  width: 50px;
 }

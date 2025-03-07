@@ -17,7 +17,7 @@ function App() {
   return (
 
     <div className='hobbit-hues'>
-      {/* <Nav /> */}
+      <Nav />
 
       {/* <AnimatePresence mode='wait'> */}
         <Routes location={location} key={location.pathname}>
@@ -30,7 +30,7 @@ function App() {
           {/* <Route path='*' element={ <fourOhFour /> } /> */}
         </Routes>
       {/* </AnimatePresence> */}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

@@ -1,13 +1,10 @@
-
-// IMPORTS
-// css
 import './Footer.css';
-// trademark photo
-import Stingray from '../../Images/DRedIcon.png';
+import Stingray from '../../Images/stingrayLogo.png';
 
 
 function Footer() {
-  return <footer><img src={Stingray} alt='stingray-logo' width='40px'/> barbed_stingray 2024</footer>;
+
+  return <img className='stingray-logo' src={Stingray} alt='stingray-logo'/>
 }
 
 export default Footer;
