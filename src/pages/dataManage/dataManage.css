@@ -1,0 +1,12 @@
+.data-manage{
+    border: 2px solid pink;
+    position: relative;
+    padding: var(--header-height) 0 0 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;  
+}

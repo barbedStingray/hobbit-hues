@@ -19,7 +19,7 @@ const HobbitHues = () => {
     return (
         <div className="hobbitHues-home">
 
-            <p className='pageHeading'>Hobbit Hues</p>
+            {/* <p className='pageHeading'>Hobbit Hues</p>
 
             <select className='select-style select-scheme' onChange={(e) => setScheme(e.target.value)}>
                 {selectSchemes.map((line, i) => (
@@ -35,7 +35,7 @@ const HobbitHues = () => {
                 >
                     {schemeMap[scheme]}
                 </motion.div>
-            </div>
+            </div> */}
 
         </div>
     )

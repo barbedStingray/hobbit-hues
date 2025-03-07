@@ -1,6 +1,6 @@
 .hobbitHues-home {
   /* Match padding to navbar size */
-  border: 3px solid blue;
+  /* border: 3px solid blue; */
   position: relative;
   /* margin: var(--header-height) 0 0px 0; */
   padding: var(--header-height) 0 0 0;
@@ -15,7 +15,7 @@
 }
 
 .select-scheme {
-  width: 30dvw; 
+  width: 35dvw; 
 }
 
 .select-scheme:hover {
