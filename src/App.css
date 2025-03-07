@@ -10,8 +10,18 @@
 }
 
 
+/* ROOT VARIABLES */
+:root {
+
+  /* header variables */
+  --header-height: 90px;
+
+}
+
+
+
 .hobbit-hues {
-  border: green 2px solid;
+  /* border: green 2px solid; */
   height: 100dvh;
   width: 100dvw;
   display: flex;
@@ -42,18 +52,34 @@
 }
 
 
+.btn {
+  display: inline-block;
+  padding: 10px;
+  font-size: 2.25dvh;
+  cursor: pointer;
+  background-color: goldenrod;
+  border: 1px solid gold;
+  border-radius: 10px;
+  box-shadow: 0 0px 15px rgba(0, 0, 0, 0.9); 
+  transition: 0.5s;
+}
+.btn:hover {
+  background-color: green;
+  border: 1px solid lightgreen;
+  color: white;
+}
 
 
-
-
-
-/* *** COLOR CODE CSS *** */
-/* ROOT VARIABLES */
-:root {
-
-  /* header variables */
-  --header-height: 100px;
-
+.select-style {
+  border: 2px solid rgb(255, 255, 255); 
+  font-size: 2.25dvh;
+  padding: 10px; 
+  background-color: #fff7e6;
+  color: #333; 
+  border-radius: 10px;
+  box-shadow: 0 0px 15px rgba(0, 0, 0, 0.9); 
+  appearance: none;
+  outline: none; 
 }
 
 
@@ -61,82 +87,34 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /* --------------------------------------------------------------------------------
-INPUT - file
+INPUT - file override defaults
 -------------------------------------------------------------------------------- */
-
-
 /* import image button */
-#picture-input {
+.picture-input {
   /* border: 2px solid orange; */
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-
 .pictureImport {
   display: none;
 }
 
-.ben-file-upload {
-  cursor: pointer;
-  padding: 5px 10px;
-  font-size: 18px;
-  background-color: skyblue;
-  color: black;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px black;
-  outline: outset;
-  outline-color: skyblue;
-  border: 1px solid darkblue;
-  transition: 0.3s;
-}
-
-.ben-file-upload:hover {
-  /* background-color: #2980b9; */
-  border: 1px solid lightgreen;
-  outline-color: green;
-  background-color: green;
-  color: whitesmoke;
-
-}
 
 
 
-/* --------------------------------------------------------------------------------
-INPUTS & SELECT & HEXCODE
--------------------------------------------------------------------------------- */
-/* .selectBox {
-  border: 2px solid black;
-  background: linear-gradient(#ffffff, 90%, #c8c8c8);
-  font-size: 18px;
-  width: 100%;
-  height: 40px;
-  max-width: 200px;
-  min-width: 100px;
-} */
 
-/* .selectHex {
-  border: 2px solid black;
-  background: linear-gradient(#ffffff, 90%, #c8c8c8);
-  width: 45%;
-  height: 30px;
-  text-align: center;
-  border-radius: 5px;
-  font-size: 18px;
-} */
+
+
+
+
+
+
+
+
+
+
 
 .notesArea {
   border: 2px solid black;
@@ -146,100 +124,6 @@ INPUTS & SELECT & HEXCODE
   width: 95%;
   height: 40px;
 }
-
 ::placeholder {
   color: grey;
 }
-
-
-/* --------------------------------------------------------------------------------
-Button
--------------------------------------------------------------------------------- */
-
-.btn {
-  display: inline-block;
-  padding: 1vh;
-  font-size: 2.5vh;
-  cursor: pointer;
-  background-color: goldenrod;
-  border: 1px solid gold;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px black;
-  transition: 0.5s;
-}
-.btn_pc:hover, .btn_pb:hover, .btn_sm:hover, .btn:hover {
-  background-color: green;
-  border: 1px solid lightgreen;
-  color: white;
-}
-
-.btn_sm {
-  display: inline-block;
-  padding: 2px 5px;
-  border-width: 2px;
-  border-style: solid;
-  background-color: goldenrod;
-  border: 1px solid gold;
-  font-size: 1.1rem;
-  outline: outset;
-  outline-color: goldenrod;
-  cursor: pointer;
-  border-radius: 5px;
-  box-shadow: 0 5px 15px black;
-}
-.btn_del:hover {
-  background-color: darkred;
-  outline-color: red;
-  border: 1px solid darkred;
-  text-decoration: none;
-  transition: 0.5s;
-  color: white;
-}
-.btn_pb {
-  display: inline-block;
-  padding: 2px 5px;
-  border-width: 2px;
-  border-style: solid;
-  background-color: purple;
-  border: 1px solid pink;
-  font-size: 1.1rem;
-  outline: outset;
-  outline-color: purple;
-  cursor: pointer;
-  border-radius: 5px;
-  box-shadow: 0 5px 15px black;
-  height: 50px;
-  width: 70px;
-  color: white;
-  align-self: center;
-  align-items: center;
-  margin-right: 30px;
-}
-.btn_pc {
-  display: inline-block;
-  padding: 2px 5px;
-  border-width: 2px;
-  border-style: solid;
-  background-color: darkblue;
-  border: 1px solid lightblue;
-  font-size: 1.1rem;
-  outline: outset;
-  outline-color: darkblue;
-  cursor: pointer;
-  border-radius: 5px;
-  box-shadow: 0 5px 15px black;
-  height: 50px;
-  width: 70px;
-  color: white;
-  align-self: center;
-  margin-right: 5px;
-
-}
-
-
-
-
-
-
-
-

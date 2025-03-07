@@ -4,27 +4,18 @@
   position: relative;
   /* margin: var(--header-height) 0 0px 0; */
   padding: var(--header-height) 0 0 0;
-  height: 100dvh;
-  width: 100dvw;
+  height: 100%;
+  width: 100%;
   z-index: 1;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
-  gap: 40px;
+  gap: 30px;
 }
 
 .select-scheme {
-  border: 2px solid rgb(255, 255, 255); 
   width: 30dvw; 
-  font-size: 2dvh; 
-  padding: 10px; /* Adds some space inside the select box */
-  background-color: #fff7e6;
-  color: #333; 
-  border-radius: 8px;
-  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1); 
-  appearance: none;
-  outline: none; 
 }
 
 .select-scheme:hover {

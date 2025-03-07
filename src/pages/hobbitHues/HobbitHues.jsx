@@ -1,21 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './hobbitHues.css';
-import fetchPaints from '../../components/customHooks/fetchPaints.js';
-
-import { motion, useSpring, useMotionValue } from "framer-motion";
-import RYBcolors from '../../Images/RYBcolors.png'
+import { motion, useSpring } from "framer-motion";
 import schemeMap from '../../components/schemeMap.js';
 
 
 const HobbitHues = () => {
 
-    const navigate = useNavigate()
-
     const rotate = useSpring(0, { mass: 1, stiffness: 100, damping: 10 })
     const handleRotate = (e, i) => {
-        // e.preventDefault()
         rotate.set(rotate.get() + (i.delta.x + i.delta.y) * 4.5); // Adjust the factor to control speed
     }
 
@@ -28,7 +21,7 @@ const HobbitHues = () => {
 
             <p className='pageHeading'>Hobbit Hues</p>
 
-            <select className='select-scheme' onChange={(e) => setScheme(e.target.value)}>
+            <select className='select-style select-scheme' onChange={(e) => setScheme(e.target.value)}>
                 {selectSchemes.map((line, i) => (
                     <option value={line} key={i}>{line}</option>
                 ))}

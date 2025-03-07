@@ -1,30 +1,27 @@
-const express = require('express');
-const pool = require('../modules/pool');
-
-const router = express.Router();
-
+const express = require('express')
+const pool = require('../modules/pool')
+const router = express.Router()
 
 
-// NEW -- Create Page
+// NEW 
 
 // GET /attributes request (/api/user/attributes)
-router.get('/attributes', (req, res) => {
-  const queryText = 'SELECT * FROM "realm"';
+router.get('/realms', (req, res) => {
+  const queryText = 'SELECT * FROM "realm"'
   pool.query(queryText).then((result) => {
-    console.log(`/attributes query success!`);
-    res.send(result.rows);
+    console.log(`/attributes query success!`)
+    res.send(result.rows)
   }).catch((error) => {
-    console.log(`error in completing /attributes query`);
-    res.sendStatus(500);
-  });
-});
-
+    console.log(`error in completing /attributes query`)
+    res.sendStatus(500)
+  })
+})
 
 // POST /newMini request (/api/user/newMini)
 router.post('/newMini', async (req, res) => {
   const { model, theme, rank, picture } = req.body.newMini
   const theRealms = req.body.realms
-  
+
   const miniQuery = `
   INSERT INTO "minis" ("model", "theme", "rank", "picture")
   VALUES ($1, $2, $3, $4) RETURNING id;`
@@ -50,7 +47,19 @@ router.post('/newMini', async (req, res) => {
     console.log('Error in newMini route:', error)
     res.sendStatus(500)
   }
-});
+})
+
+
+
+
+// END NEW 
+
+
+
+
+
+
+
 
 
 

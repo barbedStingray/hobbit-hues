@@ -1,116 +1,130 @@
 /* CODE FOR CREATE PROJECT PAGE */
 
-.createProjectPage {
+.create-projects {
   /* border: 2px solid red; */
+  position: relative;
+  padding: var(--header-height) 0 0 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
   display: flex;
   flex-flow: column nowrap;
+  justify-content: flex-start;
   align-items: center;
-  flex: 1;
+  gap: 30px;
+
 }
 
 
 .newProjectForm {
   /* border: 2px solid gold; */
+  width: 90%;
   display: flex;
   flex-flow: column nowrap;
-  width: 65vh;
-  height: 50vh;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
+  gap: 10px;
 }
 
-.newProjectNameInput,
-.newProjectDescriptionTextArea {
-  /* border: 2px solid green; */
-  height: 4vh;
-  width: 60%;
-  font-size: 2.5vh;
+.form-meat {
+  /* border: 2px solid white; */
+  width: 100%;
+  height: 52dvh;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.model-name {
+  width: 75%;
+  font-size: 2.5dvh;
   text-align: center;
   border-radius: 10px;
+  padding: 10px;
   background-color: #ffffffdd;
   border: 2px solid black;
   color: black;
 }
 
-.realmsContainer {
-  background-color: rgba(255, 255, 255, 0.515);
+.model-inputs {
+  /* border: 2px solid green; */
+  flex: 3;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;  
 }
 
-.newProjectDescriptionTextArea {
-  border: 2px solid black;
-  height: 8vh;
-  font-size: 2vh;
-  padding: 0.5vh;
+.select-theme {
+  width: 90%; 
+}
+.select-rank {
+  width: 50%; 
 }
 
 .photoUploadDiv {
-  /* border: 2px solid limegreen; */
-  /* display: flex; */
+  /* border: 2px solid yellow; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 165px;
+  height: 165px;
 }
-
-
 .uploadImage {
-  /* border: 2px solid magenta; */
-  border: 2px solid black;
-  height: 15vh;
-  width: 15vh;
-  border-radius: 10px;
-  object-fit: cover;
-  box-shadow: 0 5px 15px black;
-}
-
-/* #model-input {
-  border: 2px solid lightblue;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5%;
-} */
-
-/* #model-box {
-  border: 2px solid #5a5a5a;
-  box-shadow: 0 5px 15px black;
-  background: linear-gradient(#ffffff, 80%, #c8c8c8);
-  font-size: 18px;
-  width: 100%;
-  height: 40px;
-  max-width: 200px;
-  min-width: 100px;
-  text-align: center;
-  border-radius: 10px;
-} */
-
-
-/* #image-work {
-  border: 2px solid lightgreen;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-evenly;
-  align-items: center;
-} */
-
-/* #image-preview {
-  border: 2px solid red;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  height: 210px;
-  width: 210px;
-}
-
-.mainUpload {
-  border: 2px solid black;
-  border-radius: 10px;
-  width: 100%;
   height: 100%;
-  object-fit: cover;
-  box-shadow: 0 5px 15px black;
-} */
+  width: 100%;
+  border-radius: 10px;
+  object-fit: contain;
+  background-color: #ffffff83;
+}
 
-/* #create-submit {
-  border: 2px solid limegreen;
-  margin: 2% 0;
+
+
+
+
+.model-labels {
+  /* border: 2px solid magenta; */
+  border-radius: 10px;
+  flex: 2;
+  height: 100%;
+  overflow-y: auto;
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+.model-labels::-webkit-scrollbar {
+  width: 0;  /* Hides the scrollbar */
+  height: 0; /* Optional: hides horizontal scrollbar if present */
+}
+
+
+.realmsContainer {
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  background-color: #ffffffb3;
   display: flex;
-  justify-content: center;
-} */
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  padding: 5px 5px;
+
+  /* display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px; 
+  padding: 10px; */
+}
+.realmsContainer label {
+  /* border: 2px solid red; */
+  width: 100%;
+  display: flex;
+  align-items: center; 
+  gap: 10px; 
+  /* white-space: nowrap;  */
+  padding: 8px 0;
+  font-size: 2.25dvh;
+  color: black;
+}
+
+
+
+
+

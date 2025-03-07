@@ -22,18 +22,21 @@ function CreateProject() {
     console.log('newMini', newMini);
 
     useEffect(() => {
-        getMiniAttributes()
+        // * I want this loaded before you go to the page
+        generateRealms()
     }, [])
 
-    const getMiniAttributes = async () => {
-        console.log('fetching fill ins')
-        try {
-            const { data: attributes } = await axios.get('/api/user/attributes ')
-            console.log('attributes', attributes)
 
-            const themeData = [...new Set(attributes.map(item => item.theme))];
+    const generateRealms = async () => {
+        console.log('fetching realms from categories')
+        try {
+            const { data: realms } = await axios.get('/api/user/realms ')
+            console.log('realms', realms)
+
+            const themeData = [...new Set(realms.map(item => item.theme))]
 
             const getGroupsByTheme = (attributes, theme) => {
+                console.log('attributes', attributes)
                 return attributes
                     .filter(item => item.theme === theme)  // Filter by theme
                     .map(item => ({ id: item.id, group: item.group }))  // Extract id and group
@@ -41,9 +44,9 @@ function CreateProject() {
                         index === self.findIndex((t) => (
                             t.id === value.id && t.group === value.group
                         )));  // Ensure uniqueness
-            };
-            const starWarsGroup = getGroupsByTheme(attributes, 'starWars')
-            const lotrGroup = getGroupsByTheme(attributes, 'lordOfTheRings')
+            }
+            const starWarsGroup = getGroupsByTheme(realms, 'starWars')
+            const lotrGroup = getGroupsByTheme(realms, 'lordOfTheRings')
 
             setThemes(themeData)
             setLotrRealms(lotrGroup)
@@ -54,6 +57,7 @@ function CreateProject() {
             console.log('error attributes', error)
         }
     }
+
 
 
     const [selectedRealms, setSelectedRealms] = useState([]);
@@ -69,16 +73,13 @@ function CreateProject() {
     const createNewMini = async (e) => {
         e.preventDefault()
         try {
-            if(newMini.picture === '') {
-                return alert('please attatch a photo')
-            }
+            if (newMini.picture === '') return alert('please attatch a photo')
+
             await axios.post('/api/user/newMini', { newMini: newMini, realms: selectedRealms });
             alert('successfully added new mini!')
             // todo fetch projects reducer
             console.log('success in posting a new mini!')
-
             // todo navigate to minis page for editing: optional
-
             // resets
             setNewMini({
                 model: '',
@@ -87,7 +88,6 @@ function CreateProject() {
                 picture: ''
             });
             setSelectedRealms([]);
-
         } catch (error) {
             console.log(`error in POST createNewMini`);
             alert(`The Hobbits were taken to Isengard, your project was not created! Sorry, Try again.`);
@@ -111,84 +111,89 @@ function CreateProject() {
     }
 
 
-    return (
-        <m.div
-            key={'createMotionProject'}
-            className="createProjectPage"
-            initial="hidden"
-            transition={{ duration: 0.55, ease: 'easeOut' }}
-            animate="visible"
-            exit={{
-                opacity: 0,
-                transition: { duration: 0.5 }
-            }}
-        >
+    function convertCamelCase(camelCaseStr) {
+        // Insert a space before each uppercase letter, then capitalize the first letter of each word
+        return camelCaseStr
+            .replace(/([a-z0-9])([A-Z])/g, '$1 $2') // Add a space between lowercase and uppercase letters
+            .replace(/\b\w/g, char => char.toUpperCase()); // Capitalize the first letter of each word
+    }
+    
+    // Example usage:
+    const camelCaseString = "camelCaseExample";
+    console.log(convertCamelCase(camelCaseString)); // "Camel Case Example"
+    
 
-            <p className='pageHeading'>Create A Project!</p>
+
+    return (
+        <div className="create-projects">
+
+            <p className='pageHeading'>Fresh Paint</p>
+
             <form className='newProjectForm' onSubmit={createNewMini}>
 
                 <input
                     name='model'
                     required
                     value={newMini.model}
-                    className='newProjectNameInput'
+                    className='model-name'
                     onChange={(e) => handleObjectChange(e, setNewMini, newMini)}
                     type='text'
-                    placeholder='Model Name Here...'
+                    placeholder='Model Name...'
                 >
                 </input>
 
-                <select required name='theme' value={newMini.theme} onChange={(e) => handleObjectChange(e, setNewMini, newMini)}>
-                    <option value="">Choose Category</option>
-                    {themes.map((theme, i) => (
-                        <option key={i} value={theme}>
-                            {theme}
-                        </option>
-                    ))}
-                </select>
 
-                <select required name='rank' value={newMini.rank} onChange={(e) => handleObjectChange(e, setNewMini, newMini)}>
-                    <option value="">Select Rank</option>
-                    {[...Array(10)].map((_, i) => (
-                        <option key={i + 1} value={i + 1}>
-                            {i + 1}
-                        </option>
-                    ))}
-                </select>
+                <div className='form-meat'>
 
-                <div className="realmsContainer">
-                    <p>Select Realms:</p>
-                    {realmsToShow().map((realm) => (
-                        <label key={realm.id}>
-                            <input
-                                type="checkbox"
-                                value={realm.id}
-                                checked={selectedRealms.includes(realm.id)}
-                                onChange={handleRealmChange}
-                            />
-                            {realm.group}
-                        </label>
-                    ))}
-                </div>
+                    <div className='model-inputs'>
 
+                        <select className='select-style select-theme' required name='theme' value={newMini.theme} onChange={(e) => handleObjectChange(e, setNewMini, newMini)}>
+                            <option value="">Pick a Theme</option>
+                            {themes.map((theme, i) => (
+                                <option key={i} value={theme}>
+                                    {convertCamelCase(theme)}
+                                </option>
+                            ))}
+                        </select>
 
-                <ImageUpload photoFunction={setNewProjectImageUp} />
+                        <select className='select-style select-rank' required name='rank' value={newMini.rank} onChange={(e) => handleObjectChange(e, setNewMini, newMini)}>
+                            <option value="">Quality...</option>
+                            {[...Array(10)].map((_, i) => (
+                                <option key={i + 1} value={i + 1}>
+                                    {i + 1}
+                                </option>
+                            ))}
+                        </select>
 
-                <div className='photoUploadDiv'>
-                    {
-                        newMini.picture === '' ? (
-                            <></>
-                        ) : (
-                            <img className='uploadImage' src={newMini.picture} />
-                        )
-                    }
+                        <ImageUpload photoFunction={setNewProjectImageUp} />
+                        <div className='photoUploadDiv'>
+                            {newMini.picture && <img className='uploadImage' src={newMini.picture} />}
+                        </div>
+
+                    </div>
+
+                    <div className='model-labels'>
+                        <div className="realmsContainer">
+                        <p>Select Realms:</p>
+                            {realmsToShow().map((realm) => (
+                                <label key={realm.id}>
+                                    <input
+                                        type="checkbox"
+                                        value={realm.id}
+                                        checked={selectedRealms.includes(realm.id)}
+                                        onChange={handleRealmChange}
+                                    />
+                                    {convertCamelCase(realm.group)}
+                                </label>
+                            ))}
+                        </div>
+                    </div>
                 </div>
 
                 <button type='submit' className="btn">Create!</button>
-
             </form>
 
-        </m.div>
+        </div>
     );
 }
 
