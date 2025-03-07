@@ -11,8 +11,28 @@
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
-  gap: 10px;
+  gap: 40px;
 }
+
+.select-scheme {
+  border: 2px solid rgb(255, 255, 255); 
+  width: 30dvw; 
+  font-size: 2dvh; 
+  padding: 10px; /* Adds some space inside the select box */
+  background-color: #fff7e6;
+  color: #333; 
+  border-radius: 8px;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1); 
+  appearance: none;
+  outline: none; 
+}
+
+.select-scheme:hover {
+  border-color: #ffd700; /* Changes border color when hovering */
+  cursor: pointer; /* Pointer cursor when hovering */
+}
+
+
 
 .colorWheel-container {
   /* border: 2px solid white; */
@@ -20,7 +40,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50dvh;
+  height: 45dvh;
   aspect-ratio: 1;
   margin-bottom: 15px;
   background-image: url('../../Images/RYBcolors.png');

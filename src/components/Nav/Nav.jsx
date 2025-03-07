@@ -13,7 +13,7 @@ function Nav() {
   const containerVariants = {
     visible: {
       transition: {
-        staggerChildren: 0.3,
+        staggerChildren: 0.15,
       },
     },
     hidden: {},

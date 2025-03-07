@@ -11,7 +11,7 @@
 
 
 .hobbit-hues {
-  /* border: green 2px solid; */
+  border: green 2px solid;
   height: 100dvh;
   width: 100dvw;
   display: flex;
@@ -30,7 +30,7 @@
 .pageHeading {
   /* border: 2px solid red; */
   font-family: ringbearer;
-  font-size: 8vh;
+  font-size: 7dvh;
   color: transparent;
   -webkit-text-stroke-color: black;
   -webkit-text-stroke-width: 1px;
@@ -52,133 +52,9 @@
 :root {
 
   /* header variables */
-  --header-height: 80px;
+  --header-height: 100px;
 
-
-  /*  Base Values  */
-  --primary-color-h: 216;
-  --primary-color-s: 100%;
-  --primary-color-l: 42%;
-  
-  --contrastThreshold: 60%;
-
-  /*  Calculations Based on Lightness  */
-  --lightnessTransform: 11%;
-  --lightnessTransformTwo: 22%;
-  --darknessTransform: 11%;
-  --darknessTransformTwo: 22%;
-
-  /* primary */
-  --primary-color-light-l: calc(var(--primary-color-l) + var(--lightnessTransform));
-  --primary-color-twolight-l: calc(var(--primary-color-l) + var(--lightnessTransformTwo));
-  --primary-color-dark-l: calc(var(--primary-color-l) - var(--darknessTransform));
-  --primary-color-twodark-l: calc(var(--primary-color-l) - var(--darknessTransformTwo));
-  
-  /* primary shades */
-  --color-primary: hsl(var(--primary-color-h),
-                       var(--primary-color-s),
-                       var(--primary-color-l));
-  --color-primary-light:hsl(var(--primary-color-h),
-                       var(--primary-color-s),
-                       var(--primary-color-light-l));
-  --color-primary-twolight:hsl(var(--primary-color-h),
-                       var(--primary-color-s),
-                       var(--primary-color-twolight-l));
-  --color-primary-dark:hsl(var(--primary-color-h),
-                       var(--primary-color-s),
-                       var(--primary-color-dark-l));
-  --color-primary-twodark:hsl(var(--primary-color-h),
-                       var(--primary-color-s),
-                       var(--primary-color-twodark-l));
-
-  /* primary hues */
-  --color-primary-complement: hsl(calc(var(--primary-color-h) + 180),
-                          var(--primary-color-s),
-                          var(--primary-color-l));              
-  --color-primary-triad-1: hsl(calc(var(--primary-color-h) + 120),
-                          var(--primary-color-s),
-                          var(--primary-color-l));
-  --color-primary-triad-2: hsl(calc(var(--primary-color-h) - 120),
-                          var(--primary-color-s),
-                          var(--primary-color-l));
-  --color-primary-analog-1: hsl(calc(var(--primary-color-h) + 30),
-                          var(--primary-color-s),
-                          var(--primary-color-l));
-  --color-primary-analog-2: hsl(calc(var(--primary-color-h) - 30),
-                          var(--primary-color-s),
-                          var(--primary-color-l));
 }
-
-/* ROOT VARIABLES */
-
-
-
-
-
-
-
-/* BACKGROUND FILLS */
-
-/*  Primary Color Shades */
-
-.primary {
-  background-color: var(--color-primary);
-  --switch: calc((var(--primary-color-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-.primary-light {
-  background: var(--color-primary-light);
-  --switch: calc((var(--primary-color-light-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-.primary-twolight {
-  background: var(--color-primary-twolight);
-  --switch: calc((var(--primary-color-light-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-.primary-dark {
-  background: var(--color-primary-dark);
-  --switch: calc((var(--primary-color-dark-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-.primary-twodark {
-  background: var(--color-primary-twodark);
-  --switch: calc((var(--primary-color-dark-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-
-/* primary color hues */
-
-.primary-complement {
-  background: var(--color-primary-complement);
-  --switch: calc((var(--primary-color-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-
-.primary-triad-1 {
-  background: var(--color-primary-triad-1);
-  --switch: calc((var(--primary-color-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-
-.primary-triad-2 {
-  background: var(--color-primary-triad-2);
-  --switch: calc((var(--primary-color-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-.primary-analog-1 {
-  background: var(--color-primary-analog-1);
-  --switch: calc((var(--primary-color-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-.primary-analog-2 {
-  background: var(--color-primary-analog-2);
-  --switch: calc((var(--primary-color-l) - var(--contrastThreshold)) * -100);
-  color: hsl(0, 0%, var(--switch));
-}
-
-
-
 
 
 

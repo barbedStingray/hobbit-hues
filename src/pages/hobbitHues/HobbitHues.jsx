@@ -16,18 +16,23 @@ const HobbitHues = () => {
     const rotate = useSpring(0, { mass: 1, stiffness: 100, damping: 10 })
     const handleRotate = (e, i) => {
         // e.preventDefault()
-        rotate.set(rotate.get() + (i.delta.x + i.delta.y) * 2.5); // Adjust the factor to control speed
+        rotate.set(rotate.get() + (i.delta.x + i.delta.y) * 4.5); // Adjust the factor to control speed
     }
 
     // const schemeArray = ['complimentary', 'splitComp', 'analogous', 'square', 'triad']
-    const schemeArray = ['splitComp', '', '', '', '']
-
-
+    const [scheme, setScheme] = useState('complimentary')
+    const selectSchemes = Object.keys(schemeMap)
 
     return (
         <div className="hobbitHues-home">
 
-            <p className='pageHeading'>Welcome!</p>
+            <p className='pageHeading'>Hobbit Hues</p>
+
+            <select className='select-scheme' onChange={(e) => setScheme(e.target.value)}>
+                {selectSchemes.map((line, i) => (
+                    <option value={line} key={i}>{line}</option>
+                ))}
+            </select>
 
             <div className='colorWheel-container'>
                 <motion.div
@@ -35,11 +40,10 @@ const HobbitHues = () => {
                     style={{ rotate: rotate }}
                     onPan={handleRotate}
                 >
-                    {schemeArray.map(scheme => schemeMap[scheme])}
+                    {schemeMap[scheme]}
                 </motion.div>
             </div>
 
-            <button onClick={() => navigate('/create')} className="btn">Create New Project</button>
         </div>
     )
 }
