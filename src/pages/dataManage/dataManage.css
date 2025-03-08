@@ -1,4 +1,4 @@
-.data-manage{
+.data-manage {
     border: 2px solid pink;
     position: relative;
     padding: var(--header-height) 0 0 0;
@@ -8,5 +8,70 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
-    align-items: center;  
+    align-items: center;
+}
+
+.toggle-view {
+    /* border: 2px solid gold; */
+    display: flex;
+    flex-flow: row nowrap;
+    width: 70%;
+    height: 5dvh;
+    
+    div {
+        /* border: 2px solid blue; */
+        flex: 1;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.highlight {
+    background-color: #ffe762d8;
+    color: black;
+}
+.non-highlight {
+    background-color: #ffffffb3;
+    color: white;
+}
+
+.realm-view {
+    border-top: 2px solid lime;
+    border-bottom: 2px solid lime;
+    width: 90%;
+    height: 55dvh;
+    overflow: auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* gap: 10px; */
+    padding: 20px 10px;
+    background-color: #ffffff93;
+
+}
+.realm-item {
+    border: 0.5px solid grey;
+    padding: 10px 5px;
+    font-size: 2.5dvh;
+    color: black;
+    /* background-color: white; */
+}
+
+
+.realm-add {
+    border: 2px solid lime;
+    width: 90%;
+    height: 55dvh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.important-note {
+    border: 2px solid red;
+    background-color: #ffffff93;
 }
