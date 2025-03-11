@@ -22,31 +22,9 @@ function ProjectsDisplay({ fetchProjectsAction, selector, heading }) {
     }, [dispatch, fetchProjectsAction]);
     
     
-    const container = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                delayChildren: 0.15,
-                staggerChildren: 0.05
-            }
-        }
-    };
-
     return (
 
-        <m.div
-            key={'createMotionProjectsPage'}
-            className="projectsPage"
-            variants={container}
-            initial="hidden"
-            transition={{ duration: 0.55, ease: 'easeOut' }}
-            animate="visible"
-            exit={{
-                opacity: 0,
-                transition: { duration: 0.5 }
-            }}
-        >
+        <m.div className="projectsPage">
 
             <p className='pageHeading'>{heading}</p>
 

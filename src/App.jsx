@@ -4,9 +4,8 @@ import HobbitHues from './pages/hobbitHues/HobbitHues.jsx';
 import AboutPage from './pages/AboutPage/AboutPage.jsx';
 import InfoPage from './pages/InfoPage/InfoPage.jsx';
 import CreateProject from './pages/CreateProject/CreateProject.jsx';
-import PersonalProjects from './pages/ProjectsPage/PersonalProjects.jsx';
-import ProjectDetails from './pages/ProjectDetails/ProjectDetails.jsx';
 import DataManage from './pages/dataManage/DataManage.jsx';
+import MinisPage from './pages/Miniatures/MinisPage.jsx';
 import Nav from './components/Nav/Nav.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import './App.css';
@@ -24,7 +23,7 @@ function App() {
         <Routes location={location} key={location.pathname}>
           <Route path='/' element={ <HobbitHues /> } />
           <Route path='/create' element={ <CreateProject /> } />
-          <Route path='/minis' element={ <PersonalProjects /> } />
+          <Route path='/minis' element={ <MinisPage /> } />
           <Route path='/data' element={ <DataManage /> } />
           {/* <Route path='/us/details/:ider' element={ <ProjectDetails /> } /> */}
           {/* <Route path='/info' element={ <InfoPage /> } />

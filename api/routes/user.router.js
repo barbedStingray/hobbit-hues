@@ -50,6 +50,10 @@ router.post('/newMini', async (req, res) => {
 })
 
 
+// Get minis based on section and display
+
+
+
 
 
 // END NEW 

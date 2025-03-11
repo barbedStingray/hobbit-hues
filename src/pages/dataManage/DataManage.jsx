@@ -14,7 +14,7 @@ const DataManage = () => {
     const [newRealm, setNewRealm] = useState('')
     console.log('theme', theme)
     console.log('newRealm', newRealm)
-    
+
     useEffect(() => {
         // ? I want this loaded before you go to the page - reducer?
         generateRealms(setRealms, setThemeList)
@@ -33,11 +33,13 @@ const DataManage = () => {
         // todo alert as completed
     }
 
-    const deleteRealm = (id) => {
-        console.log('delete realm:', id)
-        // todo lets delete the realm
-    }
+    const deleteRealm = (id, group) => {
+        const confirmDelete = window.confirm(`Are you sure you want to delete the realm, ${convertCamelCase(group)}?`);
+        if (!confirmDelete) return;
 
+        console.log('delete realm:', id);
+        // todo: delete the realm
+    }
 
     return (
         <div className='data-manage'>
@@ -56,22 +58,22 @@ const DataManage = () => {
             {highlight ? (
                 <div className='realm-view'>
                     {allRealms.map((realm, i) => (
-                        <p onClick={() => deleteRealm(realm.id)} className='realm-item' key={realm.id}>{convertCamelCase(realm.group)}</p>
+                        <p onClick={() => deleteRealm(realm.id, realm.group)} className='realm-item' key={realm.id}>{convertCamelCase(realm.group)}</p>
                     ))}
                 </div>
             ) : (
                 <div className='realm-add'>
                     <form onSubmit={submitNewRealm} className='realm-form'>
-                    <select onChange={(e) => setTheme(e.target.value)} className='select-style realm-style'>
-                        <option value=''>Use Existing theme...</option>
-                        {themeList.map((theme, i) => (
-                            <option value={theme} key={i}>{theme}</option>
-                        ))}
-                    </select>
-                    <p>OR</p>
-                    <input type='text' onChange={(e) => setTheme(e.target.value)} className='select-style' placeholder='Create New Theme...' />
-                    <p>AND</p>
-                    <input type='text' onChange={(e) => setNewRealm(e.target.value)} className='select-style' placeholder='Add a New Realm...'/>
+                        <select onChange={(e) => setTheme(e.target.value)} className='select-style realm-style'>
+                            <option value=''>Use Existing theme...</option>
+                            {themeList.map((theme, i) => (
+                                <option value={theme} key={i}>{theme}</option>
+                            ))}
+                        </select>
+                        <p>OR</p>
+                        <input type='text' onChange={(e) => setTheme(e.target.value)} className='select-style' placeholder='Create New Theme...' />
+                        <p>AND</p>
+                        <input type='text' onChange={(e) => setNewRealm(e.target.value)} className='select-style' placeholder='Add a New Realm...' />
 
                         <button type='submit' className='btn'>SUBMIT</button>
                     </form>
