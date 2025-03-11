@@ -4,10 +4,12 @@ import { generateRealms, convertCamelCase } from '../../components/scripts'
 
 const DataManage = () => {
 
+    // lists
     const [themeList, setThemeList] = useState([])
     const [realms, setRealms] = useState({})
     const [highlight, setHighlight] = useState(true)
 
+    // new inputs
     const [theme, setTheme] = useState('')
     const [newRealm, setNewRealm] = useState('')
     console.log('theme', theme)
@@ -22,6 +24,19 @@ const DataManage = () => {
         .sort((a, b) => a.group.localeCompare(b.group))
     // console.log('allRealms', allRealms)
 
+
+    const submitNewRealm = (e) => {
+        e.preventDefault()
+        console.log('submitting new realm')
+
+        // todo axios request for new realm
+        // todo alert as completed
+    }
+
+    const deleteRealm = (id) => {
+        console.log('delete realm:', id)
+        // todo lets delete the realm
+    }
 
 
     return (
@@ -41,27 +56,24 @@ const DataManage = () => {
             {highlight ? (
                 <div className='realm-view'>
                     {allRealms.map((realm, i) => (
-                        <p className='realm-item' key={realm.id}>{convertCamelCase(realm.group)}</p>
+                        <p onClick={() => deleteRealm(realm.id)} className='realm-item' key={realm.id}>{convertCamelCase(realm.group)}</p>
                     ))}
                 </div>
             ) : (
                 <div className='realm-add'>
-                    <p>LETS ADD REALMS</p>
-                    <form>
-                    <p>THEME</p>
-                    <select onChange={(e) => setTheme(e.target.value)}>
-                        <option value=''>Select One...</option>
+                    <form onSubmit={submitNewRealm} className='realm-form'>
+                    <select onChange={(e) => setTheme(e.target.value)} className='select-style realm-style'>
+                        <option value=''>Use Existing theme...</option>
                         {themeList.map((theme, i) => (
                             <option value={theme} key={i}>{theme}</option>
                         ))}
                     </select>
                     <p>OR</p>
-                    <input type='text' onChange={(e) => setTheme(e.target.value)} />
+                    <input type='text' onChange={(e) => setTheme(e.target.value)} className='select-style' placeholder='Create New Theme...' />
                     <p>AND</p>
-                    <p>REALM</p>
-                    <input type='text' onChange={(e) => setNewRealm(e.target.value)} />
+                    <input type='text' onChange={(e) => setNewRealm(e.target.value)} className='select-style' placeholder='Add a New Realm...'/>
 
-                        <button type='submit'>SUBMIT</button>
+                        <button type='submit' className='btn'>SUBMIT</button>
                     </form>
 
                     <div className='important-note'>

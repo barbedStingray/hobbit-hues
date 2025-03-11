@@ -78,8 +78,9 @@
   color: #333; 
   border-radius: 10px;
   box-shadow: 0 0px 15px rgba(0, 0, 0, 0.9); 
-  appearance: none;
-  outline: none; 
+  /* appearance: none; */
+  /* outline: none;  */
+  /* outline: blue; */
 }
 
 
