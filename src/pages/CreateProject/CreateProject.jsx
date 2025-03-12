@@ -3,21 +3,16 @@ import axios from 'axios';
 import ImageUpload from '../../components/ImageUpload/ImageUpload.jsx';
 import './CreateProject.css';
 import handleObjectChange from '../../scripts/handleObjectChange.js';
-import { convertCamelCase, generateRealms } from '../../components/scripts.js';
-
+import { convertCamelCase } from '../../components/scripts.js';
+import useGenerateRealms from '../../components/customHooks/useGenerateRealms.js';
 
 function CreateProject() {
 
-    useEffect(() => {
-        // ? I want this loaded before you go to the page - reducer?
-        generateRealms(setRealms, setThemeList)
-    }, [])
+    const { themeList, realmList } = useGenerateRealms()
 
     const [theme, setTheme] = useState('')
-    const [themeList, setThemeList] = useState([])
-    const [realms, setRealms] = useState({})
-    console.log('REALMS', realms)
-    console.log('theme', theme)
+    // console.log('REALMS', realmList)
+    // console.log('theme', theme)
 
     const [newMini, setNewMini] = useState({
         model: '',
@@ -127,7 +122,7 @@ function CreateProject() {
                     <div className='model-labels'>
                         <div className="realmsContainer">
                             <p>Select Realms:</p>
-                            {realms[theme]?.map((realm) => (
+                            {realmList[theme]?.map((realm) => (
                                 <label key={realm.id}>
                                     <input
                                         type="checkbox"

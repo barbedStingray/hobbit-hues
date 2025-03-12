@@ -1,77 +1,111 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './dataManage.css'
-import { generateRealms, convertCamelCase } from '../../components/scripts'
+import axios from 'axios'
+import { convertCamelCase } from '../../components/scripts'
+import useGenerateRealms from '../../components/customHooks/useGenerateRealms'
 
 const DataManage = () => {
 
-    // lists
-    const [themeList, setThemeList] = useState([])
-    const [realms, setRealms] = useState({})
-    const [highlight, setHighlight] = useState(true)
+    const [refreshKey, setRefreshKey] = useState(0)
+    const { themeList, realmList } = useGenerateRealms(refreshKey)
 
-    // new inputs
-    const [theme, setTheme] = useState('')
+    const [dataToggle, setDataToggle] = useState(true)
+    const [newTheme, setNewTheme] = useState('')
     const [newRealm, setNewRealm] = useState('')
-    console.log('theme', theme)
-    console.log('newRealm', newRealm)
 
-    useEffect(() => {
-        // ? I want this loaded before you go to the page - reducer?
-        generateRealms(setRealms, setThemeList)
-    }, [])
-
-    const allRealms = Object.values(realms).flatMap(theme => theme.map(realm => ({ id: realm.id, group: realm.group })))
-        .sort((a, b) => a.group.localeCompare(b.group))
-    // console.log('allRealms', allRealms)
+    const allRealms = Object.entries(realmList)
+    .flatMap(([theme, realms]) =>
+        realms.map(realm => ({
+            id: realm.id,         
+            group: realm.group,
+            theme: theme
+        }))
+    )
+    .sort((a, b) => a.group.localeCompare(b.group))
 
 
     const submitNewRealm = (e) => {
         e.preventDefault()
-        console.log('submitting new realm')
+        // console.log('submitting new realm', newTheme, newRealm)
+        try {
+            axios.post('/api/user/newRealm', { theme: newTheme, realm: newRealm })
+            alert('success in new theme and/or realm!')
+            setRefreshKey(prevKey => prevKey + 1)
 
-        // todo axios request for new realm
-        // todo alert as completed
+        } catch {
+            console.log(`error in POST new themes/realm`);
+            alert(`something went wrong`)
+        } finally {
+
+        }
     }
 
-    const deleteRealm = (id, group) => {
+    const deleteRealm = async (id, group) => {
         const confirmDelete = window.confirm(`Are you sure you want to delete the realm, ${convertCamelCase(group)}?`);
         if (!confirmDelete) return;
 
         console.log('delete realm:', id);
-        // todo: delete the realm
+        try {
+            await axios.delete(`/api/user/deleteRealm/${id}`)
+            alert('success in deletion!')
+            setRefreshKey(prevKey => prevKey + 1)
+        } catch {
+            console.log('error in deleting realm')
+            alert('something went wrong')
+        }
     }
+
+    // todo manually set new colors for different themes?
+    function colorCodeThemes(theme) {
+        switch (theme) {
+            case 'lordOfTheRings':
+                return '#86c1775e'
+            case 'starWars':
+                return '#78c7ff5e'
+            default:
+                return '#ffffff93'
+        }
+    }
+
 
     return (
         <div className='data-manage'>
             <p className='pageHeading'>Manage Realms</p>
 
             <div className='toggle-view'>
-                <div onClick={() => setHighlight(!highlight)} className={highlight ? 'highlight' : 'non-highlight'}>
+                <div onClick={() => setDataToggle(!dataToggle)} className={dataToggle ? 'highlight' : 'non-highlight'}>
                     <p>REALMS</p>
                 </div>
-                <div onClick={() => setHighlight(!highlight)} className={highlight ? 'non-highlight' : 'highlight'}>
+                <div onClick={() => setDataToggle(!dataToggle)} className={dataToggle ? 'non-highlight' : 'highlight'}>
                     <p>ADD</p>
                 </div>
             </div>
 
 
-            {highlight ? (
+            {dataToggle ? (
                 <div className='realm-view'>
                     {allRealms.map((realm, i) => (
-                        <p onClick={() => deleteRealm(realm.id, realm.group)} className='realm-item' key={realm.id}>{convertCamelCase(realm.group)}</p>
+                        <p
+                            className='realm-item'
+                            key={realm.id}
+                            onClick={() => deleteRealm(realm.id, realm.group)}
+                            style={{ background: colorCodeThemes(realm.theme)}}
+                        >
+                            {convertCamelCase(realm.group)}
+                        </p>
                     ))}
                 </div>
             ) : (
                 <div className='realm-add'>
                     <form onSubmit={submitNewRealm} className='realm-form'>
-                        <select onChange={(e) => setTheme(e.target.value)} className='select-style realm-style'>
+                        <select onChange={(e) => setNewTheme(e.target.value)} className='select-style realm-style'>
                             <option value=''>Use Existing theme...</option>
                             {themeList.map((theme, i) => (
                                 <option value={theme} key={i}>{theme}</option>
                             ))}
                         </select>
                         <p>OR</p>
-                        <input type='text' onChange={(e) => setTheme(e.target.value)} className='select-style' placeholder='Create New Theme...' />
+                        <input type='text' onChange={(e) => setNewTheme(e.target.value)} className='select-style' placeholder='Create New Theme...' />
                         <p>AND</p>
                         <input type='text' onChange={(e) => setNewRealm(e.target.value)} className='select-style' placeholder='Add a New Realm...' />
 

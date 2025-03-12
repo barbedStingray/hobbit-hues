@@ -49,8 +49,67 @@ router.post('/newMini', async (req, res) => {
   }
 })
 
+// POST new realm
 
-// Get minis based on section and display
+router.post('/newRealm', (req, res) => {
+  const { theme, realm } = req.body
+
+  const queryText = `INSERT INTO "realm" ("theme", "group") VALUES ($1, $2)`
+
+  pool.query(queryText, [theme, realm]).then(result => {
+    console.log('successs in post new realm')
+    res.sendStatus(201)
+  }).catch(error => {
+    console.log('error in realms posting')
+    res.sendStatus(500)
+  })
+})
+
+
+// DELETE REALM
+
+router.delete('/deleteRealm/:id', (req, res) => {
+  const queryText = `DELETE FROM "realm" WHERE "id" = $1`
+  pool.query(queryText, [req.params.id]).then((result) => {
+    res.sendStatus(201)
+    console.log('success')
+  }).catch((error) => {
+    res.sendStatus(500)
+    console.log('error')
+  })
+})
+
+
+
+
+
+// ! this is not working as expected
+router.get('/allMinis', (req, res) => {
+  const { theme, realm, rank } = req.query
+  console.log(theme, realm)
+
+
+
+  // Define the basic queries
+
+  let queryText = `SELECT * FROM "minis"`
+  let queryParams = []
+
+  queryText += ' ORDER BY "rank" DESC, RANDOM();';
+
+  console.log('queryParams', queryParams)
+
+  // Execute the query
+  pool.query(queryText, queryParams)
+    .then((result) => {
+      console.log(`/api/user/allMinis success`)
+      res.send(result.rows)
+    })
+    .catch((error) => {
+      console.log('/api/user/allMinis error', error)
+      res.sendStatus(500)
+    })
+})
 
 
 
