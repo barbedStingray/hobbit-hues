@@ -7,21 +7,11 @@ import useGenerateRealms from '../../components/customHooks/useGenerateRealms'
 const DataManage = () => {
 
     const [refreshKey, setRefreshKey] = useState(0)
-    const { themeList, realmList } = useGenerateRealms(refreshKey)
+    const { worldList, realmList } = useGenerateRealms(refreshKey)
 
     const [dataToggle, setDataToggle] = useState(true)
     const [newTheme, setNewTheme] = useState('')
     const [newRealm, setNewRealm] = useState('')
-
-    const allRealms = Object.entries(realmList)
-    .flatMap(([theme, realms]) =>
-        realms.map(realm => ({
-            id: realm.id,         
-            group: realm.group,
-            theme: theme
-        }))
-    )
-    .sort((a, b) => a.group.localeCompare(b.group))
 
 
     const submitNewRealm = (e) => {
@@ -84,14 +74,13 @@ const DataManage = () => {
 
             {dataToggle ? (
                 <div className='realm-view'>
-                    {allRealms.map((realm, i) => (
+                    {realmList.map((realm, i) => (
                         <p
                             className='realm-item'
                             key={realm.id}
-                            onClick={() => deleteRealm(realm.id, realm.group)}
-                            style={{ background: colorCodeThemes(realm.theme)}}
+                            onClick={() => deleteRealm(realm.id, realm.realm)}
                         >
-                            {convertCamelCase(realm.group)}
+                            {convertCamelCase(realm.realm)}
                         </p>
                     ))}
                 </div>
@@ -100,7 +89,7 @@ const DataManage = () => {
                     <form onSubmit={submitNewRealm} className='realm-form'>
                         <select onChange={(e) => setNewTheme(e.target.value)} className='select-style realm-style'>
                             <option value=''>Use Existing theme...</option>
-                            {themeList.map((theme, i) => (
+                            {worldList.map((theme, i) => (
                                 <option value={theme} key={i}>{theme}</option>
                             ))}
                         </select>

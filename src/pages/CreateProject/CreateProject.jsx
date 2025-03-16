@@ -8,11 +8,11 @@ import useGenerateRealms from '../../components/customHooks/useGenerateRealms.js
 
 function CreateProject() {
 
-    const { themeList, realmList } = useGenerateRealms()
+    const { worldList, realmList } = useGenerateRealms()
+    console.log('worldList-realmList', worldList, realmList)
 
     const [theme, setTheme] = useState('')
-    // console.log('REALMS', realmList)
-    // console.log('theme', theme)
+
 
     const [newMini, setNewMini] = useState({
         model: '',
@@ -96,9 +96,9 @@ function CreateProject() {
                             }}
                         >
                             <option value={null}>Pick a Theme</option>
-                            {themeList.map((theme, i) => (
-                                <option key={i} value={theme}>
-                                    {convertCamelCase(theme)}
+                            {worldList.map((world, i) => (
+                                <option key={i} value={world}>
+                                    {convertCamelCase(world)}
                                 </option>
                             ))}
                         </select>

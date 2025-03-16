@@ -1,87 +1,116 @@
 .minis-page {
-    /* Match padding to navbar size */
-    border: 3px solid blue;
-    position: relative;
-    /* margin: var(--header-height) 0 0px 0; */
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    /* gap: 30px; */
-  }
-
-  .minis-display {
-    border: 2px solid pink;
-    height: 100%;
-    padding: calc(var(--header-height) + 30px) 0 calc(var(--header-height) + 70px) 0;
-
-    overflow: auto;
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    gap: 20px;
-    
-  }
-
-
-  .placeholder {
-    /* border: 2px solid goldenrod; */
-    background-color: #00000089;
-    box-shadow: 0 0 5px white;
-    color: ghostwhite;
-    border-radius: 20px;
-    padding: 10px;
-    width: 80%;
-    height: 100px;
-    flex-shrink: 0;
-
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .mini-image {
-    border: 2px solid black;
-    height: 100%;
-    aspect-ratio: 1;
-  }
-
-  .mini-info {
-    border: 2px solid red;
-    padding: 0 10px;
-    flex: 1;
-    height: 100%;
-  }
-  
-  .mini-edit {
-    width: 50px;
-    height: 100%;
-  }
-
-
-  .mini-picture {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-
-
-
-
-  .filter-menu {
-    position: absolute;
-    bottom: 25px;
-    right: 25px;
-    width: 80px;
-    height: 80px;
-    border: 2px solid gold;
-    color: white;
+  /* Match padding to navbar size */
+  border: 3px solid blue;
+  position: relative;
+  /* margin: var(--header-height) 0 0px 0; */
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  /* gap: 30px; */
 }
+
+.minis-display {
+  border: 2px solid pink;
+  height: 100%;
+  padding: calc(var(--header-height) + 30px) 0 calc(var(--header-height) + 70px) 0;
+
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 20px;
+
+}
+
+
+.mini-painting {
+  border: 2px solid goldenrod;
+  /* background-color: #00000089; */
+  /* box-shadow: 0 0 5px white; */
+  color: ghostwhite;
+  /* border-radius: 20px; */
+  /* padding: 10px; */
+  width: 80%;
+  /* height: 200px; */
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  /* without this flexbox shrinks it down to be equal */
+  flex-shrink: 0; 
+}
+
+.mini-minimize {
+  border: 2px solid purple;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mini-maximize {
+  border: 2px solid blue;
+  width: 100%;
+  height: 80px;
+}
+
+.mini-image {
+  border: 2px solid grey;
+  /* height: 100%; */
+  /* aspect-ratio: 1; */
+}
+
+.mini-info {
+  border: 2px solid red;
+  /* padding: 0 10px;
+  flex: 1;
+  height: 100%; */
+}
+
+.mini-expand {
+  /* width: 50px;
+  height: 100%; */
+}
+
+
+.mini-picture {
+  /* width: 100%;
+  height: 100%;
+  object-fit: cover; */
+}
+
+
+
+
+
+.filter-menu {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  width: 80px;
+  height: 80px;
+  border: 2px solid gold;
+  color: white;
+}
+
+.filter-button {
+  border: 2px solid green;
+  width: 50px;
+  height: 50px;
+
+}
+
+.filter-content {
+  border: 2px solid white;
+
+}
+
+

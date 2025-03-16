@@ -5,17 +5,30 @@ const router = express.Router()
 
 // NEW 
 
-// GET /attributes request (/api/user/attributes)
+// GET request /api/user/realms
 router.get('/realms', (req, res) => {
-  const queryText = 'SELECT * FROM "realm"'
+  const queryText = 'SELECT * FROM "realms"'
   pool.query(queryText).then((result) => {
-    console.log(`/attributes query success!`)
+    console.log(`/realms query success!`)
     res.send(result.rows)
   }).catch((error) => {
-    console.log(`error in completing /attributes query`)
+    console.log(`error in completing /realms query`)
     res.sendStatus(500)
   })
 })
+
+// GET request /api/user/world
+router.get('/world', (req, res) => {
+  const queryText = `SELECT DISTINCT "world" FROM "minis"`
+  pool.query(queryText).then((result) => {
+    console.log(`/world query success!`)
+    res.send(result.rows)
+  }).catch((error) => {
+    console.log(`error in completing /world query`)
+    res.sendStatus(500)
+  })
+})
+
 
 // POST /newMini request (/api/user/newMini)
 router.post('/newMini', async (req, res) => {
@@ -54,7 +67,7 @@ router.post('/newMini', async (req, res) => {
 router.post('/newRealm', (req, res) => {
   const { theme, realm } = req.body
 
-  const queryText = `INSERT INTO "realm" ("theme", "group") VALUES ($1, $2)`
+  const queryText = `INSERT INTO "realms" ("realm") VALUES ($1)`
 
   pool.query(queryText, [theme, realm]).then(result => {
     console.log('successs in post new realm')
@@ -67,9 +80,8 @@ router.post('/newRealm', (req, res) => {
 
 
 // DELETE REALM
-
 router.delete('/deleteRealm/:id', (req, res) => {
-  const queryText = `DELETE FROM "realm" WHERE "id" = $1`
+  const queryText = `DELETE FROM "realms" WHERE "id" = $1`
   pool.query(queryText, [req.params.id]).then((result) => {
     res.sendStatus(201)
     console.log('success')
@@ -116,6 +128,78 @@ router.get('/allMinis', (req, res) => {
 
 
 // END NEW 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

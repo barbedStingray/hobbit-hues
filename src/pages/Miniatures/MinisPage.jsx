@@ -3,17 +3,19 @@ import { useDispatch } from 'react-redux'
 import axios from 'axios'
 import { motion } from 'framer-motion'
 import './minisPage.css'
+import MiniPainting from './components/MiniPainting'
 
 
 function MinisPage() {
 
     const [openFilter, setOpenFilter] = useState(false)
 
-    const [theme, setTheme] = useState('starWars')
-    const [realm, setRealm] = useState('mordor')
+    const [theme, setTheme] = useState('')
+    const [realm, setRealm] = useState('')
     const [allMinis, setAllMinis] = useState([])
 
     useEffect(() => {
+        // todo use a custom hook with refresh key
         getAllMinis()
     }, [])
 
@@ -32,7 +34,7 @@ function MinisPage() {
         } catch (error) {
             console.log('error in fetching minis', error)
             // set statuses
-        }    
+        }
     }
 
 
@@ -42,23 +44,16 @@ function MinisPage() {
 
             <div className='minis-display'>
                 {allMinis.map((mini) =>
-                <div key={mini.id} className='placeholder'>
-                    <div className='mini-image'>
-                        <img className='mini-picture' src={mini.picture} />
-                    </div>
-                    <div className='mini-info'>
-                        <p>{mini.model}</p>
-                        <p>{mini.rank}</p>
-                        <p>on display</p>
-                    </div>
-                    <button className='mini-edit'>Edit</button>
-                </div>
+                    <MiniPainting mini={mini} />
                 )}
             </div>
 
+
+
+
+
             <motion.div
                 className="filter-menu"
-                onClick={() => setOpenFilter(!openFilter)}
                 animate={{
                     // Animations for expansion and centering
                     width: openFilter ? '35dvw' : '80px',
@@ -69,7 +64,11 @@ function MinisPage() {
                     ease: 'easeInOut'
                 }}
             >
-                <button>X</button>
+                <button className='filter-button' onClick={() => setOpenFilter(!openFilter)}>X</button>
+
+                <div className='filter-content'>
+
+                </div>
 
 
             </motion.div>
