@@ -8,19 +8,20 @@ import useGenerateRealms from '../../components/customHooks/useGenerateRealms.js
 
 function CreateProject() {
 
-    const { worldList, realmList } = useGenerateRealms()
-    console.log('worldList-realmList', worldList, realmList)
+    const { worldList, realmObject } = useGenerateRealms()
+    console.log('worldList-realmList', worldList, realmObject)
 
-    const [theme, setTheme] = useState('')
+    const [world, setWorld] = useState('')
 
 
     const [newMini, setNewMini] = useState({
         model: '',
-        theme: '',
-        rank: 0,
+        world: '',
+        paint_quality: 0,
+        date: '',
         picture: ''
     })
-    // console.log('newMini', newMini);
+    console.log('newMini', newMini);
     const [selectedRealms, setSelectedRealms] = useState([]);
     // console.log('selectedRealms', selectedRealms)
 
@@ -32,7 +33,7 @@ function CreateProject() {
             checked ? [...prevSelected, realmId] : prevSelected.filter(id => id !== realmId)
         )
     }
-    
+
     const createNewMini = async (e) => {
         e.preventDefault()
         try {
@@ -46,10 +47,11 @@ function CreateProject() {
             // resets
             setNewMini({
                 model: '',
-                theme: '',
-                rank: 0,
+                world: '',
+                paint_quality: 0,
+                date: '',
                 picture: ''
-            });
+            })
             setSelectedRealms([])
         } catch (error) {
             console.log(`error in POST createNewMini`);
@@ -88,11 +90,11 @@ function CreateProject() {
                         <select
                             className='select-style select-theme'
                             required
-                            name='theme'
-                            value={newMini.theme}
+                            name='world'
+                            value={newMini.world}
                             onChange={(e) => {
                                 handleObjectChange(e, setNewMini, newMini)
-                                setTheme(e.target.value)
+                                setWorld(e.target.value)
                             }}
                         >
                             <option value={null}>Pick a Theme</option>
@@ -103,7 +105,19 @@ function CreateProject() {
                             ))}
                         </select>
 
-                        <select className='select-style select-rank' required name='rank' value={newMini.rank} onChange={(e) => handleObjectChange(e, setNewMini, newMini)}>
+                        <input
+                            name='date'
+                            required
+                            value={newMini.date}
+                            className='model-name'
+                            onChange={(e) => handleObjectChange(e, setNewMini, newMini)}
+                            type='text'
+                            placeholder='date painted...'
+                        >
+                        </input>
+
+
+                        <select className='select-style select-rank' required name='paint_quality' value={newMini.paint_quality} onChange={(e) => handleObjectChange(e, setNewMini, newMini)}>
                             <option value="">Quality...</option>
                             {[...Array(10)].map((_, i) => (
                                 <option key={i + 1} value={i + 1}>
@@ -122,15 +136,15 @@ function CreateProject() {
                     <div className='model-labels'>
                         <div className="realmsContainer">
                             <p>Select Realms:</p>
-                            {realmList[theme]?.map((realm) => (
-                                <label key={realm.id}>
+                            {realmObject[world]?.map((item) => (
+                                <label key={item.id}>
                                     <input
                                         type="checkbox"
-                                        value={realm.id}
-                                        checked={selectedRealms.includes(realm.id)}
+                                        value={item.id}
+                                        checked={selectedRealms.includes(item.id)}
                                         onChange={handleRealmChange}
                                     />
-                                    {convertCamelCase(realm.group)}
+                                    {convertCamelCase(item.realm)}
                                 </label>
                             ))}
                         </div>

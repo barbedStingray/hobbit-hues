@@ -10,11 +10,11 @@ const MiniPainting = ({ mini }) => {
         <div key={mini.id} className='mini-painting'>
             <div className='mini-minimize'>
                 <div className='mini-image'>
-                    <img className='mini-picture' src={mini.picture} />
+                    {/* <img className='mini-picture' src={mini.picture} /> */}
                 </div>
                 <div className='mini-info'>
                     <p>{mini.model}</p>
-                    <p>{mini.rank}</p>
+                    <p>{mini.paint_quality}</p>
                     <p>on display</p>
                 </div>
                 <button className='mini-expand' onClick={() => setIsExpanded(!isExpanded)}>Expand</button>

@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const useGenerateRealms = (refreshKey) => {
     const [worldList, setWorldList] = useState([])
-    const [realmList, setRealmList] = useState([])
+    const [realmObject, setRealmObject] = useState({})
     const [isLoaded, setIsLoaded] = useState(false)
     const [detailStatus, setDetailStatus] = useState('')
 
@@ -13,21 +13,43 @@ const useGenerateRealms = (refreshKey) => {
     }, [refreshKey])
 
     async function fetchThemesandRealms() {
-        // console.log('fetching worlds and realms')
+        // console.log('fetching themes and realms')
         try {
-            const { data: realmResults } = await axios.get('/api/user/realms')
-            const { data: worldResults } = await axios.get('/api/user/world')
-            const uniqueWorlds = worldResults.map( world => world.world)
-            // console.log('results', realmResults, uniqueWorlds)
+            const { data: results } = await axios.get('/api/user/themes')
+            // console.log('results', results)
+
+            // Get unique themes
+            const uniqueWorlds = [...new Set(results.map(item => item.world))]
+            uniqueWorlds.sort()  // Sort alphabetically
+
+            const getGroupsByTheme = (attributes, world) => {
+                // console.log('attributes', attributes)
+                return attributes
+                    .filter(item => item.world === world)
+                    .map(item => ({ id: item.id, realm: item.realm }))
+                    .filter((value, index, self) =>
+                        index === self.findIndex((t) => (
+                            t.id === value.id && t.realm === value.realm
+                        )))  // Ensure uniqueness
+            }
+
+            let fetchedThemes = {}
+            // Loop over each theme and set it as a key in the realms object
+            uniqueWorlds.forEach(world => {
+                fetchedThemes[world] = getGroupsByTheme(results, world)
+            })
+            // console.log('fetchedThemes', fetchedThemes)
+
+            // Set the state with the grouped realms by theme
             setWorldList(uniqueWorlds)
-            setRealmList(realmResults)
+            setRealmObject(fetchedThemes)
 
         } catch (error) {
-            alert('Error in fetching worlds/realms')
+            alert('Error in fetching realms')
             console.log('Error fetching realms:', error)
         }
     }
-    return { worldList, realmList }
+    return { worldList, realmObject }
 }
 
 export default useGenerateRealms

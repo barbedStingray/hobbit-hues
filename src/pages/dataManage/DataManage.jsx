@@ -7,18 +7,30 @@ import useGenerateRealms from '../../components/customHooks/useGenerateRealms'
 const DataManage = () => {
 
     const [refreshKey, setRefreshKey] = useState(0)
-    const { worldList, realmList } = useGenerateRealms(refreshKey)
+    const { worldList, realmObject } = useGenerateRealms(refreshKey)
 
     const [dataToggle, setDataToggle] = useState(true)
-    const [newTheme, setNewTheme] = useState('')
+    const [newWorld, setNewWorld] = useState('')
     const [newRealm, setNewRealm] = useState('')
+
+
+    const allThemes = Object.entries(realmObject)
+        .flatMap(([world, realm]) =>
+            realm.map(item => ({
+                id: item.id,
+                realm: item.realm,
+                world: world
+            }))
+        )
+        .sort((a, b) => a.realm.localeCompare(b.realm))
+    console.log('all themes', allThemes)
 
 
     const submitNewRealm = (e) => {
         e.preventDefault()
-        // console.log('submitting new realm', newTheme, newRealm)
+        // console.log('submitting new realm', newWorld, newRealm)
         try {
-            axios.post('/api/user/newRealm', { theme: newTheme, realm: newRealm })
+            axios.post('/api/user/newRealm', { world: newWorld, realm: newRealm })
             alert('success in new theme and/or realm!')
             setRefreshKey(prevKey => prevKey + 1)
 
@@ -30,8 +42,8 @@ const DataManage = () => {
         }
     }
 
-    const deleteRealm = async (id, group) => {
-        const confirmDelete = window.confirm(`Are you sure you want to delete the realm, ${convertCamelCase(group)}?`);
+    const deleteRealm = async (id, realm) => {
+        const confirmDelete = window.confirm(`Are you sure you want to delete the realm, ${convertCamelCase(realm)}?`);
         if (!confirmDelete) return;
 
         console.log('delete realm:', id);
@@ -74,27 +86,28 @@ const DataManage = () => {
 
             {dataToggle ? (
                 <div className='realm-view'>
-                    {realmList.map((realm, i) => (
+                    {allThemes.map((theme, i) => (
                         <p
                             className='realm-item'
-                            key={realm.id}
-                            onClick={() => deleteRealm(realm.id, realm.realm)}
+                            key={theme.id}
+                            onClick={() => deleteRealm(theme.id, theme.realm)}
+                            style={{ background: colorCodeThemes(theme.world) }}
                         >
-                            {convertCamelCase(realm.realm)}
+                            {convertCamelCase(theme.realm)}
                         </p>
                     ))}
                 </div>
             ) : (
                 <div className='realm-add'>
                     <form onSubmit={submitNewRealm} className='realm-form'>
-                        <select onChange={(e) => setNewTheme(e.target.value)} className='select-style realm-style'>
+                        <select onChange={(e) => setNewWorld(e.target.value)} className='select-style realm-style'>
                             <option value=''>Use Existing theme...</option>
                             {worldList.map((theme, i) => (
                                 <option value={theme} key={i}>{theme}</option>
                             ))}
                         </select>
                         <p>OR</p>
-                        <input type='text' onChange={(e) => setNewTheme(e.target.value)} className='select-style' placeholder='Create New Theme...' />
+                        <input type='text' onChange={(e) => setNewWorld(e.target.value)} className='select-style' placeholder='Create New Theme...' />
                         <p>AND</p>
                         <input type='text' onChange={(e) => setNewRealm(e.target.value)} className='select-style' placeholder='Add a New Realm...' />
 

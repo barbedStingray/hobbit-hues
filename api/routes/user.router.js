@@ -6,8 +6,8 @@ const router = express.Router()
 // NEW 
 
 // GET request /api/user/realms
-router.get('/realms', (req, res) => {
-  const queryText = 'SELECT * FROM "realms"'
+router.get('/themes', (req, res) => {
+  const queryText = 'SELECT * FROM "themes"'
   pool.query(queryText).then((result) => {
     console.log(`/realms query success!`)
     res.send(result.rows)
@@ -17,35 +17,21 @@ router.get('/realms', (req, res) => {
   })
 })
 
-// GET request /api/user/world
-router.get('/world', (req, res) => {
-  const queryText = `SELECT DISTINCT "world" FROM "minis"`
-  pool.query(queryText).then((result) => {
-    console.log(`/world query success!`)
-    res.send(result.rows)
-  }).catch((error) => {
-    console.log(`error in completing /world query`)
-    res.sendStatus(500)
-  })
-})
-
-
 // POST /newMini request (/api/user/newMini)
 router.post('/newMini', async (req, res) => {
-  const { model, theme, rank, picture } = req.body.newMini
+  const { model, world, paint_quality, date, picture } = req.body.newMini
   const theRealms = req.body.realms
 
   const miniQuery = `
-  INSERT INTO "minis" ("model", "theme", "rank", "picture")
-  VALUES ($1, $2, $3, $4) RETURNING id;`
+  INSERT INTO "minis" ("model", "world", "paint_quality", "date", "picture")
+  VALUES ($1, $2, $3, $4, $5) RETURNING id;`
 
   const realmQuery = `
-  INSERT INTO "mini_realm" ("mini_id", "realm_id")
+  INSERT INTO "mini_themes" ("mini_id", "theme_id")
   VALUES ($1, $2);`
 
   try {
-
-    const result = await pool.query(miniQuery, [model, theme, rank, picture])
+    const result = await pool.query(miniQuery, [model, world, paint_quality, date, picture])
     const newMiniId = result.rows[0].id
 
     if (theRealms.length > 0) {
@@ -63,13 +49,13 @@ router.post('/newMini', async (req, res) => {
 })
 
 // POST new realm
-
 router.post('/newRealm', (req, res) => {
-  const { theme, realm } = req.body
+  const { world, realm } = req.body
+  console.log(world, realm)
 
-  const queryText = `INSERT INTO "realms" ("realm") VALUES ($1)`
+  const queryText = `INSERT INTO "themes" ("world", "realm") VALUES ($1, $2)`
 
-  pool.query(queryText, [theme, realm]).then(result => {
+  pool.query(queryText, [world, realm]).then(result => {
     console.log('successs in post new realm')
     res.sendStatus(201)
   }).catch(error => {
@@ -78,10 +64,9 @@ router.post('/newRealm', (req, res) => {
   })
 })
 
-
 // DELETE REALM
 router.delete('/deleteRealm/:id', (req, res) => {
-  const queryText = `DELETE FROM "realms" WHERE "id" = $1`
+  const queryText = `DELETE FROM "themes" WHERE "id" = $1`
   pool.query(queryText, [req.params.id]).then((result) => {
     res.sendStatus(201)
     console.log('success')
@@ -91,37 +76,55 @@ router.delete('/deleteRealm/:id', (req, res) => {
   })
 })
 
-
-
-
-
 // ! this is not working as expected
 router.get('/allMinis', (req, res) => {
-  const { theme, realm, rank } = req.query
-  console.log(theme, realm)
+  const { realms, paint_quality } = req.query;
+  let queryText = `SELECT m.* FROM "minis" m`;
+  let queryParams = [];
 
+  // Join "themes" and "mini_themes" tables if you're filtering by realms
+  if (realms && realms.length > 0) {
+    queryText += `
+      JOIN "mini_themes" mt ON m.id = mt.mini_id
+      JOIN "themes" t ON mt.theme_id = t.id
+    `;
+  }
 
+  // Add where clauses for filtering by realms (only if realms is not empty)
+  let conditions = [];
+  if (realms && realms.length > 0) {
+    // Create placeholders for each realm in the realms array
+    const realmPlaceholders = realms.split(',').map((_, index) => `$${queryParams.length + index + 1}`);
+    conditions.push(`t.realm IN (${realmPlaceholders.join(', ')})`);
+    queryParams.push(...realms.split(','));  // Add the realms as parameters
+  }
 
-  // Define the basic queries
+  // If paint_quality is provided, always apply the paint_quality filter
+  if (paint_quality) {
+    conditions.push(`m.paint_quality = $${queryParams.length + 1}`);
+    queryParams.push(paint_quality);  // Add the paint quality as a parameter
+  }
 
-  let queryText = `SELECT * FROM "minis"`
-  let queryParams = []
+  // Combine conditions if any
+  if (conditions.length > 0) {
+    queryText += ` WHERE ` + conditions.join(' AND ');
+  }
 
-  queryText += ' ORDER BY "rank" DESC, RANDOM();';
-
-  console.log('queryParams', queryParams)
+  // Optionally, order the results if you like
+  queryText += ' ORDER BY "paint_quality" DESC, RANDOM();';
+  
 
   // Execute the query
   pool.query(queryText, queryParams)
     .then((result) => {
-      console.log(`/api/user/allMinis success`)
-      res.send(result.rows)
+      console.log(`/api/user/allMinis success`);
+      res.send(result.rows);
     })
     .catch((error) => {
-      console.log('/api/user/allMinis error', error)
-      res.sendStatus(500)
-    })
-})
+      console.log('/api/user/allMinis error', error);
+      res.sendStatus(500);
+    });
+});
 
 
 

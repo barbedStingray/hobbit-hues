@@ -10,8 +10,8 @@ function MinisPage() {
 
     const [openFilter, setOpenFilter] = useState(false)
 
-    const [theme, setTheme] = useState('')
-    const [realm, setRealm] = useState('')
+    const [paintQuality, setPaintQuality] = useState(null)
+    const [selectedRealms, setSelectedRealms] = useState([])
     const [allMinis, setAllMinis] = useState([])
 
     useEffect(() => {
@@ -24,10 +24,7 @@ function MinisPage() {
 
         try {
             const results = await axios.get('/api/user/allMinis', {
-                params: {
-                    theme: theme,
-                    realm: realm,
-                }
+                params: { realms: selectedRealms.join(','), paint_quality: paintQuality}
             })
             setAllMinis(results.data)
 
@@ -44,7 +41,7 @@ function MinisPage() {
 
             <div className='minis-display'>
                 {allMinis.map((mini) =>
-                    <MiniPainting mini={mini} />
+                    <MiniPainting key={mini.id} mini={mini} />
                 )}
             </div>
 
