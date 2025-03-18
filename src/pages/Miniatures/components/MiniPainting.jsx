@@ -3,7 +3,10 @@ import { AnimatePresence, motion } from 'framer-motion'
 
 const MiniPainting = ({ mini }) => {
 
-    const [isExpanded, setIsExpanded] = useState(false)
+    const [paintExpand, setPaintExpand] = useState(false)
+    const [notesExpand, setNotesExpand] = useState(false)
+
+    // console.log('MINI.paint', mini.paints)
 
 
     return (
@@ -17,31 +20,38 @@ const MiniPainting = ({ mini }) => {
                     <p>{mini.paint_quality}</p>
                     <p>on display</p>
                 </div>
-                <button className='mini-expand' onClick={() => setIsExpanded(!isExpanded)}>Expand</button>
+                <button className='mini-expand' onClick={() => setPaintExpand(!paintExpand)}>paintExpand</button>
+                <button className='mini-expand' onClick={() => setNotesExpand(!notesExpand)}>notesExpand</button>
             </div>
-            {/* {isExpanded && ( */}
                 <AnimatePresence mode='wait'>
                     <motion.div
                         className='mini-maximize'
-                        key={isExpanded ? 'mini-expand' : 'mini-collapse'}
+                        // key={paintExpand ? 'mini-expand' : 'mini-collapse'}
                         initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: isExpanded ? 'auto' : 0, opacity: isExpanded ? 1 : 0 }} 
+                        animate={{ height: paintExpand ? 'auto' : 0, opacity: paintExpand ? 1 : 0 }} 
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: 'easeInOut' }}
                         style={{ overflow: 'hidden' }}
                     >
-                        <p>Colors</p>
-                        <p>Colors</p>
-                        <p>Colors</p>
-                        <p>Colors</p>
-                        <p>Colors</p>
-                        <p>Colors</p>
-                        <p>Colors</p>
-                        <p>Colors</p>
+                        {mini.paints.map((paint, i) => <p key={i}>{paint}</p>)}
                     </motion.div>
                 </AnimatePresence>
 
-            {/* )} */}
+                <AnimatePresence mode='wait'>
+                    <motion.div
+                        className='mini-maximize'
+                        // key={paintExpand ? 'mini-expand' : 'mini-collapse'}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: notesExpand ? 'auto' : 0, opacity: notesExpand ? 1 : 0 }} 
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        style={{ overflow: 'hidden' }}
+                    >
+                        <p>{mini.notes}</p>
+                    </motion.div>
+                </AnimatePresence>
+
+
         </div>
     )
 }

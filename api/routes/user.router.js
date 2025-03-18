@@ -77,54 +77,102 @@ router.delete('/deleteRealm/:id', (req, res) => {
 })
 
 // ! this is not working as expected
+// router.get('/allMinis', (req, res) => {
+//   const { realms, paint_quality } = req.query;
+//   let queryText = `SELECT m.* FROM "minis" m`;
+//   let queryParams = [];
+
+
+//   // Join "themes" and "mini_themes" tables if you're filtering by realms
+//   if (realms && realms.length > 0) {
+//     queryText += `
+//       JOIN "mini_themes" mt ON m.id = mt.mini_id
+//       JOIN "themes" t ON mt.theme_id = t.id
+//     `;
+//   }
+
+//   // Add where clauses for filtering by realms (only if realms is not empty)
+//   let conditions = [];
+//   if (realms && realms.length > 0) {
+//     // Create placeholders for each realm in the realms array
+//     const realmPlaceholders = realms.split(',').map((_, index) => `$${queryParams.length + index + 1}`);
+//     conditions.push(`t.realm IN (${realmPlaceholders.join(', ')})`);
+//     queryParams.push(...realms.split(','));  // Add the realms as parameters
+//   }
+
+//   // If paint_quality is provided, always apply the paint_quality filter
+//   if (paint_quality) {
+//     conditions.push(`m.paint_quality = $${queryParams.length + 1}`);
+//     queryParams.push(paint_quality);  // Add the paint quality as a parameter
+//   }
+
+//   // Combine conditions if any
+//   if (conditions.length > 0) {
+//     queryText += ` WHERE ` + conditions.join(' AND ');
+//   }
+
+//   // Optionally, order the results if you like
+//   queryText += ' ORDER BY "paint_quality" DESC, RANDOM();';
+
+
+//   // Execute the query
+//   pool.query(queryText, queryParams)
+//     .then((result) => {
+//       console.log(`/api/user/allMinis success`);
+//       res.send(result.rows);
+//     })
+//     .catch((error) => {
+//       console.log('/api/user/allMinis error', error);
+//       res.sendStatus(500);
+//     });
+// });
+
+
+
+
+
+
+
+
+
 router.get('/allMinis', (req, res) => {
   const { realms, paint_quality } = req.query;
-  let queryText = `SELECT m.* FROM "minis" m`;
-  let queryParams = [];
+  const paintQualityArray = paint_quality.map(Number);  // Convert all values to integers
+  const realmsArray = realms || [];
 
-  // Join "themes" and "mini_themes" tables if you're filtering by realms
-  if (realms && realms.length > 0) {
-    queryText += `
-      JOIN "mini_themes" mt ON m.id = mt.mini_id
-      JOIN "themes" t ON mt.theme_id = t.id
-    `;
-  }
+const queryText = `
+    SELECT 
+      m.*, 
+      ARRAY_AGG(t.realm) AS realms
+    FROM "minis" m
+    LEFT JOIN "mini_themes" mt ON m.id = mt.mini_id
+    LEFT JOIN "themes" t ON mt.theme_id = t.id
+    GROUP BY m.id
+    HAVING 
+      EXISTS (
+        SELECT 1
+        FROM unnest($1::text[]) AS selected_realm 
+        WHERE selected_realm = ANY(ARRAY_AGG(t.realm))
+      )
+      AND m.paint_quality = ANY($2::int[])`
 
-  // Add where clauses for filtering by realms (only if realms is not empty)
-  let conditions = [];
-  if (realms && realms.length > 0) {
-    // Create placeholders for each realm in the realms array
-    const realmPlaceholders = realms.split(',').map((_, index) => `$${queryParams.length + index + 1}`);
-    conditions.push(`t.realm IN (${realmPlaceholders.join(', ')})`);
-    queryParams.push(...realms.split(','));  // Add the realms as parameters
-  }
+      
+  console.log('Realms:', realmsArray);
+  console.log('Paint Quality:', paintQualityArray);
+  console.log('typeOF', typeof(realms))
 
-  // If paint_quality is provided, always apply the paint_quality filter
-  if (paint_quality) {
-    conditions.push(`m.paint_quality = $${queryParams.length + 1}`);
-    queryParams.push(paint_quality);  // Add the paint quality as a parameter
-  }
-
-  // Combine conditions if any
-  if (conditions.length > 0) {
-    queryText += ` WHERE ` + conditions.join(' AND ');
-  }
-
-  // Optionally, order the results if you like
-  queryText += ' ORDER BY "paint_quality" DESC, RANDOM();';
-  
-
-  // Execute the query
-  pool.query(queryText, queryParams)
+  pool.query(queryText, [realmsArray, paintQualityArray])
+  // pool.query(queryText)
     .then((result) => {
-      console.log(`/api/user/allMinis success`);
+      console.log('results', result.rows)
       res.send(result.rows);
     })
     .catch((error) => {
-      console.log('/api/user/allMinis error', error);
+      console.error('Query error', error);
       res.sendStatus(500);
     });
-});
+
+})
 
 
 

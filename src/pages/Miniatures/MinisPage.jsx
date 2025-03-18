@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
 import axios from 'axios'
 import { motion } from 'framer-motion'
 import './minisPage.css'
@@ -10,21 +9,22 @@ function MinisPage() {
 
     const [openFilter, setOpenFilter] = useState(false)
 
-    const [paintQuality, setPaintQuality] = useState(null)
-    const [selectedRealms, setSelectedRealms] = useState([])
+    const [paintQuality, setPaintQuality] = useState([8, 9, 10])
+    const [selectedRealms, setSelectedRealms] = useState(['wizards', 'mordor', 'kingdomHearts'])
     const [allMinis, setAllMinis] = useState([])
+    console.log('all Minis', allMinis)
 
     useEffect(() => {
         // todo use a custom hook with refresh key
         getAllMinis()
-    }, [])
+    }, [paintQuality, selectedRealms])
 
     const getAllMinis = async () => {
         // console.log('fetching all minis')
 
         try {
             const results = await axios.get('/api/user/allMinis', {
-                params: { realms: selectedRealms.join(','), paint_quality: paintQuality}
+                params: { realms: selectedRealms, paint_quality: paintQuality}
             })
             setAllMinis(results.data)
 
