@@ -19,6 +19,7 @@ const MiniPainting = ({ mini }) => {
                     <p>{mini.model}</p>
                     <p>{mini.paint_quality}</p>
                     <p>on display</p>
+                    {JSON.stringify(mini.realms)}
                 </div>
                 <button className='mini-expand' onClick={() => setPaintExpand(!paintExpand)}>paintExpand</button>
                 <button className='mini-expand' onClick={() => setNotesExpand(!notesExpand)}>notesExpand</button>

@@ -9,8 +9,11 @@ function MinisPage() {
 
     const [openFilter, setOpenFilter] = useState(false)
 
-    const [paintQuality, setPaintQuality] = useState([8, 9, 10])
-    const [selectedRealms, setSelectedRealms] = useState(['wizards', 'mordor', 'kingdomHearts'])
+    const [paintQuality, setPaintQuality] = useState([10, 5])
+    const [selectedRealms, setSelectedRealms] = useState(['rhun', 'kingdomHearts', 'jediOrder'])
+    const realms = selectedRealms.length > 0 ? selectedRealms : null;
+    const qualities = paintQuality.length > 0 ? paintQuality : null;
+
     const [allMinis, setAllMinis] = useState([])
     console.log('all Minis', allMinis)
 
@@ -24,7 +27,7 @@ function MinisPage() {
 
         try {
             const results = await axios.get('/api/user/allMinis', {
-                params: { realms: selectedRealms, paint_quality: paintQuality}
+                params: { realms: realms, paint_quality: qualities}
             })
             setAllMinis(results.data)
 
